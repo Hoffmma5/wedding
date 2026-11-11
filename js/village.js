@@ -4,6 +4,7 @@
 
   var hero = document.querySelector('.hero');
   var picture = document.querySelector('.picture');
+  var scroller = document.querySelector('.hero-scroll');
   var spots = Array.prototype.slice.call(document.querySelectorAll('.go'));
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -30,6 +31,7 @@
 
   spots.forEach(function (spot) {
     spot.addEventListener('click', function (e) {
+      if (spot.dataset.held) { e.preventDefault(); delete spot.dataset.held; return; }   // a long press already did its thing
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;   // new tab etc.
       e.preventDefault();
       // Touch has no hover: first tap shows the label (and opens a door), second tap goes in
@@ -46,6 +48,79 @@
     document.body.classList.remove('entering');
     closeAll(null);
   });
+
+  /* ---------- Weathervane: press and hold → it points to where you are ----------
+     A normal click still opens the guest map. Holding asks (once) for the
+     visitor's location, turns the arrow from Tavira towards them and tells
+     them how far away Tavira is. Nothing is stored or sent anywhere. */
+
+  var TAVIRA = { lat: 37.1273, lon: -7.6486 };
+  var vane = document.querySelector('.vane');
+  var vaneArrow = vane.querySelector('.vane-arrow');
+  var holdTimer = null, homeTimer = null;
+
+  function toRad(d) { return d * Math.PI / 180; }
+  function distanceKm(a, b) {
+    var dLat = toRad(b.lat - a.lat), dLon = toRad(b.lon - a.lon);
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 6371 * 2 * Math.asin(Math.sqrt(h));
+  }
+  function bearing(a, b) {                       // initial great-circle bearing from a to b, degrees from north
+    var y = Math.sin(toRad(b.lon - a.lon)) * Math.cos(toRad(b.lat));
+    var x = Math.cos(toRad(a.lat)) * Math.sin(toRad(b.lat)) -
+            Math.sin(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.cos(toRad(b.lon - a.lon));
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+  function compassWord(deg) {
+    return ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'][Math.round(deg / 45) % 8];
+  }
+
+  function pointHome() {
+    var say = window.toast || function () {};
+    if (!navigator.geolocation) { say('Wherever you are, the Algarve is waiting for you.'); return; }
+    say('Finding your way to Tavira…', 2500);
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var you = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+      var km = distanceKm(TAVIRA, you);
+      var toYou = bearing(TAVIRA, you);          // the arrow (standing in Tavira) points towards you
+      var toTavira = bearing(you, TAVIRA);
+      // rotateY: 0° = arrow head east, +90° = head away from us (north), so turn = 90° − bearing
+      var turn = 90 - toYou;
+      vaneArrow.classList.add('pointing');
+      vaneArrow.style.setProperty('--turn', (turn + 720) + 'deg');
+      var msg;
+      if (km < 25) msg = 'You’re already in Tavira! See you at the long table.';
+      else {
+        var nice = km < 100 ? Math.round(km) : Math.round(km / 10) * 10;
+        msg = 'You’re ' + nice.toLocaleString('en-GB') + ' km from Tavira. Head ' + compassWord(toTavira) + ' – we’ll keep a seat for you.';
+        if (km > 500) msg += ' (About ' + Math.max(1, Math.round((km / 800 + .5) * 2) / 2) + ' h by plane.)';
+      }
+      say(msg, 7000);
+      clearTimeout(homeTimer);
+      homeTimer = setTimeout(function () {
+        vaneArrow.classList.remove('pointing');
+        vaneArrow.style.removeProperty('--turn');
+      }, 9000);
+    }, function () {
+      say('No problem – wherever you are, the Algarve is waiting for you.', 4500);
+    }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 });
+  }
+
+  vane.addEventListener('pointerdown', function () {
+    delete vane.dataset.held;
+    clearTimeout(holdTimer);
+    vane.classList.add('holding');
+    holdTimer = setTimeout(function () {
+      vane.dataset.held = '1';
+      vane.classList.remove('holding');
+      pointHome();
+    }, 650);
+  });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (ev) {
+    vane.addEventListener(ev, function () { clearTimeout(holdTimer); vane.classList.remove('holding'); });
+  });
+  vane.addEventListener('contextmenu', function (e) { e.preventDefault(); });   // no long-press menu on phones
 
   /* ---------- Street lamp: switches day / night ---------- */
 
@@ -140,6 +215,17 @@
       }
     });
     return svg;
+  }
+
+  /* ---------- Small screens: start in the middle of the street ---------- */
+
+  if (scroller.scrollWidth > scroller.clientWidth) {
+    scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) * 0.42;
+    var hint = document.querySelector('.swipe-hint');
+    // listen only after our own initial scroll has settled, so the hint stays until the visitor swipes
+    if (hint) setTimeout(function () {
+      scroller.addEventListener('scroll', function () { hint.classList.add('gone'); }, { once: true, passive: true });
+    }, 400);
   }
 
   /* ---------- Scroll: village fades out, story map grows in ---------- */

@@ -772,20 +772,10 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 /* Travel: Portugal (with Spain faintly behind it) and Tavira marked */
 .map-grid { grid-template-columns: minmax(0, 1fr) minmax(240px, 400px); }
 .map-art { position: relative; max-width: 400px; margin-left: auto; }
-.map-art .pearl { position: absolute; width: 15.8%; left: 28%; top: 83.4%; }
-.map-art .place { position: absolute; left: 18.3%; top: 76.3%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
-.map-art .country {
-  position: absolute;
-  left: 58%;
-  top: 38%;
-  font-family: "Cormorant SC", Georgia, serif;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: .3em;
-  color: #a8987c;
-}
+.map-art .pearl { position: absolute; width: 12.5%; left: 23%; top: 86.6%; }
+.map-art .place { position: absolute; left: 12.5%; top: 80.5%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
+
 :root[data-theme="night"] .map-art > img:first-child { opacity: .92; }
-:root[data-theme="night"] .map-art .country { color: #8d8470; }
 
 /* Location: the cover's sardine on its azulejo tile */
 .tile-art { position: relative; max-width: 320px; margin-left: auto; }
@@ -829,26 +819,6 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 .wx-link { margin: 4px 0 0; text-align: right; font-size: 14px; }
 .wx-link a { color: var(--topic-c); text-underline-offset: 3px; }
 
-/* Small screens: the whole village fits the width (no sideways scrolling);
-   the title sits above the picture instead of in its sky. */
-@media (max-width: 860px) {
-  .hero { --pw: min(100cqw, calc((100svh - 8px) * 1926 / 1177)); padding-top: 60px; }
-  .hero-scroll { overflow: visible; }
-  .hero-text {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    width: auto;
-    margin: 0 auto;
-    padding: 22px 16px 0;
-  }
-  .hero-mark { width: 48px; }
-  .hero-text h1 { font-size: clamp(24px, 7.4vw, 34px); }
-  .hero-text .tagline { font-size: clamp(10px, 2.9vw, 13px); }
-  .swipe-hint { display: none !important; }
-  .tile-face { font-size: calc(var(--u) * 14); }
-}
 
 /* =========================================================
    Easter eggs
@@ -996,3 +966,16 @@ html, body { overflow-x: clip; }
   .map-grid { grid-template-columns: 1fr; }
   .map-art { max-width: 300px; margin: 0 auto; }
 }
+
+/* Location: keep the tile + sardine clear of the map */
+.inv-grid + .map-frame { margin-top: 36px; }
+.tile-art .sardine { max-width: none; }
+@media (max-width: 760px) {
+  .tile-art { max-width: 190px; margin: 8px auto 12px; }
+  .inv-grid + .map-frame { margin-top: 40px; }
+}
+
+/* Weathervane: press and hold → points to where the visitor is */
+.vane { -webkit-touch-callout: none; user-select: none; }
+.vane.holding .vane-arrow { animation: spin .65s linear infinite; }
+.vane-arrow.pointing { animation: none; transition: --turn 2.4s cubic-bezier(.2, .7, .2, 1); }
