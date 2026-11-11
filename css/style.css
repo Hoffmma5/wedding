@@ -700,3 +700,114 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 
 /* Door labels sit inside the open doorway, clear of the wall signs */
 .door .tip { bottom: auto; top: 10%; }
+
+/* =========================================================
+   Invitation styling for inner pages (from the Tavira invitation)
+   Beth Ellen = handwritten titles, Cormorant SC = small caps,
+   Lora = text. Each topic sets --topic (its invitation colour).
+   ========================================================= */
+
+[style*="--topic"] { --topic-c: var(--topic); }
+:root[data-theme="night"] [style*="--topic"] { --topic-c: color-mix(in srgb, var(--topic) 50%, #fff); }
+
+.inv { max-width: 1000px; }
+.inv .script {
+  margin: 0;
+  font-family: "Beth Ellen", "Brush Script MT", cursive;
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 76px);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--topic-c);
+  transition: color var(--fade);
+}
+.inv h2.script { font-size: clamp(38px, 5.5vw, 58px); }
+.sc {
+  margin: 0;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: .1em;
+  line-height: 1.3;
+  color: var(--olive);
+  transition: color var(--fade);
+}
+.inv-head { margin-bottom: 28px; }
+.inv-head .sc + .script { margin-top: -.15em; }
+.inv-head .script + .sc { margin-top: -.55em; }
+
+.prose { font-family: "Lora", Georgia, serif; font-size: 17px; line-height: 1.75; }
+.prose p { margin: 0 0 1em; }
+.prose strong { font-weight: 600; color: var(--topic-c); }
+.prose a { color: var(--topic-c); text-underline-offset: 3px; }
+.prose ul { margin: 0 0 1em; padding-left: 1.2em; }
+.prose li { margin: .25em 0; }
+.prose .ps { font-size: 15px; color: var(--muted); }
+
+.inv-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 320px);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: start;
+}
+.art { margin: 0; }
+.art img { display: block; width: 100%; height: auto; }
+
+.inv-section { margin-top: clamp(48px, 7vw, 80px); padding-top: clamp(32px, 5vw, 48px); border-top: 1px solid var(--line); }
+
+/* Key facts: "Dates", "Wedding venue", … */
+.facts-list { margin: 0 0 1.6em; display: grid; gap: 18px; }
+.facts-list > div { display: grid; grid-template-columns: 150px 1fr; gap: 4px 20px; }
+.facts-list dt { padding-top: 2px; }
+.facts-list dd { margin: 0; }
+.facts-list dd span { display: block; font-size: 15px; color: var(--muted); }
+
+/* Weather numbers */
+.wx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 8px 0 8px; }
+.wx div { padding: 18px 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); text-align: center; }
+.wx svg { width: 24px; height: 24px; fill: none; stroke: var(--topic-c); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.wx b { display: block; margin: 4px 0 2px; font-family: "Lora", Georgia, serif; font-size: 28px; font-weight: 400; }
+.wx span { font-size: 13px; color: var(--muted); line-height: 1.35; display: block; }
+
+/* Travel: map with Tavira marked */
+.map-art { position: relative; max-width: 300px; margin-left: auto; }
+.map-art .pearl { position: absolute; width: 26%; left: 46%; top: 88%; }
+.map-art .place { position: absolute; left: 30%; top: 80%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
+
+/* Location: the cover's sardine on its azulejo tile */
+.tile-art { position: relative; max-width: 320px; margin-left: auto; }
+.tile-art .tile { opacity: .6; }
+.tile-art .sardine { position: absolute; left: -12%; top: 33%; width: 124%; }
+:root[data-theme="night"] .tile-art .tile { opacity: .35; }
+
+.wide-art { margin: 8px 0 28px; }
+.wide-art img { display: block; width: 100%; height: auto; }
+
+.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: "Inter", sans-serif; font-size: 15px; }
+.times { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0 0 1.2em; }
+.times dt { padding-top: 3px; }
+.times dd { margin: 0; }
+
+.map-frame { aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.map-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+/* Program days */
+.day { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, 260px); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.day + .day { margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(32px, 5vw, 48px); border-top: 1px solid var(--line); }
+.day .sc { margin-bottom: 12px; }
+.day.full { grid-template-columns: 1fr; }
+.day-art { max-width: 260px; justify-self: end; }
+
+.inv .placeholder { font-family: "Inter", sans-serif; }
+
+@media (max-width: 760px) {
+  .inv-grid, .day { grid-template-columns: 1fr; }
+  .inv-grid .art, .day-art { max-width: 220px; justify-self: center; margin: 0 auto; }
+  .map-art, .tile-art { margin: 0 auto; }
+  .facts-list > div { grid-template-columns: 1fr; }
+  .wx b { font-size: 24px; }
+}
+.map-head.inv { margin: 0 auto; }
+.map-head .sc + .script { margin-top: -.2em; }
+.day-art { height: auto; width: 100%; }
+.day .script + .sc { margin-top: .15em; }

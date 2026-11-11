@@ -6,7 +6,7 @@
   <title>Program · Marek &amp; Paulo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>
     (function () {
@@ -38,16 +38,45 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
     </button>
   </header>
-  <main class="page">
-    <p class="eyebrow">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027</p>
-    <h1>Program</h1>
-    <p class="lead">Three days in the Algarve, 1 &ndash; 3 October 2027.</p>
-    <h2>Friday, 1 October</h2>
-    <p class="placeholder">Welcome evening &mdash; details coming soon.</p>
-    <h2>Saturday, 2 October</h2>
-    <p class="placeholder">Ceremony, dinner and dancing &mdash; times coming soon.</p>
-    <h2>Sunday, 3 October</h2>
-    <p class="placeholder">Farewell &mdash; details coming soon.</p>
+  <main class="page inv" style="--topic:#7a3b3b">
+    <header class="inv-head">
+      <p class="sc">Three days in Tavira</p>
+      <h1 class="script">the Program</h1>
+    </header>
+
+    <article class="day" style="--topic:#d4504c">
+      <div class="prose">
+        <h2 class="script">friday</h2>
+        <p class="sc">Welcome party &middot; 01.10.2027</p>
+        <ul>
+          <li>Transfer from Faro airport</li>
+          <li>Check in at Hotel Quinta do Marco from 14:00</li>
+        </ul>
+        <p class="placeholder">Time and details of the welcome party &mdash; coming soon.</p>
+      </div>
+      <img class="day-art" src="assets/art/disco-ball.webp" alt="" width="337" height="436" style="max-width:170px">
+    </article>
+
+    <article class="day full" style="--topic:#7b8152">
+      <div class="prose">
+        <h2 class="script">the Wedding Day</h2>
+        <p class="sc">Saturday &middot; 02.10.2027</p>
+        <p class="placeholder">The plan for the day &mdash; coming soon.</p>
+      </div>
+      <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
+    </article>
+
+    <article class="day" style="--topic:#8b5523">
+      <div class="prose">
+        <h2 class="script">sunday</h2>
+        <p class="sc">Farewell &middot; 03.10.2027</p>
+        <ul>
+          <li>Check out by 12:00</li>
+          <li>Transfer back to Faro airport</li>
+        </ul>
+      </div>
+      <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="max-width:200px">
+    </article>
   </main>
   <script src="js/site.js"></script>
 </body>

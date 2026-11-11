@@ -6,7 +6,7 @@
   <title>Location · Marek &amp; Paulo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script>
     (function () {
@@ -38,14 +38,40 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
     </button>
   </header>
-  <main class="page">
-    <p class="eyebrow">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027</p>
-    <h1>Location</h1>
-    <p class="lead">Where it all happens, in the Algarve.</p>
-    <h2>The venue</h2>
-    <p class="placeholder">Venue name, address and a map &mdash; coming soon.</p>
-    <h2>Around the area</h2>
-    <p class="placeholder">Beaches, towns and places we love nearby &mdash; coming soon.</p>
+  <main class="page inv" style="--topic:#1f4fa0">
+    <div class="inv-grid">
+      <div>
+        <header class="inv-head">
+          <p class="sc">Where it all happens</p>
+          <h1 class="script">Tavira</h1>
+        </header>
+        <div class="prose">
+          <p>Tavira is a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
+          <dl class="facts-list">
+            <div><dt class="sc">Wedding venue</dt><dd><strong>Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
+          Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span></dd></div>
+          </dl>
+        </div>
+      </div>
+      <figure class="art tile-art">
+        <img class="tile" src="assets/art/tile.webp" alt="" width="640" height="644">
+        <img class="sardine" src="assets/art/sardine.webp" alt="" width="900" height="319">
+      </figure>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira&amp;z=11&amp;output=embed" title="Map: Hotel Rural Quinta do Marco, Tavira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <p class="contact" style="margin-top:12px"><a href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">Open in Google Maps &nearr;</a></p>
+
+    <section class="inv-section" style="--topic:#8b5523">
+      <header class="inv-head">
+        <h2 class="script">the Algarve</h2>
+        <p class="sc">The south of Portugal&hellip;</p>
+      </header>
+      <div class="prose">
+        <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
+      </div>
+    </section>
   </main>
   <script src="js/site.js"></script>
 </body>
