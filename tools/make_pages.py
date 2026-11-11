@@ -28,7 +28,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       <p class="sc">Let us help you plan your</p>
       <h1 class="script">Travel</h1>
     </header>
-    <div class="inv-grid">
+    <div class="inv-grid map-grid">
       <div class="prose">
         <dl class="facts-list">
           <div><dt class="sc">Dates</dt><dd><strong>1st, 2nd &amp; 3rd of October 2027</strong><span>Friday to Sunday</span></dd></div>
@@ -39,7 +39,8 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         <p class="ps">P.S. The flights are often cheaper from Germany.</p>
       </div>
       <figure class="art map-art">
-        <img src="assets/art/portugal.webp" alt="Watercolour map of Portugal" width="373" height="722">
+        <img src="assets/art/iberia.webp" alt="Watercolour map of Portugal and Spain with Tavira marked" width="613" height="802">
+        <span class="country" aria-hidden="true">Spain</span>
         <span class="place" aria-hidden="true">Tavira</span>
         <img class="pearl" src="assets/art/pearl.webp" alt="" width="360" height="268">
       </figure>
@@ -79,6 +80,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
       <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><b>16&nbsp;&deg;C</b><span>Average nighttime low</span></div>
       <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 15a4 4 0 0 1-.6-8A5.5 5.5 0 0 1 17 8a3.5 3.5 0 0 1 .5 7H7Z"/><path d="M9 18l-1 2.5M13 18l-1 2.5M17 18l-1 2.5"/></svg><b>6 days</b><span>With measurable rain per month</span></div>
     </div>
+    <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
     <section class="inv-section">
       <div class="inv-grid">
@@ -93,7 +95,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
             </ul>
           </div>
         </div>
-        <figure class="art"><img src="assets/art/crab.webp" alt="" width="480" height="468"></figure>
+        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="max-width:260px;margin-left:auto"></figure>
       </div>
     </section>""")
 
@@ -147,7 +149,7 @@ PAGES["location"] = ("Location", BLUE, f"""
       </div>
       <figure class="art tile-art">
         <img class="tile" src="assets/art/tile.webp" alt="" width="640" height="644">
-        <img class="sardine" src="assets/art/sardine.webp" alt="" width="900" height="319">
+        <img class="sardine" src="assets/art/sardine.webp" alt="Sardine" title="Psst, give it a tap" tabindex="0" role="button" width="900" height="319">
       </figure>
     </div>
     <div class="map-frame">
@@ -181,7 +183,7 @@ PAGES["program"] = ("Program", WINE, f"""
         </ul>
         <p class="placeholder">Time and details of the welcome party &mdash; coming soon.</p>
       </div>
-      <img class="day-art" src="assets/art/disco-ball.webp" alt="" width="337" height="436" style="max-width:170px">
+      <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
     </article>
 
     <article class="day full" style="--topic:{OLIVE}">
@@ -224,7 +226,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
   <script>
     (function () {{
       var saved = null;
@@ -252,7 +254,8 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js"></script>
+FOOT = """  <script src="js/site.js?v=5"></script>
+  <script src="js/eggs.js?v=5"></script>
 </body>
 </html>
 """
@@ -272,7 +275,7 @@ def main():
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{BLUE}">
       <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
-      <h1 class="script">the Guests</h1>
+      <h1 class="script">the guests</h1>
     </div>
     <div class="map-embed">
       <iframe src="https://hoffmma5.github.io/wedding-map/" title="Map of where our wedding guests come from" loading="lazy" allow="fullscreen"></iframe>

@@ -4,7 +4,6 @@
 
   var hero = document.querySelector('.hero');
   var picture = document.querySelector('.picture');
-  var scroller = document.querySelector('.hero-scroll');
   var spots = Array.prototype.slice.call(document.querySelectorAll('.go'));
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -67,7 +66,12 @@
 
   /* ---------- Orange tree ---------- */
 
+  var shaken = 0;
   document.querySelector('.tree').addEventListener('click', function () {
+    shaken++;
+    if (shaken === 10 && window.toast) {
+      window.toast('That’s enough for a glass of fresh orange juice. See you in Tavira!', 5000);
+    }
     var o = document.createElement('span');
     var x = 500 + Math.random() * 230;        // canopy, picture pixels
     var y = 300 + Math.random() * 170;
@@ -84,15 +88,58 @@
   /* ---------- Countdown ---------- */
 
   var cd = document.getElementById('countdown');
-  var days = Math.ceil((new Date(2027, 9, 1) - new Date()) / 864e5);
+  var now = new Date();
+  var days = Math.ceil((new Date(2027, 9, 1) - now) / 864e5);
   cd.textContent = days > 1 ? days + ' days to go' : days === 1 ? 'Tomorrow!' : days > -3 ? 'It’s happening!' : 'Just married';
 
-  /* ---------- Small screens: start in the middle of the street ---------- */
+  /* ---------- Wedding weekend (1–3 Oct 2027): party mode ----------
+     Preview any time by adding ?party to the address. */
 
-  if (scroller.scrollWidth > scroller.clientWidth) {
-    scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) * 0.42;
-    var hint = document.querySelector('.swipe-hint');
-    scroller.addEventListener('scroll', function () { hint.classList.add('gone'); }, { once: true, passive: true });
+  var party = (now >= new Date(2027, 9, 1) && now < new Date(2027, 9, 4)) || /[?&]party(=|&|$)/.test(location.search);
+  if (party) {
+    document.documentElement.classList.add('party');
+    cd.textContent = 'It’s happening!';
+    picture.appendChild(bunting());
+    try {
+      if (!sessionStorage.getItem('partyHello')) {
+        sessionStorage.setItem('partyHello', '1');
+        setTimeout(function () { window.toast && window.toast('Welcome to the party! Eat well, dance lots, love always.', 6000); }, 1200);
+      }
+    } catch (e) {}
+  }
+
+  // Strings of paper flags between the chimneys (picture pixels; the sky is negative y)
+  function bunting() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'bunting');
+    svg.setAttribute('viewBox', '0 -360 1926 1177');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    var colours = ['#2f5fb5', '#f2b705', '#e8664a', '#7b8152', '#fff6e0'];
+    [[205, 70, 690, 270, 1165, 72], [1173, 72, 1490, 240, 1800, 70]].forEach(function (g, gi) {
+      var x0 = g[0], y0 = g[1], cx = g[2], cy = g[3], x1 = g[4], y1 = g[5];
+      var line = document.createElementNS(NS, 'path');
+      line.setAttribute('class', 'string');
+      line.setAttribute('d', 'M' + x0 + ' ' + y0 + 'Q' + cx + ' ' + cy + ' ' + x1 + ' ' + y1);
+      svg.appendChild(line);
+      var n = Math.round((x1 - x0) / 46);
+      for (var i = 1; i < n; i++) {
+        var t = i / n, u = 1 - t;
+        var x = u * u * x0 + 2 * u * t * cx + t * t * x1;
+        var y = u * u * y0 + 2 * u * t * cy + t * t * y1;
+        var dx = 2 * u * (cx - x0) + 2 * t * (x1 - cx);
+        var dy = 2 * u * (cy - y0) + 2 * t * (y1 - cy);
+        var ang = Math.atan2(dy, dx) * 180 / Math.PI;
+        var flag = document.createElementNS(NS, 'path');
+        flag.setAttribute('d', 'M-15 0L15 0L0 36Z');
+        flag.setAttribute('fill', colours[(i + gi * 2) % colours.length]);
+        flag.setAttribute('stroke', 'rgba(90,70,50,.25)');
+        flag.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + ang.toFixed(1) + ')');
+        svg.appendChild(flag);
+      }
+    });
+    return svg;
   }
 
   /* ---------- Scroll: village fades out, story map grows in ---------- */

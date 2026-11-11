@@ -769,10 +769,23 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 .wx b { display: block; margin: 4px 0 2px; font-family: "Lora", Georgia, serif; font-size: 28px; font-weight: 400; }
 .wx span { font-size: 13px; color: var(--muted); line-height: 1.35; display: block; }
 
-/* Travel: map with Tavira marked */
-.map-art { position: relative; max-width: 300px; margin-left: auto; }
-.map-art .pearl { position: absolute; width: 26%; left: 46%; top: 88%; }
-.map-art .place { position: absolute; left: 30%; top: 80%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
+/* Travel: Portugal (with Spain faintly behind it) and Tavira marked */
+.map-grid { grid-template-columns: minmax(0, 1fr) minmax(240px, 400px); }
+.map-art { position: relative; max-width: 400px; margin-left: auto; }
+.map-art .pearl { position: absolute; width: 15.8%; left: 28%; top: 83.4%; }
+.map-art .place { position: absolute; left: 18.3%; top: 76.3%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
+.map-art .country {
+  position: absolute;
+  left: 58%;
+  top: 38%;
+  font-family: "Cormorant SC", Georgia, serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .3em;
+  color: #a8987c;
+}
+:root[data-theme="night"] .map-art > img:first-child { opacity: .92; }
+:root[data-theme="night"] .map-art .country { color: #8d8470; }
 
 /* Location: the cover's sardine on its azulejo tile */
 .tile-art { position: relative; max-width: 320px; margin-left: auto; }
@@ -811,3 +824,161 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 .map-head .sc + .script { margin-top: -.2em; }
 .day-art { height: auto; width: 100%; }
 .day .script + .sc { margin-top: .15em; }
+
+/* Link to live weather on yr.no */
+.wx-link { margin: 4px 0 0; text-align: right; font-size: 14px; }
+.wx-link a { color: var(--topic-c); text-underline-offset: 3px; }
+
+/* Small screens: the whole village fits the width (no sideways scrolling);
+   the title sits above the picture instead of in its sky. */
+@media (max-width: 860px) {
+  .hero { --pw: min(100cqw, calc((100svh - 8px) * 1926 / 1177)); padding-top: 60px; }
+  .hero-scroll { overflow: visible; }
+  .hero-text {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    margin: 0 auto;
+    padding: 22px 16px 0;
+  }
+  .hero-mark { width: 48px; }
+  .hero-text h1 { font-size: clamp(24px, 7.4vw, 34px); }
+  .hero-text .tagline { font-size: clamp(10px, 2.9vw, 13px); }
+  .swipe-hint { display: none !important; }
+  .tile-face { font-size: calc(var(--u) * 14); }
+}
+
+/* =========================================================
+   Easter eggs
+   ========================================================= */
+
+html, body { overflow-x: clip; }
+
+/* Small message at the bottom of the screen */
+.toast {
+  position: fixed;
+  z-index: 120;
+  left: 50%;
+  bottom: 24px;
+  max-width: min(90vw, 420px);
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  font-family: "Lora", Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity .35s ease, transform .45s var(--ease);
+  pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* A school of sardines swimming across the screen */
+.school { position: fixed; inset: 0; z-index: 110; pointer-events: none; overflow: hidden; }
+.school img {
+  position: absolute;
+  left: 0;
+  height: auto;
+  max-width: none;
+  transform: translateX(-30vw);
+  animation-name: swim, bob;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: both, none;
+  filter: drop-shadow(0 4px 6px rgba(20, 40, 80, .15));
+}
+@keyframes swim { from { transform: translateX(-30vw); } to { transform: translateX(130vw); } }
+@keyframes bob { 50% { margin-top: 14px; } }
+
+/* Disco lights */
+.disco { cursor: pointer; transform-origin: 50% 0; }
+.disco:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 6px; border-radius: 50%; }
+.disco:hover { animation: swing 1.6s ease-in-out infinite; }
+.disco.spinning { animation: swing .5s ease-in-out infinite; }
+@keyframes swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+
+.disco-room {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  pointer-events: none;
+  overflow: hidden;
+  background: rgba(14, 16, 36, .5);
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+.disco-room.on { opacity: 1; }
+/* Light rays fanning out from the ball and slowly turning */
+.disco-rays {
+  position: absolute;
+  left: var(--cx);
+  top: var(--cy);
+  width: 320vmax;
+  height: 320vmax;
+  translate: -50% -50%;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(closest-side, #000 0, rgba(0, 0, 0, .9) 8%, rgba(0, 0, 0, .25) 45%, transparent 70%);
+  mask: radial-gradient(closest-side, #000 0, rgba(0, 0, 0, .9) 8%, rgba(0, 0, 0, .25) 45%, transparent 70%);
+  animation: rays 9s linear infinite;
+}
+.disco-rays.a { background: repeating-conic-gradient(from 0deg, transparent 0 9deg, rgba(255, 255, 255, .55) 9deg 10.2deg, transparent 10.2deg 20deg); }
+.disco-rays.b { background: repeating-conic-gradient(from 5deg, transparent 0 13deg, rgba(150, 190, 255, .5) 13deg 14deg, transparent 14deg 27deg, rgba(255, 160, 200, .45) 27deg 28deg, transparent 28deg 40deg); animation-direction: reverse; animation-duration: 13s; }
+@keyframes rays { to { rotate: 360deg; } }
+.disco-words {
+  position: absolute;
+  inset: auto 0 18vh 0;
+  margin: 0;
+  text-align: center;
+  font-family: "Beth Ellen", cursive;
+  font-size: clamp(48px, 9vw, 110px);
+  color: #ff8a80;
+  text-shadow: 0 0 30px rgba(255, 138, 128, .55);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 1s var(--ease) .3s, opacity .8s ease .3s;
+}
+.disco-room.on .disco-words { transform: none; opacity: 1; }
+
+/* Crabs walk away sideways (crab gait) and come back the same way */
+.crabs { cursor: pointer; }
+.crabs:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 6px; }
+.crabs.scuttling { animation: crab-walk 7s both, crab-gait .32s ease-in-out infinite; }
+@keyframes crab-walk {
+  0%   { translate: 0 0; animation-timing-function: cubic-bezier(.5, 0, .9, .6); }
+  38%  { translate: 110vw 0; }
+  60%  { translate: 110vw 0; animation-timing-function: cubic-bezier(.1, .4, .5, 1); }
+  100% { translate: 0 0; }
+}
+@keyframes crab-gait { 0%, 100% { rotate: -3deg; margin-top: 0; } 50% { rotate: 3deg; margin-top: 3px; } }
+
+/* Location: the sardine swims off and comes back */
+.tile-art .sardine { cursor: pointer; }
+.tile-art .sardine:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 4px; }
+.tile-art .sardine.swimming { animation: fish-away 5s both, fish-wiggle .45s ease-in-out infinite; }
+@keyframes fish-away {
+  0%    { translate: 0 0; animation-timing-function: cubic-bezier(.5, 0, .9, .5); }
+  35%   { translate: 110vw -20px; }
+  35.1% { translate: -110vw 20px; }
+  55%   { translate: -110vw 20px; animation-timing-function: cubic-bezier(.1, .5, .4, 1); }
+  100%  { translate: 0 0; }
+}
+@keyframes fish-wiggle { 0%, 100% { rotate: -2.5deg; } 50% { rotate: 2.5deg; } }
+
+/* Wedding weekend: bunting between the chimneys, windows lit all day */
+.bunting { position: absolute; inset: 0; z-index: 5; width: 100%; height: 100%; pointer-events: none; overflow: visible; display: none; }
+.party .bunting { display: block; }
+.bunting path.string { fill: none; stroke: #6b5a48; stroke-width: 1.6; }
+:root[data-theme="night"] .bunting { filter: brightness(.7); }
+.party .layer.lit { opacity: calc(.55 + .45 * var(--night)); }
+.party .glow::before { opacity: calc(.4 + .6 * var(--night)); }
+@media (max-width: 760px) {
+  .map-grid { grid-template-columns: 1fr; }
+  .map-art { max-width: 300px; margin: 0 auto; }
+}
