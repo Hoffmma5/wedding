@@ -226,7 +226,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=7">
   <script>
     (function () {{
       var saved = null;
@@ -254,8 +254,8 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=5"></script>
-  <script src="js/eggs.js?v=5"></script>
+FOOT = """  <script src="js/site.js?v=7"></script>
+  <script src="js/eggs.js?v=7"></script>
 </body>
 </html>
 """

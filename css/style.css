@@ -910,41 +910,55 @@ html, body { overflow-x: clip; }
   z-index: 110;
   pointer-events: none;
   overflow: hidden;
-  background: rgba(14, 16, 36, .5);
+  background: radial-gradient(circle at var(--cx, 70%) var(--cy, 20%), rgba(40, 30, 70, .35), rgba(10, 12, 30, .72));
   opacity: 0;
   transition: opacity .6s ease;
 }
 .disco-room.on { opacity: 1; }
-/* Light rays fanning out from the ball and slowly turning */
-.disco-rays {
+.disco-room i {
   position: absolute;
-  left: var(--cx);
-  top: var(--cy);
-  width: 320vmax;
-  height: 320vmax;
-  translate: -50% -50%;
-  border-radius: 50%;
-  -webkit-mask: radial-gradient(closest-side, #000 0, rgba(0, 0, 0, .9) 8%, rgba(0, 0, 0, .25) 45%, transparent 70%);
-  mask: radial-gradient(closest-side, #000 0, rgba(0, 0, 0, .9) 8%, rgba(0, 0, 0, .25) 45%, transparent 70%);
-  animation: rays 9s linear infinite;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: .85;
+  box-shadow: 0 0 12px 3px currentColor;
+  animation: sweep 2s linear infinite;
 }
-.disco-rays.a { background: repeating-conic-gradient(from 0deg, transparent 0 9deg, rgba(255, 255, 255, .55) 9deg 10.2deg, transparent 10.2deg 20deg); }
-.disco-rays.b { background: repeating-conic-gradient(from 5deg, transparent 0 13deg, rgba(150, 190, 255, .5) 13deg 14deg, transparent 14deg 27deg, rgba(255, 160, 200, .45) 27deg 28deg, transparent 28deg 40deg); animation-direction: reverse; animation-duration: 13s; }
-@keyframes rays { to { rotate: 360deg; } }
+@keyframes sweep {
+  from { transform: translate(-12vw, -6vh) rotate(0deg); }
+  to   { transform: translate(12vw, 6vh) rotate(90deg); }
+}
+/* the flecks pulse on the beat while the music plays */
+.disco-room.beat i { animation: sweep 2s linear infinite, pulse var(--beat, .45s) ease-out infinite; }
+@keyframes pulse { 0% { opacity: 1; scale: 1.5; } 100% { opacity: .55; scale: 1; } }
 .disco-words {
   position: absolute;
-  inset: auto 0 18vh 0;
+  inset: 0;
+  display: grid;
+  place-items: center;
   margin: 0;
-  text-align: center;
   font-family: "Beth Ellen", cursive;
-  font-size: clamp(48px, 9vw, 110px);
+  font-size: clamp(56px, 11vw, 140px);
   color: #ff8a80;
-  text-shadow: 0 0 30px rgba(255, 138, 128, .55);
-  transform: translateY(12px);
-  opacity: 0;
-  transition: transform 1s var(--ease) .3s, opacity .8s ease .3s;
+  text-shadow: 0 0 30px rgba(255, 138, 128, .6);
+  transform: scale(.9);
+  transition: transform 1s var(--ease);
 }
-.disco-room.on .disco-words { transform: none; opacity: 1; }
+.disco-room.on .disco-words { transform: scale(1); }
+.disco-mute {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  pointer-events: auto;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font: 500 13px "Inter", sans-serif;
+  cursor: pointer;
+}
+.disco-mute:hover { background: rgba(255, 255, 255, .22); }
 
 /* Crabs walk away sideways (crab gait) and come back the same way */
 .crabs { cursor: pointer; }
