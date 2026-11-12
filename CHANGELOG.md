@@ -3,6 +3,15 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-12 (later)
+
+### Added
+- **Tavira map:** Marek & Paulo's own recommendations replace the example places – beaches (Pego Fundo, Barril, Ninho de Andorinha, plus the west coast: Castelejo, Bordeira, Amado, Amoreira, Odeceixe), restaurants (Casa Velha, Copos & Petiscos, O Teodósio), things to do (Monterosa olive oil, Loulé market, kayaking and boat trips in Albufeira, paddle boarding and the old town in Lagos).
+- **Tavira map:** new "With kids" filter with four waterparks (Aquashow, Zoomarine, Aqualand, Slide & Splash), shown with crab markers; tips remind to check seasonal opening dates.
+- **Tavira:** "Drive the west coast" note about the Rota Vicentina road trip from Lagos to Sines, surfing, and the coastal road via Lisbon.
+- **Tavira:** "dishes to try" – 11 cards with photos and descriptions (pastel de nata, bola de Berlim, bacalhau com natas, bacalhau à Brás, polvo à lagareiro, grilled fish, garlic prawns, clams, cataplana, seafood & tomato rice, porco preto). Photos from Wikimedia Commons under free licences, credited on each card (`assets/dishes/credits.json`).
+- **Travel:** two new cards – ordering beer like a local (*imperial* 0.2 l vs *caneca*) and the 0.5 ‰ drink-driving limit.
+
 ## 2026-11-12
 
 ### Added

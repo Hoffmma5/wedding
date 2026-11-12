@@ -3,82 +3,332 @@
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.75093, 37.15356] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.75093,
+          37.15356
+        ]
+      },
       "properties": {
         "name": "Hotel Quinta do Marco",
         "category": "venue",
-        "tip": "Where we celebrate – and your home for the weekend.",
-        "example": false
+        "tip": "Where we celebrate – and your home for the weekend."
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.68697, 37.07369] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.4768092,
+          37.4720714
+        ]
+      },
+      "properties": {
+        "name": "Praia Fluvial do Pego Fundo",
+        "category": "beach",
+        "tip": "A small sandy river beach with fresh water for a change – and a restaurant right there."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.6613854,
+          37.086768
+        ]
+      },
       "properties": {
         "name": "Praia do Barril",
         "category": "beach",
-        "tip": "Walk or take the little train across the lagoon to a wide sandy beach with the famous anchor cemetery.",
-        "example": true
+        "tip": "Walk across the lagoon or hop on the cute little train – the kids will love it. At the end: a huge beach and the famous anchor cemetery."
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.62100, 37.10978] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.2865469,
+          37.0735625
+        ]
+      },
       "properties": {
-        "name": "Ilha de Tavira",
+        "name": "Praia do Ninho de Andorinha",
         "category": "beach",
-        "tip": "A long island beach, a short ferry ride from Tavira across the Ria Formosa.",
-        "example": true
+        "tip": "A super small beach tucked between the cliffs – our little secret."
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.54622, 37.15739] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.546297,
+          37.1575975
+        ]
+      },
       "properties": {
-        "name": "Cacela Velha",
-        "category": "sight",
-        "tip": "A tiny whitewashed village on a cliff above the lagoon – one of the prettiest views in the Algarve.",
-        "example": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.65123, 37.12524] },
-      "properties": {
-        "name": "Tavira Castle",
-        "category": "sight",
-        "tip": "Climb the old walls for a view over the rooftops and the river Gilão.",
-        "example": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.64984, 37.12687] },
-      "properties": {
-        "name": "The Roman bridge",
-        "category": "sight",
-        "tip": "The old bridge over the Gilão, right in the heart of town – made for an evening stroll.",
-        "example": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.66183, 37.10174] },
-      "properties": {
-        "name": "Santa Luzia",
+        "name": "Casa Velha",
         "category": "food",
-        "tip": "A fishing village known as Portugal’s octopus capital – order the polvo.",
-        "example": true
+        "tip": "Amazing food: fresh oysters, chouriço and a cold beer with a view over the lagoon."
       }
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-7.64764, 37.12555] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.2241573,
+          37.0932526
+        ]
+      },
       "properties": {
-        "name": "Mercado da Ribeira",
+        "name": "Copos & Petiscos",
         "category": "food",
-        "tip": "The old riverside market hall, with cafés and terraces by the water.",
-        "example": true
+        "tip": "Portuguese tapas (petiscos). One of the very first restaurants we went to together – and we keep coming back."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.2995427,
+          37.1315008
+        ]
+      },
+      "properties": {
+        "name": "O Teodósio",
+        "category": "food",
+        "tip": "They only do one thing: grilled chicken with fries, rice and tomato salad. But they do it unbelievably well."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.7886998,
+          37.0901989
+        ]
+      },
+      "properties": {
+        "name": "Monterosa Olive Oil",
+        "category": "sight",
+        "tip": "An olive-oil farm near Moncarapacho. We haven’t been yet – it’s high on our list."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.0221974,
+          37.138358
+        ]
+      },
+      "properties": {
+        "name": "Loulé Market",
+        "category": "sight",
+        "tip": "Loulé’s market hall, full of local produce. Another one on our to-visit list."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.2501,
+          37.08659
+        ]
+      },
+      "properties": {
+        "name": "Kayaking in Albufeira",
+        "category": "sight",
+        "tip": "Paddle along the golden cliffs and little caves around Albufeira."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.26701,
+          37.08649
+        ]
+      },
+      "properties": {
+        "name": "Boat trip from Albufeira",
+        "category": "sight",
+        "tip": "Sail along the coast from Albufeira marina – cliffs, caves and, with a bit of luck, dolphins."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.07247,
+          37.09435
+        ]
+      },
+      "properties": {
+        "name": "Aquashow Park",
+        "category": "kids",
+        "tip": "A big waterpark in Quarteira with slides for every age. Check the opening dates – waterparks close for the season around autumn."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.31554,
+          37.12578
+        ]
+      },
+      "properties": {
+        "name": "Zoomarine",
+        "category": "kids",
+        "tip": "Marine park and waterpark in one, near Guia. Check the opening dates before you go."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.36443,
+          37.13607
+        ]
+      },
+      "properties": {
+        "name": "Aqualand Algarve",
+        "category": "kids",
+        "tip": "Waterpark with some seriously big slides, near Alcantarilha. Check the opening dates before you go."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.47505,
+          37.13964
+        ]
+      },
+      "properties": {
+        "name": "Slide & Splash",
+        "category": "kids",
+        "tip": "One of the Algarve’s classic waterparks, near Lagoa. Check the opening dates before you go."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.94551,
+          37.10008
+        ]
+      },
+      "properties": {
+        "name": "Praia do Castelejo",
+        "category": "beach",
+        "tip": "Dark cliffs and a huge, wild beach on the west coast. It’s windy and the Atlantic is properly cold here – swim with care."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.90039,
+          37.19944
+        ]
+      },
+      "properties": {
+        "name": "Praia da Bordeira",
+        "category": "beach",
+        "tip": "Endless sand, dunes and a river winding into the sea. A west-coast favourite."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.9033,
+          37.16436
+        ]
+      },
+      "properties": {
+        "name": "Praia do Amado",
+        "category": "beach",
+        "tip": "A surfers’ paradise – rent a board or book a lesson and give it a go. The water is cold, the waves are great."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.84478,
+          37.3506
+        ]
+      },
+      "properties": {
+        "name": "Praia da Amoreira",
+        "category": "beach",
+        "tip": "Where the Aljezur river meets the ocean – calm lagoon on one side, wild Atlantic on the other."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.79739,
+          37.44212
+        ]
+      },
+      "properties": {
+        "name": "Praia de Odeceixe",
+        "category": "beach",
+        "tip": "A beautiful bay at the river mouth, right on the border of the Algarve and the Alentejo."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.66778,
+          37.07919
+        ]
+      },
+      "properties": {
+        "name": "Paddle boarding in Lagos",
+        "category": "sight",
+        "tip": "Paddle around the golden rock arches and grottoes of Ponta da Piedade."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.67287,
+          37.1028
+        ]
+      },
+      "properties": {
+        "name": "Lagos",
+        "category": "sight",
+        "tip": "A lovely old town to wander: whitewashed streets, cafés and a buzzing marina."
       }
     }
   ]

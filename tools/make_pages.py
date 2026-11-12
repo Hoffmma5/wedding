@@ -72,6 +72,8 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         <li><b>Stay connected</b>Your phone works just like at home &ndash; no roaming fees in the EU, so send us all the sunset photos.</li>
         <li><b>Pack your ID</b>From the EU? Your ID card is all you need. Coming from further away &ndash; don&rsquo;t forget your passport.</li>
         <li><b>Say <em>obrigado</em></b>Most people here speak English, but a smiling <em>obrigado</em> (or <em>obrigada</em>) always wins hearts.</li>
+        <li><b>Order a beer like a local</b>A beer here is <em>um imperial</em> &ndash; just 0.2&nbsp;l, so it&rsquo;s always ice cold. Used to a proper half-litre? Ask for <em>uma caneca</em>.</li>
+        <li><b>If you&rsquo;re driving</b>Unlike Czechia, Portugal allows a little alcohol behind the wheel (0.5&nbsp;&permil;) &ndash; but that&rsquo;s only an <em>imperial</em> or two. Better still: pick a driver and let them be the hero.</li>
         <li><b>Just in case</b>112 is the emergency number, same as at home. We hope you&rsquo;ll never need it!</li>
       </ul>
     </section>""")
@@ -192,6 +194,57 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       <p class="contact" style="margin-top:12px"><a href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">Open in Google Maps &nearr;</a></p>
     </section>""")
 
+
+# Dishes to try (Tavira page). Photos: Wikimedia Commons, credits in assets/dishes/credits.json
+DISHES = [
+    ("pastel-de-nata", "Pastel de nata", "custard tart",
+     "Crisp, flaky pastry with a warm, wobbly custard inside. Best straight from the oven with a dusting of cinnamon &ndash; and never just one."),
+    ("bolo-de-berlim", "Bola de Berlim", "the beach doughnut",
+     "Not a tourist trap &ndash; the Portuguese love it! A sugary doughnut sold by vendors walking along the sand, <em>com creme</em> (filled with custard) or <em>sem creme</em> (plain)."),
+    ("bacalhau-com-natas", "Bacalhau com natas", "salt cod with cream",
+     "Salt cod baked with cream and potatoes until golden on top. Portuguese comfort food at its best."),
+    ("bacalhau-a-bras", "Bacalhau &agrave; Br&aacute;s", "salt cod with egg &amp; fries",
+     "Shredded salt cod tossed with onions, matchstick fries and soft scrambled egg, finished with black olives and parsley."),
+    ("polvo", "Polvo &agrave; lagareiro", "roasted octopus",
+     "Tender octopus roasted with lots of olive oil and garlic, served with little &lsquo;punched&rsquo; potatoes."),
+    ("sardinhas", "Sardinhas &amp; peixe grelhado", "grilled fish",
+     "Grilled sardines taste like a Portuguese summer. Also ask for the catch of the day &ndash; <em>dourada</em> (sea bream) or <em>robalo</em> (sea bass), simply grilled."),
+    ("camarao", "Camar&atilde;o ao alho", "garlic prawns",
+     "Prawns sizzling in olive oil, garlic and a little chilli. Keep some bread for the sauce."),
+    ("ameijoas", "Am&ecirc;ijoas &agrave; Bulh&atilde;o Pato", "clams",
+     "Clams from the Ria Formosa, steamed with garlic, coriander, olive oil and a squeeze of lemon."),
+    ("cataplana", "Cataplana", "the Algarve&rsquo;s own",
+     "Named after the copper pan it&rsquo;s cooked in: seafood (or pork and clams) steamed in a rich tomato broth and opened at the table. Made for sharing."),
+    ("arroz-de-marisco", "Arroz de marisco &amp; arroz de tomate", "seafood rice &amp; tomato rice",
+     "Not a paella: a soupy, tomatoey rice full of prawns, clams and crab. Its simpler sister, <em>arroz de tomate</em>, usually comes with fried fish."),
+    ("porco-preto", "Porco preto", "black Iberian pork",
+     "From the black Iberian pig. Order <em>secretos</em> or <em>plumas</em> &ndash; juicy grilled cuts with loads of flavour."),
+]
+
+
+def dishes_html():
+    import json, html
+    credits = json.load(open("assets/dishes/credits.json", encoding="utf-8"))
+    rows = []
+    for slug, name, sub, text in DISHES:
+        c = credits.get(slug, {})
+        lic = html.escape(c.get("license", ""))
+        lic = f'<a href="{html.escape(c["license_url"])}" target="_blank" rel="noopener">{lic}</a>' if c.get("license_url") else lic
+        credit = f'Photo: <a href="{html.escape(c.get("page", ""))}" target="_blank" rel="noopener">{html.escape(c.get("artist", "Wikimedia Commons"))}</a>, {lic}'
+        rows.append(f"""        <li class="dish">
+          <img src="assets/dishes/{slug}.webp" alt="{name.split(' &amp;')[0]}" width="720" height="540" loading="lazy">
+          <div>
+            <h3>{name}</h3>
+            <p class="dish-sub">{sub}</p>
+            <p>{text}</p>
+            <p class="dish-credit">{credit}</p>
+          </div>
+        </li>""")
+    return "\n".join(rows)
+
+
+DISHES_HTML = dishes_html()
+
 PAGES["location"] = ("Tavira &amp; the Algarve", BLUE, f"""
     <div class="inv-grid">
       <div>
@@ -229,12 +282,30 @@ PAGES["location"] = ("Tavira &amp; the Algarve", BLUE, f"""
         <button type="button" data-cat="beach" aria-pressed="false">Beaches</button>
         <button type="button" data-cat="food" aria-pressed="false">Eat &amp; drink</button>
         <button type="button" data-cat="sight" aria-pressed="false">Things to do</button>
+        <button type="button" data-cat="kids" aria-pressed="false">With kids</button>
       </div>
       <div class="places-map-wrap">
         <div id="places-map" class="places-map" role="region" aria-label="Map of our favourite places around Tavira"></div>
       </div>
       <p class="map-credit">Overview map: <em>Azulejo Atlas</em> by Marek Hoffmann &middot; Natural Earth data</p>
       <ul id="places-list" class="places-list"></ul>
+
+      <aside class="road-trip">
+        <p class="sc">Got a few extra days?</p>
+        <h3>Drive the west coast</h3>
+        <p>If you&rsquo;re making a holiday of it &ndash; with a rental car or a van &ndash; the Atlantic coast from Lagos up to Sines is absolutely beautiful: fishermen&rsquo;s villages, the freshest fish straight from the sea, huge cliffs and dramatic beaches along the <em>Rota Vicentina</em>. Our favourites: Praia do Castelejo, Bordeira, Amado, Amoreira, Carriagem and Odeceixe.</p>
+        <p>It&rsquo;s windy and the ocean is <em>really</em> cold, but it&rsquo;s a surfing and windsurfing paradise &ndash; maybe it&rsquo;s time to give it a try? And if you&rsquo;re flying via Lisbon, take the coastal road: even just driving through it is amazing.</p>
+      </aside>
+    </section>
+
+    <section class="inv-section" style="--topic:{RUST}">
+      <header class="inv-head">
+        <p class="sc">Eat like a local</p>
+        <h2 class="script">dishes to try</h2>
+      </header>
+      <ul class="dishes">
+{DISHES_HTML}
+      </ul>
     </section>""")
 
 PAGES["program"] = ("Program", WINE, f"""
@@ -296,7 +367,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/style.css?v=16">
   <script>
     (function () {{
       var saved = null;
@@ -342,7 +413,7 @@ def main():
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=7"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=8"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 

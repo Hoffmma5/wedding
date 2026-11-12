@@ -2,7 +2,7 @@
 
    Places live in assets/data/places.geojson. Each feature needs:
      name      – shown on the marker popup and in the list
-     category  – "beach", "food", "sight" or "venue"
+     category  – "beach", "food", "sight", "kids" or "venue"
      tip       – one or two sentences from you
    Add, remove or move points there (e.g. with geojson.io) and the map follows.
 
@@ -23,6 +23,7 @@
     beach: { label: 'Beaches',      icon: 'assets/art/shell.webp',    w: 17, h: 28 },
     food:  { label: 'Eat & drink',  icon: 'assets/art/sardine.webp',  w: 42, h: 15 },
     sight: { label: 'Things to do', icon: 'assets/art/shrimp.webp',   w: 32, h: 24 },
+    kids:  { label: 'With kids',    icon: 'assets/art/crabs.webp',    w: 27, h: 28 },
     venue: { label: 'The wedding',  icon: 'assets/logo-mark.png', w: 30, h: 29 }
   };
 
