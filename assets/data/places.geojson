@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.75093, 37.15356] },
+      "properties": {
+        "name": "Hotel Quinta do Marco",
+        "category": "venue",
+        "tip": "Where we celebrate – and your home for the weekend.",
+        "example": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.68697, 37.07369] },
+      "properties": {
+        "name": "Praia do Barril",
+        "category": "beach",
+        "tip": "Walk or take the little train across the lagoon to a wide sandy beach with the famous anchor cemetery.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.62100, 37.10978] },
+      "properties": {
+        "name": "Ilha de Tavira",
+        "category": "beach",
+        "tip": "A long island beach, a short ferry ride from Tavira across the Ria Formosa.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.54622, 37.15739] },
+      "properties": {
+        "name": "Cacela Velha",
+        "category": "sight",
+        "tip": "A tiny whitewashed village on a cliff above the lagoon – one of the prettiest views in the Algarve.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.65123, 37.12524] },
+      "properties": {
+        "name": "Tavira Castle",
+        "category": "sight",
+        "tip": "Climb the old walls for a view over the rooftops and the river Gilão.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.64984, 37.12687] },
+      "properties": {
+        "name": "The Roman bridge",
+        "category": "sight",
+        "tip": "The old bridge over the Gilão, right in the heart of town – made for an evening stroll.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.66183, 37.10174] },
+      "properties": {
+        "name": "Santa Luzia",
+        "category": "food",
+        "tip": "A fishing village known as Portugal’s octopus capital – order the polvo.",
+        "example": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-7.64764, 37.12555] },
+      "properties": {
+        "name": "Mercado da Ribeira",
+        "category": "food",
+        "tip": "The old riverside market hall, with cafés and terraces by the water.",
+        "example": true
+      }
+    }
+  ]
+}

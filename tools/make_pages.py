@@ -11,7 +11,7 @@ NAV = [
     ("accommodation", "Stay"),
     ("travel", "Travel"),
     ("weather", "Weather"),
-    ("location", "Location"),
+    ("location", "Tavira"),
     ("map", "Guests"),
 ]
 
@@ -59,6 +59,21 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         </div>
         <figure class="art"><img src="assets/art/shrimp.webp" alt="" width="640" height="479"></figure>
       </div>
+    </section>
+
+    <section class="inv-section">
+      <header class="inv-head">
+        <p class="sc">A few little things</p>
+        <h2 class="script">good to know</h2>
+      </header>
+      <ul class="highlights">
+        <li><b>Set your watch</b>Portugal runs one hour behind Prague &ndash; a free extra hour of sleep on your first morning.</li>
+        <li><b>Bring a few euros</b>Cards work almost everywhere, but a couple of coins come in handy for a coffee and a <em>pastel de nata</em>.</li>
+        <li><b>Stay connected</b>Your phone works just like at home &ndash; no roaming fees in the EU, so send us all the sunset photos.</li>
+        <li><b>Pack your ID</b>From the EU? Your ID card is all you need. Coming from further away &ndash; don&rsquo;t forget your passport.</li>
+        <li><b>Say <em>obrigado</em></b>Most people here speak English, but a smiling <em>obrigado</em> (or <em>obrigada</em>) always wins hearts.</li>
+        <li><b>Just in case</b>112 is the emergency number, same as at home. We hope you&rsquo;ll never need it!</li>
+      </ul>
     </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
@@ -98,7 +113,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
       </div>
     </section>""")
 
-PAGES["accommodation"] = ("The hotel", OLIVE, """
+PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <header class="inv-head">
       <h1 class="script">the Hotel</h1>
       <p class="sc">Your home for the weekend</p>
@@ -110,29 +125,74 @@ PAGES["accommodation"] = ("The hotel", OLIVE, """
         <dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd>
         <dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd>
       </dl>
-      <p class="contact">
-        <a href="mailto:reservas@hotelquintadomarco.com">reservas@hotelquintadomarco.com</a>
-        <a href="tel:+351281971500">+351 281 971 500</a>
-        <a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">hotelquintadomarco.com &nearr;</a>
-      </p>
     </div>
 
-    <section class="inv-section" style="--topic:#7a3b3b">
-      <div class="inv-grid">
-        <div>
-          <header class="inv-head">
-            <h2 class="script">the Bedrooms</h2>
-            <p class="sc">Where will we sleep?</p>
-          </header>
-          <div class="prose">
-            <p>Everyone stays with us at Hotel Quinta do Marco for both nights. We&rsquo;ll let each of you know personally which room is yours.</p>
-          </div>
-        </div>
-        <figure class="art"><img src="assets/art/shell.webp" alt="" width="459" height="771" style="max-width:180px;margin:0 auto"></figure>
+    <div class="carousel" aria-label="Photos of Hotel Quinta do Marco">
+      <figure class="slide"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"><figcaption>The quinta from above</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/02.webp" alt="The main building and the pool lawn with sun loungers" width="1200" height="800" loading="lazy"><figcaption>Pool &amp; main house</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"><figcaption>The salt-water pool</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"><figcaption>Terrace with a view</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/05.webp" alt="Inside the Farroba restaurant, with tables by the windows" width="1200" height="800" loading="lazy"><figcaption>Farroba restaurant</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/06.webp" alt="The Quinta do Marco swing overlooking the valley" width="1200" height="800" loading="lazy"><figcaption>The swing with a view</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"><figcaption>The animal farm</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/08.webp" alt="The children's playground with a slide and swings" width="1200" height="800" loading="lazy"><figcaption>Playground</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/09.webp" alt="The hotel nestled in the green Algarve hills" width="1200" height="800" loading="lazy"><figcaption>In the Algarve hills</figcaption></figure>
+    </div>
+
+    <section class="inv-section">
+      <header class="inv-head">
+        <p class="sc">Something for everyone</p>
+        <h2 class="script">at the Quinta</h2>
+      </header>
+      <div class="prose">
+        <p>The Quinta is a little world of its own, up in the hills with a view all the way to the sea. Between the celebrations there&rsquo;s plenty to keep everyone happy.</p>
       </div>
+      <ul class="highlights duo">
+        <li><b>For the little ones</b>A playground, the animal farm (say hello to the donkey and the peacocks) and the pool for endless splashing.</li>
+        <li><b>For the grown-ups</b>The pool and the pool bar, a little spa with a sauna, a gym with a view &ndash; and plenty of shady corners for doing absolutely nothing.</li>
+      </ul>
+      <p class="contact">Curious for more? <a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">Have a peek at the hotel&rsquo;s website &nearr;</a></p>
+    </section>
+
+    <section class="inv-section" style="--topic:#7a3b3b">
+      <header class="inv-head">
+        <h2 class="script">the Bedrooms</h2>
+        <p class="sc">Where will we sleep?</p>
+      </header>
+      <div class="prose">
+        <p>Everyone stays with us at Hotel Quinta do Marco for both nights. We&rsquo;ll let each of you know personally which room is yours.</p>
+        <p>The rooms are bright and comfortable, and each one has its own balcony or terrace looking out over the hills &ndash; perfect for a slow morning coffee after a long night.</p>
+      </div>
+    <div class="carousel" aria-label="Photos of the bedrooms">
+      <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"><figcaption>Double room</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/02.webp" alt="Bright double room with a desk and sunflowers" width="1200" height="800" loading="lazy"><figcaption>Double room</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/03.webp" alt="Superior room with a wooden screen and two extra beds" width="1200" height="800" loading="lazy"><figcaption>Superior room</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/04.webp" alt="Family room with a double bed, two singles and a sofa" width="1200" height="800" loading="lazy"><figcaption>Family room</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"><figcaption>Balcony with a view</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/06.webp" alt="Bathroom with a walk-in shower" width="1200" height="800" loading="lazy"><figcaption>Bathroom</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/07.webp" alt="Bathroom with blue-edged tiles and two basins" width="1200" height="800" loading="lazy"><figcaption>Bathroom</figcaption></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/08.webp" alt="Dark stone bathroom with a vessel basin" width="1200" height="800" loading="lazy"><figcaption>Bathroom</figcaption></figure>
+    </div>
+    </section>
+
+    <section class="inv-section">
+      <header class="inv-head">
+        <p class="sc">Hotel Rural Quinta do Marco</p>
+        <h2 class="script">find us</h2>
+      </header>
+      <div class="prose">
+        <dl class="facts-list">
+          <div><dt class="sc">Address</dt><dd><strong>{VENUE}</dd></div>
+          <div><dt class="sc">From Faro airport</dt><dd><strong>About 30 min by car</strong><span>Transfers on the 1st and 3rd are on us &ndash; see <a href="travel.html">Travel</a>.</span></dd></div>
+        </dl>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://maps.google.com/maps?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira&amp;z=11&amp;output=embed" title="Map: Hotel Rural Quinta do Marco, Tavira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="contact" style="margin-top:12px"><a href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">Open in Google Maps &nearr;</a></p>
     </section>""")
 
-PAGES["location"] = ("Location", BLUE, f"""
+PAGES["location"] = ("Tavira &amp; the Algarve", BLUE, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
@@ -141,9 +201,7 @@ PAGES["location"] = ("Location", BLUE, f"""
         </header>
         <div class="prose">
           <p>Tavira is a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
-          <dl class="facts-list">
-            <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
-          </dl>
+          <p>The wedding itself is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, about 15 minutes from town. If you come early or stay a little longer, here is the Tavira we love.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -151,11 +209,6 @@ PAGES["location"] = ("Location", BLUE, f"""
         <img class="sardine" src="assets/art/sardine.webp" alt="Sardine" title="Psst, give it a tap" tabindex="0" role="button" width="900" height="319">
       </figure>
     </div>
-    <div class="map-frame">
-      <iframe src="https://maps.google.com/maps?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira&amp;z=11&amp;output=embed" title="Map: Hotel Rural Quinta do Marco, Tavira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <p class="contact" style="margin-top:12px"><a href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">Open in Google Maps &nearr;</a></p>
-
     <section class="inv-section" style="--topic:{BROWN}">
       <header class="inv-head">
         <h2 class="script">the Algarve</h2>
@@ -164,6 +217,24 @@ PAGES["location"] = ("Location", BLUE, f"""
       <div class="prose">
         <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
       </div>
+    </section>
+
+    <section class="inv-section">
+      <header class="inv-head">
+        <p class="sc">Beaches, food &amp; things to do</p>
+        <h2 class="script">our favourites</h2>
+      </header>
+      <div class="place-chips" role="group" aria-label="Show on the map">
+        <button type="button" data-cat="" aria-pressed="true">All</button>
+        <button type="button" data-cat="beach" aria-pressed="false">Beaches</button>
+        <button type="button" data-cat="food" aria-pressed="false">Eat &amp; drink</button>
+        <button type="button" data-cat="sight" aria-pressed="false">Things to do</button>
+      </div>
+      <div class="places-map-wrap">
+        <div id="places-map" class="places-map" role="region" aria-label="Map of our favourite places around Tavira"></div>
+      </div>
+      <p class="map-credit">Overview map: <em>Azulejo Atlas</em> by Marek Hoffmann &middot; Natural Earth data</p>
+      <ul id="places-list" class="places-list"></ul>
     </section>""")
 
 PAGES["program"] = ("Program", WINE, f"""
@@ -225,7 +296,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <link rel="stylesheet" href="css/style.css?v=15">
   <script>
     (function () {{
       var saved = null;
@@ -253,8 +324,8 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=9"></script>
-  <script src="js/eggs.js?v=9"></script>
+FOOT = """  <script src="js/site.js?v=11"></script>
+  <script src="js/eggs.js?v=11"></script>
 </body>
 </html>
 """
@@ -267,7 +338,12 @@ def nav():
 def main():
     for slug, (title, topic, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav())
-        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + FOOT
+        foot = FOOT
+        if 'class="carousel"' in body:
+            foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
+        if 'id="places-map"' in body:
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=7"></script>\n</body>')
+        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
@@ -275,6 +351,11 @@ def main():
     <div class="map-head inv" style="--topic:{BLUE}">
       <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
       <h1 class="script">the guests</h1>
+    </div>
+    <div class="guests-intro prose" style="--topic:{BLUE}">
+      <p>Thank you. Every single one of you is making a journey to be with us in Tavira &ndash; some from just around the corner, some from the other side of the world &ndash; and we are endlessly grateful for it.</p>
+      <p>With all of you coming from so many places, we couldn&rsquo;t resist putting you on a map. It turns out our family and friends are a properly international bunch &ndash; citizens of the world &ndash; and this is what that looks like.</p>
+      <p>It was also a chance to show a little of what Marek does at work. Sometimes it really is just making maps. <span class="surface">But don&rsquo;t be fooled &ndash; this is just the surface.</span></p>
     </div>
     <div class="map-embed">
       <iframe src="https://hoffmma5.github.io/wedding-map/" title="Map of where our wedding guests come from" loading="lazy" allow="fullscreen"></iframe>

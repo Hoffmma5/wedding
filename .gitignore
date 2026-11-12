@@ -1,2 +1,7 @@
 .claude/
 __pycache__/
+
+# Saved web pages and other non-image files in the image source folder
+assets/img/**/*.htm
+assets/img/**/*.html
+assets/img/**/*_files/
