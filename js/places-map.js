@@ -52,6 +52,8 @@
     return 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lon;
   }
 
+  // Compact side list: icon + name + category. The details live in the map popup.
+  // (Without the map, a click shows the tip inline so nothing is ever lost.)
   function renderList() {
     if (!listEl) return;
     listEl.innerHTML = '';
@@ -60,19 +62,42 @@
         var c = CATS[p.category] || CATS.sight;
         var li = document.createElement('li');
         li.className = 'place place-' + p.category;
+        li.dataset.name = p.name;
         li.innerHTML =
-          '<img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '">' +
-          '<div><span class="place-cat">' + c.label + '</span>' +
-          '<b>' + escapeHtml(p.name) + '</b><p>' + escapeHtml(p.tip) + '</p>' +
-          '<a href="' + directions(p) + '" target="_blank" rel="noopener">Directions &nearr;</a></div>';
+          '<span class="place-icon"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '"></span>' +
+          '<span class="place-text"><b>' + escapeHtml(p.name) + '</b><span class="place-cat">' + c.label + '</span></span>' +
+          '<span class="place-tip">' + escapeHtml(p.tip) + ' <a href="' + directions(p) + '" target="_blank" rel="noopener">Directions&nbsp;&nearr;</a></span>';
         li.tabIndex = 0;
-        li.addEventListener('click', function (e) {
-          if (e.target.closest('a')) return;
-          if (api) { api.focus(p); mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-        });
-        li.addEventListener('keydown', function (e) { if (e.key === 'Enter' && api) api.focus(p); });
+        li.setAttribute('role', 'button');
+        function pick(e) {
+          if (e && e.target.closest('a')) return;
+          setActive(p.name);
+          if (api) {
+            api.focus(p);
+            var r = mapEl.getBoundingClientRect();          // on phones the map sits above the list
+            if (r.bottom < 60 || r.top > window.innerHeight - 60) mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            li.classList.toggle('show-tip');
+          }
+        }
+        li.addEventListener('click', pick);
+        li.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
         listEl.appendChild(li);
       });
+  }
+
+  function setActive(name) {
+    if (!listEl) return;
+    Array.prototype.forEach.call(listEl.children, function (li) {
+      var on = li.dataset.name === name;
+      li.setAttribute('aria-current', on ? 'true' : 'false');
+      if (on) {                                          // keep the row in view inside the list only
+        var top = li.offsetTop - listEl.offsetTop, bottom = top + li.offsetHeight;
+        if (top < listEl.scrollTop || bottom > listEl.scrollTop + listEl.clientHeight) {
+          listEl.scrollTo({ top: top - 8, behavior: 'smooth' });
+        }
+      }
+    });
   }
 
   function escapeHtml(s) {
@@ -162,17 +187,13 @@
         title: '{name}',
         content: function (e) {
           var a = e.graphic.attributes, g = e.graphic.geometry;
+          var c = CATS[a.category] || CATS.sight;
           var div = document.createElement('div');
-          div.className = 'place-popup';
-          var p = document.createElement('p');
-          p.textContent = a.tip || '';
-          var link = document.createElement('a');
-          link.href = directions({ lat: g.latitude, lon: g.longitude });
-          link.target = '_blank';
-          link.rel = 'noopener';
-          link.textContent = 'Directions ↗';
-          div.appendChild(p);
-          div.appendChild(link);
+          div.className = 'place-popup place-popup-' + a.category;
+          div.innerHTML =
+            '<span class="pp-cat"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '">' + c.label + '</span>' +
+            '<p>' + escapeHtml(a.tip || '') + '</p>' +
+            '<a class="pp-go" href="' + directions({ lat: g.latitude, lon: g.longitude }) + '" target="_blank" rel="noopener">Directions &nearr;</a>';
           return div;
         }
       }
@@ -185,7 +206,11 @@
       center: [-7.66, 37.12],
       zoom: 11,
       constraints: { snapToZoom: false, minZoom: 8 },
-      popup: { dockEnabled: false, collapseEnabled: false, actions: [] },
+      popup: {
+        dockEnabled: false,
+        actions: [],
+        visibleElements: { collapseButton: false, featureNavigation: false, actionBar: false }
+      },
       ui: { components: ['zoom', 'attribution'] }
     });
     view.navigation.mouseWheelZoomEnabled = false;          // don't hijack page scrolling
@@ -248,13 +273,17 @@
             .then(function (res) {
               if (!res.features.length) return;
               var f = res.features[0];
-              view.goTo({ target: f.geometry, zoom: 13.5 }).then(function () {
+              view.goTo({ target: f.geometry, zoom: 12.5 }).then(function () {
                 view.openPopup({ features: [f], location: f.geometry });
               });
             });
         }
       };
       if (activeCat) api.filter(activeCat);
+      // clicking a marker on the map highlights its row in the side list
+      reactiveUtils.watch(function () { return view.popup && view.popup.selectedFeature; }, function (f) {
+        setActive(f && f.attributes ? f.attributes.name : null);
+      });
     });
   }
 })();

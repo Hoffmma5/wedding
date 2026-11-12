@@ -3,6 +3,13 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-12 (evening)
+
+### Changed
+- **Favourites map** works like one app: a slim side list (icon, name, category) next to the map, with the tips and a Directions button in Esri-style popups. Clicking a row zooms to the place and opens its popup; clicking a marker highlights its row. On phones the map sits above a scrollable list. The Azulejo Atlas inset moved to the top-right corner.
+- **Tavira tab renamed to Algarve** (page "The Algarve"): the heading is now "the Algarve", with Tavira and the venue woven into the intro text; menu, homepage card and the village tile label updated.
+- **Dishes:** porco preto now shows a plated grilled pork dish (CC0) instead of the pig.
+
 ## 2026-11-12 (later)
 
 ### Added

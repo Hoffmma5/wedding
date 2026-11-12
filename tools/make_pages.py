@@ -11,7 +11,7 @@ NAV = [
     ("accommodation", "Stay"),
     ("travel", "Travel"),
     ("weather", "Weather"),
-    ("location", "Tavira"),
+    ("location", "Algarve"),
     ("map", "Guests"),
 ]
 
@@ -245,16 +245,17 @@ def dishes_html():
 
 DISHES_HTML = dishes_html()
 
-PAGES["location"] = ("Tavira &amp; the Algarve", BLUE, f"""
+PAGES["location"] = ("The Algarve", BLUE, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
-          <p class="sc">Where it all happens</p>
-          <h1 class="script">Tavira</h1>
+          <p class="sc">The south of Portugal&hellip;</p>
+          <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>Tavira is a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
-          <p>The wedding itself is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, about 15 minutes from town. If you come early or stay a little longer, here is the Tavira we love.</p>
+          <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
+          <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
+          <p>The celebration itself is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, about 15 minutes from town. If you come early or stay a little longer, here is the Algarve we love &ndash; from Tavira all the way to the wild west coast.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -262,33 +263,27 @@ PAGES["location"] = ("Tavira &amp; the Algarve", BLUE, f"""
         <img class="sardine" src="assets/art/sardine.webp" alt="Sardine" title="Psst, give it a tap" tabindex="0" role="button" width="900" height="319">
       </figure>
     </div>
-    <section class="inv-section" style="--topic:{BROWN}">
-      <header class="inv-head">
-        <h2 class="script">the Algarve</h2>
-        <p class="sc">The south of Portugal&hellip;</p>
-      </header>
-      <div class="prose">
-        <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
-      </div>
-    </section>
-
     <section class="inv-section">
       <header class="inv-head">
         <p class="sc">Beaches, food &amp; things to do</p>
         <h2 class="script">our favourites</h2>
       </header>
-      <div class="place-chips" role="group" aria-label="Show on the map">
-        <button type="button" data-cat="" aria-pressed="true">All</button>
-        <button type="button" data-cat="beach" aria-pressed="false">Beaches</button>
-        <button type="button" data-cat="food" aria-pressed="false">Eat &amp; drink</button>
-        <button type="button" data-cat="sight" aria-pressed="false">Things to do</button>
-        <button type="button" data-cat="kids" aria-pressed="false">With kids</button>
-      </div>
-      <div class="places-map-wrap">
-        <div id="places-map" class="places-map" role="region" aria-label="Map of our favourite places around Tavira"></div>
+      <div class="places-app">
+        <div class="places-side">
+          <div class="place-chips" role="group" aria-label="Show on the map">
+            <button type="button" data-cat="" aria-pressed="true">All</button>
+            <button type="button" data-cat="beach" aria-pressed="false">Beaches</button>
+            <button type="button" data-cat="food" aria-pressed="false">Eat &amp; drink</button>
+            <button type="button" data-cat="sight" aria-pressed="false">Things to do</button>
+            <button type="button" data-cat="kids" aria-pressed="false">With kids</button>
+          </div>
+          <ul id="places-list" class="places-list" aria-label="Places"></ul>
+        </div>
+        <div class="places-map-wrap">
+          <div id="places-map" class="places-map" role="region" aria-label="Map of our favourite places in the Algarve"></div>
+        </div>
       </div>
       <p class="map-credit">Overview map: <em>Azulejo Atlas</em> by Marek Hoffmann &middot; Natural Earth data</p>
-      <ul id="places-list" class="places-list"></ul>
 
       <aside class="road-trip">
         <p class="sc">Got a few extra days?</p>
@@ -367,7 +362,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=16">
+  <link rel="stylesheet" href="css/style.css?v=18">
   <script>
     (function () {{
       var saved = null;
@@ -413,7 +408,7 @@ def main():
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=8"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=9"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
