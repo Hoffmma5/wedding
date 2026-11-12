@@ -1190,7 +1190,7 @@ html, body { overflow-x: clip; }
 .places-overview {
   position: absolute;
   right: 12px;
-  top: 12px;
+  bottom: 28px;              /* sits just above the attribution line */
   width: 130px;
   height: 165px;
   border-radius: 12px;

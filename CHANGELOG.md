@@ -3,6 +3,11 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-12 (night)
+
+### Changed
+- **Algarve map:** the Azulejo Atlas inset moved to the bottom-right corner.
+
 ## 2026-11-12 (evening)
 
 ### Changed
