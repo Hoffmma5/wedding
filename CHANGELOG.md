@@ -3,6 +3,15 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-13
+
+### Added
+- **Stay:** the Google Maps embed is replaced by a custom ArcGIS map on Marek's *Azulejo Complete* basemap – the hotel marked with the wedding emblem (the orange) and a popup with the address and directions, plus Tavira and Faro airport for orientation. A clearly visible **Open in Google Maps** button sits on the map.
+- `js/arcgis-common.js`: shared map setup for both pages (loads the ArcGIS SDK once and only when needed, the azulejo basemap with night dimming, fallback to Esri's grey canvas if the tiles can't load).
+
+### Changed
+- **Algarve favourites map** now uses *Azulejo Complete* as its basemap, from country scale down to street level; the overview inset uses it too (the old *Azulejo Atlas* service is no longer online).
+
 ## 2026-11-12 (night)
 
 ### Changed

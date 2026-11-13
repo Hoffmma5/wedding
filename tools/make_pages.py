@@ -188,10 +188,14 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
           <div><dt class="sc">From Faro airport</dt><dd><strong>About 30 min by car</strong><span>Transfers on the 1st and 3rd are on us &ndash; see <a href="travel.html">Travel</a>.</span></dd></div>
         </dl>
       </div>
-      <div class="map-frame">
-        <iframe src="https://maps.google.com/maps?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira&amp;z=11&amp;output=embed" title="Map: Hotel Rural Quinta do Marco, Tavira" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="venue-map-wrap">
+        <div id="venue-map" class="venue-map" role="region" aria-label="Map: Hotel Rural Quinta do Marco, near Tavira"></div>
+        <a class="map-btn" href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c-3.9 0-7 3-7 6.8 0 5 7 12.2 7 12.2s7-7.2 7-12.2c0-3.8-3.1-6.8-7-6.8Zm0 9.3a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/></svg>
+          Open in Google Maps
+        </a>
       </div>
-      <p class="contact" style="margin-top:12px"><a href="https://maps.google.com/?q=Hotel%20Rural%20Quinta%20do%20Marco%2C%20Tavira" target="_blank" rel="noopener">Open in Google Maps &nearr;</a></p>
+      <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
     </section>""")
 
 
@@ -283,7 +287,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
           <div id="places-map" class="places-map" role="region" aria-label="Map of our favourite places in the Algarve"></div>
         </div>
       </div>
-      <p class="map-credit">Overview map: <em>Azulejo Atlas</em> by Marek Hoffmann &middot; Natural Earth data</p>
+      <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
 
       <aside class="road-trip">
         <p class="sc">Got a few extra days?</p>
@@ -362,7 +366,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=19">
+  <link rel="stylesheet" href="css/style.css?v=20">
   <script>
     (function () {{
       var saved = null;
@@ -407,8 +411,12 @@ def main():
         foot = FOOT
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
+        if 'id="places-map"' in body or 'id="venue-map"' in body:
+            foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=2"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=9"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=11"></script>\n</body>')
+        if 'id="venue-map"' in body:
+            foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=1"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 

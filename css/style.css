@@ -1316,3 +1316,37 @@ html, body { overflow-x: clip; }
   .places-side .place-chips { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
   .places-side .place-chips button { flex: none; }
 }
+
+/* Stay page: "find us" venue map + visible Google Maps button */
+.venue-map-wrap { position: relative; }
+.venue-map {
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+.venue-map.failed { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); }
+.map-btn {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #1f4fa0;
+  color: #fff;
+  font: 600 14px "Inter", sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(20, 30, 60, .25);
+  transition: transform .2s var(--ease), box-shadow .2s;
+}
+.map-btn:hover { transform: translate(-50%, -2px); box-shadow: 0 10px 24px rgba(20, 30, 60, .3); }
+.map-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.map-btn svg { width: 16px; height: 16px; fill: currentColor; }
+@media (max-width: 760px) { .venue-map { height: 340px; } }

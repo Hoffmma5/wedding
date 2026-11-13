@@ -1,4 +1,5 @@
-/* "Our favourites" map on the Tavira page — ArcGIS Maps SDK for JavaScript.
+/* "Our favourites" map on the Algarve page — ArcGIS Maps SDK for JavaScript.
+   Uses js/arcgis-common.js (SDK loading + Marek's "Azulejo Complete" basemap).
 
    Places live in assets/data/places.geojson. Each feature needs:
      name      – shown on the marker popup and in the list
@@ -6,17 +7,11 @@
      tip       – one or two sentences from you
    Add, remove or move points there (e.g. with geojson.io) and the map follows.
 
-   Basemap: Esri's light / dark grey canvas (follows night mode).
-   Overview: Marek's own "Azulejo Atlas" vector tiles (public on ArcGIS Online) in a
-   small inset showing where the main map is. The atlas only goes down to ~1:1M
-   (Natural Earth data), so it works as an overview rather than the detailed map. */
+   Overview inset: the same azulejo tiles at small scale, showing where the main map is. */
 (function () {
   'use strict';
 
-  var API_KEY = '';
-  var AZULEJO = 'https://tiles.arcgis.com/tiles/LlQJoYHf9cwrM7NJ/arcgis/rest/services/Azulejo_Atlas/VectorTileServer';
-  var NIGHT_EFFECT = 'brightness(0.62) saturate(0.85)';
-  var SDK = 'https://js.arcgis.com/4.31/';                   // pinned SDK version
+  var WM = window.WeddingMaps;
   var DATA = 'assets/data/places.geojson';
 
   var CATS = {
@@ -31,8 +26,7 @@
   if (!mapEl) return;
   var listEl = document.getElementById('places-list');
   var chips = Array.prototype.slice.call(document.querySelectorAll('.place-chips button'));
-  var root = document.documentElement;
-  function isNight() { return root.dataset.theme === 'night'; }
+  if (!WM) return;
 
   /* ---------- the list under the map works even before / without the SDK ---------- */
 
@@ -117,59 +111,17 @@
 
   /* ---------- load the ArcGIS SDK only when the map is about to scroll into view ---------- */
 
-  function loadSdk(cb) {
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = SDK + 'esri/themes/light/main.css';
-    document.head.appendChild(css);
-    var js = document.createElement('script');
-    js.src = SDK + 'init.js';
-    js.onload = cb;
-    js.onerror = function () { mapEl.classList.add('failed'); mapEl.textContent = 'The map could not load right now – the list below has everything.'; };
-    document.head.appendChild(js);
-  }
-
-  var started = false;
-  function start() {
-    if (started) return;
-    started = true;
-    loadSdk(function () {
-      window.require([
-        'esri/config', 'esri/Map', 'esri/Basemap', 'esri/views/MapView',
-        'esri/layers/GeoJSONLayer', 'esri/layers/WebTileLayer', 'esri/layers/VectorTileLayer',
-        'esri/Graphic', 'esri/core/reactiveUtils'
-      ], build);
+  WM.whenNear(mapEl, function () {
+    WM.load([
+      'esri/Map', 'esri/Basemap', 'esri/views/MapView', 'esri/layers/GeoJSONLayer',
+      'esri/layers/WebTileLayer', 'esri/layers/VectorTileLayer', 'esri/Graphic', 'esri/core/reactiveUtils'
+    ]).then(function (m) { build.apply(null, m); }).catch(function () {
+      mapEl.classList.add('failed');
+      mapEl.textContent = 'The map could not load right now – the list has everything.';
     });
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); }
-    }, { rootMargin: '400px' });
-    io.observe(mapEl);
-  } else {
-    start();
-  }
+  });
 
-  function build(esriConfig, Map, Basemap, MapView, GeoJSONLayer, WebTileLayer, VectorTileLayer, Graphic, reactiveUtils) {
-    if (API_KEY) esriConfig.apiKey = API_KEY;
-
-    // Esri's light / dark grey canvas (raster tiles, no key needed);
-    // with an API key the newer vector styles are used instead.
-    var CANVAS = 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_';
-    function tiles(name) {
-      return new WebTileLayer({
-        urlTemplate: CANVAS + name + '/MapServer/tile/{level}/{row}/{col}',
-        copyright: 'Esri, HERE, Garmin, © OpenStreetMap contributors'
-      });
-    }
-    function canvasBasemap() {
-      if (API_KEY) return isNight() ? 'arcgis/dark-gray' : 'arcgis/light-gray';
-      var shade = isNight() ? 'Dark_Gray' : 'Light_Gray';
-      return new Basemap({ baseLayers: [tiles(shade + '_Base')], referenceLayers: [tiles(shade + '_Reference')] });
-    }
-
-    function basemap() { return canvasBasemap(); }
-
+  function build(Map, Basemap, MapView, GeoJSONLayer, WebTileLayer, VectorTileLayer, Graphic, reactiveUtils) {
     var renderer = {
       type: 'unique-value',
       field: 'category',
@@ -199,7 +151,8 @@
       }
     });
 
-    var map = new Map({ basemap: basemap(), layers: [layer] });
+    var map = new Map({ layers: [layer] });
+    WM.azulejoBasemap({ Basemap: Basemap, VectorTileLayer: VectorTileLayer, WebTileLayer: WebTileLayer }, map);
     var view = new MapView({
       container: mapEl,
       map: map,
@@ -213,29 +166,23 @@
       },
       ui: { components: ['zoom', 'attribution'] }
     });
-    view.navigation.mouseWheelZoomEnabled = false;          // don't hijack page scrolling
-    view.on('click', function () { view.navigation.mouseWheelZoomEnabled = true; });
-    mapEl.addEventListener('mouseleave', function () { view.navigation.mouseWheelZoomEnabled = false; });
+    WM.tameScrolling(view, mapEl);                          // don't hijack page scrolling
 
     layer.when(function () { return layer.queryExtent(); }).then(function (r) {
       if (r.extent) view.goTo(r.extent.expand(1.3), { animate: false });
     });
 
-    var azulejo = null;
-    new MutationObserver(function () {
-      map.basemap = canvasBasemap();
-      if (azulejo) azulejo.effect = isNight() ? NIGHT_EFFECT : null;
-    }).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-
     /* ---------- Azulejo Atlas overview inset ---------- */
-    if (AZULEJO) {
+    if (WM.ATLAS) {
       var inset = document.createElement('div');
       inset.className = 'places-overview';
       inset.setAttribute('aria-hidden', 'true');
       mapEl.parentNode.insertBefore(inset, mapEl.nextSibling);
       mapEl.parentNode.classList.add('has-overview');
 
-      azulejo = new VectorTileLayer({ url: AZULEJO, effect: isNight() ? NIGHT_EFFECT : null });
+      var azulejo = new VectorTileLayer({ url: WM.ATLAS, effect: WM.isNight() ? WM.NIGHT_EFFECT : null });
+      new MutationObserver(function () { azulejo.effect = WM.isNight() ? WM.NIGHT_EFFECT : null; })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
       var ov = new MapView({
         container: inset,
         map: new Map({ basemap: new Basemap({ baseLayers: [azulejo] }) }),
