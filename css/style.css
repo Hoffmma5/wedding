@@ -1253,21 +1253,19 @@ html, body { overflow-x: clip; }
 .road-trip p { margin: 0 0 .7em; }
 .road-trip p:last-child { margin-bottom: 0; }
 
-/* Dishes to try */
-.dishes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.dish {
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+/* Dishes to try: a plain two-column list, name and what it is */
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 5vw, 56px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.dish img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
-.dish > div { padding: 14px 16px 16px; }
-.dish h3 { margin: 0; font-size: var(--fs-l); font-weight: 600; color: var(--ink); }
-.dish-sub { margin: 0 0 6px; font-family: var(--sc); font-weight: 700; font-size: var(--fs-m); letter-spacing: .08em; color: var(--muted); }
-.dish p { margin: 0 0 8px; font-size: var(--fs-m); line-height: 1.55; }
-.dish .dish-credit { margin: 8px 0 0; font-size: var(--fs-xs); color: var(--muted); }
-.dish .dish-credit a { color: inherit; }
+.dishes li { display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid var(--line); }
+.dishes b { font-weight: 600; color: var(--ink); }
+.dishes span { font-size: var(--fs-m); font-style: italic; color: var(--muted); }
+@media (max-width: 560px) { .dishes { grid-template-columns: 1fr; } }
 
 /* =========================================================
    Favourites as one app: side list + map with rich popups

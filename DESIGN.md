@@ -144,7 +144,8 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   curving away like a ring; the centre one faces you; full-screen viewer.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on
   Marek's *Azulejo Complete* basemap, overview inset, full-screen mode.
-- **Dish cards**: photo 4:3, Lora name in rust, Cormorant SC subtitle, credit.
+- **Dishes to try**: a plain two-column list – the name in the section's ink,
+  what it is in muted italic below, hairlines between rows. No photos.
 - **Content still to come** (`p.tbc`): one quiet line in muted italic, no
   box ("Details of the day to follow."). The home Story section is hidden
   until `data-storymap` has a link.

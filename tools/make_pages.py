@@ -211,7 +211,8 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     </section>""")
 
 
-# Dishes to try (Tavira page). Photos: Wikimedia Commons, credits in assets/dishes/credits.json
+# Dishes to try (Algarve page): name and what it is. The photos and their
+# credits are still in assets/dishes/ if they are ever wanted back.
 DISHES = [
     ("pastel-de-nata", "Pastel de nata", "custard tart",
      "Crisp, flaky pastry with a warm, wobbly custard inside. Best straight from the oven with a dusting of cinnamon &ndash; and never just one."),
@@ -239,23 +240,8 @@ DISHES = [
 
 
 def dishes_html():
-    import json, html
-    credits = json.load(open("assets/dishes/credits.json", encoding="utf-8"))
-    rows = []
-    for slug, name, sub, text in DISHES:
-        c = credits.get(slug, {})
-        lic = html.escape(c.get("license", ""))
-        lic = f'<a href="{html.escape(c["license_url"])}" target="_blank" rel="noopener">{lic}</a>' if c.get("license_url") else lic
-        credit = f'Photo: <a href="{html.escape(c.get("page", ""))}" target="_blank" rel="noopener">{html.escape(c.get("artist", "Wikimedia Commons"))}</a>, {lic}'
-        rows.append(f"""        <li class="dish">
-          <img src="assets/dishes/{slug}.webp" alt="{name.split(' &amp;')[0]}" width="720" height="540" loading="lazy">
-          <div>
-            <h3>{name}</h3>
-            <p class="dish-sub">{sub}</p>
-            <p>{text}</p>
-            <p class="dish-credit">{credit}</p>
-          </div>
-        </li>""")
+    # Just the name and what it is; the longer notes stay in DISHES for later
+    rows = [f'        <li><b>{name}</b><span>{sub}</span></li>' for slug, name, sub, text in DISHES]
     return "\n".join(rows)
 
 
@@ -377,7 +363,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=37">
+  <link rel="stylesheet" href="css/style.css?v=38">
   <script>
     (function () {{
       var saved = null;

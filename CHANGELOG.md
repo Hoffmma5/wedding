@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased (simplify)
 
 ### Changed
+- **Dishes to try** is a simple two-column list – the dish and what it is ("Pastel de nata – custard tart") – instead of eleven photo cards with descriptions and credits. The photos stay in `assets/dishes/` in case they are wanted back.
 - **Stay:** "For the little ones" and "For the grown-ups" are replaced by eight facility icons (heated pool, pool bar, restaurant, spa & sauna, gym, playground, animal farm, views to the sea) and a link to the hotel's website. "find us" is now "on the map".
 - **Minimal footer:** the painted village strip and the script "previous / next door" titles are replaced by one quiet row – "‹ Guests", a small line drawing of the three houses that leads home (still with the zoom-out), "Home ›" – and the names line.
 - **Plain placeholders:** the taped paper notes are gone. Content that is still to come is one quiet line ("Details of the day to follow.", "Reply form to follow."); Friday's note is dropped, and the home page hides the story section until the StoryMap link is in.
