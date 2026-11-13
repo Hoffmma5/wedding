@@ -581,7 +581,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-view .outline { transform: scale(.9); transition: transform .5s var(--ease); }
+body.leaving .street-view .village { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(2.4); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1431,24 +1431,13 @@ html.map-full, html.map-full body { overflow: hidden; }
 .pager a:hover { color: var(--text); }
 .pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
 .street-view { display: block; padding: 2px 4px; }
-.outline {
-  display: block;
-  width: clamp(150px, 20vw, 220px);
-  height: auto;
-  overflow: visible;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-.outline * { vector-effect: non-scaling-stroke; }
-.outline .canopy { fill: var(--bg); transition: fill var(--fade); }
+.village { display: block; width: clamp(200px, 24vw, 290px); height: auto; transition: transform .35s var(--ease), filter var(--fade); }
+.street-view:hover .village { transform: translateY(-2px); }
+:root[data-theme="night"] .village { filter: brightness(.78) saturate(.85); }
 .street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
 .map-page .street { max-width: none; }
 
 @media (max-width: 560px) {
   .pager { gap: 8px; }
-  .outline { width: 120px; }
+  .village { width: 150px; }
 }

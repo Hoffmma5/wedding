@@ -117,8 +117,10 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   by a hairline and 48–80 px of space. One column under 760 px, art centred
   above or below the text.
 - **Footer** (every inner page and Guests): one hairline, then a single row:
-  "‹ Previous page" (Inter, muted), a small **line drawing of the three
-  houses** in the middle that leads home, "Next page ›". Under it the
+  "‹ Previous page" (Inter, muted), a small **flat colour drawing of the
+  three houses** in the middle that leads home (`tools/village_mini.py`:
+  white walls, coloured corners, barra and cornice, terracotta roofs with
+  scalloped tile ends, chimney caps, the orange tree, lamp and bougainvillea), "Next page ›". Under it the
   names/date line in 12 px. Order = the menu, from Home round to RSVP and
   back (`WALK` in `tools/make_pages.py`).
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
@@ -172,7 +174,7 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   its own.
 - Entering a page from the village: the hero zooms 3.2× towards the clicked
   door and fades to paper.
-- The way back is the mirror: the village outline in a page's footer fades
+- The way back is the mirror: the little village in a page's footer fades
   the page to paper, and the home page opens 2.4× close up on the street and
   zooms out to the whole village (`returning` → `zooming-out` on `<html>`;
   flag in `sessionStorage`, set in `site.js`, read in the home page's head).
