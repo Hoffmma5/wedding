@@ -107,9 +107,13 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   hotspot is placed in picture pixels with `--x/--y/--w/--h`. Width fills the
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
-- **Home details**: 1080 px column; a three-column facts strip
-  (When / Where / Countdown) between hairlines; an auto-fill grid of seven
-  link cards (220 px min), the RSVP card inverted.
+- **Home below the village**: 1080 px column. An italic hint, then the
+  **invitation index**: each page as its own script title in its page's ink,
+  with that page's watercolour above it and a small-caps line below
+  (3 × 2 grid on desktop; on phones one row per page, art on the left).
+  No boxes, borders or arrows. Then the **reply block**: the long-table
+  watercolour, "RSVP" in large olive script, a dark pill button and the
+  countdown. The date and place appear only once, under the names in the hero.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred
@@ -124,8 +128,10 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Link cards** (home): white, 1 px line, coloured dot (house colour), title +
-  one-line description, `→` on the right, lift 2 px on hover.
+- **Index entries** (home, `.index`): watercolour + script title + small caps,
+  all in the page's `--topic`; on hover or focus the watercolour lifts and
+  tilts 4°.
+- **Reply block** (home, `.reply`): the single call to action on the page.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
 - **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic

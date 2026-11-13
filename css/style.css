@@ -584,56 +584,64 @@ body.entering::after { opacity: 1; }
   margin: 0 auto;
   padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 32px) clamp(48px, 7vw, 88px);
 }
-.facts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: clamp(28px, 4vw, 48px);
-}
-.fact { display: flex; flex-direction: column; gap: 2px; padding: 18px 4px; }
-.fact + .fact { border-left: 1px solid var(--line); padding-left: 24px; }
-.details .hint { margin: 0 0 18px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
-.fact .label { font-family: var(--sc); font-weight: 700; font-size: var(--fs-label); letter-spacing: .08em; color: var(--olive); }
-.fact .value { font-size: var(--fs-l); }
+.details .hint { margin: 0 0 clamp(32px, 5vw, 56px); text-align: center; font-size: var(--fs-m); font-style: italic; color: var(--muted); }
 
-.cards {
+/* The invitation's contents: each page in its own ink, with its watercolour */
+.index {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(36px, 5vw, 64px) clamp(16px, 3vw, 40px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 20px 44px 20px 20px;
-  border-radius: var(--radius);
-  background: var(--surface);
-  border: 1px solid var(--line);
+.index a {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  height: 100%;
+  padding: 8px 8px 12px;
+  border-radius: 14px;
+  text-align: center;
   text-decoration: none;
-  transition: transform .25s var(--ease), box-shadow .25s, background-color var(--fade);
 }
-.card::after {
-  content: "→";
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  transition: transform .25s var(--ease), color .2s;
+.index img {
+  align-self: end;
+  width: auto;
+  height: clamp(80px, 10vw, 124px);
+  max-width: 100%;
+  margin-bottom: 8px;
+  object-fit: contain;
+  transition: transform .45s var(--ease);
 }
-.card:hover, .card:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow); }
-.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.card:hover::after, .card:focus-visible::after { transform: translate(4px, -50%); color: var(--text); }
-.card-title { font-weight: 600; font-size: var(--fs-base); }
-.card-text { font-size: var(--fs-m); line-height: 1.5; color: var(--muted); }
-.card-accent { background: var(--text); color: var(--bg); border-color: transparent; }
-.card-accent .card-text, .card-accent::after { color: color-mix(in srgb, var(--bg) 70%, transparent); }
-.dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 10px; }
-.dot.blue { background: var(--accent); }
-.dot.yellow { background: var(--yellow); }
-.dot.coral { background: var(--coral); }
+.index .script { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.3; }
+.index .script + .sc { margin-top: .5em; }
+.index a:is(:hover, :focus-visible) img { transform: translateY(-5px) rotate(-4deg); }
+.index a:focus-visible, .reply:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+/* RSVP: the one thing to do, set like the reply card of an invitation */
+.reply {
+  display: grid;
+  justify-items: center;
+  max-width: 720px;
+  margin: clamp(56px, 8vw, 104px) auto 0;
+  border-radius: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+.reply img { width: 100%; height: auto; margin-bottom: clamp(16px, 3vw, 28px); }
+.reply .script { font-size: clamp(60px, 9vw, 96px); line-height: 1.15; margin: -.05em 0 .3em; }
+.reply-btn {
+  margin-top: 6px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font: 500 var(--fs-base) var(--sans);
+  transition: opacity .2s;
+}
+.reply:hover .reply-btn { opacity: .85; }
+.reply-count { margin-top: 14px; font-size: var(--fs-m); font-style: italic; color: var(--muted); }
 
 /* ---------- Our story ---------- */
 
@@ -692,8 +700,20 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
     transition: opacity .5s;
   }
   .swipe-hint.gone { opacity: 0; }
-  .facts { grid-template-columns: 1fr; }
-  .fact + .fact { border-left: 0; border-top: 1px solid var(--line); padding-left: 4px; }
+  /* Phones: one line per page, watercolour on the left */
+  .index { grid-template-columns: 1fr; gap: 6px; max-width: 420px; margin: 0 auto; }
+  .index a {
+    grid-template-columns: 84px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    justify-items: start;
+    align-items: center;
+    padding: 10px 4px;
+    text-align: left;
+  }
+  .index img { grid-row: 1 / 3; justify-self: center; align-self: center; height: auto; max-height: 64px; max-width: 84px; margin: 0; }
+  .index .script { align-self: end; font-size: 32px; line-height: 1.25; }
+  .index .script + .sc { align-self: start; margin-top: .5em; }
   .story-frame { height: 78svh; }
 }
 
