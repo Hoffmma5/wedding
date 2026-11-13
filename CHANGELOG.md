@@ -5,33 +5,25 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
-### Changed
-- **New Travel map:** a piece torn out of an old paper map instead of Portugal on a faded wash. The invitation's watercolour Portugal sits next to western Spain (pale land with a real coastline from Galicia to Cádiz), the Atlantic has cartographic water lines, and crisp labels name Portugal, España, the ocean and Faro. A dotted flight path lands at Faro and the pearl marks Tavira. It looks the same at night instead of turning smoky, and nothing is cut off.
-
 ### Added
 - **Walking back zooms out:** clicking the village strip at the bottom of a page fades the page to paper, and the home page opens close up on the street and zooms out to the whole village – the mirror of walking in through a door. Skipped when the visitor prefers reduced motion.
-
-### Changed
-- **Footer village strip** is framed higher: it starts just under the eaves, so the windows, the top of the orange tree and the bougainvillea are whole, and the doors fade out below. Phones still show the whole street.
-- **Street footer is quieter:** smaller previous/next door titles (26–32 px instead of 36–52 px), smaller grey labels, a lower village strip; on phones both doors fit on one line.
-- **Guests page:** a two-sentence intro instead of three paragraphs (the note about Marek's work is gone), and the map now fills nearly the whole screen.
-
-### Fixed
-- The Stay page is called **"the Stay"** in the street footer and the home index, matching the *Stay* tab in the menu (was "the Hotel").
-- **Lit windows at night look clean again:** only the glass panes glow now, measured pane by pane on the painting, so the white frames and crossbars stay crisp instead of being covered by ragged yellow and heavy brown bars. The brush strokes in the glass still show through the light.
-
-### Added
 - **Handwritten notes for things still to come:** the grey "coming soon" boxes on Program and RSVP are now paper notes taped onto the page, written in script in the section's colour ("The welcome party is still being planned – time and place coming soon."). On the home page the empty story-map frame is replaced by a note too ("Our story map is still being drawn – Marek is on it."); the full frame comes back as soon as the StoryMap link is filled in.
 - **The street continues:** every inner page (and the guest map) now ends with the previous and next door – the neighbouring pages' titles in their own colours – and a strip of the village painting that takes you back home, lit windows and all at night. No more dead ends after the last paragraph.
 - **Countdown tile in the village:** a second azulejo tile, painted above the RSVP door on the coral house, counts down in Portuguese – *322 dias*, then *amanhã*, *hoje!* (also in party mode) and finally *casados*. Hover shows the English. On phones, where the street opens away from the coral house, the countdown is also written under the RSVP button.
 
 ### Changed
+- **New Travel map:** a piece torn out of an old paper map instead of Portugal on a faded wash. The invitation's watercolour Portugal sits next to western Spain (pale land with a real coastline from Galicia to Cádiz), the Atlantic has cartographic water lines, and crisp labels name Portugal, España, the ocean and Faro. A dotted flight path lands at Faro and the pearl marks Tavira. It looks the same at night instead of turning smoky, and nothing is cut off.
+- **Footer village strip** is framed higher: it starts just under the eaves, so the windows, the top of the orange tree and the bougainvillea are whole, and the doors fade out below. Phones still show the whole street.
+- **Street footer is quieter:** smaller previous/next door titles (26–32 px instead of 36–52 px), smaller grey labels, a lower village strip; on phones both doors fit on one line.
+- **Guests page:** a two-sentence intro instead of three paragraphs (the note about Marek's work is gone), and the map now fills nearly the whole screen.
 - **Home page reads like the invitation:** the When / Where / Countdown strip and the seven link cards are gone. In their place is an index of the pages, each written in its own ink with its watercolour (disco ball, the hotel landscape, Portugal, the sun, the sardine, the pearl), and below it an RSVP reply block with the long table, *RSVP* in script, a **Reply to the invitation** button and the countdown. On phones each page is one compact row.
 - **One type system on every page:** Lora for everything you read, Cormorant SC small caps for every label (no more tracked-out Inter capitals), Beth Ellen for titles, Inter only for buttons, menus, chips and credits. Sizes come from one scale (`--fs-*` tokens). The home page now loads the invitation fonts too.
 - **Home:** the date line under the names is set in small caps; "Our story" became an invitation heading – *how we got here* in script with a small-caps line above it.
 - **Small caps under script titles** no longer run into the long descenders ("friday", "the Wedding Day").
 
 ### Fixed
+- The Stay page is called **"the Stay"** in the street footer and the home index, matching the *Stay* tab in the menu (was "the Hotel").
+- **Lit windows at night look clean again:** only the glass panes glow now, measured pane by pane on the painting, so the white frames and crossbars stay crisp instead of being covered by ragged yellow and heavy brown bars. The brush strokes in the glass still show through the light.
 - **Readable inks:** small text in a section's colour (bold text, links, card titles, the selected map chip) now uses a slightly darker `--ink`, so olive and coral pass WCAG AA (were ~3.9 : 1). Script titles keep the full colour.
 - **Keyboard focus** is visible on the home-page cards (was only a soft shadow).
 - **RSVP in the menu** stays a dark button on the RSVP page, with a ring for "you are here" (it used to turn grey).
