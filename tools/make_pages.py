@@ -359,7 +359,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=42">
+  <link rel="stylesheet" href="css/style.css?v=44">
   <script>
     (function () {{
       var saved = null;
@@ -414,9 +414,11 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The three houses as a small flat drawing (tools/village_mini.py)
-from village_mini import village_svg
-VILLAGE_MINI = village_svg()
+# The village painting, small (tools/village_mini.py): day, and night with the windows lit
+VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
+        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
+        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
+      </span>"""
 
 
 def street(slug):

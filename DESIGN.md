@@ -117,10 +117,9 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   by a hairline and 48–80 px of space. One column under 760 px, art centred
   above or below the text.
 - **Footer** (every inner page and Guests): one hairline, then a single row:
-  "‹ Previous page" (Inter, muted), a small **flat colour drawing of the
-  three houses** in the middle that leads home (`tools/village_mini.py`:
-  white walls, coloured corners, barra and cornice, terracotta roofs with
-  scalloped tile ends, chimney caps, the orange tree, lamp and bougainvillea), "Next page ›". Under it the
+  "‹ Previous page" (Inter, muted), the **village painting itself, small**, in the middle, leading home
+  (`tools/village_mini.py` makes 640 px copies: day, and night with the
+  windows lit), "Next page ›". Under it the
   names/date line in 12 px. Order = the menu, from Home round to RSVP and
   back (`WALK` in `tools/make_pages.py`).
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
