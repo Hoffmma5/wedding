@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased (redesign branch)
 
 ### Fixed
+- The Stay page is called **"the Stay"** in the street footer and the home index, matching the *Stay* tab in the menu (was "the Hotel").
 - **Lit windows at night look clean again:** only the glass panes glow now, measured pane by pane on the painting, so the white frames and crossbars stay crisp instead of being covered by ragged yellow and heavy brown bars. The brush strokes in the glass still show through the light.
 
 ### Added

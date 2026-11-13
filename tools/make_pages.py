@@ -410,7 +410,7 @@ def nav():
 WALK = [
     ("index", "the village", "#4b4b31"),
     ("program", "the Program", WINE),
-    ("accommodation", "the Hotel", OLIVE),
+    ("accommodation", "the Stay", OLIVE),
     ("travel", "Travel", BLUE),
     ("weather", "the Weather", RUST),
     ("location", "the Algarve", BLUE),
