@@ -39,9 +39,18 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         <p class="ps">P.S. The flights are often cheaper from Germany.</p>
       </div>
       <figure class="art map-art">
-        <img src="assets/art/iberia.webp" alt="Watercolour map of Portugal and Spain with Tavira marked" width="613" height="802">
-        <span class="place" aria-hidden="true">Tavira</span>
-        <img class="pearl" src="assets/art/pearl.webp" alt="" width="360" height="268">
+        <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
+        <svg class="map-labels" viewBox="0 0 723 922" aria-hidden="true">
+          <path class="route" d="M712 24C650 320 430 560 268 784"/>
+          <path class="plane" transform="translate(466 520) rotate(216) scale(2.2) translate(-12 -12)" d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+          <text class="country" transform="translate(316 470) rotate(-84)">Portugal</text>
+          <text class="country es" x="598" y="420">España</text>
+          <text class="sea" transform="translate(66 500) rotate(-84)">Oceano Atlântico</text>
+          <circle class="town" cx="265" cy="788" r="5"/>
+          <text class="town-name" x="252" y="830">Faro</text>
+          <image href="assets/art/pearl.webp" x="276" y="750" width="68" height="51"/>
+          <text class="tavira" x="300" y="868">Tavira</text>
+        </svg>
       </figure>
     </div>
 
@@ -321,7 +330,7 @@ PAGES["program"] = ("Program", WINE, f"""
           <li>Transfer from Faro airport</li>
           <li>Check in at Hotel Quinta do Marco from 14:00</li>
         </ul>
-        <p class="placeholder">Time and details of the welcome party &mdash; coming soon.</p>
+        <p class="note">The welcome party is still being planned &ndash; time and place coming soon.</p>
       </div>
       <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
     </article>
@@ -330,7 +339,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <div class="prose">
         <h2 class="script">the Wedding Day</h2>
         <p class="sc">Saturday &middot; 02.10.2027</p>
-        <p class="placeholder">The plan for the day &mdash; coming soon.</p>
+        <p class="note">We&rsquo;re still writing the plan for the day. Check back soon!</p>
       </div>
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
@@ -354,7 +363,7 @@ PAGES["rsvp"] = ("RSVP", OLIVE, """
     </header>
     <div class="prose">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
-      <p class="placeholder">The RSVP form will appear here soon.</p>
+      <p class="note">The reply form is on its way &ndash; it will appear right here.</p>
     </div>""")
 
 HEAD = """<!doctype html>
@@ -365,8 +374,8 @@ HEAD = """<!doctype html>
   <title>{title} · Marek &amp; Paulo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=22">
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=33">
   <script>
     (function () {{
       var saved = null;
@@ -394,7 +403,7 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=11"></script>
+FOOT = """  <script src="js/site.js?v=12"></script>
   <script src="js/eggs.js?v=11"></script>
 </body>
 </html>
@@ -403,6 +412,46 @@ FOOT = """  <script src="js/site.js?v=11"></script>
 
 def nav():
     return "\n".join(f'      <a href="{slug}.html">{label}</a>' for slug, label in NAV)
+
+
+# The walk through the site: each page's title and ink, in menu order.
+# The street footer links every page to the door before and after it.
+WALK = [
+    ("index", "the village", "#4b4b31"),
+    ("program", "the Program", WINE),
+    ("accommodation", "the Stay", OLIVE),
+    ("travel", "Travel", BLUE),
+    ("weather", "the Weather", RUST),
+    ("location", "the Algarve", BLUE),
+    ("map", "the guests", BLUE),
+    ("rsvp", "RSVP", OLIVE),
+]
+
+
+def street(slug):
+    i = [w[0] for w in WALK].index(slug)
+    prev, nxt = WALK[i - 1], WALK[(i + 1) % len(WALK)]
+
+    def door(cls, label, w):
+        return (f'<a class="{cls}" href="{w[0]}.html" style="--topic:{w[2]}">'
+                f'<span class="sc">{label}</span><span class="script">{w[1]}</span></a>')
+
+    return f"""  <footer class="street">
+    <nav class="pager" aria-label="Previous and next page">
+      {door("prev", "Previous door", prev)}
+      {door("next", "Next door", nxt)}
+    </nav>
+    <a class="street-view" href="index.html">
+      <span class="street-band" aria-hidden="true">
+        <img class="day" src="assets/village-day.webp" alt="" width="1926" height="817" loading="lazy">
+        <img class="night" src="assets/village-night.webp" alt="" width="1926" height="817" loading="lazy">
+        <img class="lit" src="assets/lights-windows.png?v=2" alt="" width="1926" height="817" loading="lazy">
+      </span>
+      <span class="sc">Back to the village</span>
+    </a>
+    <p class="foot">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027 &middot; Algarve</p>
+  </footer>
+"""
 
 
 def main():
@@ -417,7 +466,7 @@ def main():
             foot = foot.replace('</body>', '  <script src="js/places-map.js?v=14"></script>\n</body>')
         if 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
-        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
+        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
@@ -427,15 +476,13 @@ def main():
       <h1 class="script">the guests</h1>
     </div>
     <div class="guests-intro prose" style="--topic:{BLUE}">
-      <p>Thank you. Every single one of you is making a journey to be with us in Tavira &ndash; some from just around the corner, some from the other side of the world &ndash; and we are endlessly grateful for it.</p>
-      <p>With all of you coming from so many places, we couldn&rsquo;t resist putting you on a map. It turns out our family and friends are a properly international bunch &ndash; citizens of the world &ndash; and this is what that looks like.</p>
-      <p>It was also a chance to show a little of what Marek does at work. Sometimes it really is just making maps. <span class="surface">But don&rsquo;t be fooled &ndash; this is just the surface.</span></p>
+      <p>This is where you&rsquo;re all coming from. Thank you for making the trip &ndash; we can&rsquo;t wait to see you in Tavira.</p>
     </div>
     <div class="map-embed">
       <iframe src="https://hoffmma5.github.io/wedding-map/" title="Map of where our wedding guests come from" loading="lazy" allow="fullscreen"></iframe>
     </div>
   </main>
-""" + FOOT
+""" + street("map") + FOOT
     open("map.html", "w", encoding="utf-8").write(html)
     print("pages written")
 

@@ -8,6 +8,19 @@
   var spots = Array.prototype.slice.call(document.querySelectorAll('.go'));
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Back from a footer: zoom out from the street to the whole village ---------- */
+
+  var html = document.documentElement;
+  if (html.classList.contains('returning')) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        html.classList.add('zooming-out');
+        html.classList.remove('returning');
+        setTimeout(function () { html.classList.remove('zooming-out'); }, 1300);
+      });
+    });
+  }
+
   /* ---------- Hotspots: hover/tap shows the label, click walks in ---------- */
 
   var lastPointer = 'mouse';
@@ -167,6 +180,19 @@
   var days = Math.ceil((new Date(2027, 9, 1) - now) / 864e5);
   cd.textContent = days > 1 ? days + ' days to go' : days === 1 ? 'Tomorrow!' : days > -3 ? 'It’s happening!' : 'Just married';
 
+  // The same countdown, painted in Portuguese on the tile above the RSVP door
+  var tile = document.querySelector('.count-tile');
+  function paintTile(num, word) {
+    tile.querySelector('.count-num').textContent = num;
+    tile.querySelector('.count-word').textContent = word;
+    tile.classList.toggle('one-line', !word);
+    tile.title = cd.textContent;
+  }
+  if (days > 1) paintTile(days, 'dias');
+  else if (days === 1) paintTile('amanhã', '');
+  else if (days > -3) paintTile('hoje!', '');
+  else paintTile('casados', '');
+
   /* ---------- Wedding weekend (1–3 Oct 2027): party mode ----------
      Preview any time by adding ?party to the address. */
 
@@ -174,6 +200,7 @@
   if (party) {
     document.documentElement.classList.add('party');
     cd.textContent = 'It’s happening!';
+    paintTile('hoje!', '');
     picture.appendChild(bunting());
     try {
       if (!sessionStorage.getItem('partyHello')) {

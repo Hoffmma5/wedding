@@ -7,9 +7,9 @@
   <meta name="description" content="Marek and Paulo are getting married in Tavira, Algarve, Portugal, 1–3 October 2027.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=22">
+  <link rel="stylesheet" href="css/style.css?v=33">
   <script>
     (function () {
       var saved = null;
@@ -17,6 +17,17 @@
       var night = saved ? saved === 'night'
         : window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = night ? 'night' : 'day';
+      // Arriving from a footer's "Back to the village": start close up, village.js zooms out
+      try {
+        if (sessionStorage.getItem('zoomOut')) {
+          sessionStorage.removeItem('zoomOut');
+          if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var h = document.documentElement;
+            h.classList.add('returning');
+            setTimeout(function () { h.classList.remove('returning'); }, 1500);   // never stay covered
+          }
+        }
+      } catch (e) {}
     })();
   </script>
 </head>
@@ -57,7 +68,7 @@
         <div class="picture">
           <img class="layer day"   src="assets/village-day.webp"   alt="Three whitewashed Portuguese houses with blue, yellow and coral trim, an orange tree and bougainvillea" width="1926" height="817">
           <img class="layer night" src="assets/village-night.webp" alt="" aria-hidden="true" width="1926" height="817">
-          <img class="layer lit"   src="assets/lights-windows.png" alt="" aria-hidden="true" width="1926" height="817">
+          <img class="layer lit"   src="assets/lights-windows.png?v=2" alt="" aria-hidden="true" width="1926" height="817">
 
           <div class="glow" style="--x:433;--y:391;--w:89;--h:113" aria-hidden="true"></div>
           <div class="glow" style="--x:779;--y:391;--w:80;--h:108" aria-hidden="true"></div>
@@ -108,6 +119,11 @@
             <span class="tip">The Algarve</span>
           </a>
 
+          <!-- Countdown, painted on a tile above the RSVP door (text version is in the reply block) -->
+          <div class="count-tile" style="--x:1527;--y:276;--w:96;--h:76" aria-hidden="true">
+            <span class="tile-face"><b class="count-num"></b><small class="count-word"></small></span>
+          </div>
+
           <!-- Doors -->
           <a class="door go" href="accommodation.html" style="--x:199;--y:385;--w:120;--h:277">
             <span class="interior" aria-hidden="true"></span>
@@ -145,43 +161,40 @@
     <!-- ======= Details ======= -->
     <section class="details">
       <p class="hint">Everything in the village is clickable &mdash; the doors, the sky, the signs and the lamp.</p>
-      <div class="facts">
-        <div class="fact"><span class="label">When</span><span class="value">1 – 3 October 2027</span></div>
-        <div class="fact"><span class="label">Where</span><span class="value">Tavira, Algarve</span></div>
-        <div class="fact"><span class="label">Countdown</span><span class="value" id="countdown">&nbsp;</span></div>
-      </div>
+      <ul class="index">
+        <li><a href="program.html" style="--topic:#7a3b3b"><img src="assets/art/disco-ball.webp" alt="" width="337" height="436" loading="lazy"><span class="script">the Program</span><span class="sc">Three days in Tavira</span></a></li>
+        <li><a href="accommodation.html" style="--topic:#7b8152"><img src="assets/art/hotel-landscape.webp" alt="" width="1059" height="437" loading="lazy"><span class="script">the Stay</span><span class="sc">Your home for the weekend</span></a></li>
+        <li><a href="travel.html" style="--topic:#1f4fa0"><img src="assets/art/portugal.webp" alt="" width="373" height="722" loading="lazy"><span class="script">Travel</span><span class="sc">Flights &amp; airport transfers</span></a></li>
+        <li><a href="weather.html" style="--topic:#b5432a"><img src="assets/art/sun.webp" alt="" width="520" height="520" loading="lazy"><span class="script">the Weather</span><span class="sc">October sun &amp; what to pack</span></a></li>
+        <li><a href="location.html" style="--topic:#1f4fa0"><img src="assets/art/sardine.webp" alt="" width="900" height="319" loading="lazy"><span class="script">the Algarve</span><span class="sc">Our favourite places nearby</span></a></li>
+        <li><a href="map.html" style="--topic:#1f4fa0"><img src="assets/art/pearl.webp" alt="" width="360" height="268" loading="lazy"><span class="script">the guests</span><span class="sc">Where everyone is coming from</span></a></li>
+      </ul>
 
-      <div class="cards">
-        <a class="card" href="program.html"><span class="dot yellow"></span><span class="card-title">Program</span><span class="card-text">Three days, hour by hour</span></a>
-        <a class="card" href="accommodation.html"><span class="dot blue"></span><span class="card-title">Accommodation</span><span class="card-text">Hotel Quinta do Marco</span></a>
-        <a class="card" href="travel.html"><span class="dot blue"></span><span class="card-title">Travel</span><span class="card-text">Flights and airport transfers</span></a>
-        <a class="card" href="weather.html"><span class="dot yellow"></span><span class="card-title">Weather &amp; packing</span><span class="card-text">October sun &amp; what to bring</span></a>
-        <a class="card" href="location.html"><span class="dot coral"></span><span class="card-title">Algarve</span><span class="card-text">Our favourite places nearby</span></a>
-        <a class="card" href="map.html"><span class="dot blue"></span><span class="card-title">Guest map</span><span class="card-text">Where everyone is coming from</span></a>
-        <a class="card card-accent" href="rsvp.html"><span class="dot coral"></span><span class="card-title">RSVP</span><span class="card-text">Let us know you&rsquo;re coming</span></a>
-      </div>
+      <a class="reply" href="rsvp.html" style="--topic:#7b8152">
+        <img src="assets/art/long-table.webp" alt="" width="1061" height="194" loading="lazy">
+        <span class="sc">Let us know if you can join us</span>
+        <span class="script">RSVP</span>
+        <span class="reply-btn">Reply to the invitation</span>
+        <span class="reply-count" id="countdown">&nbsp;</span>
+      </a>
     </section>
 
     <!-- ======= Our story — paste the ArcGIS StoryMap link into data-storymap ======= -->
     <section class="story" id="our-story" data-storymap="">
-      <div class="story-intro">
-        <p class="eyebrow">Our story</p>
-        <h2>How we got here</h2>
-        <p>From the first hello to the Algarve.</p>
-      </div>
+      <header class="story-intro" style="--topic:#1f4fa0">
+        <p class="sc">From the first hello to the Algarve</p>
+        <h2 class="script">how we got here</h2>
+      </header>
       <div class="story-frame">
-        <div class="story-placeholder">
-          <p><strong>Our story map goes here</strong></p>
-          <p>Paste the ArcGIS StoryMap link into <code>data-storymap</code> in <code>index.html</code>.</p>
-        </div>
+        <p class="note story-note" style="--topic:#1f4fa0">Our story map is still being drawn &ndash; Marek is on it.</p>
       </div>
     </section>
 
     <footer class="foot">Marek &amp; Paulo &middot; 1 – 3 October 2027 &middot; Algarve</footer>
   </main>
 
-  <script src="js/site.js?v=11"></script>
+  <script src="js/site.js?v=12"></script>
   <script src="js/eggs.js?v=11"></script>
-  <script src="js/village.js?v=11"></script>
+  <script src="js/village.js?v=13"></script>
 </body>
 </html>

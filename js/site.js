@@ -41,6 +41,19 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
+  // Footer: "Back to the village" fades out here and zooms out on the home page (village.js)
+  var back = document.querySelector('.street-view');
+  if (back && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    back.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;   // new tab etc.
+      e.preventDefault();
+      try { sessionStorage.setItem('zoomOut', '1'); } catch (err) {}
+      document.body.classList.add('leaving');
+      setTimeout(function () { location.href = back.href; }, 420);
+    });
+    window.addEventListener('pageshow', function () { document.body.classList.remove('leaving'); });
+  }
+
   function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

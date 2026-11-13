@@ -19,16 +19,26 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
 NIGHT_TINT = np.array([0.24, 0.29, 0.48])
-WARM_HI = np.array([255, 222, 150])
-WARM_LO = np.array([238, 150, 60])
-MULLION = np.array([74, 52, 36])
+WARM_HI = np.array([255, 228, 165])
+WARM_LO = np.array([240, 158, 70])
 
-# Window glass rectangles in the village picture (x0, y0, x1, y1)
+# Window glass rectangles in the village picture (x0, y0, x1, y1), used for the
+# warm glow around each window (index.html .glow)
 WINDOWS = [
     (433, 391, 522, 504),    # blue house
     (779, 391, 859, 499),    # yellow house, left
     (1241, 391, 1325, 497),  # yellow house, right
     (1716, 398, 1794, 504),  # coral house
+]
+
+# The four glass panes of each window (x0, y0, x1, y1, inclusive), measured on
+# the painting. Only these are lit at night; the painted frames and crossbars
+# stay as they are, so the windows keep their shape.
+PANES = [
+    (442, 403, 475, 445), (486, 403, 519, 445), (442, 452, 475, 490), (486, 452, 519, 490),
+    (780, 398, 810, 440), (820, 398, 850, 440), (780, 446, 810, 491), (820, 446, 850, 491),
+    (1249, 402, 1278, 442), (1289, 402, 1315, 442), (1249, 448, 1278, 491), (1289, 448, 1315, 491),
+    (1719, 406, 1748, 446), (1758, 406, 1782, 446), (1719, 452, 1748, 494), (1758, 452, 1782, 494),
 ]
 
 
@@ -65,21 +75,27 @@ def rgba(colour, alpha):
 
 
 def lit_windows(rgb):
+    """Warm light in the glass panes. The painted brush strokes in the glass
+    become lighter and deeper amber, so the light keeps the watercolour feel.
+    The orange tree's leaves and the flower pots in front of the blue house
+    window stay dark."""
     h, w, _ = rgb.shape
-    out = np.zeros((h, w, 4), np.uint8)
-    for x0, y0, x1, y1 in WINDOWS:
-        win = rgb[y0:y1, x0:x1]
+    col = np.zeros((h, w, 3))
+    alpha = np.zeros((h, w))
+    for x0, y0, x1, y1 in PANES:
+        win = rgb[y0:y1 + 1, x0:x1 + 1]
         lum = win @ np.array([.299, .587, .114])
         sat = win.max(-1) - win.min(-1)
         r, g, b = win[..., 0], win[..., 1], win[..., 2]
-        glass = ~(((r > b + 30) & (sat > 50)) | ((g > b + 35) & (sat > 60)))   # skip pots, flowers, leaves
-        bars = glass & (lum > 225) & (sat < 18)
-        t = np.clip((lum - 40) / 170, 0, 1)[..., None]
-        col = WARM_LO + (WARM_HI - WARM_LO) * t
-        col[bars] = MULLION
-        out[y0:y1, x0:x1, :3] = col.astype(np.uint8)
-        out[y0:y1, x0:x1, 3] = np.where(bars, 230, np.where(glass, 255, 0))
-    return Image.fromarray(out, "RGBA")
+        foliage = ((r > b + 30) & (sat > 50)) | ((g > b + 35) & (sat > 60))
+        foliage &= x0 < 600                  # only the blue house has a tree and flowers in front
+        t = .35 + .65 * np.clip((lum - 70) / 150, 0, 1)
+        col[y0:y1 + 1, x0:x1 + 1] = WARM_LO + (WARM_HI - WARM_LO) * t[..., None]
+        alpha[y0:y1 + 1, x0:x1 + 1] = np.where(foliage, 0, 255)
+    a = Image.fromarray(alpha.astype(np.uint8), "L").filter(ImageFilter.GaussianBlur(.7))
+    out = Image.fromarray(col.round().astype(np.uint8), "RGB")
+    out.putalpha(a)
+    return out
 
 
 def lamp_layers():
