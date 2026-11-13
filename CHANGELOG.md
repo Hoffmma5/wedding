@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased (redesign branch)
 
 ### Changed
+- **Street footer is quieter:** smaller previous/next door titles (26–32 px instead of 36–52 px), smaller grey labels, a lower village strip; on phones both doors fit on one line.
 - **Guests page:** a two-sentence intro instead of three paragraphs (the note about Marek's work is gone), and the map now fills nearly the whole screen.
 
 ### Fixed

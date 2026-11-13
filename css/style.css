@@ -1493,21 +1493,22 @@ html.map-full, html.map-full body { overflow: hidden; }
   gap: 16px 32px;
   max-width: 1000px;
   margin: 0 auto;
-  padding: clamp(28px, 4vw, 40px) 20px 0;
+  padding: clamp(20px, 3vw, 28px) 20px 0;
   border-top: 1px solid var(--line);
 }
 .pager a { display: grid; justify-items: start; padding: 4px; border-radius: 12px; text-decoration: none; }
 .pager .next { justify-items: end; margin-left: auto; text-align: right; }
-.pager .script { font-size: clamp(36px, 4.4vw, 52px); line-height: 1.3; transition: transform .35s var(--ease); }
-.pager .prev:is(:hover, :focus-visible) .script { transform: translateX(-6px); }
-.pager .next:is(:hover, :focus-visible) .script { transform: translateX(6px); }
+.pager .sc { font-size: 13px; color: var(--muted); }
+.pager .script { font-size: clamp(26px, 2.6vw, 32px); line-height: 1.35; transition: transform .35s var(--ease); }
+.pager .prev:is(:hover, :focus-visible) .script { transform: translateX(-4px); }
+.pager .next:is(:hover, :focus-visible) .script { transform: translateX(4px); }
 .pager a:focus-visible, .street-view:focus-visible { outline: 2px solid var(--ink, var(--accent)); outline-offset: 4px; }
 
 .street-view { display: block; margin-top: clamp(8px, 2vw, 24px); text-align: center; text-decoration: none; }
 .street-band {
   position: relative;
   display: block;
-  height: clamp(150px, 20vw, 280px);
+  height: clamp(110px, 14vw, 190px);
   overflow: hidden;
   /* fade into the paper above and below, so the street has no hard edge */
   -webkit-mask: linear-gradient(transparent, #000 22%, #000 84%, transparent);
@@ -1523,12 +1524,11 @@ html.map-full, html.map-full body { overflow: hidden; }
   object-position: 50% 66%;
 }
 .street-band :is(.night, .lit) { opacity: var(--night); transition: opacity var(--fade); }
-.street-view .sc { display: inline-block; margin-top: 6px; text-decoration: underline transparent; text-underline-offset: 4px; transition: text-decoration-color .2s; }
+.street-view .sc { display: inline-block; margin-top: 4px; font-size: 14px; text-decoration: underline transparent; text-underline-offset: 4px; transition: text-decoration-color .2s; }
 .street-view:hover .sc { text-decoration-color: currentColor; }
 .street .foot { margin: 0; padding-top: 12px; border-top: 0; font-family: var(--serif); }
 .map-page .street .pager { border-top: 0; }
 
 @media (max-width: 560px) {
-  .pager { flex-direction: column; gap: 4px; }
-  .pager .script { font-size: 36px; }
+  .pager .script { font-size: 24px; }
 }
