@@ -3,6 +3,14 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-13 (evening)
+
+### Fixed
+- **Algarve map didn't load** on the live site (`can't access property "scale"` in MapView): the minimum zoom was set to 5.5, but the SDK only accepts whole zoom levels there. Now 5 – still out to the whole of Portugal.
+
+### Changed
+- **Maps upgraded to ArcGIS Maps SDK for JavaScript 5.2 and Calcite Components 5.2.1** (from 4.31 / 2.13). 5.x no longer ships the old AMD `init.js`, so the SDK is now loaded as ES modules through `js/arcgis-boot.js` (Calcite + core only, without the AI / charts / coding components) and classes are imported with `$arcgis.import()`.
+
 ## 2026-11-13 (later)
 
 ### Added

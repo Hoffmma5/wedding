@@ -158,7 +158,7 @@
       map: map,
       center: [-7.66, 37.12],
       zoom: 11,
-      constraints: { snapToZoom: false, minZoom: 5.5 },        // zoom out as far as the whole of Portugal
+      constraints: { snapToZoom: false, minZoom: 5 },          // zoom out as far as the whole of Portugal (whole numbers only)
       popup: {
         dockEnabled: false,
         actions: [],

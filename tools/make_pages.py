@@ -412,11 +412,11 @@ def main():
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
         if 'id="places-map"' in body or 'id="venue-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=2"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=12"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=13"></script>\n</body>')
         if 'id="venue-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=1"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=2"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 

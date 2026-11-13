@@ -7,10 +7,18 @@
 (function () {
   'use strict';
 
-  var SDK = 'https://js.arcgis.com/4.31/';
+  var SDK = 'https://js.arcgis.com/5.2/';      // ArcGIS Maps SDK for JavaScript 5.2 (+ Calcite 5.2.1, see js/arcgis-boot.js)
+  var BOOT = 'js/arcgis-boot.js?v=1';
   var TILES = 'https://tiles.arcgis.com/tiles/LlQJoYHf9cwrM7NJ/arcgis/rest/services/';
   var root = document.documentElement;
   var sdk = null;
+
+  // the SDK sets up $arcgis.import while its core starts; give it a moment
+  function waitForImport(resolve, reject, tries) {
+    if (window.$arcgis && typeof window.$arcgis.import === 'function') resolve();
+    else if (tries > 100) reject(new Error('ArcGIS SDK did not start'));
+    else setTimeout(function () { waitForImport(resolve, reject, tries + 1); }, 50);
+  }
 
   var WM = window.WeddingMaps = {
     BASEMAP: TILES + 'Azulejo_Complete/VectorTileServer',   // detailed down to street level
@@ -19,7 +27,8 @@
 
     isNight: function () { return root.dataset.theme === 'night'; },
 
-    /* Load SDK modules → Promise of an array of modules, in the order asked for. */
+    /* Load SDK modules → Promise of an array of modules, in the order asked for.
+       Names like 'esri/views/MapView' are turned into '@arcgis/core/views/MapView.js'. */
     load: function (modules) {
       if (!sdk) {
         sdk = new Promise(function (resolve, reject) {
@@ -28,16 +37,17 @@
           css.href = SDK + 'esri/themes/light/main.css';
           document.head.appendChild(css);
           var js = document.createElement('script');
-          js.src = SDK + 'init.js';
-          js.onload = resolve;
+          js.type = 'module';
+          js.src = BOOT;
+          js.onload = function () { waitForImport(resolve, reject, 0); };
           js.onerror = reject;
           document.head.appendChild(js);
         });
       }
       return sdk.then(function () {
-        return new Promise(function (resolve, reject) {
-          window.require(modules, function () { resolve(Array.prototype.slice.call(arguments)); }, reject);
-        });
+        return window.$arcgis.import(modules.map(function (m) {
+          return m.indexOf('esri/') === 0 ? '@arcgis/core/' + m.slice(5) + '.js' : m;
+        }));
       });
     },
 
