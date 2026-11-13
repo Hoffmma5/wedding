@@ -158,7 +158,7 @@
       map: map,
       center: [-7.66, 37.12],
       zoom: 11,
-      constraints: { snapToZoom: false, minZoom: 8 },
+      constraints: { snapToZoom: false, minZoom: 5.5 },        // zoom out as far as the whole of Portugal
       popup: {
         dockEnabled: false,
         actions: [],
@@ -167,6 +167,47 @@
       ui: { components: ['zoom', 'attribution'] }
     });
     WM.tameScrolling(view, mapEl);                          // don't hijack page scrolling
+
+    /* ---------- Full screen: the whole app (list + map), to explore freely ---------- */
+    var app = mapEl.closest('.places-app');
+    var ICON_OPEN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+    var ICON_CLOSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+    var fsBtn = document.createElement('button');
+    fsBtn.type = 'button';
+    fsBtn.className = 'esri-widget esri-widget--button esri-interactive places-fs';
+    function isFull() { return app.classList.contains('is-full'); }
+    function syncBtn() {
+      var on = isFull();
+      fsBtn.innerHTML = on ? ICON_CLOSE : ICON_OPEN;
+      fsBtn.title = on ? 'Exit full screen' : 'Full screen';
+      fsBtn.setAttribute('aria-label', fsBtn.title);
+      fsBtn.setAttribute('aria-pressed', String(on));
+    }
+    function setFull(on) {
+      app.classList.toggle('is-full', on);
+      document.documentElement.classList.toggle('map-full', on);
+      view.navigation.mouseWheelZoomEnabled = on;            // in full screen the map owns the wheel
+      syncBtn();
+    }
+    fsBtn.addEventListener('click', function () {
+      if (!isFull()) {
+        // real full screen where the browser allows it (not on iPhone) – otherwise fill the window
+        var real = app.requestFullscreen && !/iPhone|iPod/.test(navigator.userAgent);
+        setFull(true);
+        if (real) app.requestFullscreen().catch(function () {});
+      } else {
+        if (document.fullscreenElement) document.exitFullscreen().catch(function () {});
+        setFull(false);
+      }
+    });
+    document.addEventListener('fullscreenchange', function () {
+      if (!document.fullscreenElement && isFull()) setFull(false);   // left with Esc / browser UI
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isFull() && !document.fullscreenElement) setFull(false);
+    });
+    syncBtn();
+    view.ui.add(fsBtn, 'top-left');
 
     layer.when(function () { return layer.queryExtent(); }).then(function (r) {
       if (r.extent) view.goTo(r.extent.expand(1.3), { animate: false });

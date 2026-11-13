@@ -3,6 +3,15 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-13 (later)
+
+### Added
+- **Algarve map:** full-screen button (under the zoom buttons) that opens the whole app – list and map – full screen; on iPhone it fills the window instead. Esc or the button exits; in full screen the mouse wheel zooms the map directly.
+
+### Changed
+- **Algarve map:** you can now zoom out as far as the whole of Portugal (was limited to the Algarve).
+- **Algarve map on phones:** the minimap sits in the top-right corner so it never covers a popup; tablets and desktops keep it bottom-right.
+
 ## 2026-11-13
 
 ### Added

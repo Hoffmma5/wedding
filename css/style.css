@@ -1350,3 +1350,26 @@ html, body { overflow-x: clip; }
 .map-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .map-btn svg { width: 16px; height: 16px; fill: currentColor; }
 @media (max-width: 760px) { .venue-map { height: 340px; } }
+
+/* Algarve map: full-screen mode for the whole app (list + map) */
+.places-fs svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.places-app.is-full {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  height: 100vh;
+  height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  grid-template-columns: 340px minmax(0, 1fr);
+}
+html.map-full, html.map-full body { overflow: hidden; }
+.places-app:fullscreen { width: 100%; height: 100%; }
+
+/* Phones: minimap to the top-right so it never covers a popup */
+@media (max-width: 760px) {
+  .places-overview { top: 12px; bottom: auto; }
+  .places-app.is-full { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
+  .places-app.is-full .places-map-wrap { height: auto; }
+  .places-app.is-full .places-list { max-height: 34vh; }
+}
