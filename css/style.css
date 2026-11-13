@@ -262,7 +262,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .layer.lit { z-index: 3; opacity: var(--night); transition: opacity .8s ease; }
 :root[data-theme="night"] .layer.lit { transition-delay: .6s; }
 
-.spot, .door, .tree, .glow {
+.spot, .door, .tree, .glow, .count-tile {
   position: absolute;
   left: calc(var(--x) / 1926 * 100%);
   top: calc((var(--y) + 360) / 1177 * 100%);
@@ -449,6 +449,36 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .tile-face svg { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; }
 :root[data-theme="night"] .tile-face { filter: brightness(.72) saturate(.85); }
 .tile-sign:is(:hover, :focus-visible, .open) .tile-face { transform: translateY(calc(var(--u) * -3)); filter: none; }
+
+/* Countdown tile above the RSVP door: same azulejo, a painted number */
+.count-tile { z-index: 5; }
+.count-tile .tile-face {
+  flex-direction: column;
+  gap: 0;
+  padding: 0 calc(var(--u) * 6);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.count-num {
+  font-family: var(--display);
+  font-size: calc(var(--u) * 42);
+  font-weight: 600;
+  line-height: .95;
+}
+.count-word {
+  font-family: var(--sans);
+  font-size: max(6px, calc(var(--u) * 12));
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: calc(var(--u) * 6) -.18em 0 0;   /* clear the old-style 3's tail; cancel trailing tracking */
+}
+.count-tile.one-line .count-num { font-family: var(--script); font-weight: 400; font-size: calc(var(--u) * 26); line-height: 1.6; }
+/* Wide screens see the tile; the text line in the reply block is for the
+   narrow ones, where the street starts scrolled away from the coral house */
+@media (min-width: 861px) {
+  .reply-count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
 
 /* ---------- Doors ---------- */
 

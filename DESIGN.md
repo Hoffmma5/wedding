@@ -112,8 +112,13 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   with that page's watercolour above it and a small-caps line below
   (3 × 2 grid on desktop; on phones one row per page, art on the left).
   No boxes, borders or arrows. Then the **reply block**: the long-table
-  watercolour, "RSVP" in large olive script, a dark pill button and the
-  countdown. The date and place appear only once, under the names in the hero.
+  watercolour, "RSVP" in large olive script and a dark pill button. The date
+  and place appear only once, under the names in the hero.
+- **Countdown tile**: painted on the coral house above the RSVP door, in the
+  same azulejo style as the ALGARVE sign: "322 / DIAS", then *amanhã*,
+  *hoje!* and *casados* in script. It is decorative (`aria-hidden`); the text
+  version sits in the reply block, visible only below 861 px, where the street
+  starts scrolled away from the coral house.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred

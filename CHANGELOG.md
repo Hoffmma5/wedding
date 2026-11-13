@@ -5,6 +5,9 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
+### Added
+- **Countdown tile in the village:** a second azulejo tile, painted above the RSVP door on the coral house, counts down in Portuguese – *322 dias*, then *amanhã*, *hoje!* (also in party mode) and finally *casados*. Hover shows the English. On phones, where the street opens away from the coral house, the countdown is also written under the RSVP button.
+
 ### Changed
 - **Home page reads like the invitation:** the When / Where / Countdown strip and the seven link cards are gone. In their place is an index of the pages, each written in its own ink with its watercolour (disco ball, the hotel landscape, Portugal, the sun, the sardine, the pearl), and below it an RSVP reply block with the long table, *RSVP* in script, a **Reply to the invitation** button and the countdown. On phones each page is one compact row.
 - **One type system on every page:** Lora for everything you read, Cormorant SC small caps for every label (no more tracked-out Inter capitals), Beth Ellen for titles, Inter only for buttons, menus, chips and credits. Sizes come from one scale (`--fs-*` tokens). The home page now loads the invitation fonts too.
