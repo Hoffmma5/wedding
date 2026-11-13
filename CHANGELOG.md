@@ -3,6 +3,11 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased (simplify)
+
+### Changed
+- **Home page is simpler:** the six pages sit on an orange strip right under the village, each with a small line icon and a plain label, instead of the watercolour index in script. The RSVP block and the countdown (the strip below and the tile above the RSVP door) are gone; RSVP stays in the menu and behind the coral door.
+
 ## 2026-11-13 – the redesign
 
 ### Added

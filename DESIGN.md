@@ -107,18 +107,11 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   hotspot is placed in picture pixels with `--x/--y/--w/--h`. Width fills the
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
-- **Home below the village**: 1080 px column. An italic hint, then the
-  **invitation index**: each page as its own script title in its page's ink,
-  with that page's watercolour above it and a small-caps line below
-  (3 × 2 grid on desktop; on phones one row per page, art on the left).
-  No boxes, borders or arrows. Then the **reply block**: the long-table
-  watercolour, "RSVP" in large olive script and a dark pill button. The date
-  and place appear only once, under the names in the hero.
-- **Countdown tile**: painted on the coral house above the RSVP door, in the
-  same azulejo style as the ALGARVE sign: "322 / DIAS", then *amanhã*,
-  *hoje!* and *casados* in script. It is decorative (`aria-hidden`); the text
-  version sits in the reply block, visible only below 861 px, where the street
-  starts scrolled away from the coral house.
+- **Home below the village**: an **orange strip** (`.strip`, roof-tile
+  `#c4521f`, white text 4.6 : 1) right under the painting with the six pages:
+  a small line icon above a plain Inter label, 6 across on desktop, 3 × 2 on
+  phones. Then a one-line hint that the village is clickable. No RSVP block
+  and no countdown on the home page; RSVP lives in the menu and the coral door.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred
@@ -139,10 +132,8 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Index entries** (home, `.index`): watercolour + script title + small caps,
-  all in the page's `--topic`; on hover or focus the watercolour lifts and
-  tilts 4°.
-- **Reply block** (home, `.reply`): the single call to action on the page.
+- **Line icons**: 24 × 24, stroke 1.5, round caps and joins, no fill,
+  `currentColor`. Used for the home strip and the Stay facilities.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
 - **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic
