@@ -107,10 +107,10 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   hotspot is placed in picture pixels with `--x/--y/--w/--h`. Width fills the
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
-- **Home below the village**: an **orange strip** (`.strip`, roof-tile
+- **Home below the village**: a one-line hint, then an **orange strip** (`.strip`, roof-tile
   `#c4521f`, white text 4.6 : 1) right under the painting with the six pages:
   a small line icon above a plain Inter label, 6 across on desktop, 3 × 2 on
-  phones. Then a one-line hint that the village is clickable. No RSVP block
+  phones. A one-line hint that the village is clickable sits just above it. No RSVP block
   and no countdown on the home page; RSVP lives in the menu and the coral door.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated

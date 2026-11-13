@@ -3,6 +3,11 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased
+
+### Changed
+- **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.
+
 ## 2026-11-13 – simplified
 
 ### Changed
