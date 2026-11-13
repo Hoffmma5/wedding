@@ -3,7 +3,7 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
-## Unreleased (redesign branch)
+## 2026-11-13 – the redesign
 
 ### Added
 - **Walking back zooms out:** clicking the village strip at the bottom of a page fades the page to paper, and the home page opens close up on the street and zooms out to the whole village – the mirror of walking in through a door. Skipped when the visitor prefers reduced motion.
