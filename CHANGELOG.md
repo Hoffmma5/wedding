@@ -3,6 +3,17 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased (redesign branch)
+
+### Fixed
+- **Readable inks:** small text in a section's colour (bold text, links, card titles, the selected map chip) now uses a slightly darker `--ink`, so olive and coral pass WCAG AA (were ~3.9 : 1). Script titles keep the full colour.
+- **Keyboard focus** is visible on the home-page cards (was only a soft shadow).
+- **RSVP in the menu** stays a dark button on the RSVP page, with a ring for "you are here" (it used to turn grey).
+- **"Good to know" and "at the Quinta" grids** line up with the text again (a list rule indented them by ~19 px).
+- **"How we got here"** is readable before you scroll (it started at 15 % opacity).
+- "Coming soon" boxes have darker text; dish cards no longer lift on hover, as they aren't links.
+- **Weather on phones:** the three numbers are rows instead of three cramped columns.
+
 ## 2026-11-13 (night)
 
 ### Fixed

@@ -121,6 +121,8 @@ img { max-width: 100%; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); background: var(--line); }
 .nav-links .nav-cta { margin-left: 6px; color: #fff; background: var(--text); }
 .nav-links .nav-cta:hover { color: #fff; background: var(--text); opacity: .85; }
+/* On the RSVP page the button stays a button, with a ring to say "you are here" */
+.nav-links .nav-cta[aria-current="page"] { color: #fff; background: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--text); }
 :root[data-theme="night"] .nav-links .nav-cta, :root[data-theme="night"] .nav-links .nav-cta:hover { color: var(--bg); }
 
 .icon-btn {
@@ -595,7 +597,8 @@ body.entering::after { opacity: 1; }
   color: var(--muted);
   transition: transform .25s var(--ease), color .2s;
 }
-.card:hover, .card:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow); outline: none; }
+.card:hover, .card:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow); }
+.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .card:hover::after, .card:focus-visible::after { transform: translate(4px, -50%); color: var(--text); }
 .card-title { font-weight: 600; font-size: 16px; }
 .card-text { font-size: 14px; color: var(--muted); }
@@ -614,7 +617,6 @@ body.entering::after { opacity: 1; }
   margin: 0 auto;
   padding: 0 16px 28px;
   text-align: center;
-  opacity: calc(.15 + var(--p) * 1.8);
   transform: translateY(calc((1 - min(1, var(--p) * 2)) * 24px));
 }
 .story-intro h2 { margin: .2em 0 .1em; font-size: clamp(30px, 5vw, 48px); font-weight: 300; letter-spacing: -.03em; line-height: 1.1; }
@@ -682,9 +684,9 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 .page h1 { margin: .2em 0 .25em; font-size: clamp(34px, 6vw, 52px); font-weight: 300; letter-spacing: -.035em; line-height: 1.08; }
 .page .lead { margin: 0 0 2em; font-size: 18px; color: var(--muted); }
 .page h2 { margin: 2.2em 0 .5em; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
-.page ul { padding-left: 1.2em; }
+.page ul:not([class]) { padding-left: 1.2em; }   /* plain lists only: grids like .highlights set their own padding */
 .page li { margin: .3em 0; }
-.placeholder { padding: 16px 18px; border-radius: 12px; background: var(--line); color: var(--muted); font-size: 15px; }
+.placeholder { padding: 16px 18px; border-radius: 12px; background: var(--line); color: color-mix(in srgb, var(--text) 80%, var(--bg)); font-size: 15px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0 0 1em; }
 .stat { padding: 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
 .stat b { display: block; font-size: 24px; font-weight: 500; letter-spacing: -.02em; }
@@ -707,8 +709,18 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
    Lora = text. Each topic sets --topic (its invitation colour).
    ========================================================= */
 
-[style*="--topic"] { --topic-c: var(--topic); }
-:root[data-theme="night"] [style*="--topic"] { --topic-c: color-mix(in srgb, var(--topic) 50%, #fff); }
+/* --topic-c: the ink itself (script titles, art, accents).
+   --ink: the same ink pulled 20 % towards the text colour, for small text
+   and links, so every ink passes 4.5 : 1 on the paper (olive and coral
+   alone are only ~3.9 : 1). */
+[style*="--topic"] {
+  --topic-c: var(--topic);
+  --ink: color-mix(in srgb, var(--topic-c) 80%, var(--text));
+}
+:root[data-theme="night"] [style*="--topic"] {
+  --topic-c: color-mix(in srgb, var(--topic) 50%, #fff);
+  --ink: color-mix(in srgb, var(--topic-c) 80%, var(--text));
+}
 
 .inv { max-width: 1000px; }
 .inv .script {
@@ -738,8 +750,8 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 
 .prose { font-family: "Lora", Georgia, serif; font-size: 17px; line-height: 1.75; }
 .prose p { margin: 0 0 1em; }
-.prose strong { font-weight: 600; color: var(--topic-c); }
-.prose a { color: var(--topic-c); text-underline-offset: 3px; }
+.prose strong { font-weight: 600; color: var(--ink); }
+.prose a { color: var(--ink); text-underline-offset: 3px; }
 .prose ul { margin: 0 0 1em; padding-left: 1.2em; }
 .prose li { margin: .25em 0; }
 .prose .ps { font-size: 15px; color: var(--muted); }
@@ -808,7 +820,12 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
   .inv-grid .art, .day-art { max-width: 220px; justify-self: center; margin: 0 auto; }
   .map-art, .tile-art { margin: 0 auto; }
   .facts-list > div { grid-template-columns: 1fr; }
-  .wx b { font-size: 24px; }
+}
+/* Phones: weather numbers as three short rows instead of three cramped columns */
+@media (max-width: 560px) {
+  .wx { grid-template-columns: 1fr; gap: 8px; }
+  .wx div { display: grid; grid-template-columns: 24px 5.2em 1fr; align-items: center; gap: 14px; padding: 12px 16px; text-align: left; }
+  .wx b { margin: 0; font-size: 24px; }
 }
 .map-head.inv { margin: 0 auto; }
 .map-head .sc + .script { margin-top: -.2em; }
@@ -817,7 +834,7 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 
 /* Link to live weather on yr.no */
 .wx-link { margin: 4px 0 0; text-align: right; font-size: 14px; }
-.wx-link a { color: var(--topic-c); text-underline-offset: 3px; }
+.wx-link a { color: var(--ink); text-underline-offset: 3px; }
 
 
 /* =========================================================
@@ -1118,14 +1135,14 @@ html, body { overflow-x: clip; }
   line-height: 1.5;
   color: var(--muted);
 }
-.highlights li b { display: block; margin-bottom: 2px; font-family: "Lora", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--topic-c); }
+.highlights li b { display: block; margin-bottom: 2px; font-family: "Lora", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--ink); }
 .good-to-know { font-size: 15px; }
 .good-to-know li { margin: .35em 0; }
 
 /* Guests page intro */
 .guests-intro { max-width: 640px; margin: 0 auto 28px; padding: 0 20px; text-align: center; }
 .guests-intro p { margin: 0 0 .9em; }
-.guests-intro .surface { font-style: italic; color: var(--topic-c); }
+.guests-intro .surface { font-style: italic; color: var(--ink); }
 
 /* =========================================================
    Tavira page: "our favourites" map (ArcGIS Maps SDK)
@@ -1143,7 +1160,7 @@ html, body { overflow-x: clip; }
   transition: background-color .2s, color .2s, border-color .2s;
 }
 .place-chips button:hover { border-color: var(--topic-c); }
-.place-chips button[aria-pressed="true"] { background: var(--topic-c); border-color: var(--topic-c); color: #fff; }
+.place-chips button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 :root[data-theme="night"] .place-chips button[aria-pressed="true"] { color: var(--bg); }
 .place-chips button:focus-visible { outline: 2px solid var(--topic-c); outline-offset: 2px; }
 
@@ -1175,9 +1192,9 @@ html, body { overflow-x: clip; }
 .place:hover, .place:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow); outline: none; }
 .place img { justify-self: center; margin-top: 4px; width: auto; max-width: 44px; height: auto; max-height: 34px; }
 .place-cat { display: block; font: 500 11px "Inter", sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.place b { display: block; font-family: "Lora", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--topic-c); }
+.place b { display: block; font-family: "Lora", Georgia, serif; font-size: 17px; font-weight: 600; color: var(--ink); }
 .place p { margin: 2px 0 6px; font-size: 14px; line-height: 1.5; color: var(--muted); }
-.place a { font: 600 13px "Inter", sans-serif; color: var(--topic-c); text-decoration: none; }
+.place a { font: 600 13px "Inter", sans-serif; color: var(--ink); text-decoration: none; }
 .place a:hover { text-decoration: underline; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
@@ -1215,7 +1232,7 @@ html, body { overflow-x: clip; }
   font-size: 16px;
   line-height: 1.7;
 }
-.road-trip h3 { margin: 2px 0 8px; font-size: 22px; font-weight: 600; color: var(--topic-c); }
+.road-trip h3 { margin: 2px 0 8px; font-size: 22px; font-weight: 600; color: var(--ink); }
 .road-trip p { margin: 0 0 .7em; }
 .road-trip p:last-child { margin-bottom: 0; }
 
@@ -1226,12 +1243,10 @@ html, body { overflow-x: clip; }
   border-radius: 16px;
   border: 1px solid var(--line);
   background: var(--surface);
-  transition: transform .25s var(--ease), box-shadow .25s;
 }
-.dish:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .dish img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
 .dish > div { padding: 14px 16px 16px; }
-.dish h3 { margin: 0; font-family: "Lora", Georgia, serif; font-size: 18px; font-weight: 600; color: var(--topic-c); }
+.dish h3 { margin: 0; font-family: "Lora", Georgia, serif; font-size: 18px; font-weight: 600; color: var(--ink); }
 .dish-sub { margin: 0 0 6px; font-family: "Cormorant SC", Georgia, serif; font-weight: 700; font-size: 14px; letter-spacing: .08em; color: var(--muted); }
 .dish p { margin: 0 0 8px; font-size: 14px; line-height: 1.55; }
 .dish .dish-credit { margin: 8px 0 0; font-size: 11px; color: var(--muted); }
@@ -1284,11 +1299,11 @@ html, body { overflow-x: clip; }
 .place-icon img { max-width: 36px; max-height: 28px; width: auto; height: auto; margin: 0; }
 .place-text { min-width: 0; }
 .place-text b { display: block; font-family: "Lora", Georgia, serif; font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.place[aria-current="true"] .place-text b { color: var(--topic-c); }
+.place[aria-current="true"] .place-text b { color: var(--ink); }
 .place .place-cat { font-size: 10.5px; }
 .place-tip { display: none; grid-column: 1 / -1; font-size: 13px; line-height: 1.5; color: var(--muted); }
 .place.show-tip .place-tip { display: block; }
-.place-tip a { color: var(--topic-c); font-weight: 600; }
+.place-tip a { color: var(--ink); font-weight: 600; }
 
 /* Esri popup in the site's style */
 .places-map .esri-popup__main-container, .places-map .esri-popup calcite-panel { border-radius: 14px; }
