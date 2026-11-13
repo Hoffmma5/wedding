@@ -1,4 +1,4 @@
-/* Homepage: village hotspots, orange tree, countdown, scroll into the story map. */
+/* Homepage: village hotspots, orange tree, party mode, scroll into the story map. */
 (function () {
   'use strict';
 
@@ -173,34 +173,13 @@
     setTimeout(function () { o.remove(); }, 4500);
   });
 
-  /* ---------- Countdown ---------- */
-
-  var cd = document.getElementById('countdown');
-  var now = new Date();
-  var days = Math.ceil((new Date(2027, 9, 1) - now) / 864e5);
-  cd.textContent = days > 1 ? days + ' days to go' : days === 1 ? 'Tomorrow!' : days > -3 ? 'It’s happening!' : 'Just married';
-
-  // The same countdown, painted in Portuguese on the tile above the RSVP door
-  var tile = document.querySelector('.count-tile');
-  function paintTile(num, word) {
-    tile.querySelector('.count-num').textContent = num;
-    tile.querySelector('.count-word').textContent = word;
-    tile.classList.toggle('one-line', !word);
-    tile.title = cd.textContent;
-  }
-  if (days > 1) paintTile(days, 'dias');
-  else if (days === 1) paintTile('amanhã', '');
-  else if (days > -3) paintTile('hoje!', '');
-  else paintTile('casados', '');
-
   /* ---------- Wedding weekend (1–3 Oct 2027): party mode ----------
      Preview any time by adding ?party to the address. */
 
+  var now = new Date();
   var party = (now >= new Date(2027, 9, 1) && now < new Date(2027, 9, 4)) || /[?&]party(=|&|$)/.test(location.search);
   if (party) {
     document.documentElement.classList.add('party');
-    cd.textContent = 'It’s happening!';
-    paintTile('hoje!', '');
     picture.appendChild(bunting());
     try {
       if (!sessionStorage.getItem('partyHello')) {

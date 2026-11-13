@@ -107,28 +107,22 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   hotspot is placed in picture pixels with `--x/--y/--w/--h`. Width fills the
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
-- **Home below the village**: 1080 px column. An italic hint, then the
-  **invitation index**: each page as its own script title in its page's ink,
-  with that page's watercolour above it and a small-caps line below
-  (3 × 2 grid on desktop; on phones one row per page, art on the left).
-  No boxes, borders or arrows. Then the **reply block**: the long-table
-  watercolour, "RSVP" in large olive script and a dark pill button. The date
-  and place appear only once, under the names in the hero.
-- **Countdown tile**: painted on the coral house above the RSVP door, in the
-  same azulejo style as the ALGARVE sign: "322 / DIAS", then *amanhã*,
-  *hoje!* and *casados* in script. It is decorative (`aria-hidden`); the text
-  version sits in the reply block, visible only below 861 px, where the street
-  starts scrolled away from the coral house.
+- **Home below the village**: an **orange strip** (`.strip`, roof-tile
+  `#c4521f`, white text 4.6 : 1) right under the painting with the six pages:
+  a small line icon above a plain Inter label, 6 across on desktop, 3 × 2 on
+  phones. Then a one-line hint that the village is clickable. No RSVP block
+  and no countdown on the home page; RSVP lives in the menu and the coral door.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred
   above or below the text.
-- **Street footer** (every inner page and Guests): "Previous door" and "Next
-  door" in small caps with the neighbouring pages' script titles in their own
-  inks (order = the menu, from *the village* round to *RSVP* and back), then a
-  band of the village painting (day, night and lit windows, faded top and
-  bottom) that links home – "Back to the village" – and the names/date line.
-  The walk order lives in `WALK` in `tools/make_pages.py`.
+- **Footer** (every inner page and Guests): one hairline, then a single row:
+  "‹ Previous page" (Inter, muted), a small **flat colour drawing of the
+  three houses** in the middle that leads home (`tools/village_mini.py`:
+  white walls, coloured corners, barra and cornice, terracotta roofs with
+  scalloped tile ends, chimney caps, the orange tree, lamp and bougainvillea), "Next page ›". Under it the
+  names/date line in 12 px. Order = the menu, from Home round to RSVP and
+  back (`WALK` in `tools/make_pages.py`).
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
   tiles, list items), 12 px (stats, placeholders), 999 px (pills, chips),
   3 px (polaroids).
@@ -139,10 +133,13 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Index entries** (home, `.index`): watercolour + script title + small caps,
-  all in the page's `--topic`; on hover or focus the watercolour lifts and
-  tilts 4°.
-- **Reply block** (home, `.reply`): the single call to action on the page.
+- **Icons** (`tools/icons.py`): small two-tone pictograms from the wedding's
+  world – clinking glasses, a little Algarve house, a plane, the sun, a
+  sardine, the globe with a heart; on Stay a pool, a cocktail with an orange
+  slice, a lotus, a slide, a sheep. 24 × 24, stroke 1.6–1.5 in
+  `currentColor`; shapes with `.f` get a soft tint (`--tint`), `.s` are solid.
+- **Facilities** (Stay, `ul.facilities`): eight line icons in the section's ink
+  with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
 - **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic
@@ -152,12 +149,11 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   curving away like a ring; the centre one faces you; full-screen viewer.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on
   Marek's *Azulejo Complete* basemap, overview inset, full-screen mode.
-- **Dish cards**: photo 4:3, Lora name in rust, Cormorant SC subtitle, credit.
-- **Notes** (`p.note`, things still to come): an off-white paper slip
-  (polaroid paper, same in both themes), tilted -1.2°, a strip of tape in the
-  section's colour, one or two sentences in script in a darkened ink. The
-  home Story section shows a note instead of an empty frame while
-  `data-storymap` is empty.
+- **Dishes to try**: a plain two-column list – the name in the section's ink,
+  what it is in muted italic below, hairlines between rows. No photos.
+- **Content still to come** (`p.tbc`): one quiet line in muted italic, no
+  box ("Details of the day to follow."). The home Story section is hidden
+  until `data-storymap` has a link.
 - **Travel map** (`.map-art`, `tools/make_iberia.py`): a piece torn out of an
   old paper map, tilted 1.2°. The invitation's watercolour Portugal, western
   Spain as pale sand with a pencilled coast, the Atlantic with cartographic
@@ -178,7 +174,7 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   its own.
 - Entering a page from the village: the hero zooms 3.2× towards the clicked
   door and fades to paper.
-- The way back is the mirror: "Back to the village" in a page's footer fades
+- The way back is the mirror: the little village in a page's footer fades
   the page to paper, and the home page opens 2.4× close up on the street and
   zooms out to the whole village (`returning` → `zooming-out` on `<html>`;
   flag in `sessionStorage`, set in `site.js`, read in the home page's head).

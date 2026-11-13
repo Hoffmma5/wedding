@@ -21,6 +21,8 @@ BLUE, RUST, BROWN, OLIVE, WINE, CORAL = "#1f4fa0", "#b5432a", "#8b5523", "#7b815
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
 
+import icons   # tools/icons.py
+
 PAGES = {}
 
 PAGES["travel"] = ("Travel", BLUE, f"""
@@ -124,6 +126,8 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
       </div>
     </section>""")
 
+FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
+
 PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <header class="inv-head">
       <h1 class="script">the Hotel</h1>
@@ -155,14 +159,10 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
         <p class="sc">Something for everyone</p>
         <h2 class="script">at the Quinta</h2>
       </header>
-      <div class="prose">
-        <p>The Quinta is a little world of its own, up in the hills with a view all the way to the sea. Between the celebrations there&rsquo;s plenty to keep everyone happy.</p>
-      </div>
-      <ul class="highlights duo">
-        <li><b>For the little ones</b>A playground, the animal farm (say hello to the donkey and the peacocks) and the pool for endless splashing.</li>
-        <li><b>For the grown-ups</b>The pool and the pool bar, a little spa with a sauna, a gym with a view &ndash; and plenty of shady corners for doing absolutely nothing.</li>
+      <ul class="facilities">
+{FACILITIES_HTML}
       </ul>
-      <p class="contact">Curious for more? <a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">Have a peek at the hotel&rsquo;s website &nearr;</a></p>
+      <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
     </section>
 
     <section class="inv-section" style="--topic:#7a3b3b">
@@ -189,7 +189,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <section class="inv-section">
       <header class="inv-head">
         <p class="sc">Hotel Rural Quinta do Marco</p>
-        <h2 class="script">find us</h2>
+        <h2 class="script">on the map</h2>
       </header>
       <div class="prose">
         <dl class="facts-list">
@@ -208,7 +208,8 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     </section>""")
 
 
-# Dishes to try (Tavira page). Photos: Wikimedia Commons, credits in assets/dishes/credits.json
+# Dishes to try (Algarve page): name and what it is. The photos and their
+# credits are still in assets/dishes/ if they are ever wanted back.
 DISHES = [
     ("pastel-de-nata", "Pastel de nata", "custard tart",
      "Crisp, flaky pastry with a warm, wobbly custard inside. Best straight from the oven with a dusting of cinnamon &ndash; and never just one."),
@@ -236,23 +237,8 @@ DISHES = [
 
 
 def dishes_html():
-    import json, html
-    credits = json.load(open("assets/dishes/credits.json", encoding="utf-8"))
-    rows = []
-    for slug, name, sub, text in DISHES:
-        c = credits.get(slug, {})
-        lic = html.escape(c.get("license", ""))
-        lic = f'<a href="{html.escape(c["license_url"])}" target="_blank" rel="noopener">{lic}</a>' if c.get("license_url") else lic
-        credit = f'Photo: <a href="{html.escape(c.get("page", ""))}" target="_blank" rel="noopener">{html.escape(c.get("artist", "Wikimedia Commons"))}</a>, {lic}'
-        rows.append(f"""        <li class="dish">
-          <img src="assets/dishes/{slug}.webp" alt="{name.split(' &amp;')[0]}" width="720" height="540" loading="lazy">
-          <div>
-            <h3>{name}</h3>
-            <p class="dish-sub">{sub}</p>
-            <p>{text}</p>
-            <p class="dish-credit">{credit}</p>
-          </div>
-        </li>""")
+    # Just the name and what it is; the longer notes stay in DISHES for later
+    rows = [f'        <li><b>{name}</b><span>{sub}</span></li>' for slug, name, sub, text in DISHES]
     return "\n".join(rows)
 
 
@@ -301,8 +287,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       <aside class="road-trip">
         <p class="sc">Got a few extra days?</p>
         <h3>Drive the west coast</h3>
-        <p>If you&rsquo;re making a holiday of it &ndash; with a rental car or a van &ndash; the Atlantic coast from Lagos up to Sines is absolutely beautiful: fishermen&rsquo;s villages, the freshest fish straight from the sea, huge cliffs and dramatic beaches along the <em>Rota Vicentina</em>. Our favourites: Praia do Castelejo, Bordeira, Amado, Amoreira, Carriagem and Odeceixe.</p>
-        <p>It&rsquo;s windy and the ocean is <em>really</em> cold, but it&rsquo;s a surfing and windsurfing paradise &ndash; maybe it&rsquo;s time to give it a try? And if you&rsquo;re flying via Lisbon, take the coastal road: even just driving through it is amazing.</p>
+        <p>From Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
       </aside>
     </section>
 
@@ -330,7 +315,6 @@ PAGES["program"] = ("Program", WINE, f"""
           <li>Transfer from Faro airport</li>
           <li>Check in at Hotel Quinta do Marco from 14:00</li>
         </ul>
-        <p class="note">The welcome party is still being planned &ndash; time and place coming soon.</p>
       </div>
       <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
     </article>
@@ -339,7 +323,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <div class="prose">
         <h2 class="script">the Wedding Day</h2>
         <p class="sc">Saturday &middot; 02.10.2027</p>
-        <p class="note">We&rsquo;re still writing the plan for the day. Check back soon!</p>
+        <p class="tbc">Details of the day to follow.</p>
       </div>
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
@@ -363,7 +347,7 @@ PAGES["rsvp"] = ("RSVP", OLIVE, """
     </header>
     <div class="prose">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
-      <p class="note">The reply form is on its way &ndash; it will appear right here.</p>
+      <p class="tbc">Reply form to follow.</p>
     </div>""")
 
 HEAD = """<!doctype html>
@@ -375,7 +359,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=33">
+  <link rel="stylesheet" href="css/style.css?v=41">
   <script>
     (function () {{
       var saved = null;
@@ -414,41 +398,38 @@ def nav():
     return "\n".join(f'      <a href="{slug}.html">{label}</a>' for slug, label in NAV)
 
 
-# The walk through the site: each page's title and ink, in menu order.
-# The street footer links every page to the door before and after it.
+# The walk through the site, in menu order. The footer links every page to
+# the one before and after it, and the village outline leads home.
 WALK = [
-    ("index", "the village", "#4b4b31"),
-    ("program", "the Program", WINE),
-    ("accommodation", "the Stay", OLIVE),
-    ("travel", "Travel", BLUE),
-    ("weather", "the Weather", RUST),
-    ("location", "the Algarve", BLUE),
-    ("map", "the guests", BLUE),
-    ("rsvp", "RSVP", OLIVE),
+    ("index", "Home"),
+    ("program", "Program"),
+    ("accommodation", "Stay"),
+    ("travel", "Travel"),
+    ("weather", "Weather"),
+    ("location", "Algarve"),
+    ("map", "Guests"),
+    ("rsvp", "RSVP"),
 ]
+
+CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
+CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
+
+# The three houses as a small flat drawing (tools/village_mini.py)
+from village_mini import village_svg
+VILLAGE_MINI = village_svg()
 
 
 def street(slug):
     i = [w[0] for w in WALK].index(slug)
-    prev, nxt = WALK[i - 1], WALK[(i + 1) % len(WALK)]
-
-    def door(cls, label, w):
-        return (f'<a class="{cls}" href="{w[0]}.html" style="--topic:{w[2]}">'
-                f'<span class="sc">{label}</span><span class="script">{w[1]}</span></a>')
-
+    (p_slug, p_name), (n_slug, n_name) = WALK[i - 1], WALK[(i + 1) % len(WALK)]
     return f"""  <footer class="street">
     <nav class="pager" aria-label="Previous and next page">
-      {door("prev", "Previous door", prev)}
-      {door("next", "Next door", nxt)}
+      <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
+      <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
+      {VILLAGE_MINI}
+      </a>
+      <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>
-    <a class="street-view" href="index.html">
-      <span class="street-band" aria-hidden="true">
-        <img class="day" src="assets/village-day.webp" alt="" width="1926" height="817" loading="lazy">
-        <img class="night" src="assets/village-night.webp" alt="" width="1926" height="817" loading="lazy">
-        <img class="lit" src="assets/lights-windows.png?v=2" alt="" width="1926" height="817" loading="lazy">
-      </span>
-      <span class="sc">Back to the village</span>
-    </a>
     <p class="foot">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027 &middot; Algarve</p>
   </footer>
 """

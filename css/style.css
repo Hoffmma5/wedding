@@ -262,7 +262,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .layer.lit { z-index: 3; opacity: var(--night); transition: opacity .8s ease; }
 :root[data-theme="night"] .layer.lit { transition-delay: .6s; }
 
-.spot, .door, .tree, .glow, .count-tile {
+.spot, .door, .tree, .glow {
   position: absolute;
   left: calc(var(--x) / 1926 * 100%);
   top: calc((var(--y) + 360) / 1177 * 100%);
@@ -450,35 +450,6 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 :root[data-theme="night"] .tile-face { filter: brightness(.72) saturate(.85); }
 .tile-sign:is(:hover, :focus-visible, .open) .tile-face { transform: translateY(calc(var(--u) * -3)); filter: none; }
 
-/* Countdown tile above the RSVP door: same azulejo, a painted number */
-.count-tile { z-index: 5; }
-.count-tile .tile-face {
-  flex-direction: column;
-  gap: 0;
-  padding: 0 calc(var(--u) * 6);
-  letter-spacing: 0;
-  text-transform: none;
-}
-.count-num {
-  font-family: var(--display);
-  font-size: calc(var(--u) * 42);
-  font-weight: 600;
-  line-height: .95;
-}
-.count-word {
-  font-family: var(--sans);
-  font-size: max(6px, calc(var(--u) * 12));
-  font-weight: 600;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  margin: calc(var(--u) * 6) -.18em 0 0;   /* clear the old-style 3's tail; cancel trailing tracking */
-}
-.count-tile.one-line .count-num { font-family: var(--script); font-weight: 400; font-size: calc(var(--u) * 26); line-height: 1.6; }
-/* Wide screens see the tile; the text line in the reply block is for the
-   narrow ones, where the street starts scrolled away from the coral house */
-@media (min-width: 861px) {
-  .reply-count { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-}
 
 /* ---------- Doors ---------- */
 
@@ -610,7 +581,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-band img { transform: scale(.94); transition: transform .5s var(--ease); }
+body.leaving .street-view .village { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(2.4); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -620,69 +591,40 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 
 /* ---------- Details ---------- */
 
-.details {
+/* The pages, on an orange strip right under the village: it closes the
+   picture off and is the plain way into the site. Roof-tile orange that
+   keeps white text at 4.6 : 1. */
+.strip {
+  --strip: #c4521f;
+  position: relative;
+  z-index: 3;
+  background: var(--strip);
+  color: #fff;
+}
+.strip ul {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   max-width: 1080px;
   margin: 0 auto;
-  padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 32px) clamp(48px, 7vw, 88px);
-}
-.details .hint { margin: 0 0 clamp(32px, 5vw, 56px); text-align: center; font-size: var(--fs-m); font-style: italic; color: var(--muted); }
-
-/* The invitation's contents: each page in its own ink, with its watercolour */
-.index {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(36px, 5vw, 64px) clamp(16px, 3vw, 40px);
-  margin: 0;
-  padding: 0;
+  padding: 14px clamp(8px, 3vw, 32px);
   list-style: none;
 }
-.index a {
-  display: grid;
-  grid-template-rows: auto auto auto;
-  justify-items: center;
-  height: 100%;
-  padding: 8px 8px 12px;
-  border-radius: 14px;
-  text-align: center;
-  text-decoration: none;
-}
-.index img {
-  align-self: end;
-  width: auto;
-  height: clamp(80px, 10vw, 124px);
-  max-width: 100%;
-  margin-bottom: 8px;
-  object-fit: contain;
-  transition: transform .45s var(--ease);
-}
-.index .script { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.3; }
-.index .script + .sc { margin-top: .5em; }
-.index a:is(:hover, :focus-visible) img { transform: translateY(-5px) rotate(-4deg); }
-.index a:focus-visible, .reply:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
-
-/* RSVP: the one thing to do, set like the reply card of an invitation */
-.reply {
+.strip a {
   display: grid;
   justify-items: center;
-  max-width: 720px;
-  margin: clamp(56px, 8vw, 104px) auto 0;
-  border-radius: 14px;
-  text-align: center;
-  text-decoration: none;
-}
-.reply img { width: 100%; height: auto; margin-bottom: clamp(16px, 3vw, 28px); }
-.reply .script { font-size: clamp(60px, 9vw, 96px); line-height: 1.15; margin: -.05em 0 .3em; }
-.reply-btn {
-  margin-top: 6px;
-  padding: 11px 22px;
-  border-radius: 999px;
-  background: var(--text);
-  color: var(--bg);
+  gap: 8px;
+  padding: 14px 6px 12px;
+  border-radius: 10px;
   font: 500 var(--fs-base) var(--sans);
-  transition: opacity .2s;
+  letter-spacing: .01em;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color .2s;
 }
-.reply:hover .reply-btn { opacity: .85; }
-.reply-count { margin-top: 14px; font-size: var(--fs-m); font-style: italic; color: var(--muted); }
+.strip svg { --tint: rgba(255, 255, 255, .3); width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.strip a:hover { background: rgba(0, 0, 0, .1); }
+.strip a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+.hint { margin: 18px auto clamp(40px, 6vw, 72px); padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
 
 /* ---------- Our story ---------- */
 
@@ -707,18 +649,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   transform: translateY(calc((1 - var(--p)) * 32px));
 }
 .story-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
-/* No StoryMap link yet: no empty frame, just a note */
-.story[data-storymap=""] .story-frame {
-  width: auto;
-  height: auto;
-  overflow: visible;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  transform: none;
-  text-align: center;
-}
-.story-note { rotate: 1deg; }
+/* No StoryMap link yet: the section stays hidden */
+.story[data-storymap=""] { display: none; }
 
 .foot { padding: 32px 16px 40px; text-align: center; font-size: var(--fs-s); color: var(--muted); border-top: 1px solid var(--line); }
 
@@ -749,20 +681,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
     transition: opacity .5s;
   }
   .swipe-hint.gone { opacity: 0; }
-  /* Phones: one line per page, watercolour on the left */
-  .index { grid-template-columns: 1fr; gap: 6px; max-width: 420px; margin: 0 auto; }
-  .index a {
-    grid-template-columns: 84px 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 16px;
-    justify-items: start;
-    align-items: center;
-    padding: 10px 4px;
-    text-align: left;
-  }
-  .index img { grid-row: 1 / 3; justify-self: center; align-self: center; height: auto; max-height: 64px; max-width: 84px; margin: 0; }
-  .index .script { align-self: end; font-size: 32px; line-height: 1.25; }
-  .index .script + .sc { align-self: start; margin-top: .5em; }
+  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px; }
+  .strip a { padding: 12px 4px; font-size: var(--fs-m); }
   .story-frame { height: 78svh; }
 }
 
@@ -776,36 +696,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 .page { max-width: 720px; margin: 0 auto; padding: 108px 20px 96px; }
 .page ul:not([class]) { padding-left: 1.2em; }   /* plain lists only: grids like .highlights set their own padding */
 .page li { margin: .3em 0; }
-/* Things still to come: a handwritten note taped onto the page.
-   Paper and ink stay light-on-dark-ink in both themes, like the polaroids. */
-.note {
-  position: relative;
-  display: inline-block;
-  max-width: min(100%, 460px);
-  margin: 14px 0 1.2em;
-  padding: 22px 26px 16px;
-  background: #fffdf8;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(30, 25, 20, .1), 0 10px 24px rgba(30, 25, 20, .12);
-  color: color-mix(in srgb, var(--topic, #4b4b31) 78%, #171a21);
-  font-family: var(--script);
-  font-size: 22px;
-  line-height: 1.6;
-  rotate: -1.2deg;
-}
-.note::before {                      /* a strip of tape in the section's colour */
-  content: "";
-  position: absolute;
-  top: -11px;
-  left: 50%;
-  width: 92px;
-  height: 22px;
-  translate: -50% 0;
-  rotate: 3deg;
-  background: color-mix(in srgb, var(--topic, #4b4b31) 28%, rgba(255, 253, 248, .55));
-  box-shadow: 0 1px 2px rgba(30, 25, 20, .08);
-}
-:root[data-theme="night"] .note { background: #f1ece0; box-shadow: 0 12px 30px rgba(0, 0, 0, .45); }
+/* Content still to come: one quiet line, no box */
+.tbc { margin: 0 0 1em; font-style: italic; color: var(--muted); }
 
 .map-page main { display: flex; flex-direction: column; min-height: 100svh; padding-top: 60px; }
 .map-head { padding: 24px 20px 14px; text-align: center; }
@@ -1314,8 +1206,21 @@ html, body { overflow-x: clip; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
 @media (max-width: 760px) { .places-map { height: 380px; } }
-.highlights.duo { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.highlights.duo li { font-size: var(--fs-m); }
+/* Stay: what the Quinta has, as a row of line icons */
+.facilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 16px;
+  margin: 4px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+.facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 500 var(--fs-s) var(--sans); color: var(--muted); }
+.facilities svg { --tint: color-mix(in srgb, var(--topic-c) 22%, transparent); width: 34px; height: 34px; fill: none; color: var(--ink); stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+/* two-tone icons (tools/icons.py): .f gets a soft tint, .s is solid */
+:is(.strip, .facilities) svg .f { fill: var(--tint); }
+:is(.strip, .facilities) svg .s { fill: currentColor; stroke: none; }
+@media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 13px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */
 .places-map-wrap { position: relative; }
@@ -1336,36 +1241,24 @@ html, body { overflow-x: clip; }
 .map-credit { margin: 8px 0 0; font-size: var(--fs-xs); color: var(--muted); }
 @media (max-width: 760px) { .places-overview { width: 84px; height: 106px; border-width: 2px; } }
 
-/* Tavira page: west-coast road trip note */
-.road-trip {
-  margin-top: 28px;
-  padding: 22px 24px;
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--topic-c) 7%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--topic-c) 22%, transparent);
-  font-family: var(--serif);
-  font-size: var(--fs-base);
-  line-height: 1.7;
-}
-.road-trip h3 { margin: 2px 0 8px; font-size: var(--fs-xl); font-weight: 600; color: var(--ink); }
-.road-trip p { margin: 0 0 .7em; }
-.road-trip p:last-child { margin-bottom: 0; }
+/* Algarve page: west-coast road trip, a short plain note */
+.road-trip { max-width: 640px; margin-top: 32px; }
+.road-trip h3 { margin: 2px 0 6px; font-size: var(--fs-l); font-weight: 600; color: var(--ink); }
+.road-trip p:last-child { margin: 0; }
 
-/* Dishes to try */
-.dishes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.dish {
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: var(--surface);
+/* Dishes to try: a plain two-column list, name and what it is */
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 5vw, 56px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.dish img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
-.dish > div { padding: 14px 16px 16px; }
-.dish h3 { margin: 0; font-size: var(--fs-l); font-weight: 600; color: var(--ink); }
-.dish-sub { margin: 0 0 6px; font-family: var(--sc); font-weight: 700; font-size: var(--fs-m); letter-spacing: .08em; color: var(--muted); }
-.dish p { margin: 0 0 8px; font-size: var(--fs-m); line-height: 1.55; }
-.dish .dish-credit { margin: 8px 0 0; font-size: var(--fs-xs); color: var(--muted); }
-.dish .dish-credit a { color: inherit; }
+.dishes li { display: grid; gap: 2px; padding: 12px 0; border-top: 1px solid var(--line); }
+.dishes b { font-weight: 600; color: var(--ink); }
+.dishes span { font-size: var(--fs-m); font-style: italic; color: var(--muted); }
+@media (max-width: 560px) { .dishes { grid-template-columns: 1fr; } }
 
 /* =========================================================
    Favourites as one app: side list + map with rich popups
@@ -1507,59 +1400,44 @@ html.map-full, html.map-full body { overflow: hidden; }
 .places-overview .esri-attribution { display: none; }
 
 /* =========================================================
-   Street footer on inner pages: the next door, the previous door,
-   and the village to walk back to
+   Footer on inner pages: previous and next page, and a line drawing
+   of the village that leads home
    ========================================================= */
 
-.street { margin-top: clamp(16px, 3vw, 40px); }
-.pager {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px 32px;
+.street {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: clamp(20px, 3vw, 28px) 20px 0;
+  margin: clamp(16px, 3vw, 40px) auto 0;
+  padding: 0 20px;
+}
+.pager {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 16px;
+  padding-top: clamp(24px, 4vw, 36px);
   border-top: 1px solid var(--line);
 }
-.pager a { display: grid; justify-items: start; padding: 4px; border-radius: 12px; text-decoration: none; }
-.pager .next { justify-items: end; margin-left: auto; text-align: right; }
-.pager .sc { font-size: 13px; color: var(--muted); }
-.pager .script { font-size: clamp(26px, 2.6vw, 32px); line-height: 1.35; transition: transform .35s var(--ease); }
-.pager .prev:is(:hover, :focus-visible) .script { transform: translateX(-4px); }
-.pager .next:is(:hover, :focus-visible) .script { transform: translateX(4px); }
-.pager a:focus-visible, .street-view:focus-visible { outline: 2px solid var(--ink, var(--accent)); outline-offset: 4px; }
-
-.street-view { display: block; margin-top: clamp(8px, 2vw, 24px); text-align: center; text-decoration: none; }
-.street-band {
-  position: relative;
-  display: block;
-  container-type: inline-size;
-  /* picture pixels 250 to ~530: just under the eaves, the whole windows and
-     the top of the orange tree, with the doors fading out below */
-  height: clamp(120px, 14.5vw, 260px);
-  overflow: hidden;
-  -webkit-mask: linear-gradient(transparent, #000 10%, #000 72%, transparent);
-  mask: linear-gradient(transparent, #000 10%, #000 72%, transparent);
+.pager a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.pager :is(.prev, .next) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 2px;
+  font: 500 var(--fs-s) var(--sans);
 }
-.street-band img {
-  position: absolute;
-  left: 0;
-  top: calc(-250 / 1926 * 100cqw);
-  width: 100%;
-  height: auto;
-  max-width: none;
-}
-/* Phones: the strip is too narrow for a close-up, so show the whole street */
-@media (max-width: 560px) {
-  .street-band { -webkit-mask: linear-gradient(transparent, #000 18%, #000 84%, transparent); mask: linear-gradient(transparent, #000 18%, #000 84%, transparent); }
-  .street-band img { top: 0; height: 100%; object-fit: cover; object-position: 50% 66%; }
-}
-.street-band :is(.night, .lit) { opacity: var(--night); transition: opacity var(--fade); }
-.street-view .sc { display: inline-block; margin-top: 4px; font-size: 14px; text-decoration: underline transparent; text-underline-offset: 4px; transition: text-decoration-color .2s; }
-.street-view:hover .sc { text-decoration-color: currentColor; }
-.street .foot { margin: 0; padding-top: 12px; border-top: 0; font-family: var(--serif); }
-.map-page .street .pager { border-top: 0; }
+.pager .next { justify-self: end; }
+.pager .prev { justify-self: start; }
+.pager :is(.prev, .next) svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pager a:hover { color: var(--text); }
+.pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+.street-view { display: block; padding: 2px 4px; }
+.village { display: block; width: clamp(200px, 24vw, 290px); height: auto; transition: transform .35s var(--ease), filter var(--fade); }
+.street-view:hover .village { transform: translateY(-2px); }
+:root[data-theme="night"] .village { filter: brightness(.78) saturate(.85); }
+.street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
+.map-page .street { max-width: none; }
 
 @media (max-width: 560px) {
-  .pager .script { font-size: 24px; }
+  .pager { gap: 8px; }
+  .village { width: 150px; }
 }
