@@ -1373,3 +1373,5 @@ html.map-full, html.map-full body { overflow: hidden; }
   .places-app.is-full .places-map-wrap { height: auto; }
   .places-app.is-full .places-list { max-height: 34vh; }
 }
+/* SDK 5.x adds an attribution line to every view; the main map shows it, the tiny inset doesn't need its own */
+.places-overview .esri-attribution { display: none; }

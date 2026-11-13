@@ -115,7 +115,8 @@
     WM.load([
       'esri/Map', 'esri/Basemap', 'esri/views/MapView', 'esri/layers/GeoJSONLayer',
       'esri/layers/WebTileLayer', 'esri/layers/VectorTileLayer', 'esri/Graphic', 'esri/core/reactiveUtils'
-    ]).then(function (m) { build.apply(null, m); }).catch(function () {
+    ]).then(function (m) { build.apply(null, m); }).catch(function (err) {
+      console.error('[wedding map]', err);
       mapEl.classList.add('failed');
       mapEl.textContent = 'The map could not load right now – the list has everything.';
     });
@@ -164,7 +165,7 @@
         actions: [],
         visibleElements: { collapseButton: false, featureNavigation: false, actionBar: false }
       },
-      ui: { components: ['zoom', 'attribution'] }
+      ui: { components: ['zoom'] }                     // SDK 5.x adds the attribution line by itself
     });
     WM.tameScrolling(view, mapEl);                          // don't hijack page scrolling
 

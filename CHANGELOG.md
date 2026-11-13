@@ -3,6 +3,13 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## 2026-11-13 (night)
+
+### Fixed
+- **Both maps showed "could not load" on SDK 5.2:** `ui: { components: ['zoom', 'attribution'] }` is no longer valid in 5.x – `'attribution'` isn't a UI component any more (the SDK adds the attribution line by itself) and passing it crashed the MapView. Now `['zoom']`.
+- Map errors are no longer swallowed: if a map fails, the real error is logged to the browser console (`[wedding map] …`) before the friendly fallback text appears.
+- The minimap no longer shows its own "Powered by Esri" line (the main map shows it).
+
 ## 2026-11-13 (evening)
 
 ### Fixed

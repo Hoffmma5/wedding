@@ -366,7 +366,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=21">
+  <link rel="stylesheet" href="css/style.css?v=22">
   <script>
     (function () {{
       var saved = null;
@@ -414,9 +414,9 @@ def main():
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=13"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=14"></script>\n</body>')
         if 'id="venue-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=2"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
