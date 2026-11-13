@@ -3,7 +3,7 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
-## Unreleased (simplify)
+## 2026-11-13 – simplified
 
 ### Changed
 - **The footer village looks like the village again:** instead of a thin outline, a small flat drawing of the three houses – white walls with blue, yellow and coral trims, terracotta tile roofs, chimneys with coloured caps, the orange tree, the lamp and the bougainvillea.
