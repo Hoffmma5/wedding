@@ -366,7 +366,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=26">
+  <link rel="stylesheet" href="css/style.css?v=27">
   <script>
     (function () {{
       var saved = null;
@@ -405,6 +405,46 @@ def nav():
     return "\n".join(f'      <a href="{slug}.html">{label}</a>' for slug, label in NAV)
 
 
+# The walk through the site: each page's title and ink, in menu order.
+# The street footer links every page to the door before and after it.
+WALK = [
+    ("index", "the village", "#4b4b31"),
+    ("program", "the Program", WINE),
+    ("accommodation", "the Hotel", OLIVE),
+    ("travel", "Travel", BLUE),
+    ("weather", "the Weather", RUST),
+    ("location", "the Algarve", BLUE),
+    ("map", "the guests", BLUE),
+    ("rsvp", "RSVP", OLIVE),
+]
+
+
+def street(slug):
+    i = [w[0] for w in WALK].index(slug)
+    prev, nxt = WALK[i - 1], WALK[(i + 1) % len(WALK)]
+
+    def door(cls, label, w):
+        return (f'<a class="{cls}" href="{w[0]}.html" style="--topic:{w[2]}">'
+                f'<span class="sc">{label}</span><span class="script">{w[1]}</span></a>')
+
+    return f"""  <footer class="street">
+    <nav class="pager" aria-label="Previous and next page">
+      {door("prev", "Previous door", prev)}
+      {door("next", "Next door", nxt)}
+    </nav>
+    <a class="street-view" href="index.html">
+      <span class="street-band" aria-hidden="true">
+        <img class="day" src="assets/village-day.webp" alt="" width="1926" height="817" loading="lazy">
+        <img class="night" src="assets/village-night.webp" alt="" width="1926" height="817" loading="lazy">
+        <img class="lit" src="assets/lights-windows.png" alt="" width="1926" height="817" loading="lazy">
+      </span>
+      <span class="sc">Back to the village</span>
+    </a>
+    <p class="foot">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027 &middot; Algarve</p>
+  </footer>
+"""
+
+
 def main():
     for slug, (title, topic, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav())
@@ -417,7 +457,7 @@ def main():
             foot = foot.replace('</body>', '  <script src="js/places-map.js?v=14"></script>\n</body>')
         if 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
-        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + foot
+        html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
@@ -435,7 +475,7 @@ def main():
       <iframe src="https://hoffmma5.github.io/wedding-map/" title="Map of where our wedding guests come from" loading="lazy" allow="fullscreen"></iframe>
     </div>
   </main>
-""" + FOOT
+""" + street("map") + FOOT
     open("map.html", "w", encoding="utf-8").write(html)
     print("pages written")
 

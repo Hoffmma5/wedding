@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased (redesign branch)
 
 ### Added
+- **The street continues:** every inner page (and the guest map) now ends with the previous and next door – the neighbouring pages' titles in their own colours – and a strip of the village painting that takes you back home, lit windows and all at night. No more dead ends after the last paragraph.
 - **Countdown tile in the village:** a second azulejo tile, painted above the RSVP door on the coral house, counts down in Portuguese – *322 dias*, then *amanhã*, *hoje!* (also in party mode) and finally *casados*. Hover shows the English. On phones, where the street opens away from the coral house, the countdown is also written under the RSVP button.
 
 ### Changed

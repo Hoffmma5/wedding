@@ -123,6 +123,12 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred
   above or below the text.
+- **Street footer** (every inner page and Guests): "Previous door" and "Next
+  door" in small caps with the neighbouring pages' script titles in their own
+  inks (order = the menu, from *the village* round to *RSVP* and back), then a
+  band of the village painting (day, night and lit windows, faded top and
+  bottom) that links home – "Back to the village" – and the names/date line.
+  The walk order lives in `WALK` in `tools/make_pages.py`.
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
   tiles, list items), 12 px (stats, placeholders), 999 px (pills, chips),
   3 px (polaroids).
