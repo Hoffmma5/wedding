@@ -5,6 +5,9 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
+### Fixed
+- **Lit windows at night look clean again:** only the glass panes glow now, measured pane by pane on the painting, so the white frames and crossbars stay crisp instead of being covered by ragged yellow and heavy brown bars. The brush strokes in the glass still show through the light.
+
 ### Added
 - **Handwritten notes for things still to come:** the grey "coming soon" boxes on Program and RSVP are now paper notes taped onto the page, written in script in the section's colour ("The welcome party is still being planned – time and place coming soon."). On the home page the empty story-map frame is replaced by a note too ("Our story map is still being drawn – Marek is on it."); the full frame comes back as soon as the StoryMap link is filled in.
 - **The street continues:** every inner page (and the guest map) now ends with the previous and next door – the neighbouring pages' titles in their own colours – and a strip of the village painting that takes you back home, lit windows and all at night. No more dead ends after the last paragraph.

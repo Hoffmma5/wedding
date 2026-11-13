@@ -436,7 +436,7 @@ def street(slug):
       <span class="street-band" aria-hidden="true">
         <img class="day" src="assets/village-day.webp" alt="" width="1926" height="817" loading="lazy">
         <img class="night" src="assets/village-night.webp" alt="" width="1926" height="817" loading="lazy">
-        <img class="lit" src="assets/lights-windows.png" alt="" width="1926" height="817" loading="lazy">
+        <img class="lit" src="assets/lights-windows.png?v=2" alt="" width="1926" height="817" loading="lazy">
       </span>
       <span class="sc">Back to the village</span>
     </a>
