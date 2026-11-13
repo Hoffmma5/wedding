@@ -5,6 +5,11 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
+### Changed
+- **One type system on every page:** Lora for everything you read, Cormorant SC small caps for every label (no more tracked-out Inter capitals), Beth Ellen for titles, Inter only for buttons, menus, chips and credits. Sizes come from one scale (`--fs-*` tokens). The home page now loads the invitation fonts too.
+- **Home:** the date line under the names is set in small caps; "Our story" became an invitation heading – *how we got here* in script with a small-caps line above it.
+- **Small caps under script titles** no longer run into the long descenders ("friday", "the Wedding Day").
+
 ### Fixed
 - **Readable inks:** small text in a section's colour (bold text, links, card titles, the selected map chip) now uses a slightly darker `--ink`, so olive and coral pass WCAG AA (were ~3.9 : 1). Script titles keep the full colour.
 - **Keyboard focus** is visible on the home-page cards (was only a soft shadow).

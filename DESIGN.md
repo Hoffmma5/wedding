@@ -21,8 +21,8 @@ The site speaks in two voices that share one paper colour.
 |---|---|---|
 | Hero | Full-width watercolour street (`village-day/night.webp`), every object a link | Script title in the topic colour + a small-caps line |
 | Display type | Cormorant Garamond 600, uppercase, wide tracking (taken from the logo) | Beth Ellen (handwritten script) |
-| Labels | Inter 500, 11–12 px, uppercase, `.16em` tracking | Cormorant SC 700, 16 px, `.1em` tracking |
-| Body | Inter 400, 16 px | Lora 400, 17 px, line-height 1.75 |
+| Labels | Cormorant SC 700, 16 px | Cormorant SC 700, 16 px |
+| Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.75 |
 | Imagery | One big scene, layered for day/night | One watercolour object per section (disco ball, shrimp, oysters, sardine on an azulejo, Iberia map with a pearl on Tavira, sun, crabs, long table, hotel landscape) |
 
 ## Colour
@@ -74,23 +74,28 @@ crescent moon. Saved in `localStorage` (`theme`), defaults to the OS setting.
 
 ## Typography
 
-Five families, loaded from Google Fonts (home loads only the first two).
+One job per family, same on every page (all pages load all five). Tokens
+live at the top of `style.css`.
 
-| Family | Weights | Role |
+| Token | Family | Role |
 |---|---|---|
-| Cormorant Garamond | 500, 600 | Brand name in the nav (17 px, `.12em`, uppercase), hero title |
-| Inter | 300–600 | UI: nav, buttons, chips, tooltips; all home-page body text; card text on inner pages |
-| Beth Ellen | 400 | Script titles: h1 44–76 px, h2 38–58 px, line-height 1.5, mostly lowercase ("the Program", "friday", "good to know") |
-| Cormorant SC | 700 | Small-caps labels: the line above or below a script title, `<dt>` in fact lists, dish subtitles |
-| Lora | 400, 600, italic | Inner-page prose, card titles in highlights, weather numbers |
+| `--serif` | Lora 400/600/italic | **Everything you read**: body (the `body` default), card text, facts, figures |
+| `--sc` | Cormorant SC 700 | **Every label**: the line above/below a title, `<dt>`, fact labels, place categories, the hero date line. Never tracked-out uppercase. |
+| `--script` | Beth Ellen | **Titles**: `.script` h1 48–76 px, h2 40–58 px, mostly lowercase ("the Program", "how we got here") |
+| `--sans` | Inter 400–600 | **Controls and fine print only**: nav, buttons, chips, tooltips, map UI, credits |
+| `--display` | Cormorant Garamond 500/600 | Brand name in the nav and the hero title (uppercase, wide tracking, from the logo) |
+
+Size scale (around 17 px body): `--fs-xs` 12 · `--fs-s` 14 · `--fs-m` 15 ·
+`--fs-base` 17 · `--fs-l` 20 · `--fs-xl` 24 · `--fs-xxl` 28; labels
+`--fs-label` 16 (Cormorant SC has a small x-height). Display sizes use
+`clamp()`.
 
 Hero: h1 `clamp(26px, 50u, 56px)`, `.14em` tracking; tagline "To this and every
-summer" 10–17 px, `.24em`; date line 11 px Inter caps. `u` is one pixel of the
-1926 px painting, so the title scales with the picture.
+summer" 10–17 px, `.24em`; date line in small caps 14–18 px. `u` is one pixel
+of the 1926 px painting, so the title scales with the picture.
 
-The small-caps line is pulled into the script title with negative margins
-(`-.15em` above, `-.55em` below) so the two overlap like hand lettering on the
-invitation.
+A label above a script title is tucked in close (`-.12em`); a label below it
+sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Layout and spacing
 
