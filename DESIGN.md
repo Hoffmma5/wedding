@@ -23,7 +23,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant Garamond 600, uppercase, wide tracking (taken from the logo) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 16 px | Cormorant SC 700, 16 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.75 |
-| Imagery | One big scene, layered for day/night | One watercolour object per section (disco ball, shrimp, oysters, sardine on an azulejo, Iberia map with a pearl on Tavira, sun, crabs, long table, hotel landscape) |
+| Imagery | One big scene, layered for day/night | One watercolour object per section (disco ball, shrimp, oysters, sardine on an azulejo, torn-out paper map of Portugal and western Spain with a pearl on Tavira, sun, crabs, long table, hotel landscape) |
 
 ## Colour
 
@@ -158,6 +158,12 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   section's colour, one or two sentences in script in a darkened ink. The
   home Story section shows a note instead of an empty frame while
   `data-storymap` is empty.
+- **Travel map** (`.map-art`, `tools/make_iberia.py`): a piece torn out of an
+  old paper map, tilted 1.2°. The invitation's watercolour Portugal, western
+  Spain as pale sand with a pencilled coast, the Atlantic with cartographic
+  water lines. Labels, Faro, the pearl on Tavira and a dotted flight path
+  landing at Faro are an SVG in the same 723 × 922 canvas. Like the polaroids
+  and notes it stays paper at night (only dimmed).
 - **Toast**: Lora italic message at the bottom of the screen.
 
 ## Motion

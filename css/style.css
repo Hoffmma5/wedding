@@ -887,13 +887,27 @@ h2.script { line-height: 1.45; }
 .wx b { display: block; margin: 4px 0 2px; font-size: var(--fs-xxl); font-weight: 400; }
 .wx span { font-size: var(--fs-s); color: var(--muted); line-height: 1.4; display: block; }
 
-/* Travel: Portugal (with Spain faintly behind it) and Tavira marked */
+/* Travel: a piece torn out of an old paper map (tools/make_iberia.py).
+   A paper object like the polaroids and notes: same paper by day and night,
+   labels in fixed map inks. The SVG shares the image's 723 x 922 canvas. */
 .map-grid { grid-template-columns: minmax(0, 1fr) minmax(240px, 400px); }
-.map-art { position: relative; max-width: 400px; margin-left: auto; }
-.map-art .pearl { position: absolute; width: 12.5%; left: 23%; top: 86.6%; }
-.map-art .place { position: absolute; left: 12.5%; top: 80.5%; font-family: "Beth Ellen", cursive; font-size: 20px; color: var(--topic-c); }
-
-:root[data-theme="night"] .map-art > img:first-child { opacity: .92; }
+.map-art {
+  position: relative;
+  max-width: 400px;
+  margin-left: auto;
+  rotate: 1.2deg;
+  filter: drop-shadow(0 1px 2px rgba(30, 25, 20, .12)) drop-shadow(0 12px 22px rgba(30, 25, 20, .16));
+}
+:root[data-theme="night"] .map-art { filter: brightness(.9) drop-shadow(0 14px 30px rgba(0, 0, 0, .5)); }
+.map-labels { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.map-labels .route { fill: none; stroke: #b5432a; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 12; opacity: .8; }
+.map-labels .plane { fill: #1f4fa0; }
+.map-labels .country { font-family: var(--sc); font-weight: 700; font-size: 30px; letter-spacing: .32em; fill: #12386e; opacity: .72; text-anchor: middle; }
+.map-labels .country.es { fill: #8a6a3e; opacity: .8; }
+.map-labels .sea { font-family: var(--serif); font-style: italic; font-size: 24px; letter-spacing: .12em; fill: #4f7686; text-anchor: middle; }
+.map-labels .town { fill: #23314f; stroke: #fdfaf2; stroke-width: 2; }
+.map-labels .town-name { font-family: var(--sc); font-weight: 700; font-size: 24px; letter-spacing: .06em; fill: #23314f; text-anchor: end; }
+.map-labels .tavira { font-family: var(--script); font-size: 46px; fill: #1f4fa0; }
 
 /* Location: the cover's sardine on its azulejo tile */
 .tile-art { position: relative; max-width: 320px; margin-left: auto; }
@@ -1083,7 +1097,7 @@ html, body { overflow-x: clip; }
 .party .glow::before { opacity: calc(.4 + .6 * var(--night)); }
 @media (max-width: 760px) {
   .map-grid { grid-template-columns: 1fr; }
-  .map-art { max-width: 300px; margin: 0 auto; }
+  .map-art { max-width: 330px; margin: 8px auto 0; }
 }
 
 /* Location: keep the tile + sardine clear of the map */

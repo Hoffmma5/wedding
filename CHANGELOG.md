@@ -5,6 +5,9 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
+### Changed
+- **New Travel map:** a piece torn out of an old paper map instead of Portugal on a faded wash. The invitation's watercolour Portugal sits next to western Spain (pale land with a real coastline from Galicia to Cádiz), the Atlantic has cartographic water lines, and crisp labels name Portugal, España, the ocean and Faro. A dotted flight path lands at Faro and the pearl marks Tavira. It looks the same at night instead of turning smoky, and nothing is cut off.
+
 ### Added
 - **Walking back zooms out:** clicking the village strip at the bottom of a page fades the page to paper, and the home page opens close up on the street and zooms out to the whole village – the mirror of walking in through a door. Skipped when the visitor prefers reduced motion.
 
