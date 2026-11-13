@@ -5,6 +5,9 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ## Unreleased (redesign branch)
 
+### Added
+- **Walking back zooms out:** clicking the village strip at the bottom of a page fades the page to paper, and the home page opens close up on the street and zooms out to the whole village – the mirror of walking in through a door. Skipped when the visitor prefers reduced motion.
+
 ### Changed
 - **Footer village strip** is framed higher: it starts just under the eaves, so the windows, the top of the orange tree and the bougainvillea are whole, and the doors fade out below. Phones still show the whole street.
 - **Street footer is quieter:** smaller previous/next door titles (26–32 px instead of 36–52 px), smaller grey labels, a lower village strip; on phones both doors fit on one line.

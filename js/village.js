@@ -8,6 +8,19 @@
   var spots = Array.prototype.slice.call(document.querySelectorAll('.go'));
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Back from a footer: zoom out from the street to the whole village ---------- */
+
+  var html = document.documentElement;
+  if (html.classList.contains('returning')) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        html.classList.add('zooming-out');
+        html.classList.remove('returning');
+        setTimeout(function () { html.classList.remove('zooming-out'); }, 1300);
+      });
+    });
+  }
+
   /* ---------- Hotspots: hover/tap shows the label, click walks in ---------- */
 
   var lastPointer = 'mouse';

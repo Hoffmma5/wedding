@@ -607,6 +607,17 @@ body::after {
 }
 body.entering::after { opacity: 1; }
 
+/* Walking back from a page's footer: the street steps back and the page
+   fades to paper... */
+body.leaving::after { opacity: 1; transition: opacity .4s ease; }
+body.leaving .street-band img { transform: scale(.94); transition: transform .5s var(--ease); }
+/* ...and the village opens close up on the street, then zooms out */
+html.returning .hero { transform: scale(2.4); transition: none; }
+html.returning .hero-text { opacity: 0; }
+html.returning body::after { opacity: 1; transition: none; }
+html.zooming-out body::after { transition: opacity .55s ease; }
+html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
+
 /* ---------- Details ---------- */
 
 .details {

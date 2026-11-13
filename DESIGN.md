@@ -172,6 +172,10 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   its own.
 - Entering a page from the village: the hero zooms 3.2× towards the clicked
   door and fades to paper.
+- The way back is the mirror: "Back to the village" in a page's footer fades
+  the page to paper, and the home page opens 2.4× close up on the street and
+  zooms out to the whole village (`returning` → `zooming-out` on `<html>`;
+  flag in `sessionStorage`, set in `site.js`, read in the home page's head).
 - Story section unfolds with scroll (`--p`: width, radius and offset).
 - Easter eggs: disco ball (music and lights), crabs walk off sideways, the
   sardine swims away, a school of sardines, wedding-weekend party mode with
