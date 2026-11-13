@@ -144,11 +144,9 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on
   Marek's *Azulejo Complete* basemap, overview inset, full-screen mode.
 - **Dish cards**: photo 4:3, Lora name in rust, Cormorant SC subtitle, credit.
-- **Notes** (`p.note`, things still to come): an off-white paper slip
-  (polaroid paper, same in both themes), tilted -1.2°, a strip of tape in the
-  section's colour, one or two sentences in script in a darkened ink. The
-  home Story section shows a note instead of an empty frame while
-  `data-storymap` is empty.
+- **Content still to come** (`p.tbc`): one quiet line in muted italic, no
+  box ("Details of the day to follow."). The home Story section is hidden
+  until `data-storymap` has a link.
 - **Travel map** (`.map-art`, `tools/make_iberia.py`): a piece torn out of an
   old paper map, tilted 1.2°. The invitation's watercolour Portugal, western
   Spain as pale sand with a pencilled coast, the Atlantic with cartographic

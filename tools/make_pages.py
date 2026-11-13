@@ -330,7 +330,6 @@ PAGES["program"] = ("Program", WINE, f"""
           <li>Transfer from Faro airport</li>
           <li>Check in at Hotel Quinta do Marco from 14:00</li>
         </ul>
-        <p class="note">The welcome party is still being planned &ndash; time and place coming soon.</p>
       </div>
       <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
     </article>
@@ -339,7 +338,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <div class="prose">
         <h2 class="script">the Wedding Day</h2>
         <p class="sc">Saturday &middot; 02.10.2027</p>
-        <p class="note">We&rsquo;re still writing the plan for the day. Check back soon!</p>
+        <p class="tbc">Details of the day to follow.</p>
       </div>
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
@@ -363,7 +362,7 @@ PAGES["rsvp"] = ("RSVP", OLIVE, """
     </header>
     <div class="prose">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
-      <p class="note">The reply form is on its way &ndash; it will appear right here.</p>
+      <p class="tbc">Reply form to follow.</p>
     </div>""")
 
 HEAD = """<!doctype html>
@@ -375,7 +374,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=34">
+  <link rel="stylesheet" href="css/style.css?v=35">
   <script>
     (function () {{
       var saved = null;
