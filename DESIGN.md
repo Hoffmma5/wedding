@@ -133,6 +133,8 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 - **Line icons**: 24 × 24, stroke 1.5, round caps and joins, no fill,
   `currentColor`. Used for the home strip and the Stay facilities.
+- **Facilities** (Stay, `ul.facilities`): eight line icons in the section's ink
+  with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
 - **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic

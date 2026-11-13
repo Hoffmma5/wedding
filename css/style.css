@@ -1206,8 +1206,18 @@ html, body { overflow-x: clip; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
 @media (max-width: 760px) { .places-map { height: 380px; } }
-.highlights.duo { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.highlights.duo li { font-size: var(--fs-m); }
+/* Stay: what the Quinta has, as a row of line icons */
+.facilities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 16px;
+  margin: 4px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+.facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 500 var(--fs-s) var(--sans); color: var(--muted); }
+.facilities svg { width: 30px; height: 30px; fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 13px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */
 .places-map-wrap { position: relative; }
