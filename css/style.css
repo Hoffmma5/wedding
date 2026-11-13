@@ -581,7 +581,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-band img { transform: scale(.94); transition: transform .5s var(--ease); }
+body.leaving .street-view .outline { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(2.4); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1399,59 +1399,55 @@ html.map-full, html.map-full body { overflow: hidden; }
 .places-overview .esri-attribution { display: none; }
 
 /* =========================================================
-   Street footer on inner pages: the next door, the previous door,
-   and the village to walk back to
+   Footer on inner pages: previous and next page, and a line drawing
+   of the village that leads home
    ========================================================= */
 
-.street { margin-top: clamp(16px, 3vw, 40px); }
-.pager {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px 32px;
+.street {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: clamp(20px, 3vw, 28px) 20px 0;
+  margin: clamp(16px, 3vw, 40px) auto 0;
+  padding: 0 20px;
+}
+.pager {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 16px;
+  padding-top: clamp(24px, 4vw, 36px);
   border-top: 1px solid var(--line);
 }
-.pager a { display: grid; justify-items: start; padding: 4px; border-radius: 12px; text-decoration: none; }
-.pager .next { justify-items: end; margin-left: auto; text-align: right; }
-.pager .sc { font-size: 13px; color: var(--muted); }
-.pager .script { font-size: clamp(26px, 2.6vw, 32px); line-height: 1.35; transition: transform .35s var(--ease); }
-.pager .prev:is(:hover, :focus-visible) .script { transform: translateX(-4px); }
-.pager .next:is(:hover, :focus-visible) .script { transform: translateX(4px); }
-.pager a:focus-visible, .street-view:focus-visible { outline: 2px solid var(--ink, var(--accent)); outline-offset: 4px; }
-
-.street-view { display: block; margin-top: clamp(8px, 2vw, 24px); text-align: center; text-decoration: none; }
-.street-band {
-  position: relative;
+.pager a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.pager :is(.prev, .next) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 2px;
+  font: 500 var(--fs-s) var(--sans);
+}
+.pager .next { justify-self: end; }
+.pager .prev { justify-self: start; }
+.pager :is(.prev, .next) svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pager a:hover { color: var(--text); }
+.pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+.street-view { display: block; padding: 2px 4px; }
+.outline {
   display: block;
-  container-type: inline-size;
-  /* picture pixels 250 to ~530: just under the eaves, the whole windows and
-     the top of the orange tree, with the doors fading out below */
-  height: clamp(120px, 14.5vw, 260px);
-  overflow: hidden;
-  -webkit-mask: linear-gradient(transparent, #000 10%, #000 72%, transparent);
-  mask: linear-gradient(transparent, #000 10%, #000 72%, transparent);
-}
-.street-band img {
-  position: absolute;
-  left: 0;
-  top: calc(-250 / 1926 * 100cqw);
-  width: 100%;
+  width: clamp(150px, 20vw, 220px);
   height: auto;
-  max-width: none;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }
-/* Phones: the strip is too narrow for a close-up, so show the whole street */
-@media (max-width: 560px) {
-  .street-band { -webkit-mask: linear-gradient(transparent, #000 18%, #000 84%, transparent); mask: linear-gradient(transparent, #000 18%, #000 84%, transparent); }
-  .street-band img { top: 0; height: 100%; object-fit: cover; object-position: 50% 66%; }
-}
-.street-band :is(.night, .lit) { opacity: var(--night); transition: opacity var(--fade); }
-.street-view .sc { display: inline-block; margin-top: 4px; font-size: 14px; text-decoration: underline transparent; text-underline-offset: 4px; transition: text-decoration-color .2s; }
-.street-view:hover .sc { text-decoration-color: currentColor; }
-.street .foot { margin: 0; padding-top: 12px; border-top: 0; font-family: var(--serif); }
-.map-page .street .pager { border-top: 0; }
+.outline * { vector-effect: non-scaling-stroke; }
+.outline .canopy { fill: var(--bg); transition: fill var(--fade); }
+.street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
+.map-page .street { max-width: none; }
 
 @media (max-width: 560px) {
-  .pager .script { font-size: 24px; }
+  .pager { gap: 8px; }
+  .outline { width: 120px; }
 }

@@ -116,12 +116,11 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px, art centred
   above or below the text.
-- **Street footer** (every inner page and Guests): "Previous door" and "Next
-  door" in small caps with the neighbouring pages' script titles in their own
-  inks (order = the menu, from *the village* round to *RSVP* and back), then a
-  band of the village painting (day, night and lit windows, faded top and
-  bottom) that links home – "Back to the village" – and the names/date line.
-  The walk order lives in `WALK` in `tools/make_pages.py`.
+- **Footer** (every inner page and Guests): one hairline, then a single row:
+  "‹ Previous page" (Inter, muted), a small **line drawing of the three
+  houses** in the middle that leads home, "Next page ›". Under it the
+  names/date line in 12 px. Order = the menu, from Home round to RSVP and
+  back (`WALK` in `tools/make_pages.py`).
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
   tiles, list items), 12 px (stats, placeholders), 999 px (pills, chips),
   3 px (polaroids).
@@ -167,7 +166,7 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   its own.
 - Entering a page from the village: the hero zooms 3.2× towards the clicked
   door and fades to paper.
-- The way back is the mirror: "Back to the village" in a page's footer fades
+- The way back is the mirror: the village outline in a page's footer fades
   the page to paper, and the home page opens 2.4× close up on the street and
   zooms out to the whole village (`returning` → `zooming-out` on `<html>`;
   flag in `sessionStorage`, set in `site.js`, read in the home page's head).

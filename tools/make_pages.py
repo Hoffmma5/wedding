@@ -374,7 +374,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="stylesheet" href="css/style.css?v=36">
   <script>
     (function () {{
       var saved = null;
@@ -413,41 +413,45 @@ def nav():
     return "\n".join(f'      <a href="{slug}.html">{label}</a>' for slug, label in NAV)
 
 
-# The walk through the site: each page's title and ink, in menu order.
-# The street footer links every page to the door before and after it.
+# The walk through the site, in menu order. The footer links every page to
+# the one before and after it, and the village outline leads home.
 WALK = [
-    ("index", "the village", "#4b4b31"),
-    ("program", "the Program", WINE),
-    ("accommodation", "the Stay", OLIVE),
-    ("travel", "Travel", BLUE),
-    ("weather", "the Weather", RUST),
-    ("location", "the Algarve", BLUE),
-    ("map", "the guests", BLUE),
-    ("rsvp", "RSVP", OLIVE),
+    ("index", "Home"),
+    ("program", "Program"),
+    ("accommodation", "Stay"),
+    ("travel", "Travel"),
+    ("weather", "Weather"),
+    ("location", "Algarve"),
+    ("map", "Guests"),
+    ("rsvp", "RSVP"),
 ]
+
+CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
+CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
+
+# The three houses as a line drawing: roofs, chimneys, doors, windows, the
+# street lamp and the orange tree (drawn last, its fill hides the wall behind)
+VILLAGE_OUTLINE = """<svg class="outline" viewBox="0 0 320 72" aria-hidden="true">
+        <path d="M4 68h312"/>
+        <path d="M12 68V36h96M8 36l50-12 54 12M24 32.2V19h10v10.8M22 68V48h14v20M56 42h14v12H56zM63 42v12M56 48h14"/>
+        <path d="M108 68V36h106v32M104 36l56-14 58 14M176 25.9V14h10v14.3M154 68V46h14v22M122 42h14v12h-14zM129 42v12M122 48h14M182 42h14v12h-14zM189 42v12M182 48h14"/>
+        <path d="M214 36h94v32M210 36l52-12 50 12M290 30.7V18h10v15.1M232 68V46h14v22M266 42h14v12h-14zM273 42v12M266 48h14"/>
+        <path d="M205 68V42M201.5 34h7M202.5 34v8h5v-8"/>
+        <path d="M96 68V53"/><circle class="canopy" cx="96" cy="45" r="8"/>
+      </svg>"""
 
 
 def street(slug):
     i = [w[0] for w in WALK].index(slug)
-    prev, nxt = WALK[i - 1], WALK[(i + 1) % len(WALK)]
-
-    def door(cls, label, w):
-        return (f'<a class="{cls}" href="{w[0]}.html" style="--topic:{w[2]}">'
-                f'<span class="sc">{label}</span><span class="script">{w[1]}</span></a>')
-
+    (p_slug, p_name), (n_slug, n_name) = WALK[i - 1], WALK[(i + 1) % len(WALK)]
     return f"""  <footer class="street">
     <nav class="pager" aria-label="Previous and next page">
-      {door("prev", "Previous door", prev)}
-      {door("next", "Next door", nxt)}
+      <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
+      <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
+      {VILLAGE_OUTLINE}
+      </a>
+      <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>
-    <a class="street-view" href="index.html">
-      <span class="street-band" aria-hidden="true">
-        <img class="day" src="assets/village-day.webp" alt="" width="1926" height="817" loading="lazy">
-        <img class="night" src="assets/village-night.webp" alt="" width="1926" height="817" loading="lazy">
-        <img class="lit" src="assets/lights-windows.png?v=2" alt="" width="1926" height="817" loading="lazy">
-      </span>
-      <span class="sc">Back to the village</span>
-    </a>
     <p class="foot">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027 &middot; Algarve</p>
   </footer>
 """
