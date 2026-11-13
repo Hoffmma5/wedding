@@ -153,7 +153,11 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on
   Marek's *Azulejo Complete* basemap, overview inset, full-screen mode.
 - **Dish cards**: photo 4:3, Lora name in rust, Cormorant SC subtitle, credit.
-- **Placeholders**: grey rounded box, muted Inter text ("coming soon").
+- **Notes** (`p.note`, things still to come): an off-white paper slip
+  (polaroid paper, same in both themes), tilted -1.2°, a strip of tape in the
+  section's colour, one or two sentences in script in a darkened ink. The
+  home Story section shows a note instead of an empty frame while
+  `data-storymap` is empty.
 - **Toast**: Lora italic message at the bottom of the screen.
 
 ## Motion

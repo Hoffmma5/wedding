@@ -696,10 +696,18 @@ body.entering::after { opacity: 1; }
   transform: translateY(calc((1 - var(--p)) * 32px));
 }
 .story-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
-.story-placeholder { display: grid; place-content: center; height: 100%; padding: 24px; text-align: center; color: var(--muted); }
-.story-placeholder p { margin: .25em 0; }
-.story-placeholder strong { color: var(--text); font-weight: 600; }
-code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var(--line); }
+/* No StoryMap link yet: no empty frame, just a note */
+.story[data-storymap=""] .story-frame {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  transform: none;
+  text-align: center;
+}
+.story-note { rotate: 1deg; }
 
 .foot { padding: 32px 16px 40px; text-align: center; font-size: var(--fs-s); color: var(--muted); border-top: 1px solid var(--line); }
 
@@ -757,7 +765,36 @@ code { font-size: .9em; padding: .1em .35em; border-radius: 6px; background: var
 .page { max-width: 720px; margin: 0 auto; padding: 108px 20px 96px; }
 .page ul:not([class]) { padding-left: 1.2em; }   /* plain lists only: grids like .highlights set their own padding */
 .page li { margin: .3em 0; }
-.placeholder { padding: 16px 18px; border-radius: 12px; background: var(--line); color: color-mix(in srgb, var(--text) 80%, var(--bg)); font-size: var(--fs-m); }
+/* Things still to come: a handwritten note taped onto the page.
+   Paper and ink stay light-on-dark-ink in both themes, like the polaroids. */
+.note {
+  position: relative;
+  display: inline-block;
+  max-width: min(100%, 460px);
+  margin: 14px 0 1.2em;
+  padding: 22px 26px 16px;
+  background: #fffdf8;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(30, 25, 20, .1), 0 10px 24px rgba(30, 25, 20, .12);
+  color: color-mix(in srgb, var(--topic, #4b4b31) 78%, #171a21);
+  font-family: var(--script);
+  font-size: 22px;
+  line-height: 1.6;
+  rotate: -1.2deg;
+}
+.note::before {                      /* a strip of tape in the section's colour */
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 92px;
+  height: 22px;
+  translate: -50% 0;
+  rotate: 3deg;
+  background: color-mix(in srgb, var(--topic, #4b4b31) 28%, rgba(255, 253, 248, .55));
+  box-shadow: 0 1px 2px rgba(30, 25, 20, .08);
+}
+:root[data-theme="night"] .note { background: #f1ece0; box-shadow: 0 12px 30px rgba(0, 0, 0, .45); }
 
 .map-page main { display: flex; flex-direction: column; min-height: 100svh; padding-top: 60px; }
 .map-head { padding: 28px 20px 16px; text-align: center; }
