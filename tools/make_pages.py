@@ -290,8 +290,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       <aside class="road-trip">
         <p class="sc">Got a few extra days?</p>
         <h3>Drive the west coast</h3>
-        <p>If you&rsquo;re making a holiday of it &ndash; with a rental car or a van &ndash; the Atlantic coast from Lagos up to Sines is absolutely beautiful: fishermen&rsquo;s villages, the freshest fish straight from the sea, huge cliffs and dramatic beaches along the <em>Rota Vicentina</em>. Our favourites: Praia do Castelejo, Bordeira, Amado, Amoreira, Carriagem and Odeceixe.</p>
-        <p>It&rsquo;s windy and the ocean is <em>really</em> cold, but it&rsquo;s a surfing and windsurfing paradise &ndash; maybe it&rsquo;s time to give it a try? And if you&rsquo;re flying via Lisbon, take the coastal road: even just driving through it is amazing.</p>
+        <p>From Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
       </aside>
     </section>
 
@@ -363,7 +362,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=38">
+  <link rel="stylesheet" href="css/style.css?v=39">
   <script>
     (function () {{
       var saved = null;

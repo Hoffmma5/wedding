@@ -1238,20 +1238,10 @@ html, body { overflow-x: clip; }
 .map-credit { margin: 8px 0 0; font-size: var(--fs-xs); color: var(--muted); }
 @media (max-width: 760px) { .places-overview { width: 84px; height: 106px; border-width: 2px; } }
 
-/* Tavira page: west-coast road trip note */
-.road-trip {
-  margin-top: 28px;
-  padding: 22px 24px;
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--topic-c) 7%, var(--surface));
-  border: 1px solid color-mix(in srgb, var(--topic-c) 22%, transparent);
-  font-family: var(--serif);
-  font-size: var(--fs-base);
-  line-height: 1.7;
-}
-.road-trip h3 { margin: 2px 0 8px; font-size: var(--fs-xl); font-weight: 600; color: var(--ink); }
-.road-trip p { margin: 0 0 .7em; }
-.road-trip p:last-child { margin-bottom: 0; }
+/* Algarve page: west-coast road trip, a short plain note */
+.road-trip { max-width: 640px; margin-top: 32px; }
+.road-trip h3 { margin: 2px 0 6px; font-size: var(--fs-l); font-weight: 600; color: var(--ink); }
+.road-trip p:last-child { margin: 0; }
 
 /* Dishes to try: a plain two-column list, name and what it is */
 .dishes {
