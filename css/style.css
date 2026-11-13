@@ -621,7 +621,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   text-decoration: none;
   transition: background-color .2s;
 }
-.strip svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.strip svg { --tint: rgba(255, 255, 255, .3); width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .strip a:hover { background: rgba(0, 0, 0, .1); }
 .strip a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
 .hint { margin: 18px auto clamp(40px, 6vw, 72px); padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
@@ -1216,7 +1216,10 @@ html, body { overflow-x: clip; }
   list-style: none;
 }
 .facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 500 var(--fs-s) var(--sans); color: var(--muted); }
-.facilities svg { width: 30px; height: 30px; fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.facilities svg { --tint: color-mix(in srgb, var(--topic-c) 22%, transparent); width: 34px; height: 34px; fill: none; color: var(--ink); stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+/* two-tone icons (tools/icons.py): .f gets a soft tint, .s is solid */
+:is(.strip, .facilities) svg .f { fill: var(--tint); }
+:is(.strip, .facilities) svg .s { fill: currentColor; stroke: none; }
 @media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 13px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */

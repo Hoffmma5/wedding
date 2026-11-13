@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased (simplify)
 
 ### Changed
+- **Icons with more character:** the home strip and the Stay facilities use small two-tone pictograms from the wedding's world – clinking glasses for the Program, a little Algarve house for Stay, a sardine for the Algarve, the globe with a heart for the guests, a cocktail with an orange slice, a lotus for the spa, a sheep for the animal farm – instead of plain outlines.
 - **Drive the west coast** is two sentences instead of two paragraphs, without the tinted box.
 - **Dishes to try** is a simple two-column list – the dish and what it is ("Pastel de nata – custard tart") – instead of eleven photo cards with descriptions and credits. The photos stay in `assets/dishes/` in case they are wanted back.
 - **Stay:** "For the little ones" and "For the grown-ups" are replaced by eight facility icons (heated pool, pool bar, restaurant, spa & sauna, gym, playground, animal farm, views to the sea) and a link to the hotel's website. "find us" is now "on the map".

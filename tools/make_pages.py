@@ -21,6 +21,8 @@ BLUE, RUST, BROWN, OLIVE, WINE, CORAL = "#1f4fa0", "#b5432a", "#8b5523", "#7b815
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
 
+import icons   # tools/icons.py
+
 PAGES = {}
 
 PAGES["travel"] = ("Travel", BLUE, f"""
@@ -124,6 +126,8 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
       </div>
     </section>""")
 
+FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
+
 PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <header class="inv-head">
       <h1 class="script">the Hotel</h1>
@@ -156,14 +160,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
         <h2 class="script">at the Quinta</h2>
       </header>
       <ul class="facilities">
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 14V5.5M16 14V5.5M8 8.5h8M8 11.5h8"/><path d="M3 17.5c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0"/></svg>Heated pool</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14l-7 8-7-8ZM12 12v8M8 20h8"/></svg>Pool bar</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v18M4.5 3v5a2.5 2.5 0 0 0 5 0V3M17 21V3c-2 1.4-3 4-3 7.5h3"/></svg>Restaurant</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3.5c-1 1.5 1 2.5 0 4M12 3.5c-1 1.5 1 2.5 0 4M16 3.5c-1 1.5 1 2.5 0 4M4 11h16v2.5A6.5 6.5 0 0 1 13.5 20h-3A6.5 6.5 0 0 1 4 13.5V11Z"/></svg>Spa &amp; sauna</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg>Gym</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V4h16v17M9 4v10M15 4v10M8 14h8"/></svg>Playground</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5V21H3V10.5ZM9 21v-6h6v6M9 15l6 6M15 15l-6 6"/></svg>Animal farm</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19 9 9.5l4 6 3-4 5 7.5H3Z"/><circle cx="17" cy="6" r="2"/></svg>Views to the sea</li>
+{FACILITIES_HTML}
       </ul>
       <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
     </section>
@@ -362,7 +359,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=39">
+  <link rel="stylesheet" href="css/style.css?v=40">
   <script>
     (function () {{
       var saved = null;

@@ -131,8 +131,11 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Line icons**: 24 × 24, stroke 1.5, round caps and joins, no fill,
-  `currentColor`. Used for the home strip and the Stay facilities.
+- **Icons** (`tools/icons.py`): small two-tone pictograms from the wedding's
+  world – clinking glasses, a little Algarve house, a plane, the sun, a
+  sardine, the globe with a heart; on Stay a pool, a cocktail with an orange
+  slice, a lotus, a slide, a sheep. 24 × 24, stroke 1.6–1.5 in
+  `currentColor`; shapes with `.f` get a soft tint (`--tint`), `.s` are solid.
 - **Facilities** (Stay, `ul.facilities`): eight line icons in the section's ink
   with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
