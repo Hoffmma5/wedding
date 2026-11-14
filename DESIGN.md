@@ -290,7 +290,7 @@ sometimes run into the title ("Let us help you plan your" → *Travel*).
 ## Practical notes
 
 - Inner pages: edit `tools/make_pages.py` and re-run, don't edit the HTML.
-- CSS is one file, `css/style.css` (~1600 lines), cache-busted with `?v=`
+- CSS is one file, `css/style.css` (~1490 lines), cache-busted with `?v=`
   (now `v=74`; bump it in `index.html` and `make_pages.py` together).
 - Link preview picture: edit `tools/og-card.html`, then
   `python tools/make_og.py` (headless Chrome or Edge). Check the cards
