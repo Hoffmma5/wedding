@@ -73,6 +73,15 @@
         ],
         "createdAt": "2026-11-14T12:53:17.650Z",
         "reason": "Agent: 0.08em is on short Cormorant SC small-caps labels (DESIGN.md --sc), not running text"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "tools/og-card.html"
+        ],
+        "createdAt": "2026-11-14T14:07:52.661Z",
+        "reason": "Agent: share card has only the logo caps (.14em) and one small-caps date line (.08em, DESIGN.md --sc), no running text"
       }
     ]
   }
