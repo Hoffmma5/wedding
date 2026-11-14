@@ -371,11 +371,8 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The orange tree from the painting (tools/tree_mini.py): day and night
-MINI_TREE = """<span class="mini-tree" aria-hidden="true">
-        <img class="day" src="assets/tree-day.webp" alt="" width="212" height="320" loading="lazy">
-        <img class="night" src="assets/tree-night.webp" alt="" width="212" height="320" loading="lazy">
-      </span>"""
+# The orange emblem from the logo, in colour (tools/logo_orange.py)
+MINI_ORANGE = """<img class="mini-orange" src="assets/logo-orange.webp" alt="" width="166" height="160" loading="lazy">"""
 
 
 def street(slug):
@@ -385,7 +382,7 @@ def street(slug):
     <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
-      {MINI_TREE}
+      {MINI_ORANGE}
       </a>
       <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>
