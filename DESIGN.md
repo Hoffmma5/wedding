@@ -49,7 +49,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant SC 700, uppercase, wide tracking (from the logo) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 16 px | Cormorant SC 700, 16 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.7 |
-| Below the hero | *At a glance* list + RSVP button, then the brick strip with six icon links | Footer: ‹ previous · the orange tree · next › |
+| Below the hero | *At a glance* list + RSVP button, then the brick strip with six icon links | Footer: ‹ previous · the logo orange · next › |
 
 ## Colour
 
@@ -97,8 +97,8 @@ The home page link band is a fixed brick, outside the token system:
 
 A full second palette, not an inversion: deep indigo, the painting swaps to
 its night layer, windows and lamp glow amber (`mix-blend-mode: screen`), the
-sun becomes a moon. Toggle in the nav, saved in `localStorage` (`theme`),
-defaults to the OS setting. Paper objects (travel map, polaroids) stay paper,
+plaques, the sign and the ceramic sun dim. Toggle in the nav, saved in `localStorage` (`theme`),
+defaults to the OS setting. Paper objects (the travel map) stay paper,
 only dimmed.
 
 **Count:** 7 base tokens × 2 themes, 3 house colours, 3 inks, 2 strip
@@ -140,9 +140,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Width fills the screen but keeps the doors above the fold; under 860 px the
   street stays 860 px wide and scrolls sideways ("Swipe to see the whole
   street").
-- **Home below the village**: **at a glance** (`.glance`, 600 px max) — three
-  hairline rows, a small-caps label and one line each (When, Where, Getting
-  there; the label goes above the line under 420 px), then the RSVP button. Then the brick **strip** across the full
+- **Home below the village**: **at a glance** (`.glance`, 600 px max) — two
+  hairline rows, a small-caps label and one plain line each, no links
+  (When: 1 – 3 October 2027; Where: Hotel Quinta do Marco, near Tavira; the
+  label goes above the line under 420 px), then the RSVP button. Everything
+  else is one tap away on the strip. Then the brick **strip** across the full
   width: six links (Program, Stay, Travel, Weather, Algarve, Guests), icon
   over a Lora label, 6 across, 3 × 2 on phones. Then the story section
   (hidden until `data-storymap` has a link) and a one-line footer. The
@@ -151,41 +153,45 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   gutter. Text and a watercolour side by side (`.inv-grid`,
   `1fr / minmax(200px, 320px)`); every other row is mirrored (`.flip`: the
   picture on the left) — Travel's shrimp, Weather's crabs, Program's Sunday
-  oysters and the Algarve intro's sardine tile. Sections are separated by a
+  oysters and the Algarve intro's sardine tile. The transfer shrimp is a
+  170 px accent (`--art`). Sections are separated by a
   hairline and 48–80 px. One column under 760 px, picture first in mirrored
   rows; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Lora 14 px, muted, 44 px tall), the orange tree (64 px, drawn in the icons'
-  ink and wash, `TREE` in `tools/icons.py`) leading home, "Next ›"; the
+  (Lora 14 px, muted, 44 px tall), the orange emblem from the logo
+  (40 px, `.mark` in the logo ink, tilts on hover) leading home, "Next ›"; the
   names/date line in 12 px below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
-  10–12 px small tiles, menu links · 999 px pills, chips · 3 px polaroids.
+  10–12 px small tiles, menu links · 999 px pills, chips · 14 px photo mosaic
+  (10 px on phones).
 - **Shadow**: one soft shadow (`0 1px 2px / 0 8px 24px`, 4–8 % black) on
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
   left-aligned on inner pages, centred on Home.
 - **Breakpoints**: 860 (hero), 820 (nav), 760 (one column), 560 (lists,
   smaller script titles), 420 (at a glance stacks).
-- **Touch**: every control is at least 44 × 44 px. Where the visible shape is
-  smaller (the 8 px carousel dots) a transparent `::before` widens the hit
-  area. Inline links inside running text are exempt.
+- **Touch**: every control is at least 44 × 44 px. Inline links inside
+  running text are exempt.
 
 ## Imagery
 
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
-  site's identity. Two azulejo plaques sit on the yellow house: *Faro →*
-  (Travel) and *Algarve* (the Algarve). The small copies
-  (`assets/village-mini-*.webp`) are no longer used.
+  site's identity. Drawn on top, in the painting's own vocabulary: an
+  azulejo plaque *Algarve* on the yellow house (the Algarve), a white
+  direction sign *← Faro* hanging off the lamp post (Travel), and a glazed
+  ceramic sun with a little face beside the blue house's door (Weather).
+  The sky band holds only the names and the weathervane — no sun, moon or
+  plane. The small copies (`assets/village-mini-*.webp`) are no longer
+  used.
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
   paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
   sun, shell, pearl, long table, hotel landscape, Portugal.
 - **Travel map** (`tools/make_iberia.py`) — a piece torn from an old paper
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
   path to Faro and a pearl on Tavira.
-- **Photos** — six hotel polaroids on Stay (quinta, pool, a double room, a
-  balcony, terrace, farm). The other hotel and room photos stay in
-  `assets/gallery/`; dish photos in `assets/dishes/`; neither is shown.
+- **Photos** — all 17 hotel and room photos on Stay, five in the mosaic,
+  the rest in the viewer. Dish photos stay in `assets/dishes/`, not shown.
 - **Icons** (`tools/icons.py`) — one family, **ink and wash**, like the
   painting. Drawn on 24 × 24 as plain shapes; `svg()` renders two layers: a
   watercolour **wash** of the closed shapes (`class="f"`) in the ink at 30 %
@@ -193,7 +199,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   darker rim (filter `#wash`), and over it the **pen line**, 1.2, with a very
   slight wobble (filter `#ink`). `class="bg"` shapes are filled with tinted
   paper so they can sit on top of others (the coin on the card, car wheels).
-  Shown at 36 px; the footer tree at 64 px. The filters are defined once per
+  Shown at 36 px. The filters are defined once per
   page (`icons.FILTERS`); the home strip is written into `index.html` by
   `make_pages.py`. Subjects: glasses, house, suitcase, sun, sardine, globe
   (strip); pool, cocktail, plate, lotus, weights, slide, sheep, sea view
@@ -218,8 +224,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   3 across, a hairline list on phones.
 - **Weather numbers** (`.wx`): an open row between two hairlines — icon,
   Lora number in the ink, muted caption.
-- **Polaroid carousel** (Stay): one, six photos, curving like a ring,
-  centre one facing you, full-screen viewer.
+- **Photo mosaic** (Stay, `.gallery`): one large photo and four small ones
+  (`2fr 1fr 1fr`, 2 rows, 6 px gaps, 2 : 1 overall), no frames and no
+  captions; on phones the large one spans the width over a 2 × 2 grid. Any
+  photo opens the full-screen viewer; "See all 17 photos" (a quiet underlined
+  link-button) opens it at the sixth. The other twelve load only when shown.
 - **Places app** (Algarve): list with category chips + ArcGIS map on the
   *Azulejo Complete* basemap, overview minimap, full-screen mode.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
@@ -235,16 +244,17 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
 - Hotspots: doors swing open in 3D, the weathervane spins (press and hold:
-  points to you), the plaques lift, the orange tree drops oranges.
-- Ambient: the vane sways (7 s loop). The plane is gone.
+  points to you), the Algarve plaque lifts, the Faro sign tilts on its
+  bracket, the ceramic sun turns a little, the orange tree drops oranges.
+- Ambient: the vane sways (7 s loop).
 - Page transitions, short: entering from the village zooms 2× into the door
-  in 0.5 s and fades to paper in 0.25 s (the page changes after 0.45 s); the
-  footer tree's page fades out in 0.28 s and Home opens at 1.8× and zooms out
+  in 0.5 s and fades to paper in 0.25 s (the page changes after 0.45 s); leaving
+  through the footer's orange, the page fades out in 0.28 s and Home opens at 1.8× and zooms out
   in 0.5 s.
 - Story section unfolds with scroll.
 - Easter eggs (`js/eggs.js`): disco ball with music and lights, crabs, the
   sardine and a school of sardines, party mode with bunting (`?party`).
-- Small UI: 0.2–0.3 s hovers, menu slide, the footer tree lifts and tilts.
+- Small UI: 0.2–0.3 s hovers, menu slide, the footer orange lifts and tilts.
 - `prefers-reduced-motion` turns all of it off.
 
 ## Tone of voice
@@ -320,8 +330,8 @@ Where the current site falls short of the target, roughly by impact:
    itself is a placeholder ("Reply form to follow."); it needs a form and
    somewhere for the answers to go.
 2. ~~**Essentials aren't at a glance.**~~ Done: *at a glance* on Home says
-   when, where and how to get there, with the RSVP button; the schedule is
-   one tap away on Program.
+   when and where, with the RSVP button; schedule, stay and travel are one
+   tap away on the strip.
 3. **Three typefaces** (Lora, Cormorant SC, Beth Ellen) against a target of
    two — down from five; Inter and Cormorant Garamond are gone. Reaching two
    means either labels in Lora small caps (synthesised, so weaker) or
@@ -332,11 +342,12 @@ Where the current site falls short of the target, roughly by impact:
    palette. The target is paper, ink, muted, one accent.
 5. **Artsy details everywhere instead of one or two.** Interactive
    painting, script titles, a watercolour object per section, a torn paper
-   map, polaroid ring, easter eggs, party mode, day/night theme — each is
-   charming, together they compete. Fewer than before: the footer is a small
-   tree, the plane is gone, one polaroid ring instead of two, and the icons
-   now share the painting's ink-and-wash language instead of adding a
-   second, UI-icon style.
+   map, easter eggs, party mode, day/night theme — each is charming,
+   together they compete. Fewer than before: the footer is the logo orange,
+   the polaroid rings are a plain photo mosaic, the sky's sun and plane are
+   now objects in the street (a ceramic sun, a Faro sign), and the icons
+   share the painting's ink-and-wash language instead of adding a second,
+   UI-icon style.
 6. **Home is navigation by exploration.** "Everything in the village is
    clickable" asks guests to discover links; on phones the street is 860 px
    wide and must be swiped.
@@ -344,11 +355,11 @@ Where the current site falls short of the target, roughly by impact:
    easter eggs (the plane is gone, the door zoom is now 2× in 0.5 s). Reduced-motion is respected,
    but the default is far from "subtle and short".
 8. **Secondary pages, partly trimmed.** Intros are short, *dishes to try*
-   is folded and Stay has one six-photo gallery instead of two (17 photos).
+   is folded and Stay shows five photos in one mosaic, the other twelve
+   behind "See all".
    The Algarve intro stays three short paragraphs on purpose — it is the
    personal part. Still open: *our favourites* (the map app) is not folded.
-9. ~~**Tap targets below 44 px.**~~ Done: all controls are 44 px; the
-   carousel dots have a 44 px hit area.
+9. ~~**Tap targets below 44 px.**~~ Done: all controls are 44 px.
 10. **Weight.** The home painting is ~520 KB in two layers plus PNG overlays;
     the ArcGIS SDK + Calcite on Stay and Algarve are heavy (lazy, but still
     loaded just by scrolling past); three font families load on every page.
