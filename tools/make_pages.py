@@ -15,9 +15,9 @@ NAV = [
     ("map", "Guests"),
 ]
 
-# The village's three pigments: azulejo blue, roof terracotta, sage olive.
-# One ink per page; its sections use the same ink.
-BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b5432a", "#7b8152"
+# One accent ink for the whole site: the azulejo blue from the painting.
+# (Each page still sets --topic, so a page could differ, but none does.)
+INK = "#1f4fa0"
 
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
@@ -28,7 +28,7 @@ PAGES = {}
 
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
-PAGES["travel"] = ("Travel", BLUE, f"""
+PAGES["travel"] = ("Travel", INK, f"""
     <header class="inv-head">
       <h1 class="script">Travel</h1>
     </header>
@@ -81,7 +81,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       </ul>
     </section>""")
 
-PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
+PAGES["weather"] = ("Weather &amp; what to pack", INK, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
@@ -119,7 +119,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
 
 FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
 
-PAGES["accommodation"] = ("The hotel", OLIVE, f"""
+PAGES["accommodation"] = ("The hotel", INK, f"""
     <header class="inv-head">
       <h1 class="script">the Hotel</h1>
     </header>
@@ -230,7 +230,7 @@ def dishes_html():
 
 DISHES_HTML = dishes_html()
 
-PAGES["location"] = ("The Algarve", BLUE, f"""
+PAGES["location"] = ("The Algarve", INK, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
@@ -279,7 +279,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </details>
     </section>""")
 
-PAGES["program"] = ("Program", TERRACOTTA, f"""
+PAGES["program"] = ("Program", INK, f"""
     <header class="inv-head">
       <h1 class="script">the Program</h1>
     </header>
@@ -317,7 +317,7 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
       <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
     </article>""")
 
-PAGES["rsvp"] = ("RSVP", OLIVE, """
+PAGES["rsvp"] = ("RSVP", INK, """
     <header class="inv-head">
       <h1 class="script">RSVP</h1>
     </header>
@@ -335,7 +335,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=57">
+  <link rel="stylesheet" href="css/style.css?v=58">
   <script>
     (function () {{
       var saved = null;
@@ -430,10 +430,10 @@ def main():
 
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
     html += f"""  <main>
-    <div class="map-head inv" style="--topic:{BLUE}">
+    <div class="map-head inv" style="--topic:{INK}">
       <h1 class="script">the guests</h1>
     </div>
-    <div class="guests-intro prose" style="--topic:{BLUE}">
+    <div class="guests-intro prose" style="--topic:{INK}">
       <p>This is where you&rsquo;re all coming from. Thank you for making the trip &ndash; we can&rsquo;t wait to see you in Tavira.</p>
     </div>
     <div class="map-embed">
