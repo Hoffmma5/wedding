@@ -611,6 +611,40 @@ html.zooming-out .hero-text { transition: opacity .4s ease .3s; }
   .stripe .tile { width: 42px; height: 42px; }
 }
 
+/* Save the date: a tile, the date, and two quiet outline buttons
+   (Google Calendar link, .ics download). Centred on Home under the stripe;
+   left-aligned on Program and RSVP. */
+.save-date {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin: 0 0 clamp(40px, 6vw, 64px);
+}
+.save-date .tile { width: 48px; height: 48px; }
+.save-date p { margin: 0; font-size: var(--fs-l); color: var(--text); }
+.save-date p .sc { display: block; margin-bottom: 2px; }
+.sd-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.sd-links a {
+  display: inline-grid;
+  place-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: var(--fs-s);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s;
+}
+.sd-links a:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); border-color: var(--accent); }
+.sd-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stripe + .save-date { justify-content: center; max-width: 720px; margin-left: auto; margin-right: auto; padding: 0 20px; text-align: left; }
+.stripe:has(+ .save-date) { margin-bottom: clamp(32px, 5vw, 48px); }
+.page .save-date { margin-top: -8px; }
+.page .prose + .save-date { margin-top: 32px; }
+
 /* ---------- Our story ---------- */
 
 .story { --p: 0; padding: clamp(24px, 5vw, 56px) 0 clamp(40px, 6vw, 80px); }

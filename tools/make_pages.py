@@ -272,10 +272,24 @@ PAGES["location"] = ("The Algarve", INK, f"""
       </details>
     </section>""")
 
+
+# Save the date: Google Calendar link + a .ics file (Apple, Outlook, others).
+# The .ics lives in assets/; keep the two in step if the dates ever change.
+GOOGLE_CAL = "https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Marek+%26+Paulo+%E2%80%93+wedding+weekend&amp;dates=20271001%2F20271004&amp;location=Hotel+Rural+Quinta+do+Marco%2C+S%C3%ADtio+do+Marco+632A%2C+8800-164+Santa+Catarina+da+Fonte+do+Bispo%2C+Tavira%2C+Portugal&amp;details=Friday+1+%E2%80%93+Sunday+3+October+2027+in+Tavira%2C+Algarve.+Programme%2C+travel+and+stay%3A+https%3A%2F%2Fhoffmma5.github.io%2Fwedding%2F"
+SAVE_DATE = f"""    <div class="save-date">
+      {icons.tile(icons.STRIP["calendar"])}
+      <p><span class="sc">Save the date</span> 1 &ndash; 3 October 2027</p>
+      <div class="sd-links">
+        <a href="{GOOGLE_CAL}" target="_blank" rel="noopener">Google Calendar</a>
+        <a href="assets/marek-paulo-wedding.ics" download>Apple / Outlook</a>
+      </div>
+    </div>"""
+
 PAGES["program"] = ("Program", INK, f"""
     <header class="inv-head">
       <h1 class="script">the Program</h1>
     </header>
+{SAVE_DATE}
 
     <article class="day">
       <div class="prose">
@@ -310,14 +324,15 @@ PAGES["program"] = ("Program", INK, f"""
       <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
     </article>""")
 
-PAGES["rsvp"] = ("RSVP", INK, """
+PAGES["rsvp"] = ("RSVP", INK, f"""
     <header class="inv-head">
       <h1 class="script">RSVP</h1>
     </header>
     <div class="prose">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
       <p class="tbc">Reply form to follow.</p>
-    </div>""")
+    </div>
+{SAVE_DATE}""")
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -328,7 +343,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=71">
+  <link rel="stylesheet" href="css/style.css?v=72">
   <script>
     (function () {{
       var saved = null;

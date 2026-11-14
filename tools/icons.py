@@ -24,6 +24,8 @@ STRIP = {
     # an envelope sealed with a heart
     "rsvp": '<rect class="f" x="3" y="6" width="18" height="13" rx="1.5"/><path d="M3.6 6.8 12 13l8.4-6.2"/>'
             '<path class="f" d="M12 16.6c-1.6-1-2.4-1.9-2.4-2.9a1.2 1.2 0 0 1 2.4-.4 1.2 1.2 0 0 1 2.4.4c0 1-.8 1.9-2.4 2.9Z"/>',
+    # a calendar page with a heart: save the date
+    "calendar": '<rect class="f" x="3.5" y="5" width="17" height="15.5" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path class="f" d="M12 17.6c-1.7-1.1-2.6-2.1-2.6-3.2a1.3 1.3 0 0 1 2.6-.4 1.3 1.3 0 0 1 2.6.4c0 1.1-.9 2.1-2.6 3.2Z"/>',
     # the world
     "map": '<circle class="f" cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z"/>',
 }

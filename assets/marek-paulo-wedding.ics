@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marek & Paulo//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-2027-10-01@marek-paulo
+DTSTAMP:20261114T120000Z
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271004
+SUMMARY:Marek & Paulo – wedding weekend
+LOCATION:Hotel Rural Quinta do Marco\, Sítio do Marco 632A\, 8800-164 Santa Catarina da Fonte do Bispo\, Tavira\, Portugal
+DESCRIPTION:Friday 1 – Sunday 3 October 2027 in Tavira\, Algarve. Programme\, travel and stay: https://hoffmma5.github.io/wedding/
+URL:https://hoffmma5.github.io/wedding/
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
