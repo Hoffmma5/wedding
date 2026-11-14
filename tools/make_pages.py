@@ -273,6 +273,9 @@ PAGES["location"] = ("The Algarve", INK, f"""
     </section>""")
 
 
+# The public address (link previews, the calendar event)
+SITE = "https://hoffmma5.github.io/wedding/"
+
 # Save the date: Google Calendar link + a .ics file (Apple, Outlook, others).
 # The .ics lives in assets/; keep the two in step if the dates ever change.
 GOOGLE_CAL = "https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Marek+%26+Paulo+%E2%80%93+wedding+weekend&amp;dates=20271001%2F20271004&amp;location=Hotel+Rural+Quinta+do+Marco%2C+S%C3%ADtio+do+Marco+632A%2C+8800-164+Santa+Catarina+da+Fonte+do+Bispo%2C+Tavira%2C+Portugal&amp;details=Friday+1+%E2%80%93+Sunday+3+October+2027+in+Tavira%2C+Algarve.+Programme%2C+travel+and+stay%3A+https%3A%2F%2Fhoffmma5.github.io%2Fwedding%2F"
@@ -340,6 +343,20 @@ HEAD = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} · Marek &amp; Paulo</title>
+  <meta name="description" content="Marek and Paulo are getting married in Tavira, Algarve, on 1–3 October 2027. Programme, stay, travel and RSVP.">
+  <meta name="theme-color" content="#fcfafa">
+  <link rel="icon" type="image/png" href="assets/logo-mark.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marek &amp; Paulo">
+  <meta property="og:title" content="{title} · Marek &amp; Paulo">
+  <meta property="og:description" content="Marek and Paulo are getting married in Tavira, Algarve, on 1–3 October 2027. Programme, stay, travel and RSVP.">
+  <meta property="og:url" content="https://hoffmma5.github.io/wedding/{slug}.html">
+  <meta property="og:image" content="https://hoffmma5.github.io/wedding/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Marek &amp; Paulo, 1–3 October 2027, Tavira – a watercolour of three whitewashed Algarve houses">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
@@ -420,7 +437,7 @@ def street(slug):
 
 def main():
     for slug, (title, topic, body) in PAGES.items():
-        html = HEAD.format(title=title, body_class="", nav=nav())
+        html = HEAD.format(title=title, slug=slug, body_class="", nav=nav())
         foot = FOOT
         if 'class="photos' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=6"></script>\n</body>')
@@ -433,7 +450,7 @@ def main():
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
-    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
+    html = HEAD.format(title="Guest map", slug="map", body_class=' class="map-page"', nav=nav())
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{INK}">
       <h1 class="script">the guests</h1>

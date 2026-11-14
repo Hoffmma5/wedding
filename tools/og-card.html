@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- The link-preview card (1200 x 630). Render it to assets/og-image.jpg with
+     python tools/make_og.py (headless Chrome), after changing the painting,
+     the names or the date. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Cormorant+SC:wght@700&display=block" rel="stylesheet">
+  <style>
+    html, body { margin: 0; }
+    body { width: 1200px; height: 630px; overflow: hidden; background: #fcfafa; position: relative; }
+    .head { position: absolute; top: 34px; left: 0; right: 0; text-align: center; color: #171a21; }
+    .mark { display: block; width: 58px; height: 56px; margin: 0 auto 8px; background: #171a21;
+            -webkit-mask: url("../assets/logo-mark.png") center / contain no-repeat; mask: url("../assets/logo-mark.png") center / contain no-repeat; }
+    h1 { margin: 0; padding-left: .14em; font: 600 60px/1.05 "Cormorant Garamond", serif; letter-spacing: .14em; text-transform: uppercase; }
+    p { margin: 10px 0 0; font: 700 27px/1.2 "Cormorant SC", serif; letter-spacing: .08em; }
+    img { position: absolute; left: 50%; bottom: -6px; width: 1120px; transform: translateX(-50%); }
+  </style>
+</head>
+<body>
+  <div class="head">
+    <span class="mark"></span>
+    <h1>Marek &amp; Paulo</h1>
+    <p>1 – 3 October 2027 · Tavira, Algarve</p>
+  </div>
+  <img src="../assets/village-day.webp" alt="">
+</body>
+</html>
