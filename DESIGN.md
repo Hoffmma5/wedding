@@ -52,7 +52,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Lora 500, uppercase, wide tracking (from the logo) | Beth Ellen (handwritten script) |
 | Labels | Lora small caps 600, 17 px | Lora small caps 600, 17 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.7 |
-| Below the hero | *The weekend at a glance*: when / where / getting there, the reply button, three quiet links | Footer: ‹ previous · the logo's orange · next › |
+| Below the hero | *The weekend at a glance*: when / where / getting there, the reply button, three quiet links | Footer: the logo's orange, alone |
 
 ## Colour
 
@@ -86,8 +86,7 @@ confetti in `js/village.js`) stay as painted; nothing in the UI borrows them.
 ### Night
 
 A full second palette, not an inversion: deep indigo, the painting swaps to
-its night layer, windows and lamp glow amber (`mix-blend-mode: screen`), the
-sun becomes a moon. Toggle in the nav, saved in `localStorage` (`theme`),
+its night layer, windows and lamp glow amber (`mix-blend-mode: screen`). Toggle in the nav, saved in `localStorage` (`theme`),
 defaults to the OS setting. Paper objects (travel map, polaroids) stay paper,
 only dimmed.
 
@@ -152,12 +151,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   watercolour on the left. Travel (map) and Weather's crabs are right, Weather's
   sun and the Algarve tile left; on Program Friday is right, Sunday left. On
   phones everything stacks text first.
-- **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Lora 14 px, muted), the logo's orange emblem in colour (orange body,
-  green leaves, 56–68 px tall, `assets/logo-orange.webp` from
-  `tools/logo_orange.py`) leading home, "Next ›"; the
-  names/date
-  line in 12 px below.
+- **Footer** (every page): a hairline and, centred under it, only the
+  logo's orange emblem in colour (orange body, green leaves, 40 px tall,
+  `assets/logo-orange.webp` from `tools/logo_orange.py`). On inner pages and
+  Guests it leads home (44 px target); on Home it just closes the page. No
+  previous/next links, no names line.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
   10–12 px small tiles, menu links · 999 px pills, chips · 3 px polaroids.
 - **Shadow**: one soft shadow (`0 1px 2px / 0 8px 24px`, 4–8 % black) on
@@ -215,8 +213,14 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Weather numbers** (`.wx`): an open row between two hairlines — icon,
   Lora number in the ink, muted caption.
 - **Polaroids** (Stay): one still grid of six, 3 × 2 (2 × 3 on phones),
-  white paper with a script caption, tilted −1.6° to +1.4°, straightening and
-  lifting 2 px on hover. No script, no viewer.
+  white paper, tilted −1.6° to +1.4°, straightening and lifting 2 px on
+  hover. No captions: the bottom strip holds a small ink-and-wash icon (the
+  house, the pool, a hanging chair, a bed, a balcony rail, the farm), always
+  in the day ink since the paper stays white.
+- **Photo viewer** (`js/photos.js`): each polaroid is a button; it opens one
+  `<dialog>` with the whole photo as large as the screen allows (up to
+  1200 px), previous / next (48 px, at the bottom on phones), arrow keys,
+  swipe, Esc or a tap outside to close.
 - **Places app** (Algarve): list with category chips + ArcGIS map on the
   *Azulejo Complete* basemap, overview minimap, full-screen mode.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
@@ -231,7 +235,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
-- Hotspots: doors swing open in 3D; the azulejo beside the yellow door
+- Hotspots (the sky has no sun or moon any more): doors swing open in 3D; the azulejo beside the yellow door
   (→ the Algarve) lifts; the wooden *Faro* fingerpost on the lamp (→ Travel)
   swings a little; the weathervane spins (press and hold: points to you); the
   orange tree drops oranges.
@@ -339,8 +343,8 @@ Struck-through items were closed by the November 2026 pass on `skill-taste`.
    Quinta* and *dishes to try* are folded; one gallery of six. The Algarve
    (~185) stays personal by choice.
 9. **Tap targets below 44 px.** Desktop nav pills ~31 px tall, the theme
-   button 38 px, footer ‹ › links ~32 px. (The glance links and the reply
-   button are 44 and 48 px.)
+   button 38 px. (The glance links, the footer orange and the reply button
+   are 44–48 px.)
 10. **Weight.** The home painting is ~520 KB in two layers plus PNG overlays;
     the ArcGIS SDK + Calcite on Stay and Algarve are heavy (lazy, but still
     loaded just by scrolling past). Fonts are down to two families.
