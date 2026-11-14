@@ -344,6 +344,7 @@ HEAD = """<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} · Marek &amp; Paulo</title>
+{share}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -381,6 +382,31 @@ FOOT = """  <script src="js/site.js?v=13"></script>
 </body>
 </html>
 """
+
+
+
+# Link preview: what WhatsApp, Messenger, email… show when a page is shared.
+# The picture is assets/og-image.jpg (tools/make_og.py); the URLs must be the
+# live site's, so previews only work once it is published.
+SITE = "https://hoffmma5.github.io/wedding/"
+SHARE_DESC = "We&rsquo;re getting married in Tavira, Algarve, on 1&ndash;3 October 2027 &ndash; and we&rsquo;d love you to be there."
+
+
+def share(title, slug):
+    rows = [
+        f'<meta name="description" content="{SHARE_DESC}">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="Marek &amp; Paulo">',
+        f'<meta property="og:title" content="{title} &middot; Marek &amp; Paulo">',
+        f'<meta property="og:description" content="{SHARE_DESC}">',
+        f'<meta property="og:url" content="{SITE}{slug}.html">',
+        f'<meta property="og:image" content="{SITE}assets/og-image.jpg">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta property="og:image:alt" content="Marek &amp; Paulo, 1 &ndash; 3 October 2027, over a watercolour of three whitewashed Algarve houses">',
+        '<meta name="twitter:card" content="summary_large_image">',
+    ]
+    return "\n".join("  " + r for r in rows)
 
 
 def nav():
@@ -425,7 +451,7 @@ def street(slug):
 
 def main():
     for slug, (title, topic, body) in PAGES.items():
-        html = HEAD.format(title=title, body_class="", nav=nav(), defs=icons.FILTERS)
+        html = HEAD.format(title=title, body_class="", nav=nav(), defs=icons.FILTERS, share=share(title, slug))
         foot = FOOT
         if 'class="gallery"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=5"></script>\n</body>')
@@ -438,7 +464,7 @@ def main():
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
-    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav(), defs=icons.FILTERS)
+    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav(), defs=icons.FILTERS, share=share("Guest map", "map"))
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{BLUE}">
       <p class="sc">Everyone&rsquo;s coming to the Algarve</p>

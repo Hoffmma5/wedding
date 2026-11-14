@@ -1,0 +1,111 @@
+<!doctype html>
+<!-- Local check of the link preview: how a page's og: tags will look when
+     the link is shared. Open it from the local server, e.g.
+     http://localhost:5003/tools/share-preview.html
+     It reads the tags from the real page, so it always shows what is there.
+     Not linked from the site. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Share preview</title>
+  <style>
+    :root { --bg: #eef0f3; --text: #1c1e21; --muted: #65676b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px 16px 48px; background: var(--bg); color: var(--text); font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 980px; margin: 0 auto; }
+    h1 { margin: 0 0 4px; font-size: 22px; }
+    .lead { margin: 0 0 20px; color: var(--muted); }
+    label { font-weight: 600; }
+    select { margin-left: 8px; padding: 8px 10px; font: inherit; border-radius: 8px; border: 1px solid #ccd0d5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; align-items: start; }
+    h2 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+    /* WhatsApp */
+    .wa { padding: 18px 14px; border-radius: 12px; background: #efeae2; }
+    .wa .bubble { max-width: 330px; margin-left: auto; padding: 4px 4px 6px; border-radius: 8px; background: #d9fdd3; box-shadow: 0 1px .5px rgba(0,0,0,.13); }
+    .wa .card { overflow: hidden; border-radius: 6px; background: #d1f4cc; }
+    .wa img { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; }
+    .wa .meta { padding: 6px 10px 8px; }
+    .wa .t { font-weight: 600; font-size: 14px; }
+    .wa .d { font-size: 13px; color: #54656f; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .wa .host { font-size: 12px; color: #667781; margin-top: 2px; }
+    .wa .link { padding: 6px 6px 0; font-size: 14px; color: #027eb5; word-break: break-all; }
+
+    /* iMessage */
+    .im { padding: 18px 14px; border-radius: 12px; background: #fff; }
+    .im .card { max-width: 300px; margin-left: auto; overflow: hidden; border-radius: 18px; background: #e9e9eb; }
+    .im img { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; }
+    .im .meta { padding: 8px 12px 10px; }
+    .im .t { font-weight: 600; font-size: 14px; }
+    .im .host { font-size: 13px; color: #8a8a8e; }
+
+    /* Facebook / LinkedIn style */
+    .fb { overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+    .fb img { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; }
+    .fb .meta { padding: 10px 12px 12px; background: #f0f2f5; }
+    .fb .host { font-size: 12px; color: var(--muted); text-transform: uppercase; }
+    .fb .t { font-weight: 700; font-size: 16px; margin-top: 2px; }
+    .fb .d { font-size: 14px; color: var(--muted); }
+
+    .tags { margin-top: 28px; padding: 14px 16px; border-radius: 10px; background: #fff; font: 12.5px/1.6 ui-monospace, Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
+    .warn { margin-top: 16px; padding: 12px 14px; border-radius: 10px; background: #fff4d6; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Share preview</h1>
+    <p class="lead">How a page looks when its link is sent — read from the page's own tags. Approximate: each app draws its own card.</p>
+    <label for="page">Page</label>
+    <select id="page">
+      <option value="index.html">Home</option>
+      <option value="program.html">Program</option>
+      <option value="accommodation.html">Stay</option>
+      <option value="travel.html">Travel</option>
+      <option value="weather.html">Weather</option>
+      <option value="location.html">Algarve</option>
+      <option value="map.html">Guests</option>
+      <option value="rsvp.html">RSVP</option>
+    </select>
+
+    <div class="grid">
+      <section><h2>WhatsApp</h2><div class="wa"><div class="bubble"><div class="card"><img alt=""><div class="meta"><div class="t"></div><div class="d"></div><div class="host"></div></div></div><div class="link"></div></div></div></section>
+      <section><h2>iMessage</h2><div class="im"><div class="card"><img alt=""><div class="meta"><div class="t"></div><div class="host"></div></div></div></div></section>
+      <section><h2>Facebook / LinkedIn</h2><div class="fb"><img alt=""><div class="meta"><div class="host"></div><div class="t"></div><div class="d"></div></div></div></section>
+    </div>
+    <div class="warn" hidden></div>
+    <div class="tags"></div>
+  </main>
+  <script>
+    (function () {
+      var select = document.getElementById('page');
+      function txt(html) { var t = document.createElement('textarea'); t.innerHTML = html || ''; return t.value; }
+      function load() {
+        fetch('../' + select.value, { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          function og(p) { var m = doc.querySelector('meta[property="' + p + '"], meta[name="' + p + '"]'); return m ? m.getAttribute('content') : ''; }
+          var title = txt(og('og:title')), desc = txt(og('og:description')), url = og('og:url'), image = og('og:image');
+          var host = url ? new URL(url).host : '';
+          // The live URL does not exist until the site is published: show the local copy of the picture
+          var local = image ? '../' + image.replace(/^https?:\/\/[^/]+\/[^/]+\//, '') : '';
+          document.querySelectorAll('img').forEach(function (i) { i.src = local; });
+          document.querySelectorAll('.t').forEach(function (e) { e.textContent = title; });
+          document.querySelectorAll('.d').forEach(function (e) { e.textContent = desc; });
+          document.querySelectorAll('.host').forEach(function (e) { e.textContent = host; });
+          document.querySelector('.wa .link').textContent = url;
+          var missing = ['og:title', 'og:description', 'og:url', 'og:image'].filter(function (p) { return !og(p); });
+          var warn = document.querySelector('.warn');
+          warn.hidden = !missing.length;
+          warn.textContent = missing.length ? 'Missing: ' + missing.join(', ') : '';
+          document.querySelector('.tags').textContent = Array.prototype.map.call(
+            doc.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"], meta[name="description"]'),
+            function (m) { return m.outerHTML; }).join('\n');
+        });
+      }
+      select.addEventListener('change', load);
+      load();
+    })();
+  </script>
+</body>
+</html>
