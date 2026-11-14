@@ -605,31 +605,13 @@ html.zooming-out .hero-text { transition: opacity .35s ease .3s; }
 .strip a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 /* Home: the essentials at a glance – schedule, place, travel, RSVP */
 .glance { position: relative; z-index: 3; max-width: 600px; margin: clamp(8px, 2vw, 24px) auto clamp(40px, 6vw, 64px); padding: 0 20px; text-align: center; }
-.glance-list { margin: 0 0 28px; padding: 0; list-style: none; text-align: left; }
+.glance-list { margin: 0; padding: 0; list-style: none; text-align: left; }
 .glance-list li { display: grid; grid-template-columns: 8.5em 1fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); line-height: 1.5; }
 .glance-list li:last-child { border-bottom: 1px solid var(--line); }
 .glance-list .sc { padding-top: 2px; }
 .glance-list a { color: inherit; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
 @media (max-width: 420px) { .glance-list li { grid-template-columns: 1fr; gap: 0; } }
 
-/* The one button: RSVP. Dark pill, 44 px tall */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  min-width: 140px;
-  padding: 0 28px;
-  border-radius: 999px;
-  background: var(--text);
-  color: var(--bg);
-  font: 600 var(--fs-base) var(--sans);
-  letter-spacing: .02em;
-  text-decoration: none;
-  transition: opacity .2s;
-}
-.btn:hover { opacity: .85; }
-.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ---------- Our story ---------- */
 
