@@ -3,6 +3,15 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased – quieter (branch `skill-taste`)
+
+### Changed
+- **Home: the weekend at a glance.** Under the village, instead of the brick strip and the "everything is clickable" hint: when (1 – 3 October 2027), where (Quinta do Marco) and getting there (fly to Faro), each leading to its page, a "Reply to the invitation" button, and quiet links to Weather, the Algarve and our guests.
+- **The reply button at the end of Program, Stay and Travel.**
+- **Less to read:** Stay, Travel, Weather and the Algarve say the same in fewer words. "At the Quinta", the west-coast road trip and "dishes to try" fold away until opened.
+- **Two typefaces:** Lora for everything you read, labels in its small caps; the handwritten Beth Ellen for titles. Cormorant and Inter are gone.
+- **One ink:** every title and accent is the roofs' terracotta, on every page, instead of blue, terracotta or sage by page; the logo mark is terracotta too.
+
 ## 2026-11-14 – one style
 
 ### Changed
