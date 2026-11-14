@@ -22,6 +22,7 @@ BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b5432a", "#7b8152"
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
 
+import re
 import icons   # tools/icons.py
 
 PAGES = {}
@@ -332,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=61">
+  <link rel="stylesheet" href="css/style.css?v=63">
   <script>
     (function () {{
       var saved = null;
@@ -344,6 +345,7 @@ HEAD = """<!doctype html>
   </script>
 </head>
 <body{body_class}>
+  {defs}
   <header class="nav">
     <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>Marek &amp; Paulo</a>
     <nav class="nav-links" id="nav-links" aria-label="Pages">
@@ -412,7 +414,7 @@ def street(slug):
 
 def main():
     for slug, (title, topic, body) in PAGES.items():
-        html = HEAD.format(title=title, body_class="", nav=nav())
+        html = HEAD.format(title=title, body_class="", nav=nav(), defs=icons.FILTERS)
         foot = FOOT
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
@@ -425,7 +427,7 @@ def main():
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
-    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
+    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav(), defs=icons.FILTERS)
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{BLUE}">
       <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
@@ -440,6 +442,12 @@ def main():
   </main>
 """ + street("map") + FOOT
     open("map.html", "w", encoding="utf-8").write(html)
+    # Home is hand-written; only its strip of page icons comes from icons.py
+    home = open("index.html", encoding="utf-8").read()
+    home = re.sub(r'(<nav class="strip" aria-label="Pages">\n)[\s\S]*?(\n    </nav>)',
+                  lambda m: m[1] + "      " + icons.FILTERS + "\n      <ul>\n" + icons.strip_html() + "\n      </ul>" + m[2],
+                  home, count=1)
+    open("index.html", "w", encoding="utf-8", newline="").write(home)
     print("pages written")
 
 

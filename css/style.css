@@ -1253,8 +1253,15 @@ html, body { overflow-x: clip; }
 
 /* The one icon family (tools/icons.py): a thin line and a faint tint of the
    same colour inside closed shapes, like the weather icons */
-.ico { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
-.ico .f { fill: color-mix(in srgb, currentColor 15%, transparent); }
+.ico { width: 36px; height: 36px; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+/* wash: the closed shapes, a pixel off the line, roughened like watercolour */
+.ico .wash { fill: currentColor; stroke: none; opacity: .3; filter: url(#wash); }
+:root[data-theme="night"] .ico .wash { opacity: .38; }
+/* line: the pen, with a very slight wobble */
+.ico .line { filter: url(#ink); }
+.ico .line .f { fill: none; }
+.ico .line .bg { fill: color-mix(in srgb, currentColor 18%, var(--bg)); }   /* a coin on a card: opaque, so the card stays behind */
+.ico-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 @media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 13px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */

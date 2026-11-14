@@ -1,12 +1,37 @@
-"""The site's one icon family.
+"""The site's one icon family: ink and wash, like the painting.
 
-Drawn like the weather icons: 24 x 24, one thin line (1.35, set in CSS as
-.ico), and a faint tint of the same colour inside closed shapes (class "f").
-No solid parts. The colour comes from where the icon is used (currentColor).
+Each icon is drawn on a 24 x 24 grid as plain shapes. svg() turns it into
+two layers:
 
-index.html carries a copy of the STRIP icons; tools/make_pages.py uses this
-file directly.
+  wash  the closed shapes (class "f"), filled with the ink at low opacity,
+        nudged down-right by a pixel and roughened by the #wash filter, so
+        the colour sits slightly off the line like a watercolour fill;
+  line  every shape as a thin pen line (1.2, set in CSS as .ico),
+        wobbled very slightly by the #ink filter.
+
+Shapes with class "bg" are filled with the paper colour, so a coin can sit
+on top of a card. The colour comes from where the icon is used
+(currentColor). FILTERS must be on every page that shows icons; make_pages.py
+puts it at the top of <body> and into the home page's strip.
 """
+
+import re
+
+FILTERS = (
+    '<svg class="ico-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>'
+    '<filter id="ink" x="-10%" y="-10%" width="120%" height="120%">'
+    '<feTurbulence type="fractalNoise" baseFrequency=".12" numOctaves="1" seed="4"/>'
+    '<feDisplacementMap in="SourceGraphic" scale=".55" xChannelSelector="R" yChannelSelector="G"/></filter>'
+    '<filter id="wash" x="-25%" y="-25%" width="150%" height="150%">'
+    '<feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="9"/>'
+    '<feDisplacementMap in="SourceGraphic" scale="3.4" xChannelSelector="R" yChannelSelector="G"/>'
+    '<feGaussianBlur stdDeviation=".3" result="b"/>'
+    # watercolour pools at its edges: add a darker rim
+    '<feMorphology in="b" operator="erode" radius=".8" result="inner"/>'
+    '<feComposite in="b" in2="inner" operator="out" result="rim"/>'
+    '<feMerge><feMergeNode in="b"/><feMergeNode in="rim"/></feMerge></filter>'
+    '</defs></svg>'
+)
 
 STRIP = {
     # two glasses, clinking
@@ -14,8 +39,10 @@ STRIP = {
                '<path class="f" d="M14 3.5h5l-.7 5.4a1.8 1.8 0 0 1-3.6 0Z"/><path d="M16.5 10.6V19M14.4 19h4.2M12 1.5v1.5"/>',
     # a little Algarve house with its chimney
     "accommodation": '<path class="f" d="M3.5 11 12 7.5l8.5 3.5v9.5h-17Z"/><path d="M16 9.6V5.8h2.4v4.8M8 20.5V16h3v4.5M14 14h3v2.5h-3Z"/>',
-    # plane
-    "travel": '<path class="f" transform="rotate(45 12 12)" d="M12 3c.8 0 1.3.9 1.3 2.2v4.3l6.7 4v1.8l-6.7-2v3.9l1.9 1.5v1.5L12 19.4l-3.2.8v-1.5l1.9-1.5v-3.9L4 15.3v-1.8l6.7-4V5.2C10.7 3.9 11.2 3 12 3Z"/>',
+    # a suitcase with a luggage tag
+    "travel": '<rect class="f" x="3.5" y="8" width="17" height="12" rx="2.2"/>'
+              '<path d="M9 8V5.8c0-.7.5-1.3 1.3-1.3h3.4c.8 0 1.3.6 1.3 1.3V8M7.5 8v12M16.5 8v12M16.5 11.5l2.4 2.6"/>'
+              '<rect x="17.6" y="13.6" width="2.6" height="3.4" rx=".6" transform="rotate(-20 18.9 15.3)"/>',
     # sun
     "weather": '<circle class="f" cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
     # a sardine
@@ -23,6 +50,15 @@ STRIP = {
     # the world
     "map": '<circle class="f" cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z"/>',
 }
+
+STRIP_LABELS = [
+    ("program", "Program"),
+    ("accommodation", "Stay"),
+    ("travel", "Travel"),
+    ("weather", "Weather"),
+    ("location", "Algarve"),
+    ("map", "Guests"),
+]
 
 FACILITIES = [
     ("Heated pool", '<path class="f" d="M3 16c1.5 1.1 3 1.1 4.5 0s3-1.1 4.5 0 3 1.1 4.5 0 3-1.1 4.5 0v4.5H3Z"/>'
@@ -47,26 +83,54 @@ WEATHER = {
 
 # Travel: "good to know", one icon and one short line each
 TIPS = [
-    # clock
-    ('<circle class="f" cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/>',
+    # an alarm clock on little feet
+    ('<circle class="f" cx="12" cy="13" r="7"/><path d="M12 9.2V13l2.6 1.6M7.3 19.2l-1.3 1.8M16.7 19.2l1.3 1.8"/>'
+     '<path d="M3.8 7.2a3 3 0 0 1 4-3.4M20.2 7.2a3 3 0 0 0-4-3.4"/>',
      '<b>1 hour</b> behind Prague: 12:00 there is 11:00 here'),
-    # a euro coin
-    ('<circle class="f" cx="12" cy="12" r="8.5"/><path d="M15.2 8.6a4.3 4.3 0 1 0 0 6.8M7.5 10.8h5.5M7.5 13.2h5.5"/>',
+    # a card with a euro coin on top
+    ('<rect class="f" x="2.5" y="5" width="14.5" height="10" rx="1.6"/><path d="M2.5 8.3h14.5M5 12.2h3.5"/>'
+     '<circle class="f bg" cx="16.5" cy="15.5" r="5"/><path d="M18.3 13.5a2.7 2.7 0 1 0 0 4M14 14.9h3.2M14 16.2h3.2"/>',
      'Cards are mostly accepted &ndash; bring <b>some euros</b>, just in case'),
-    # phone with signal
-    ('<rect class="f" x="6.5" y="3" width="9" height="18" rx="2"/><path d="M10 17.8h2M18.2 7.6a5 5 0 0 1 0 6.3M20.6 5.2a8.4 8.4 0 0 1 0 11.1"/>',
+    # a phone sending a little signal
+    ('<rect class="f" x="5" y="3" width="10" height="18" rx="2.4"/><path d="M8.8 18h2.4"/>'
+     '<path d="M17.8 9.2a4.2 4.2 0 0 1 0 5.6M20.2 7a7.5 7.5 0 0 1 0 10"/>',
      'Calls and <b>data like at home</b> &ndash; no roaming in the EU'),
-    # passport
-    ('<rect class="f" x="5" y="3" width="14" height="18" rx="1.6"/><circle cx="12" cy="10.5" r="3.2"/><path d="M8.8 10.5h6.4M12 7.3c1 .9 1.4 2 1.4 3.2s-.4 2.3-1.4 3.2M9 17h6"/>',
+    # a passport
+    ('<path class="f" d="M5.5 3.5h11.2c1 0 1.8.8 1.8 1.8v13.4c0 1-.8 1.8-1.8 1.8H5.5Z"/><path d="M8 3.5v17"/>'
+     '<circle cx="13.3" cy="10.3" r="2.8"/><path d="M10.5 10.3h5.6M13.3 7.5c.8.8 1.2 1.7 1.2 2.8s-.4 2-1.2 2.8M11 16.3h4.6"/>',
      'From the EU: <b>ID card</b> &ndash; from elsewhere: <b>passport</b>'),
-    # car
-    ('<path class="f" d="M3.5 16.5v-4l2.2-4.8a1.6 1.6 0 0 1 1.5-1h9.6a1.6 1.6 0 0 1 1.5 1l2.2 4.8v4Z"/><path d="M3.5 12.5h17M6.5 16.5v2.2M17.5 16.5v2.2"/><circle cx="7.2" cy="14.5" r=".8"/><circle cx="16.8" cy="14.5" r=".8"/>',
+    # a little old car, from the side
+    ('<path class="f" d="M2.5 16.5v-2.8c0-.8.5-1.4 1.2-1.6l3-.8 2.5-3.3c.4-.5 1-.8 1.6-.8h4.3c.7 0 1.3.3 1.7.9l2.4 3.3 1.6.4c.8.2 1.2.8 1.2 1.6v3.1Z"/>'
+     '<path d="M8.7 11.2h9.1M13 8v3.2"/><circle class="f bg" cx="7.2" cy="16.8" r="2"/><circle class="f bg" cx="16.8" cy="16.8" r="2"/>',
      'Driving: max <b>0.5&nbsp;&permil;</b> &ndash; about 2&ndash;3 small beers'),
-    # phone handset
-    ('<path class="f" d="M8.4 3.5 6 4.2C4.4 4.7 3.6 6.4 4.1 8a17 17 0 0 0 11.9 11.9c1.6.5 3.3-.3 3.8-1.9l.7-2.4-4.4-2.2-1.9 1.9a11 11 0 0 1-5.6-5.6l1.9-1.9Z"/>',
+    # an old telephone handset
+    ('<path class="f" d="M8.4 3.5 6 4.2C4.4 4.7 3.6 6.4 4.1 8a17 17 0 0 0 11.9 11.9c1.6.5 3.3-.3 3.8-1.9l.7-2.4-4.4-2.2-1.9 1.9a11 11 0 0 1-5.6-5.6l1.9-1.9Z"/>'
+     '<path d="M14.5 3.8a6 6 0 0 1 5.7 5.7M14.2 6.7a3 3 0 0 1 3.1 3.1"/>',
      'Emergency: <b>112</b>, same as at home'),
 ]
 
+# Footer: the orange tree from the village, drawn in the same ink and wash.
+# Its oranges keep their own colour (class "o").
+TREE = (
+    '<path class="f" d="M24 5.5c-5.2 0-9 3.4-9.8 7.6-3.9.8-6.4 4-5.7 7.8.7 3.8 4.4 6.2 8.4 5.6 1.9 2.4 4.8 3.2 7.4 2.3 2.7 1.3 6.3.6 8.4-1.8 3.9-.2 6.6-3.3 6.4-7.1-.2-3.5-2.8-6.1-6-6.6C32.4 8.9 28.7 5.5 24 5.5Z"/>'
+    '<path d="M24 29v13.5M24 35.5l-4.2-3.4M24.2 33.4l3.6-3.6M15 42.5h18"/>'
+    '<circle class="o" cx="17" cy="16.5" r="1.9"/><circle class="o" cx="28.5" cy="12.5" r="1.9"/>'
+    '<circle class="o" cx="33" cy="21" r="1.9"/><circle class="o" cx="21.5" cy="23" r="1.9"/><circle class="o" cx="12.5" cy="22.5" r="1.9"/>'
+)
 
-def svg(paths, cls="ico"):
-    return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{paths}</svg>'
+_FILLED = re.compile(r'<(path|circle|rect|ellipse)\b([^>]*?)\bclass="f( bg)?"([^>]*)/>')
+
+
+def svg(paths, cls="ico", box=24):
+    """Two layers: the offset wash under the pen line (see the docstring)."""
+    wash = "".join(f'<{m[0]}{m[1]}{m[3]}/>' for m in _FILLED.findall(paths))
+    nudge = box / 24
+    return (f'<svg class="{cls}" viewBox="0 0 {box} {box}" aria-hidden="true">'
+            f'<g class="wash" transform="translate({1.8 * nudge:g} {1.5 * nudge:g})">{wash}</g>'
+            f'<g class="line">{paths}</g></svg>')
+
+
+def strip_html():
+    rows = [f'        <li><a href="{slug}.html">{svg(STRIP[slug])}<span>{label}</span></a></li>'
+            for slug, label in STRIP_LABELS]
+    return "\n".join(rows)
