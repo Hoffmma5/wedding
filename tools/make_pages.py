@@ -48,8 +48,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
-        <p>If you&rsquo;re traveling from Czech Republic we recommend to fly out from two airports: <strong>Prague</strong> or <strong>Nuremberg</strong>.</p>
-        <p class="ps">P.S. The flights are often cheaper from Germany.</p>
+        <p>From the Czech Republic, fly from <strong>Prague</strong> or <strong>Nuremberg</strong>; Nuremberg is often cheaper.</p>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -68,18 +67,12 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </div>
 
     <section class="inv-section">
-      <div class="inv-grid">
-        <div>
-          <header class="inv-head">
-            <p class="sc">From the airport to Tavira&hellip;</p>
-            <h2 class="script">transfer</h2>
-          </header>
-          <div class="prose">
-            <p>If you arrive on the 1st of October, <strong>we will take care of your transfer</strong>. The same applies if you fly back on Sunday, the 3rd &ndash; <strong>we will take you back to the airport</strong>.</p>
-            <p>However, if you arrive earlier or leave later than the mentioned dates, we ask that you plan your transfer. The best option would be renting/sharing a car or taking a taxi.</p>
-          </div>
-        </div>
-        <figure class="art"><img src="assets/art/shrimp.webp" alt="" width="640" height="479"></figure>
+      <header class="inv-head">
+        <p class="sc">Faro airport to the hotel</p>
+        <h2 class="script">transfer</h2>
+      </header>
+      <div class="prose">
+        <p>Landing on the 1st or flying home on the 3rd? <strong>We drive you both ways.</strong> On any other day, a taxi or a shared hire car is easiest.</p>
       </div>
     </section>
 
@@ -101,7 +94,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
           <p class="sc">A forecast for the festivities</p>
         </header>
         <div class="prose">
-          <p>October in the Algarve usually brings warm, sunny afternoons and cooler evenings. The weather can be a little unpredictable, though, so pack your sunglasses, but bring an umbrella too &ndash; just in case the skies have other plans!</p>
+          <p>Warm, sunny afternoons and cool evenings, with the odd shower. Pack sunglasses and an umbrella.</p>
         </div>
       </div>
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
@@ -139,7 +132,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     </header>
     <figure class="wide-art"><img src="assets/art/hotel-landscape.webp" alt="Watercolour of the countryside near Tavira, with the sea behind" width="1059" height="437"></figure>
     <div class="prose">
-      <p>Our hotel is <strong>Hotel Quinta do Marco</strong> &ndash; located in the countryside of the village, it offers a heated outdoor pool, gym, a little farm with animals and great views. <strong>We will provide accommodation to everyone for the 2 nights and the main meals during the 3 days.</strong></p>
+      <p><strong>You stay with us at Quinta do Marco for both nights, main meals included.</strong> A rural hotel in the hills above Tavira, with a pool, a little farm and long views.</p>
       <dl class="times">
         <dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd>
         <dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd>
@@ -158,25 +151,20 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       <figure class="slide"><img src="assets/gallery/hotel/09.webp" alt="The hotel nestled in the green Algarve hills" width="1200" height="800" loading="lazy"><figcaption>In the Algarve hills</figcaption></figure>
     </div>
 
-    <section class="inv-section">
-      <header class="inv-head">
-        <p class="sc">Something for everyone</p>
-        <h2 class="script">at the Quinta</h2>
-      </header>
+    <details class="fold">
+      <summary><span class="script">at the Quinta</span></summary>
       <ul class="facilities">
 {FACILITIES_HTML}
       </ul>
       <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
-    </section>
+    </details>
 
     <section class="inv-section">
       <header class="inv-head">
         <h2 class="script">the Bedrooms</h2>
-        <p class="sc">Where will we sleep?</p>
       </header>
       <div class="prose">
-        <p>Everyone stays with us at Hotel Quinta do Marco for both nights. We&rsquo;ll let each of you know personally which room is yours.</p>
-        <p>The rooms are bright and comfortable, and each one has its own balcony or terrace looking out over the hills &ndash; perfect for a slow morning coffee after a long night.</p>
+        <p>Each room has a balcony or terrace. We&rsquo;ll tell you which one is yours.</p>
       </div>
     <div class="carousel" aria-label="Photos of the bedrooms">
       <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"><figcaption>Double room</figcaption></figure>
@@ -256,9 +244,8 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
           <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
-          <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
-          <p>The celebration itself is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, about 15 minutes from town. If you come early or stay a little longer, here is the Algarve we love &ndash; from Tavira all the way to the wild west coast.</p>
+          <p>We come back every summer for the beaches and the three-hour dinners. <strong>Tavira</strong> is whitewashed houses, a river and salt flats, 15 minutes below <a href="accommodation.html">the Quinta</a>.</p>
+          <p>Coming early or staying on? Here is the Algarve we love.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -288,22 +275,21 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
 
-      <aside class="road-trip">
-        <p class="sc">Got a few extra days?</p>
-        <h3>Drive the west coast</h3>
-        <p>From Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
-      </aside>
     </section>
 
-    <section class="inv-section">
-      <header class="inv-head">
-        <p class="sc">Eat like a local</p>
-        <h2 class="script">dishes to try</h2>
-      </header>
+    <details class="fold">
+      <summary><span class="script">the west coast</span></summary>
+      <div class="prose">
+        <p>A few extra days? Drive from Lagos up to Sines for fishing villages, cliffs and wild beaches: Castelejo, Bordeira, Amado, Odeceixe.</p>
+      </div>
+    </details>
+
+    <details class="fold">
+      <summary><span class="script">dishes to try</span></summary>
       <ul class="dishes">
 {DISHES_HTML}
       </ul>
-    </section>""")
+    </details>""")
 
 PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
@@ -363,7 +349,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=55">
+  <link rel="stylesheet" href="css/style.css?v=56">
   <script>
     (function () {{
       var saved = null;
