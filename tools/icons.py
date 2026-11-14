@@ -4,7 +4,8 @@ Glyphs are 24 x 24, one line in currentColor, and a faint tint of the same
 colour inside closed shapes (class "f"). On the pages every glyph is shown
 on an azulejo tile (tile() below, styled as .tile in style.css).
 
-index.html carries a copy of the STRIP tiles; tools/make_pages.py uses this
+index.html carries a copy of the STRIP tiles (written by the home
+stripe script, not by make_pages.py); tools/make_pages.py uses this
 file directly.
 """
 
@@ -20,6 +21,9 @@ STRIP = {
     "weather": '<circle class="f" cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
     # a sardine
     "location": '<path class="f" d="M2.5 12c3.2-4 9.5-5 14-1.6l3.8-2.9v9l-3.8-2.9c-4.5 3.4-10.8 2.4-14-1.6Z"/><circle cx="6.4" cy="11.3" r=".7"/><path d="M9 9.8c.8 1.4.8 3 0 4.4"/>',
+    # an envelope sealed with a heart
+    "rsvp": '<rect class="f" x="3" y="6" width="18" height="13" rx="1.5"/><path d="M3.6 6.8 12 13l8.4-6.2"/>'
+            '<path class="f" d="M12 16.6c-1.6-1-2.4-1.9-2.4-2.9a1.2 1.2 0 0 1 2.4-.4 1.2 1.2 0 0 1 2.4.4c0 1-.8 1.9-2.4 2.9Z"/>',
     # the world
     "map": '<circle class="f" cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z"/>',
 }

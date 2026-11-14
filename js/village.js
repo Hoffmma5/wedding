@@ -16,7 +16,7 @@
       requestAnimationFrame(function () {
         html.classList.add('zooming-out');
         html.classList.remove('returning');
-        setTimeout(function () { html.classList.remove('zooming-out'); }, 1300);
+        setTimeout(function () { html.classList.remove('zooming-out'); }, 800);
       });
     });
   }
@@ -39,7 +39,7 @@
     hero.style.setProperty('--oy', (b.top + b.height / 2 - h.top) + 'px');
     spot.classList.add('open');
     document.body.classList.add('entering');
-    setTimeout(function () { location.href = href; }, 850);
+    setTimeout(function () { location.href = href; }, 480);
   }
 
   spots.forEach(function (spot) {
@@ -63,7 +63,7 @@
   });
 
   /* ---------- Weathervane: press and hold → it points to where you are ----------
-     A normal click still opens the guest map. Holding asks (once) for the
+     A normal click opens the weather page. Holding asks (once) for the
      visitor's location, turns the arrow from Tavira towards them and tells
      them how far away Tavira is. Nothing is stored or sent anywhere. */
 

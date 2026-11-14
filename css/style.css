@@ -211,7 +211,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   overflow-x: clip;
   background: var(--sky);
   container-type: inline-size;
-  transition: background-color var(--fade), transform .9s cubic-bezier(.6, 0, .4, 1);
+  transition: background-color var(--fade), transform .5s cubic-bezier(.5, 0, .3, 1);
   transform-origin: var(--ox, 50%) var(--oy, 70%);
   /* picture width: fill the screen width, but keep the doors above the fold */
   --pw: max(860px, min(100cqw, calc((100svh - 8px) * 1926 / 1177)));
@@ -351,41 +351,6 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 
 .spot, .door { display: block; z-index: 6; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; text-decoration: none; }
 .spot:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
-
-/* ---------- Sky: sun / moon ---------- */
-
-.sky { border-radius: 50%; }
-.sky .sun, .sky .moon {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  transition: opacity var(--fade), transform .8s var(--ease);
-}
-.sky .sun {
-  background: radial-gradient(circle at 40% 38%, #ffe7a3, #f9c74f 55%, #f4a83a);
-  box-shadow: 0 0 0 calc(var(--u) * 14) rgba(249, 199, 79, .14), 0 0 calc(var(--u) * 60) rgba(249, 180, 60, .35);
-  opacity: calc(1 - var(--night));
-}
-.sky .moon {
-  inset: 6%;
-  background: linear-gradient(200deg, #fffaf0, #efe5c6);
-  -webkit-mask: radial-gradient(circle at 74% 28%, transparent 47%, #000 48.5%);
-  mask: radial-gradient(circle at 74% 28%, transparent 47%, #000 48.5%);
-  transform: rotate(-12deg);
-  opacity: var(--night);
-}
-.sky::before {                     /* soft moonlight halo (not masked) */
-  content: "";
-  position: absolute;
-  inset: -70%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 244, 214, .22), rgba(255, 244, 214, .06) 55%, transparent);
-  opacity: var(--night);
-  transition: opacity var(--fade);
-  pointer-events: none;
-}
-.sky:is(:hover, :focus-visible, .open) .moon { transform: rotate(-12deg) scale(1.08); }
-.sky:is(:hover, :focus-visible, .open) :is(.sun, .moon) { transform: scale(1.08); }
 
 /* ---------- Plane ---------- */
 
@@ -569,7 +534,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 
 /* ---------- Walking in ---------- */
 
-body.entering .hero { transform: scale(3.2); }
+body.entering .hero { transform: scale(2.2); }
 body.entering .hero-text { opacity: 0; }
 body::after {
   content: "";
@@ -579,20 +544,20 @@ body::after {
   background: var(--bg);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .45s ease .35s;
+  transition: opacity .28s ease .2s;
 }
 body.entering::after { opacity: 1; }
 
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-view .tree-mark { transform: scale(.9); transition: transform .5s var(--ease); }
+body.leaving .street-view .tree-mark { transform: scale(.9); transition: transform .3s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
-html.returning .hero { transform: scale(2.4); transition: none; }
+html.returning .hero { transform: scale(1.8); transition: none; }
 html.returning .hero-text { opacity: 0; }
 html.returning body::after { opacity: 1; transition: none; }
-html.zooming-out body::after { transition: opacity .55s ease; }
-html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
+html.zooming-out body::after { transition: opacity .35s ease; }
+html.zooming-out .hero-text { transition: opacity .4s ease .3s; }
 
 /* ---------- Details ---------- */
 
@@ -605,61 +570,53 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   white-space: nowrap;
 }
 
-/* The essentials, plain on the paper right under the village: the three
-   pages every guest needs, each with its one fact, then RSVP. The village
-   above stays the artsy part; this part is just the answers. */
-.glance {
+/* The pages on an orange stripe right under the village, full width: one
+   azulejo tile and a label per page, RSVP last with the tile glazed in
+   cream. The orange is the oranges on the tree, deepened until cream
+   labels read at 4 : 1 (they are 21 px semibold). */
+.stripe {
   position: relative;
   z-index: 3;
-  max-width: 640px;
-  margin: clamp(8px, 2vw, 24px) auto clamp(56px, 8vw, 96px);
-  padding: 0 20px;
-  text-align: center;
+  margin: 0 0 clamp(48px, 7vw, 88px);
+  background: #c75d22;
+  color: #fff8ee;
+  transition: background-color var(--fade), color var(--fade);
 }
-.glance-list { margin: 0; padding: 0; list-style: none; text-align: left; border-top: 1px solid var(--line); }
-.glance-list li { border-bottom: 1px solid var(--line); }
-.glance-list a {
+:root[data-theme="night"] .stripe { background: #6e3418; color: #f6e6d2; }
+.stripe ul {
   display: grid;
-  grid-template-columns: 7.5em minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 4px 20px;
-  min-height: 56px;
-  padding: 16px 4px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px clamp(12px, 3vw, 32px);
+  list-style: none;
+}
+.stripe a {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 4px 8px;
+  border-radius: 10px;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
   color: inherit;
   text-decoration: none;
   transition: background-color .2s;
 }
-.glance-list b { font-weight: 600; font-size: var(--fs-l); color: var(--ink, var(--accent)); }
-.glance-list span { color: var(--muted); line-height: 1.5; }
-.glance-list .chev { align-self: center; width: 16px; height: 16px; fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s var(--ease); }
-.glance-list a:hover .chev { transform: translateX(3px); }
-.glance-list a:hover b { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.glance-list a:focus-visible, .glance-more a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
-.glance-rsvp {
-  display: inline-grid;
-  place-items: center;
-  min-width: 168px;
-  min-height: 48px;
-  margin-top: 32px;
-  padding: 0 28px;
-  border-radius: 999px;
-  background: var(--text);
-  color: var(--bg);
-  font-size: var(--fs-l);
-  font-weight: 600;
-  letter-spacing: .04em;
-  text-decoration: none;
-  transition: opacity .2s, background-color var(--fade), color var(--fade);
-}
-.glance-rsvp:hover { opacity: .85; }
-.glance-rsvp:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.glance-more { margin: 24px 0 0; color: var(--muted); }
-.glance-more a { display: inline-block; padding: 10px 2px; color: var(--text); text-underline-offset: 4px; text-decoration-thickness: 1px; }
-@media (max-width: 560px) {
-  .glance-list a { grid-template-columns: minmax(0, 1fr) auto; }
-  .glance-list b { grid-column: 1; }
-  .glance-list span { grid-column: 1; }
-  .glance-list .chev { grid-column: 2; grid-row: 1 / span 2; }
+.stripe .tile { width: 48px; height: 48px; color: inherit; transition: transform .2s var(--ease); }
+.stripe a:hover { background: rgba(60, 20, 0, .14); }
+.stripe a:hover .tile { transform: translateY(-2px); }
+.stripe a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+.stripe .rsvp .tile .t-o { fill: currentColor; }
+.stripe .rsvp .tile .t-i, .stripe .rsvp .tile .t-c, .stripe .rsvp .tile .g { stroke: #c75d22; }
+.stripe .rsvp .tile .f { fill: color-mix(in srgb, #c75d22 22%, transparent); }
+:root[data-theme="night"] .stripe .rsvp .tile :is(.t-i, .t-c, .g) { stroke: #6e3418; }
+@media (max-width: 760px) {
+  .stripe ul { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 4px; padding: 12px 8px; }
+  .stripe a { font-size: 19px; }
+  .stripe .tile { width: 42px; height: 42px; }
 }
 
 /* ---------- Our story ---------- */
