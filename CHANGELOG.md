@@ -6,6 +6,8 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased
 
 ### Changed
+- **One icon style across the site:** the home strip, Stay facilities, good to know and weather now share the light style of the weather icons – a thin line with a faint tint, no solid parts, one size.
+- **Good to know** has six tips with the details people asked about: "12:00 there is 11:00 here", "Cards are mostly accepted – bring some euros, just in case", "Calls and data like at home", "From the EU: ID card – from elsewhere: passport", "Driving: max 0.5 ‰ – about 2–3 small beers", "Emergency: 112, same as at home". *Obrigado* and *um imperial* are gone.
 - **Good to know** (Travel) is eight icons with one short line each – "1 hour behind Prague", "No roaming in the EU", "Small beer: *um imperial*", "Emergency: 112" – instead of eight cards with headings and paragraphs.
 - **Weather numbers** are an open row between two hairlines instead of three boxed cards, with the icons tinted in the page's ink.
 - **On phones the watercolour objects are small accents** (sun, crabs, disco ball, oysters, sardine – 150 px at most) instead of filling a screen each.

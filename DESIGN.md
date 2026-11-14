@@ -132,18 +132,19 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Icons** (`tools/icons.py`): small two-tone pictograms from the wedding's
-  world – clinking glasses, a little Algarve house, a plane, the sun, a
-  sardine, the globe with a heart; on Stay a pool, a cocktail with an orange
-  slice, a lotus, a slide, a sheep. 24 × 24, stroke 1.6–1.5 in
-  `currentColor`; shapes with `.f` get a soft tint (`--tint`), `.s` are solid.
+- **Icons** (`tools/icons.py`): one family everywhere – home strip, Stay
+  facilities, good to know, weather. Drawn like the weather icons: 24 × 24,
+  a thin 1.35 line in `currentColor`, a faint 15 % tint inside closed shapes
+  (`.f`), no solid parts, shown at 30 px (`.ico`). Pictograms from the
+  wedding's world: glasses, a little house, the plane, the sun, a sardine,
+  the globe; a pool, a cocktail, a sheep; a clock, a euro coin, a passport.
 - **Facilities** (Stay, `ul.facilities`): eight line icons in the section's ink
   with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
-- **Good to know** (Travel, `ul.tips`): eight two-tone icons, each with one
-  short line, the key fact in the ink ("**1 hour** behind Prague"). 4 across,
-  2 on phones, no cards and no headings.
+- **Good to know** (Travel, `ul.tips`): six icons, each with one short line,
+  the key fact in the ink ("**1 hour** behind Prague: 12:00 there is 11:00
+  here"). 3 across on desktop; on phones a list, icon left, hairlines between.
 - **Weather numbers** (`.wx`): an open row between two hairlines – tinted
   line icon, Lora number in the page's ink, muted caption. No cards; on
   phones three rows with hairlines between.
