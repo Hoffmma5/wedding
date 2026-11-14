@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=66">
+  <link rel="stylesheet" href="css/style.css?v=67">
   <script>
     (function () {
       var saved = null;
@@ -75,13 +75,6 @@
           <div class="glow" style="--x:1241;--y:391;--w:84;--h:106" aria-hidden="true"></div>
           <div class="glow" style="--x:1716;--y:398;--w:78;--h:106" aria-hidden="true"></div>
 
-          <!-- Sun / moon → weather -->
-          <a class="spot go sky" href="weather.html" style="--x:314;--y:-196;--w:92;--h:92">
-            <span class="sun" aria-hidden="true"></span>
-            <span class="moon" aria-hidden="true"></span>
-            <span class="tip below">Weather &amp; what to pack</span>
-          </a>
-
           <!-- Weathervane on the coral chimney → where guests come from -->
           <a class="spot go vane" href="map.html" style="--x:1757;--y:-62;--w:96;--h:130">
             <svg class="vane-base" viewBox="0 0 96 130" aria-hidden="true">
@@ -108,13 +101,15 @@
             <span class="tip">The Algarve</span>
           </a>
 
-          <!-- Azulejo direction plaque above the yellow window → travel -->
-          <a class="spot go tile-sign" href="travel.html" style="--x:762;--y:296;--w:124;--h:46">
-            <span class="tile-face">
-              <span>Faro</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h15.5M13 6.5l6 5.5-6 5.5" style="fill:none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span class="tip">Travel</span>
+          <!-- Ceramic sun on the blue house, beside its door → weather -->
+          <a class="spot go wall-sun" href="weather.html" style="--x:333;--y:418;--w:68;--h:68">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path class="rays" d="M50.0 3.0 L56.4 17.6 L68.0 6.6 L68.3 22.6 L83.2 16.8 L77.4 31.7 L93.4 32.0 L82.4 43.6 L97.0 50.0 L82.4 56.4 L93.4 68.0 L77.4 68.3 L83.2 83.2 L68.3 77.4 L68.0 93.4 L56.4 82.4 L50.0 97.0 L43.6 82.4 L32.0 93.4 L31.7 77.4 L16.8 83.2 L22.6 68.3 L6.6 68.0 L17.6 56.4 L3.0 50.0 L17.6 43.6 L6.6 32.0 L22.6 31.7 L16.8 16.8 L31.7 22.6 L32.0 6.6 L43.6 17.6Z"/>
+              <circle class="face" cx="50" cy="50" r="27"/>
+              <circle class="rim" cx="50" cy="50" r="22"/>
+              <path class="feat" d="M40 45.5q3-3 6 0M54 45.5q3-3 6 0M41 56q9 7 18 0"/>
+            </svg>
+            <span class="tip">Weather &amp; what to pack</span>
           </a>
 
           <!-- Doors -->
@@ -143,6 +138,17 @@
             <img class="l-lit"   src="assets/lamp-lit.png"   alt="">
             <span class="tip lamp-tip"></span>
           </button>
+
+          <!-- Direction sign on the lamp post → travel -->
+          <a class="spot go signpost" href="travel.html" style="--x:1250;--y:548;--w:152;--h:40">
+            <svg viewBox="0 0 152 40" aria-hidden="true">
+              <path class="bracket" d="M136 9h16M136 31h16"/>
+              <path class="board" d="M17 2.5h119v35H17L2.5 20Z"/>
+              <path class="inner" d="M19 6h113v28H19L7.5 20Z"/>
+              <text x="72" y="25.5" text-anchor="middle">Faro</text>
+            </svg>
+            <span class="tip">Travel</span>
+          </a>
 
           <!-- Orange tree: just for fun -->
           <button class="tree" type="button" aria-label="Shake the orange tree" style="--x:482;--y:282;--w:276;--h:220"></button>
