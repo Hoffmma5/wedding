@@ -352,30 +352,36 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .spot, .door { display: block; z-index: 6; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; text-decoration: none; }
 .spot:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
 
-/* ---------- Street sign on the lamp pole (→ Travel) ----------
-   Painted like the "Algarve" house tile: cream enamel, a blue rim and a fine
-   inner line, the name in the same tracked capitals; two dark clamps hold it
-   to the pole. It swings a little from the pole when you point at it. */
+/* ---------- Painted signs: the house tile and the Faro street sign ----------
+   Drawn to sit in the watercolour: the paper is the painting's off-white with
+   a brushed edge (#wc-paper), the blue rim, fine line and lettering are one
+   mottled pigment (#wc-pigment) in the blue of the houses' trim, and the
+   shadow is a soft grey wash, not a drop shadow. The whole sign multiplies
+   onto the wall, so the paper texture shows through it. */
+
+.paint-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.painted { display: block; width: 100%; height: 100%; overflow: visible; mix-blend-mode: multiply; }
+.painted .wash { fill: rgba(90, 80, 70, .16); filter: url(#wc-wash); }
+.painted .paper { fill: #fffdf8; }
+.painted .pigment { fill: none; stroke: #2a72e6; stroke-linejoin: round; }
+.painted .rim { stroke-width: 4.6; }
+.painted .line { stroke-width: 1.1; opacity: .7; }
+.painted text { fill: #1f5fcf; fill-opacity: .92; stroke: none; font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.painted .jet { fill: #1f5fcf; stroke: none; }
+.painted .clamps rect { fill: #4b4e55; }
+/* Night: painted in the night layer's own colours – the plate is the
+   moonlit wall a shade lighter, the pigment the trim's deep night blue */
+:root[data-theme="night"] .painted .paper { fill: #6b7299; }
+:root[data-theme="night"] .painted .pigment { stroke: #1d3478; }
+:root[data-theme="night"] .painted :is(text, .jet) { fill: #16296a; }
+:root[data-theme="night"] .painted .clamps rect { fill: #23263a; }
+:root[data-theme="night"] .painted .wash { fill: rgba(0, 0, 20, .3); }
 
 .signpost { z-index: 8; }
-.signpost svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  transform-origin: 92% 50%;
-  filter: drop-shadow(calc(var(--u) * 1) calc(var(--u) * 2) calc(var(--u) * 2) rgba(60, 50, 40, .25));
-  transition: transform .3s var(--ease), filter var(--fade);
-}
-.signpost .plate { fill: #fdfcf8; stroke: #2f5fb5; stroke-width: 2.6; stroke-linejoin: round; }
-.signpost .inlay { fill: none; stroke: rgba(47, 95, 181, .5); stroke-width: 1; stroke-linejoin: round; }
-.signpost .jet { fill: #1f4795; }
-.signpost text { fill: #1f4795; font-family: var(--sans); font-size: 17px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.signpost .clamp { fill: #3a3d44; }
-:root[data-theme="night"] .signpost svg { filter: brightness(.72) saturate(.85) drop-shadow(0 2px 3px rgba(0, 0, 0, .4)); }
+.signpost svg { transform-origin: 92% 50%; transition: transform .3s var(--ease), filter var(--fade); }
 .signpost:is(:hover, :focus-visible, .open) svg { transform: rotate(-4deg); }
-:root[data-theme="night"] .signpost:is(:hover, :focus-visible, .open) svg { filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .4)); }
 .signpost .tip { bottom: auto; top: calc(100% + 8px); transform: translate(-50%, -4px); }
+.signpost:is(:hover, :focus-visible, .open) .tip { transform: translate(-50%, 0); }
 
 /* ---------- Weathervane ---------- */
 
@@ -404,37 +410,8 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 /* ---------- House-name tile ---------- */
 
 .tile-sign { z-index: 5; }
-.tile-face {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--u) * 6);
-  width: 100%;
-  height: 100%;
-  padding: 0 calc(var(--u) * 10);
-  border: calc(var(--u) * 2.5) solid #2f5fb5;
-  border-radius: calc(var(--u) * 4);
-  background: #fdfcf8;
-  /* thin inner line, like a painted azulejo border */
-  box-shadow:
-    inset 0 0 0 calc(var(--u) * 3) #fdfcf8,
-    inset 0 0 0 calc(var(--u) * 4) rgba(47, 95, 181, .45),
-    calc(var(--u) * 1) calc(var(--u) * 2) calc(var(--u) * 4) rgba(60, 50, 40, .2);
-  color: #1f4795;
-  font-size: max(7px, calc(var(--u) * 14));
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition: transform .3s var(--ease), filter var(--fade);
-}
-.tile-face span { margin-right: -.14em; }     /* cancel trailing letter-spacing so the word centres */
-.tile-face svg { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; }
-:root[data-theme="night"] .tile-face { filter: brightness(.72) saturate(.85); }
-.tile-sign:is(:hover, :focus-visible, .open) .tile-face { transform: translateY(calc(var(--u) * -3)); filter: none; }
-
+.tile-sign svg { transition: transform .3s var(--ease), filter var(--fade); }
+.tile-sign:is(:hover, :focus-visible, .open) svg { transform: translateY(calc(var(--u) * -3)); }
 
 /* ---------- Doors ---------- */
 

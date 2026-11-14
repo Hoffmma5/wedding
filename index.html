@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=68">
+  <link rel="stylesheet" href="css/style.css?v=71">
   <script>
     (function () {
       var saved = null;
@@ -66,6 +66,28 @@
       <div class="hero-scroll">
         <!-- Positions use the picture's pixels (1926 × 817). Negative --y is the sky above it. -->
         <div class="picture">
+          <!-- Watercolour filters for the painted signs: a slow warp so edges
+               wobble like a brush, and a mottle so the pigment pools unevenly,
+               like the blue trim on the houses. -->
+          <svg class="paint-defs" width="0" height="0" aria-hidden="true" focusable="false">
+            <defs>
+              <filter id="wc-pigment" x="-8%" y="-15%" width="116%" height="130%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="4" result="warp"/>
+                <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="wobble"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="11" result="mottle"/>
+                <feColorMatrix in="mottle" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 1.42" result="mottleA"/>
+                <feComposite in="wobble" in2="mottleA" operator="in"/>
+              </filter>
+              <filter id="wc-paper" x="-8%" y="-15%" width="116%" height="130%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="7" result="warp"/>
+                <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+              <filter id="wc-wash" x="-15%" y="-25%" width="130%" height="150%">
+                <feGaussianBlur stdDeviation="2.2"/>
+              </filter>
+            </defs>
+          </svg>
+
           <img class="layer day"   src="assets/village-day.webp"   alt="Three whitewashed Portuguese houses with blue, yellow and coral trim, an orange tree and bougainvillea" width="1926" height="817">
           <img class="layer night" src="assets/village-night.webp" alt="" aria-hidden="true" width="1926" height="817">
           <img class="layer lit"   src="assets/lights-windows.png?v=2" alt="" aria-hidden="true" width="1926" height="817">
@@ -92,12 +114,17 @@
             <span class="tip">Weather &amp; what to pack</span>
           </a>
 
-          <!-- House-name tile → location -->
+          <!-- House-name tile → location (painted like the trim, no pin) -->
           <a class="spot go tile-sign" href="location.html" style="--x:987;--y:296;--w:124;--h:46">
-            <span class="tile-face">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c-3.9 0-7 3-7 6.8 0 5 7 12.2 7 12.2s7-7.2 7-12.2c0-3.8-3.1-6.8-7-6.8Zm0 9.3a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/></svg>
-              <span>Algarve</span>
-            </span>
+            <svg class="painted" viewBox="0 0 124 46" aria-hidden="true">
+              <rect class="wash" x="6" y="8" width="116" height="38" rx="3"/>
+              <rect class="paper" x="3" y="3" width="118" height="40" rx="2.5" filter="url(#wc-paper)"/>
+              <g class="pigment" filter="url(#wc-pigment)">
+                <rect class="rim" x="5" y="5" width="114" height="36" rx="2"/>
+                <rect class="line" x="10" y="10" width="104" height="26" rx="1"/>
+              </g>
+              <text class="letters" x="62.5" y="28.5" text-anchor="middle" filter="url(#wc-paper)">Algarve</text>
+            </svg>
             <span class="tip">The Algarve</span>
           </a>
 
@@ -130,13 +157,21 @@
 
           <!-- Street sign on the lamp pole → travel (Faro is west, so it points left) -->
           <a class="spot go signpost" href="travel.html" style="--x:1232;--y:528;--w:168;--h:48">
-            <svg viewBox="0 0 168 48" aria-hidden="true">
-              <path class="plate" d="M3 24 21 4h128v40H21Z"/>
-              <path class="inlay" d="M9.5 24 23.8 8.5h121.2v31H23.8Z"/>
-              <g class="jet" transform="translate(30 15) rotate(-90 9 9) scale(.75)"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></g>
-              <text x="98" y="30" text-anchor="middle">Faro</text>
-              <rect class="clamp" x="148" y="9" width="17" height="5" rx="1.5"/>
-              <rect class="clamp" x="148" y="34" width="17" height="5" rx="1.5"/>
+            <svg class="painted" viewBox="0 0 168 48" aria-hidden="true">
+              <path class="wash" d="M7 28 24 10h126v36H24Z"/>
+              <path class="paper" d="M3 24 21 4h128v40H21Z" filter="url(#wc-paper)"/>
+              <g class="pigment" filter="url(#wc-pigment)">
+                <path class="rim" d="M6.4 24 22.3 7h123.7v34H22.3Z"/>
+                <path class="line" d="M13 24 25 11.5h116v25H25Z"/>
+              </g>
+              <g class="letters" filter="url(#wc-paper)">
+                <g class="jet" transform="translate(31 15.5) rotate(-90 8.5 8.5) scale(.7)"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></g>
+                <text x="97" y="29.5" text-anchor="middle">Faro</text>
+              </g>
+              <g class="clamps" filter="url(#wc-pigment)">
+                <rect x="147" y="9" width="18" height="5" rx="2"/>
+                <rect x="147" y="34" width="18" height="5" rx="2"/>
+              </g>
             </svg>
             <span class="tip">Travel</span>
           </a>
