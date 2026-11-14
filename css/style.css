@@ -1286,6 +1286,34 @@ html, body { overflow-x: clip; }
 .road-trip h3 { margin: 2px 0 6px; font-size: var(--fs-l); font-weight: 600; color: var(--ink); }
 .road-trip p:last-child { margin: 0; }
 
+/* Secondary sections fold away: the title is the toggle, a thin + / – on the right */
+.more > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+  cursor: pointer;
+}
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary .inv-head { display: block; margin-bottom: 0; }
+.more > summary .sc { display: block; }
+.more > summary::after {
+  content: "";
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background:
+    linear-gradient(var(--ink), var(--ink)) center / 16px 1.5px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 1.5px 16px no-repeat;
+  transition: background-color .2s, background-size .2s;
+}
+.more[open] > summary::after { background-size: 16px 1.5px, 1.5px 0; }
+.more > summary:hover::after { background-color: var(--line); }
+.more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+.more[open] > summary { margin-bottom: 20px; }
+
 /* Dishes to try: a plain two-column list, name and what it is */
 .dishes {
   display: grid;
