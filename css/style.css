@@ -1509,3 +1509,8 @@ html.map-full, html.map-full body { overflow: hidden; }
   .map-grid { grid-template-columns: 1fr; }
   .map-grid .map-art { max-width: 330px; margin: 8px auto 0; }
 }
+
+/* A small watercolour beside a section title, like a doodle in the margin
+   of the invitation: Travel's shrimp next to "transfer" */
+.inv-head.with-doodle { display: flex; align-items: flex-end; gap: clamp(12px, 3vw, 28px); }
+.inv-head.with-doodle .doodle { width: clamp(96px, 14vw, 150px); height: auto; margin-bottom: .2em; transform: rotate(-6deg); }

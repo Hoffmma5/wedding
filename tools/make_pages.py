@@ -67,9 +67,12 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </div>
 
     <section class="inv-section">
-      <header class="inv-head">
-        <p class="sc">From the airport to Tavira&hellip;</p>
-        <h2 class="script">transfer</h2>
+      <header class="inv-head with-doodle">
+        <div>
+          <p class="sc">From the airport to Tavira&hellip;</p>
+          <h2 class="script">transfer</h2>
+        </div>
+        <img class="doodle" src="assets/art/shrimp.webp" alt="" width="640" height="479">
       </header>
       <div class="prose narrow">
         <p>Arriving on the 1st or flying home on the 3rd? <strong>We drive you</strong> between Faro and the hotel.</p>
@@ -365,7 +368,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=81">
+  <link rel="stylesheet" href="css/style.css?v=82">
   <script>
     (function () {{
       var saved = null;

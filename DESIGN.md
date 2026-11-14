@@ -160,7 +160,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   as wide as the picture and the text (max 600 px) sits right beside it,
   centred vertically: the crabs (260 px). On Travel the title sits in the
   left column, so the torn map (340 px) starts level with it; *transfer*
-  is text only (`.prose.narrow`, 600 px) — the map is that page's picture. Sections are separated by a
+  has the shrimp as a small doodle beside its title (`.inv-head.with-doodle`,
+  96–150 px, tilted −6°) and its text in a 600 px measure (`.prose.narrow`). Sections are separated by a
   hairline and 48–80 px. One column under 760 px, always text first and the
   picture after it (also in mirrored rows); watercolours shrink to 150 px
   accents.
@@ -197,7 +198,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   menu. The small copies (`assets/village-mini-*.webp`) are no longer
   used.
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
-  paper colour: disco ball, oysters, sardine on an azulejo, crabs,
+  paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
   sun, shell, pearl, long table, hotel landscape, Portugal.
 - **Travel map** (`tools/make_iberia.py`) — a piece torn from an old paper
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
