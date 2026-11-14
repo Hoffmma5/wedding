@@ -1,0 +1,79 @@
+{
+  "hook": {
+    "enabled": true,
+    "limits": {
+      "maxFindings": 5,
+      "maxChars": 8000
+    }
+  },
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "accommodation.html",
+          "index.html",
+          "location.html",
+          "map.html",
+          "program.html",
+          "rsvp.html",
+          "travel.html",
+          "weather.html"
+        ],
+        "createdAt": "2026-11-14T12:53:16.911Z",
+        "reason": "Agent: day/night cross-fade; the night painting and footer layers sit at opacity 0 by day and fade in at night"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "accommodation.html",
+          "index.html",
+          "location.html",
+          "map.html",
+          "program.html",
+          "rsvp.html",
+          "travel.html",
+          "weather.html"
+        ],
+        "createdAt": "2026-11-14T12:53:17.185Z",
+        "reason": "Agent: the painted sun's glow in the village (.sky .sun), literal light in the illustration, not a UI accent"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "accommodation.html",
+          "index.html",
+          "location.html",
+          "map.html",
+          "program.html",
+          "rsvp.html",
+          "travel.html",
+          "weather.html"
+        ],
+        "createdAt": "2026-11-14T12:53:17.412Z",
+        "reason": "Agent: lamp, window and moon light in the night painting, literal light in the illustration"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "accommodation.html",
+          "index.html",
+          "location.html",
+          "map.html",
+          "program.html",
+          "rsvp.html",
+          "travel.html",
+          "weather.html"
+        ],
+        "createdAt": "2026-11-14T12:53:17.650Z",
+        "reason": "Agent: 0.08em is on short Cormorant SC small-caps labels (DESIGN.md --sc), not running text"
+      }
+    ]
+  }
+}
