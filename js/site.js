@@ -54,6 +54,19 @@
     window.addEventListener('pageshow', function () { document.body.classList.remove('leaving'); });
   }
 
+  // Language buttons: only English exists so far. Czech and German say so,
+  // in their own language, and the page stays in English.
+  var SOON = {
+    cs: 'Česká verze se připravuje – zatím je web jen v angličtině.',
+    de: 'Die deutsche Version kommt bald – bis dahin gibt es die Seite auf Englisch.'
+  };
+  Array.prototype.forEach.call(document.querySelectorAll('.lang button'), function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('lang');
+      if (SOON[l] && window.toast) window.toast(SOON[l], 4500);
+    });
+  });
+
   function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

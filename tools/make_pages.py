@@ -360,7 +360,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=72">
+  <link rel="stylesheet" href="css/style.css?v=73">
   <script>
     (function () {{
       var saved = null;
@@ -377,6 +377,11 @@ HEAD = """<!doctype html>
     <nav class="nav-links" id="nav-links" aria-label="Pages">
 {nav}
       <a class="nav-cta" href="rsvp.html">RSVP</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" lang="en" aria-pressed="true" aria-label="English">EN</button>
+        <button type="button" lang="cs" aria-pressed="false" aria-label="Čeština">CS</button>
+        <button type="button" lang="de" aria-pressed="false" aria-label="Deutsch">DE</button>
+      </div>
     </nav>
     <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to night">
       <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
@@ -388,7 +393,7 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=13"></script>
+FOOT = """  <script src="js/site.js?v=14"></script>
   <script src="js/eggs.js?v=11"></script>
 </body>
 </html>
