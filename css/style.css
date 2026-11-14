@@ -777,6 +777,14 @@ h2.script { line-height: 1.45; }
   align-items: start;
 }
 .art { margin: 0; }
+/* .flip: the picture on the left. Pages alternate so the art is not
+   always on the right; on phones it stacks text first either way. */
+.inv-grid.flip { grid-template-columns: minmax(200px, 320px) minmax(0, 1fr); }
+.inv-grid.flip > .art { order: -1; }
+.inv-grid.flip > .art img[style*="margin-left:auto"] { margin-left: 0 !important; }
+.flip .tile-art, .tile-art.flip { margin-left: 0; margin-right: auto; }
+.day.flip { grid-template-columns: minmax(160px, 260px) minmax(0, 1fr); }
+.day.flip > .day-art { order: -1; justify-self: start; }
 .art img { display: block; width: 100%; height: auto; }
 
 .inv-section { margin-top: clamp(48px, 7vw, 80px); padding-top: clamp(32px, 5vw, 48px); border-top: 1px solid var(--line); }
@@ -845,6 +853,7 @@ h2.script { line-height: 1.45; }
 
 @media (max-width: 760px) {
   .inv-grid, .day { grid-template-columns: 1fr; }
+  .inv-grid.flip > .art, .day.flip > .day-art { order: 0; }
   /* Phones: the watercolour objects are small accents, not a screen each */
   .inv-grid .art:not(.map-art), .day-art, .art img[style*="--art"] { max-width: min(var(--art, 150px), 150px); justify-self: center; margin: 0 auto; }
   .map-art, .tile-art { margin: 0 auto; }

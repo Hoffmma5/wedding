@@ -77,7 +77,7 @@ PAGES["travel"] = ("Travel", f"""
     </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", f"""
-    <div class="inv-grid">
+    <div class="inv-grid flip">
       <div>
         <header class="inv-head">
           <h1 class="script">the Weather</h1>
@@ -227,7 +227,7 @@ def dishes_html():
 DISHES_HTML = dishes_html()
 
 PAGES["location"] = ("The Algarve", f"""
-    <div class="inv-grid">
+    <div class="inv-grid flip">
       <div>
         <header class="inv-head">
           <p class="sc">The south of Portugal&hellip;</p>
@@ -306,7 +306,7 @@ PAGES["program"] = ("Program", f"""
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
 
-    <article class="day">
+    <article class="day flip">
       <div class="prose">
         <h2 class="script">sunday</h2>
         <p class="sc">Farewell &middot; 03.10.2027</p>
