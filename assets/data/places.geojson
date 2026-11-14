@@ -13,7 +13,9 @@
       "properties": {
         "name": "Hotel Quinta do Marco",
         "category": "venue",
-        "tip": "Where we celebrate – and your home for the weekend."
+        "area": "Santa Catarina da Fonte do Bispo, Tavira",
+        "tip": "Where we celebrate – and your home for the weekend.",
+        "photo": "assets/gallery/hotel/01.webp"
       }
     },
     {
@@ -28,6 +30,7 @@
       "properties": {
         "name": "Praia Fluvial do Pego Fundo",
         "category": "beach",
+        "area": "Alcoutim, on the Guadiana",
         "tip": "A small sandy river beach with fresh water for a change – and a restaurant right there."
       }
     },
@@ -43,6 +46,7 @@
       "properties": {
         "name": "Praia do Barril",
         "category": "beach",
+        "area": "Santa Luzia, Tavira",
         "tip": "Walk across the lagoon or hop on the cute little train – the kids will love it. At the end: a huge beach and the famous anchor cemetery."
       }
     },
@@ -58,6 +62,7 @@
       "properties": {
         "name": "Praia do Ninho de Andorinha",
         "category": "beach",
+        "area": "Albufeira",
         "tip": "A super small beach tucked between the cliffs – our little secret."
       }
     },
@@ -73,6 +78,7 @@
       "properties": {
         "name": "Casa Velha",
         "category": "food",
+        "area": "Cacela Velha",
         "tip": "Amazing food: fresh oysters, chouriço and a cold beer with a view over the lagoon."
       }
     },
@@ -88,6 +94,7 @@
       "properties": {
         "name": "Copos & Petiscos",
         "category": "food",
+        "area": "Albufeira",
         "tip": "Portuguese tapas (petiscos). One of the very first restaurants we went to together – and we keep coming back."
       }
     },
@@ -103,6 +110,7 @@
       "properties": {
         "name": "O Teodósio",
         "category": "food",
+        "area": "Guia, Albufeira",
         "tip": "They only do one thing: grilled chicken with fries, rice and tomato salad. But they do it unbelievably well."
       }
     },
@@ -118,6 +126,7 @@
       "properties": {
         "name": "Monterosa Olive Oil",
         "category": "sight",
+        "area": "Moncarapacho",
         "tip": "An olive-oil farm near Moncarapacho. We haven’t been yet – it’s high on our list."
       }
     },
@@ -133,6 +142,7 @@
       "properties": {
         "name": "Loulé Market",
         "category": "sight",
+        "area": "Loulé",
         "tip": "Loulé’s market hall, full of local produce. Another one on our to-visit list."
       }
     },
@@ -148,6 +158,7 @@
       "properties": {
         "name": "Kayaking in Albufeira",
         "category": "sight",
+        "area": "Albufeira",
         "tip": "Paddle along the golden cliffs and little caves around Albufeira."
       }
     },
@@ -163,6 +174,7 @@
       "properties": {
         "name": "Boat trip from Albufeira",
         "category": "sight",
+        "area": "Albufeira marina",
         "tip": "Sail along the coast from Albufeira marina – cliffs, caves and, with a bit of luck, dolphins."
       }
     },
@@ -178,6 +190,7 @@
       "properties": {
         "name": "Aquashow Park",
         "category": "sight",
+        "area": "Quarteira",
         "tip": "A big waterpark in Quarteira with slides for every age. Check the opening dates – waterparks close for the season around autumn."
       }
     },
@@ -193,6 +206,7 @@
       "properties": {
         "name": "Zoomarine",
         "category": "sight",
+        "area": "Guia, Albufeira",
         "tip": "Marine park and waterpark in one, near Guia. Check the opening dates before you go."
       }
     },
@@ -208,6 +222,7 @@
       "properties": {
         "name": "Aqualand Algarve",
         "category": "sight",
+        "area": "Alcantarilha",
         "tip": "Waterpark with some seriously big slides, near Alcantarilha. Check the opening dates before you go."
       }
     },
@@ -223,6 +238,7 @@
       "properties": {
         "name": "Slide & Splash",
         "category": "sight",
+        "area": "Lagoa",
         "tip": "One of the Algarve’s classic waterparks, near Lagoa. Check the opening dates before you go."
       }
     },
@@ -238,6 +254,7 @@
       "properties": {
         "name": "Praia do Castelejo",
         "category": "beach",
+        "area": "Vila do Bispo, west coast",
         "tip": "Dark cliffs and a huge, wild beach on the west coast. It’s windy and the Atlantic is properly cold here – swim with care."
       }
     },
@@ -253,6 +270,7 @@
       "properties": {
         "name": "Praia da Bordeira",
         "category": "beach",
+        "area": "Carrapateira, west coast",
         "tip": "Endless sand, dunes and a river winding into the sea. A west-coast favourite."
       }
     },
@@ -268,6 +286,7 @@
       "properties": {
         "name": "Praia do Amado",
         "category": "beach",
+        "area": "Carrapateira, west coast",
         "tip": "A surfers’ paradise – rent a board or book a lesson and give it a go. The water is cold, the waves are great."
       }
     },
@@ -283,6 +302,7 @@
       "properties": {
         "name": "Praia da Amoreira",
         "category": "beach",
+        "area": "Aljezur, west coast",
         "tip": "Where the Aljezur river meets the ocean – calm lagoon on one side, wild Atlantic on the other."
       }
     },
@@ -298,6 +318,7 @@
       "properties": {
         "name": "Praia de Odeceixe",
         "category": "beach",
+        "area": "Odeceixe, west coast",
         "tip": "A beautiful bay at the river mouth, right on the border of the Algarve and the Alentejo."
       }
     },
@@ -313,6 +334,7 @@
       "properties": {
         "name": "Paddle boarding in Lagos",
         "category": "sight",
+        "area": "Ponta da Piedade, Lagos",
         "tip": "Paddle around the golden rock arches and grottoes of Ponta da Piedade."
       }
     },
@@ -328,6 +350,7 @@
       "properties": {
         "name": "Lagos",
         "category": "sight",
+        "area": "Lagos",
         "tip": "A lovely old town to wander: whitewashed streets, cafés and a buzzing marina."
       }
     }

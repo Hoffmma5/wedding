@@ -4,7 +4,11 @@
    Places live in assets/data/places.geojson. Each feature needs:
      name      – shown on the marker popup and in the list
      category  – "beach", "food", "sight" (things to do, with kids too) or "venue"
+     area      – the town or stretch of coast, shown under the name
      tip       – one or two sentences from you
+     photo     – optional: a picture for the popup, e.g. "assets/places/barril.webp"
+                 (landscape, about 800 x 450; keep it under ~120 KB)
+     credit    – optional: who took the photo / its licence, shown small under it
    Add, remove or move points there (e.g. with geojson.io) and the map follows.
 
    Overview inset: the same azulejo tiles at small scale; it follows the main map and frames it. */
@@ -37,10 +41,21 @@
   fetch(DATA).then(function (r) { return r.json(); }).then(function (geo) {
     places = geo.features.map(function (f) {
       var p = f.properties;
-      return { name: p.name, category: p.category, tip: p.tip, lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1] };
+      return { name: p.name, category: p.category, area: p.area, tip: p.tip, lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1] };
     });
     renderList();
   });
+
+  // Straight-line distance from the Quinta, rounded: "12 km from the Quinta"
+  var QUINTA = { lon: -7.75093, lat: 37.15356 };
+  function fromQuinta(lon, lat) {
+    var R = 6371, rad = Math.PI / 180;
+    var dLat = (lat - QUINTA.lat) * rad, dLon = (lon - QUINTA.lon) * rad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(QUINTA.lat * rad) * Math.cos(lat * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    var km = 2 * R * Math.asin(Math.sqrt(h));
+    return km < 1 ? '' : (km < 10 ? Math.round(km) : Math.round(km / 5) * 5) + '&nbsp;km from the Quinta';
+  }
 
   function directions(p) {
     return 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lon;
@@ -60,7 +75,7 @@
         li.innerHTML =
           '<span class="place-icon"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '"></span>' +
           '<span class="place-text"><b>' + escapeHtml(p.name) + '</b><span class="place-cat">' + c.label + '</span></span>' +
-          '<span class="place-tip">' + escapeHtml(p.tip) + ' <a href="' + directions(p) + '" target="_blank" rel="noopener">Directions&nbsp;&nearr;</a></span>';
+          '<span class="place-tip">' + (p.area ? escapeHtml(p.area) + '. ' : '') + escapeHtml(p.tip) + ' <a href="' + directions(p) + '" target="_blank" rel="noopener">Directions&nbsp;&nearr;</a></span>';
         li.tabIndex = 0;
         li.setAttribute('role', 'button');
         function pick(e) {
@@ -143,8 +158,13 @@
           var c = CATS[a.category] || CATS.sight;
           var div = document.createElement('div');
           div.className = 'place-popup place-popup-' + a.category;
+          var dist = a.category === 'venue' ? '' : fromQuinta(g.longitude, g.latitude);
+          var where = [a.area ? escapeHtml(a.area) : '', dist].filter(Boolean).join(' &middot; ');
           div.innerHTML =
+            (a.photo ? '<figure class="pp-photo"><img src="' + escapeHtml(a.photo) + '" alt="' + escapeHtml(a.name) + '" loading="lazy">' +
+              (a.credit ? '<figcaption>' + escapeHtml(a.credit) + '</figcaption>' : '') + '</figure>' : '') +
             '<span class="pp-cat"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '">' + c.label + '</span>' +
+            (where ? '<span class="pp-where">' + where + '</span>' : '') +
             '<p>' + escapeHtml(a.tip || '') + '</p>' +
             '<a class="pp-go" href="' + directions({ lat: g.latitude, lon: g.longitude }) + '" target="_blank" rel="noopener">Directions &nearr;</a>';
           return div;
