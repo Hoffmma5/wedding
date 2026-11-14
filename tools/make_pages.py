@@ -15,8 +15,9 @@ NAV = [
     ("map", "Guests"),
 ]
 
-# Invitation colours, one per topic
-BLUE, RUST, BROWN, OLIVE, WINE, CORAL = "#1f4fa0", "#b5432a", "#8b5523", "#7b8152", "#7a3b3b", "#d4504c"
+# The village's three pigments: azulejo blue, roof terracotta, sage olive.
+# One ink per page; its sections use the same ink.
+BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b5432a", "#7b8152"
 
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
@@ -56,7 +57,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       </figure>
     </div>
 
-    <section class="inv-section" style="--topic:{BROWN}">
+    <section class="inv-section">
       <div class="inv-grid">
         <div>
           <header class="inv-head">
@@ -89,7 +90,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       </ul>
     </section>""")
 
-PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
+PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, """
     <div class="inv-grid">
       <div>
         <header class="inv-head">
@@ -165,7 +166,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
     </section>
 
-    <section class="inv-section" style="--topic:#7a3b3b">
+    <section class="inv-section">
       <header class="inv-head">
         <h2 class="script">the Bedrooms</h2>
         <p class="sc">Where will we sleep?</p>
@@ -291,7 +292,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </aside>
     </section>
 
-    <section class="inv-section" style="--topic:{RUST}">
+    <section class="inv-section">
       <header class="inv-head">
         <p class="sc">Eat like a local</p>
         <h2 class="script">dishes to try</h2>
@@ -301,13 +302,13 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </ul>
     </section>""")
 
-PAGES["program"] = ("Program", WINE, f"""
+PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
       <p class="sc">Three days in Tavira</p>
       <h1 class="script">the Program</h1>
     </header>
 
-    <article class="day" style="--topic:{CORAL}">
+    <article class="day">
       <div class="prose">
         <h2 class="script">friday</h2>
         <p class="sc">Welcome party &middot; 01.10.2027</p>
@@ -319,7 +320,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
     </article>
 
-    <article class="day full" style="--topic:{OLIVE}">
+    <article class="day full">
       <div class="prose">
         <h2 class="script">the Wedding Day</h2>
         <p class="sc">Saturday &middot; 02.10.2027</p>
@@ -328,7 +329,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
 
-    <article class="day" style="--topic:{BROWN}">
+    <article class="day">
       <div class="prose">
         <h2 class="script">sunday</h2>
         <p class="sc">Farewell &middot; 03.10.2027</p>

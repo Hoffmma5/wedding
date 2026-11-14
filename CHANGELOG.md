@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased
 
 ### Changed
+- **One ink per page, from the village:** titles and accents use only the painting's three pigments – azulejo blue, roof terracotta, sage olive – and every section keeps its page's ink (Program was wine, coral and brown; Stay had a wine section; Travel a brown one; dishes rust).
 - **Footer:** the little drawing is replaced by the village painting itself, small – the same three houses as on the home page, and at night the dark version with the windows lit.
 - **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.
 

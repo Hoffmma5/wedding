@@ -50,20 +50,17 @@ in the hero objects.
 | `--yellow` | `#f2b705` | the yellow house |
 | `--coral` | `#e8664a` | the coral house |
 
-### Invitation inks (`--topic`)
+### Inks (`--topic`)
 
-Each inner page and section sets `style="--topic:…"`; script titles, `strong`,
-links and accents use it through `--topic-c`. At night `--topic-c` is mixed
-50 % with white. Defined in `tools/make_pages.py`.
+Only the village's own three pigments, one per page; every section on a page
+uses that page's ink (set in `tools/make_pages.py`). Small text uses `--ink`,
+the same ink pulled 20 % towards the text colour.
 
-| Name | Hex | Used for |
+| Name | Hex | Pages |
 |---|---|---|
-| BLUE | `#1f4fa0` | Travel, Algarve, Guests — azulejo blue |
-| RUST | `#b5432a` | Weather, dishes to try |
-| BROWN | `#8b5523` | Transfer, Sunday |
-| OLIVE | `#7b8152` | The Hotel, at the Quinta, the Wedding Day, RSVP |
-| WINE | `#7a3b3b` | The Program, the Bedrooms |
-| CORAL | `#d4504c` | Friday |
+| BLUE | `#1f4fa0` | Travel, Algarve, Guests – azulejo blue |
+| TERRACOTTA | `#b5432a` | Program, Weather – the roofs |
+| OLIVE | `#7b8152` | Stay, RSVP – sage, the logo's family |
 
 ### Night
 
