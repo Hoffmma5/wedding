@@ -7,10 +7,16 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 
 ### Changed
 - **Home: the weekend at a glance.** Under the village, instead of the brick strip and the "everything is clickable" hint: when (1 – 3 October 2027), where (Quinta do Marco) and getting there (fly to Faro), each leading to its page, a "Reply to the invitation" button, and quiet links to Weather, the Algarve and our guests.
-- **The reply button at the end of Program, Stay and Travel.**
-- **Less to read:** Stay, Travel, Weather and the Algarve say the same in fewer words. "At the Quinta", the west-coast road trip and "dishes to try" fold away until opened.
+- **Less to read:** Stay, Travel, Weather and the Algarve say the same in fewer words. "At the Quinta" and "dishes to try" fold away until opened.
 - **Two typefaces:** Lora for everything you read, labels in its small caps; the handwritten Beth Ellen for titles. Cormorant and Inter are gone.
-- **One ink:** every title and accent is the roofs' terracotta, on every page, instead of blue, terracotta or sage by page; the logo mark is terracotta too.
+- **One ink:** every title and accent is the roofs' terracotta, on every page, instead of blue, terracotta or sage by page. The logo stays the colour of the text.
+- **Icons look hand-made:** every icon is a little pen sketch over a watercolour blot – the good-to-know tips, the weather, the hotel's facilities and the glance on Home.
+- **Pictures change sides** from page to page and day to day, instead of always sitting on the right.
+- **Stay:** one row of six polaroids (the Quinta, the pool, the terrace, a room, a balcony, the goats) instead of two turning carousels.
+- **Footer:** just the orange tree from the painting, leading home, instead of the whole village.
+- **Travel:** "Flights from Nuremberg, Prague or Berlin are good options."
+- **The Algarve** keeps its own words, a little shorter; the west-coast road trip is a short note again.
+- **The village:** Travel is a blue-and-white *← Faro* tile on the blue house instead of the plane, and walking through a door is quicker and gentler.
 
 ## 2026-11-14 – one style
 
