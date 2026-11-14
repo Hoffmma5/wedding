@@ -1,10 +1,10 @@
 """The site's one icon family.
 
-Drawn like the weather icons: 24 x 24, one thin line (1.35, set in CSS as
-.ico), and a faint tint of the same colour inside closed shapes (class "f").
-No solid parts. The colour comes from where the icon is used (currentColor).
+Glyphs are 24 x 24, one line in currentColor, and a faint tint of the same
+colour inside closed shapes (class "f"). On the pages every glyph is shown
+on an azulejo tile (tile() below, styled as .tile in style.css).
 
-index.html carries a copy of the STRIP icons; tools/make_pages.py uses this
+index.html carries a copy of the STRIP tiles; tools/make_pages.py uses this
 file directly.
 """
 
@@ -70,3 +70,21 @@ TIPS = [
 
 def svg(paths, cls="ico"):
     return f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">{paths}</svg>'
+
+
+# Azulejo tile: every icon on the site sits on one, like the painted
+# "Algarve" tile in the village. A 40 x 40 tile: an outer frame with a
+# faint glaze, a fine inner frame with a quarter-circle in each corner,
+# and the 24 x 24 glyph in the middle. Line widths are set in CSS (.tile)
+# with non-scaling strokes, so the tile reads the same at every size.
+TILE_FRAME = (
+    '<rect class="t-o" x="1" y="1" width="38" height="38" rx="2.5"/>'
+    '<rect class="t-i" x="4.5" y="4.5" width="31" height="31" rx="1"/>'
+    '<path class="t-c" d="M4.5 8.5a4 4 0 0 0 4-4M31.5 4.5a4 4 0 0 0 4 4'
+    'M35.5 31.5a4 4 0 0 0-4 4M8.5 35.5a4 4 0 0 0-4-4"/>'
+)
+
+
+def tile(paths, cls="tile"):
+    return (f'<svg class="{cls}" viewBox="0 0 40 40" aria-hidden="true">{TILE_FRAME}'
+            f'<g class="g" transform="translate(8 8)">{paths}</g></svg>')

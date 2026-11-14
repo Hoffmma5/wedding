@@ -26,7 +26,7 @@ import icons   # tools/icons.py
 
 PAGES = {}
 
-TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
+TIPS_HTML = "\n".join(f'        <li>{icons.tile(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", INK, f"""
     <header class="inv-head">
@@ -94,9 +94,9 @@ PAGES["weather"] = ("Weather &amp; what to pack", INK, f"""
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
     </div>
     <div class="wx">
-      <div>{icons.svg(icons.WEATHER["sun"])}<b>25&nbsp;&deg;C</b><span>Average daytime high</span></div>
-      <div>{icons.svg(icons.WEATHER["moon"])}<b>16&nbsp;&deg;C</b><span>Average nighttime low</span></div>
-      <div>{icons.svg(icons.WEATHER["rain"])}<b>6 days</b><span>With measurable rain per month</span></div>
+      <div>{icons.tile(icons.WEATHER["sun"])}<b>25&nbsp;&deg;C</b><span>Average daytime high</span></div>
+      <div>{icons.tile(icons.WEATHER["moon"])}<b>16&nbsp;&deg;C</b><span>Average nighttime low</span></div>
+      <div>{icons.tile(icons.WEATHER["rain"])}<b>6 days</b><span>With measurable rain per month</span></div>
     </div>
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
@@ -117,7 +117,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", INK, f"""
       </div>
     </section>""")
 
-FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
+FACILITIES_HTML = "\n".join(f'        <li>{icons.tile(paths)}{name}</li>' for name, paths in icons.FACILITIES)
 
 PAGES["accommodation"] = ("The hotel", INK, f"""
     <header class="inv-head">
@@ -333,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=58">
+  <link rel="stylesheet" href="css/style.css?v=59">
   <script>
     (function () {{
       var saved = null;

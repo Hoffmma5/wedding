@@ -811,7 +811,7 @@ h2.script { line-height: 1.45; }
 /* Weather numbers: an open row on the paper, no cards */
 .wx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 8px 0 8px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .wx div { text-align: center; }
-.wx .ico { color: var(--ink); }
+.wx .tile { width: 52px; height: 52px; }
 .wx b { display: block; margin: 6px 0 2px; font-size: var(--fs-xxl); font-weight: 400; color: var(--ink); }
 .wx span { font-size: var(--fs-s); color: var(--muted); line-height: 1.4; display: block; }
 
@@ -872,7 +872,8 @@ h2.script { line-height: 1.45; }
 /* Phones: weather numbers as three short rows instead of three cramped columns */
 @media (max-width: 560px) {
   .wx { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
-  .wx div { display: grid; grid-template-columns: 28px 5.2em 1fr; align-items: center; gap: 14px; padding: 10px 2px; text-align: left; }
+  .wx div { display: grid; grid-template-columns: 44px 5.2em 1fr; align-items: center; gap: 14px; padding: 10px 2px; text-align: left; }
+  .wx .tile { width: 44px; height: 44px; }
   .wx div + div { border-top: 1px solid var(--line); }
   .wx b { margin: 0; font-size: var(--fs-xl); }
 }
@@ -1170,22 +1171,21 @@ html, body { overflow-x: clip; }
 .viewer .v-next { position: fixed; right: 16px; top: calc(50% - 21px); }
 .viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 600 15px var(--sans); color: rgba(255, 255, 255, .75); }
 
-/* Travel: good to know – one icon and one short line each, no cards */
+/* Travel: good to know – a tile and one short line each, two columns of hairline rows */
 .tips {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px clamp(20px, 4vw, 48px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(28px, 5vw, 56px);
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
-.tips li { display: grid; justify-items: center; align-content: start; gap: 10px; max-width: 280px; margin: 0 auto; text-align: center; font-size: var(--fs-m); line-height: 1.5; color: var(--text); }
+.tips li { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: center; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line); font-size: var(--fs-base); line-height: 1.45; color: var(--text); }
 .tips b { font-weight: 600; color: var(--ink); }
-.tips .ico { color: var(--ink); }
-@media (max-width: 560px) {
-  .tips { grid-template-columns: 1fr; gap: 0; }
-  .tips li { grid-template-columns: 30px 1fr; justify-items: start; align-items: center; gap: 16px; max-width: none; margin: 0; padding: 12px 0; text-align: left; }
-  .tips li + li { border-top: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .tips { grid-template-columns: 1fr; }
+  .tips li { grid-template-columns: 44px minmax(0, 1fr); gap: 16px; padding: 12px 0; }
+  .tips .tile { width: 44px; height: 44px; }
 }
 
 /* Guests page intro */
@@ -1256,13 +1256,30 @@ html, body { overflow-x: clip; }
   padding: 0;
   list-style: none;
 }
-.facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 600 var(--fs-s) var(--sans); color: var(--muted); }
-.facilities .ico { color: var(--ink); }
+.facilities li { display: grid; justify-items: center; gap: 10px; text-align: center; font: 600 var(--fs-s) var(--sans); color: var(--muted); }
+.facilities .tile { width: 56px; height: 56px; }
 
-/* The one icon family (tools/icons.py): a thin line and a faint tint of the
-   same colour inside closed shapes, like the weather icons */
+/* The one icon family (tools/icons.py): a line glyph on an azulejo tile,
+   like the painted "Algarve" tile in the village. Strokes don't scale, so
+   the frame and glyph keep the same weight at every tile size. */
 .ico { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
 .ico .f { fill: color-mix(in srgb, currentColor 15%, transparent); }
+.tile {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  color: var(--ink, var(--accent));
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tile * { vector-effect: non-scaling-stroke; }
+.tile .t-o { stroke-width: 1.5; fill: color-mix(in srgb, currentColor 7%, transparent); }
+.tile .t-i { stroke-width: .8; opacity: .75; }
+.tile .t-c { stroke-width: .8; opacity: .75; }
+.tile .g { stroke-width: 1.5; }
+.tile .f { fill: color-mix(in srgb, currentColor 16%, transparent); }
 @media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 15px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */
