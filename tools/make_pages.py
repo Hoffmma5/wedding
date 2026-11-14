@@ -132,13 +132,13 @@ PAGES["accommodation"] = ("The hotel", INK, f"""
       </dl>
     </div>
 
-    <div class="carousel" aria-label="Photos of Hotel Quinta do Marco">
-      <figure class="slide"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"><figcaption>The quinta from above</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/02.webp" alt="The main building and the pool lawn with sun loungers" width="1200" height="800" loading="lazy"><figcaption>Pool &amp; main house</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"><figcaption>The salt-water pool</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"><figcaption>Terrace with a view</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/05.webp" alt="Inside the Farroba restaurant, with tables by the windows" width="1200" height="800" loading="lazy"><figcaption>Farroba restaurant</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"><figcaption>The animal farm</figcaption></figure>
+    <div class="photos" aria-label="Photos of Hotel Quinta do Marco">
+      <figure class="slide"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/02.webp" alt="The main building and the pool lawn with sun loungers" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/05.webp" alt="Inside the Farroba restaurant, with tables by the windows" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"></figure>
     </div>
 
     <section class="inv-section">
@@ -158,13 +158,13 @@ PAGES["accommodation"] = ("The hotel", INK, f"""
       <div class="prose">
         <p>We&rsquo;ll tell each of you which room is yours. Every room has a balcony or terrace over the hills.</p>
       </div>
-    <div class="carousel" aria-label="Photos of the bedrooms">
-      <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"><figcaption>Double room</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/02.webp" alt="Bright double room with a desk and sunflowers" width="1200" height="800" loading="lazy"><figcaption>Double room</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/03.webp" alt="Superior room with a wooden screen and two extra beds" width="1200" height="800" loading="lazy"><figcaption>Superior room</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/04.webp" alt="Family room with a double bed, two singles and a sofa" width="1200" height="800" loading="lazy"><figcaption>Family room</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"><figcaption>Balcony with a view</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/07.webp" alt="Bathroom with blue-edged tiles and two basins" width="1200" height="800" loading="lazy"><figcaption>Bathroom</figcaption></figure>
+    <div class="photos flip" aria-label="Photos of the bedrooms">
+      <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/02.webp" alt="Bright double room with a desk and sunflowers" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/03.webp" alt="Superior room with a wooden screen and two extra beds" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/04.webp" alt="Family room with a double bed, two singles and a sofa" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"></figure>
+      <figure class="slide"><img src="assets/gallery/rooms/07.webp" alt="Bathroom with blue-edged tiles and two basins" width="1200" height="800" loading="lazy"></figure>
     </div>
     </section>
 
@@ -328,7 +328,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=64">
+  <link rel="stylesheet" href="css/style.css?v=65">
   <script>
     (function () {{
       var saved = null;
@@ -413,8 +413,8 @@ def main():
     for slug, (title, topic, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav())
         foot = FOOT
-        if 'class="carousel"' in body:
-            foot = foot.replace('</body>', '  <script src="js/gallery.js?v=5"></script>\n</body>')
+        if 'class="photos' in body:
+            foot = foot.replace('</body>', '  <script src="js/gallery.js?v=6"></script>\n</body>')
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:

@@ -1012,58 +1012,46 @@ html, body { overflow-x: clip; }
 .vane-arrow.pointing { animation: none; transition: --turn 2.4s cubic-bezier(.2, .7, .2, 1); }
 
 /* =========================================================
-   Photo rows + full-screen viewer (Stay page)
+   Photo mosaics + full-screen viewer (Stay page)
    ========================================================= */
 
-/* A plain row of photos: starts at the text column and runs off the right
-   edge of the screen, so it reads as "there is more" without dots. No
-   frames, no tilt; a caption in small italic under each. */
-.carousel {
+/* A photo mosaic, no captions: one large photo and five small ones beside
+   and under it, edge to edge in the text column. The bedrooms mirror the
+   hotel (large photo on the right). Hover leans in a little; a click
+   opens the full-screen viewer. */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: clamp(6px, 1vw, 10px);
+  margin: 28px 0 8px;
+}
+.photos .slide {
   position: relative;
-  margin: 12px calc(50% - 50vw) 8px 0;     /* bleed to the right edge only */
-}
-.c-track {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scroll-behavior: smooth;
-  scroll-padding-left: 0;
-  scrollbar-width: none;
-  padding: 0 clamp(20px, 4vw, 48px) 4px 0;
-  outline: none;
-}
-.c-track::-webkit-scrollbar { display: none; }
-.c-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
-.slide {
-  flex: 0 0 auto;
-  width: clamp(240px, 30vw, 360px);
   margin: 0;
-  scroll-snap-align: start;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  background: var(--line);
   cursor: zoom-in;
 }
-.slide img {
+.photos .slide:first-child { grid-column: 1 / span 2; grid-row: span 2; aspect-ratio: auto; }
+.photos.flip .slide:first-child { grid-column: 2 / span 2; }
+.photos img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  border-radius: 4px;
   pointer-events: none;
-  transition: opacity .2s;
+  transition: transform .6s var(--ease), filter .3s;
 }
-.slide:hover img { opacity: .9; }
-.slide:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.slide figcaption {
-  margin-top: 8px;
-  font-size: var(--fs-s);
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--muted);
-}
-@media (max-width: 760px) {
-  .c-track { gap: 12px; }
-  .slide { width: 72vw; }
+.photos .slide:hover img { transform: scale(1.04); }
+.photos .slide:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:root[data-theme="night"] .photos img { filter: brightness(.9); }
+@media (max-width: 560px) {
+  .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photos .slide:first-child, .photos.flip .slide:first-child { grid-column: 1 / span 2; grid-row: auto; aspect-ratio: 3 / 2; }
+  .photos .slide:last-child { grid-column: 1 / span 2; aspect-ratio: 3 / 2; }
 }
 
 .c-btn {
@@ -1082,14 +1070,6 @@ html, body { overflow-x: clip; }
 }
 .c-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .c-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.c-controls { display: flex; gap: 8px; justify-content: flex-end; margin: 12px clamp(20px, 4vw, 48px) 0 0; max-width: calc(min(1000px, 100vw) - 40px); }
-.c-controls[hidden] { display: none; }
-.c-controls .c-btn { background: transparent; color: var(--text); border: 1px solid var(--line); box-shadow: none; }
-.c-controls .c-btn:hover { background: var(--line); }
-.c-controls .c-btn svg { width: 16px; height: 16px; }
-.c-controls .c-btn:disabled { opacity: .3; cursor: default; }
-.c-controls .c-btn:disabled:hover { background: transparent; }
-@media (max-width: 760px) { .c-controls { display: none; } }
 
 
 
@@ -1108,7 +1088,6 @@ html, body { overflow-x: clip; }
 .viewer[open] { display: grid; place-items: center; }
 .viewer figure { margin: 0; display: grid; justify-items: center; gap: 12px; padding: 56px 16px 40px; }
 .viewer img { max-width: min(92vw, 1400px); max-height: 78vh; border-radius: 10px; }
-.viewer figcaption { font-family: "Beth Ellen", cursive; font-size: 22px; color: rgba(255, 255, 255, .9); }
 .viewer .v-close { position: fixed; top: 16px; right: 16px; }
 .viewer .v-prev { position: fixed; left: 16px; top: calc(50% - 21px); }
 .viewer .v-next { position: fixed; right: 16px; top: calc(50% - 21px); }
