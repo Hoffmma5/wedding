@@ -12,13 +12,13 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 - **One ink:** every title and accent is the roofs' terracotta, on every page, instead of blue, terracotta or sage by page. The logo stays the colour of the text.
 - **Icons look hand-made:** every icon is a little pen sketch over a watercolour blot – the good-to-know tips, the weather, the hotel's facilities and the glance on Home.
 - **Pictures change sides** from page to page and day to day, instead of always sitting on the right.
-- **Stay:** six polaroids (the Quinta, the pool, the terrace, a room, a balcony, the goats) instead of two turning carousels.
+- **Stay:** six plain photos (the Quinta, the pool, the terrace, a room, a balcony, the goats) instead of two turning carousels.
 - **Footer:** only the small orange from the logo, in colour – orange with green leaves – leading home. The whole village, the previous/next links and the names line are gone.
 - **No sun in the sky** of the home painting (and no moon at night); Weather is in the menu and under the village.
-- **Hotel photos open full size:** tap a polaroid to see the whole photo, then swipe or use the arrows. The polaroids carry a small hand-drawn icon instead of a caption.
+- **Hotel photos open full size:** tap one to see the whole photo, then swipe or use the arrows.
 - **Travel:** "Flights from Nuremberg, Prague or Berlin are good options."
 - **The Algarve** keeps its own words, a little shorter; the west-coast road trip is a short note again.
-- **The village:** Travel is a wooden *Faro* fingerpost on the street lamp instead of the plane, the Algarve is a blue azulejo beside the yellow door instead of the lettered sign, and walking through a door is quicker and gentler.
+- **The village:** Travel is a wooden *Faro* fingerpost on the street lamp instead of the plane, the weathervane leads to the weather, the Algarve is the bougainvillea on the coral house (its petals fall when you point at it) instead of the lettered sign, and walking through a door is quicker and gentler.
 
 ## 2026-11-14 – one style
 

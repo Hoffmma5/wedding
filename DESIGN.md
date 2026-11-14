@@ -28,7 +28,7 @@ Eight pages, in menu and footer order (`WALK` in `tools/make_pages.py`):
 |---|---|---|---|
 | Home | `index.html` | names + date over the village, then *the weekend at a glance* | 60 |
 | Program | `program.html` | *the Program* (friday / the Wedding Day / sunday) | 55 |
-| Stay | `accommodation.html` | *the Hotel* (six polaroids, at the Quinta ▸, on the map) | 140 |
+| Stay | `accommodation.html` | *the Hotel* (six photos, at the Quinta ▸, on the map) | 140 |
 | Travel | `travel.html` | *Travel* (transfer, good to know) | 160 |
 | Weather | `weather.html` | *the Weather* (What to Pack) | 60 |
 | Algarve | `location.html` | *the Algarve* (our favourites + the west coast, dishes to try ▸) | 185 |
@@ -87,7 +87,7 @@ confetti in `js/village.js`) stay as painted; nothing in the UI borrows them.
 
 A full second palette, not an inversion: deep indigo, the painting swaps to
 its night layer, windows and lamp glow amber (`mix-blend-mode: screen`). Toggle in the nav, saved in `localStorage` (`theme`),
-defaults to the OS setting. Paper objects (travel map, polaroids) stay paper,
+defaults to the OS setting. Paper objects (the travel map) stay paper,
 only dimmed.
 
 **Count:** paper, surface, text, muted, line and one ink, in two themes,
@@ -157,7 +157,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Guests it leads home (44 px target); on Home it just closes the page. No
   previous/next links, no names line.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
-  10–12 px small tiles, menu links · 999 px pills, chips · 3 px polaroids.
+  10–12 px small tiles, menu links · 999 px pills, chips · 4 px photos.
 - **Shadow**: one soft shadow (`0 1px 2px / 0 8px 24px`, 4–8 % black) on
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
@@ -169,12 +169,13 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
   site's identity.
-- **Signs in the street** — no lettered UI tiles on the painting. *The
-  Algarve* is the watercolour azulejo from the Algarve page (`tile.webp`),
-  turned blue with a CSS filter and set into the wall beside the yellow door
-  like a house tile. *Travel* is a wooden fingerpost clamped to the street
-  lamp, "FARO" in cream on the doors' wood brown, its edges roughened by an
-  SVG displacement filter so it reads as painted.
+- **Links in the street** — the painting's own things where possible, no
+  lettered tiles: the three doors (Stay, Program, RSVP), the weathervane
+  (Weather), the bougainvillea on the coral house (the Algarve). Travel is
+  the one added object, a wooden fingerpost clamped to the street lamp,
+  "FARO" in cream on the doors' wood brown, its edges roughened by an SVG
+  displacement filter so it reads as painted. Guests is not in the painting
+  (nav and glance only).
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
   paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
   sun, shell, pearl, long table, hotel landscape, Portugal. (The shrimp is
@@ -182,7 +183,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Travel map** (`tools/make_iberia.py`) — a piece torn from an old paper
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
   path to Faro and a pearl on Tavira.
-- **Photos** — only the six hotel polaroids on Stay (the other photos stay
+- **Photos** — only the six hotel photos on Stay (the other photos stay
   in `assets/gallery/`). Dish photos are kept in
   `assets/dishes/` but not shown.
 - **Icons** (`tools/icons.py`) — one family, *ink and wash*: a 24 × 24
@@ -212,12 +213,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   3 across, a hairline list on phones.
 - **Weather numbers** (`.wx`): an open row between two hairlines — icon,
   Lora number in the ink, muted caption.
-- **Polaroids** (Stay): one still grid of six, 3 × 2 (2 × 3 on phones),
-  white paper, tilted −1.6° to +1.4°, straightening and lifting 2 px on
-  hover. No captions: the bottom strip holds a small ink-and-wash icon (the
-  house, the pool, a hanging chair, a bed, a balcony rail, the farm), always
-  in the day ink since the paper stays white.
-- **Photo viewer** (`js/photos.js`): each polaroid is a button; it opens one
+- **Photos** (Stay): six plain pictures in a grid, 3 × 2 (2 × 3 on
+  phones), 12–20 px gaps, 4 px corners, no frame, caption or icon; on hover
+  the picture zooms 1.03 inside its frame.
+- **Photo viewer** (`js/photos.js`): each photo is a button; it opens one
   `<dialog>` with the whole photo as large as the screen allows (up to
   1200 px), previous / next (48 px, at the bottom on phones), arrow keys,
   swipe, Esc or a tap outside to close.
@@ -235,10 +234,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
-- Hotspots (the sky has no sun or moon any more): doors swing open in 3D; the azulejo beside the yellow door
-  (→ the Algarve) lifts; the wooden *Faro* fingerpost on the lamp (→ Travel)
-  swings a little; the weathervane spins (press and hold: points to you); the
-  orange tree drops oranges.
+- Hotspots (the sky has no sun or moon any more): doors swing open in 3D; the bougainvillea (→ the Algarve)
+  lets a few petals drift down the wall (1.6 s); the wooden *Faro* fingerpost
+  on the lamp (→ Travel) swings a little; the weathervane (→ Weather) spins
+  (press and hold: points to you); the orange tree drops oranges.
 - Ambient: the vane sways (7 s loop).
 - Page transitions: entering from the village zooms 1.8× into the door over
   0.45 s and fades to paper (the next page opens at 420 ms); the footer orange
@@ -328,7 +327,7 @@ Struck-through items were closed by the November 2026 pass on `skill-taste`.
 5. **Artsy details everywhere instead of one or two.** Interactive
    painting, script titles, a watercolour object per section, a torn paper
    map, easter eggs, party mode, day/night theme — each is charming,
-   together they compete. *Lighter now:* the polaroid ring is a still grid,
+   together they compete. *Lighter now:* the polaroid ring is six plain photos,
    the footer village is just the logo's orange, and the icons share the watercolour
    look instead of adding a third style.
 6. **Home on phones.** *Half done:* the glance block means nothing has to
