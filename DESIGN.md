@@ -160,8 +160,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   set `--side` so the picture column is exactly as wide as the picture and
   the text (max 600 px) sits right beside it, centred vertically: the
   transfer shrimp (170 px) and the crabs (260 px). Sections are separated by a
-  hairline and 48–80 px. One column under 760 px, picture first in mirrored
-  rows; watercolours shrink to 150 px accents.
+  hairline and 48–80 px. One column under 760 px, always text first and the
+  picture after it (also in mirrored rows); watercolours shrink to 150 px
+  accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
   (Lora 14 px, muted, 44 px tall), the orange emblem from the logo
   (40 px, `.mark` in the logo ink, tilts on hover) leading home, "Next ›"; the
@@ -216,6 +217,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   (facilities); sun, moon, rain (weather); alarm clock, card and coin, phone,
   passport, old car, ringing handset (good to know).
 - **Logo mark** — the orange emblem, recoloured with `--olive` via CSS mask.
+  Also the **favicon**: the olive orange on a cream disc (`favicon.ico`,
+  `assets/icon-192.png`, and `apple-touch-icon.png` on a full square of
+  paper), made by `tools/make_favicon.py`.
 
 ## Components
 
@@ -237,8 +241,12 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   captions; on phones the large one spans the width over a 2 × 2 grid. Any
   photo opens the full-screen viewer; "See all 17 photos" (a quiet underlined
   link-button) opens it at the sixth. The other twelve load only when shown.
-- **Places app** (Algarve): list with category chips + ArcGIS map on the
-  *Azulejo Complete* basemap, overview minimap, full-screen mode.
+- **Places app** (Algarve): list with category chips (All, Beaches, Eat &
+  drink, Things to do — places for kids count as things to do) + ArcGIS map
+  on the *Azulejo Complete* basemap, overview minimap, full-screen mode.
+  Markers, list and popups share one set of simple round icons in the page
+  blue (`assets/map/*.svg`): a parasol, fork and knife, a star, and a filled
+  disc with a heart for the wedding venue.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
 - **Venue map** (Stay): ArcGIS map of the Quinta.
 - **Dishes to try**: two-column list, name in the ink, muted italic line;
@@ -248,7 +256,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Toast**: Lora italic at the bottom of the screen.
 - **Add to calendar** (Program, `.add-cal`): under the title, an ink-and-wash
   calendar icon, the small-caps label "Add to your calendar" and three pill
-  links in the page ink, 44 px tall: Google (Google Calendar, filled in),
+  links in the page ink, 44 px tall, always on one line (on phones the label
+  sits above and the buttons share the width): Google (Google Calendar, filled in),
   Apple (downloads `assets/marek-paulo-wedding.ics`, which also suits
   Outlook desktop and most phones) and Outlook (Outlook.com). The event runs
   from check-in Fri 1 Oct 2027 14:00 to check-out Sun 3 Oct 12:00 (Portugal
