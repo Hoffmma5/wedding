@@ -3,6 +3,15 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased – quieter (branch `skill-impeccable`)
+
+### Changed
+- **Home shows the essentials:** under the village, instead of the brick strip and "Everything in the village is clickable", there is a plain list – *Program* (Friday welcome · Saturday wedding · Sunday farewell), *Stay* (Hotel Quinta do Marco – both nights are on us), *Travel* (Fly to Faro – we'll drive you on the 1st and 3rd) – then an **RSVP** button and "Also: Weather · Algarve · Guests".
+- **Two typefaces:** Cormorant (the logo's face, with its small caps) for everything you read and every control, Beth Ellen for the handwritten titles. Lora and Inter are gone, and the text is set a little larger.
+- **One ink:** every page title, link and figure is in the azulejo blue from the painting. Program and Weather were terracotta, Stay and RSVP sage; the olive logo ink is now the text colour.
+- **Less to read:** no more small-caps lines above the titles ("Let us help you plan your", "The south of Portugal…") or decorative ones below them; the intros on Travel, Weather, Stay and Algarve are a sentence or two each, with every fact kept.
+- **Algarve extras fold away:** the west-coast road trip and the dishes to try are closed rows under the favourites map – open them when you want them.
+
 ## 2026-11-14 – one style
 
 ### Changed
