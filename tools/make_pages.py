@@ -371,10 +371,10 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The village painting, small (tools/village_mini.py): day, and night with the windows lit
-VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
-        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
-        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
+# The orange tree from the painting (tools/tree_mini.py): day and night
+MINI_TREE = """<span class="mini-tree" aria-hidden="true">
+        <img class="day" src="assets/tree-day.webp" alt="" width="212" height="320" loading="lazy">
+        <img class="night" src="assets/tree-night.webp" alt="" width="212" height="320" loading="lazy">
       </span>"""
 
 
@@ -385,7 +385,7 @@ def street(slug):
     <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
-      {VILLAGE_MINI}
+      {MINI_TREE}
       </a>
       <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>
