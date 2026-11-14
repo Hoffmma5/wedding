@@ -1485,3 +1485,9 @@ html.map-full, html.map-full body { overflow: hidden; }
   .lang { justify-content: center; margin: 6px 0 0; padding-top: 6px; border-top: 1px solid var(--line); }
   .lang button { min-width: 64px; font-size: 14px; }
 }
+
+/* Phones: in every row the text comes first and the picture follows it
+   (the shrimp under "transfer", Sunday's oysters under its list, …) */
+@media (max-width: 760px) {
+  .inv-grid.flip > .art, .day.flip > .day-art { order: 0; }
+}
