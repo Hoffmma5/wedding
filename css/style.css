@@ -1444,9 +1444,11 @@ html.map-full, html.map-full body { overflow: hidden; }
 .plaque text.small { font-size: 14.5px; }
 
 /* Program: add the weekend to your calendar - a quiet row of three pill links */
-.add-cal { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: -8px 0 clamp(28px, 5vw, 44px); }
+.add-cal { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: -8px 0 clamp(28px, 5vw, 44px); }
+.add-cal-label { display: inline-flex; align-items: center; gap: 10px; }
 .add-cal .ico { width: 30px; height: 30px; color: var(--ink); }
-.add-cal .sc { margin-right: 4px; }
+/* the three buttons never wrap apart: one row, sharing the width on phones */
+.add-cal-links { display: flex; flex-wrap: nowrap; gap: 8px; }
 .add-cal a {
   display: inline-flex;
   align-items: center;
@@ -1490,4 +1492,8 @@ html.map-full, html.map-full body { overflow: hidden; }
    (the shrimp under "transfer", Sunday's oysters under its list, …) */
 @media (max-width: 760px) {
   .inv-grid.flip > .art, .day.flip > .day-art { order: 0; }
+}
+@media (max-width: 560px) {
+  .add-cal-links { width: 100%; }
+  .add-cal-links a { flex: 1 1 0; justify-content: center; padding: 0 8px; }
 }

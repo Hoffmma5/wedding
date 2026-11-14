@@ -297,10 +297,12 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
 CAL_ICON = icons.svg('<rect class="f" x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>'
                      '<path d="m9.2 14.6 2 2 3.8-4"/>')
 ADD_TO_CALENDAR = f"""    <div class="add-cal">
-      {CAL_ICON}<span class="sc">Add to your calendar</span>
-      <a href="{html_attr(cal_event.google_url())}" target="_blank" rel="noopener">Google</a>
-      <a href="{cal_event.ICS_PATH}" download>Apple</a>
-      <a href="{html_attr(cal_event.outlook_url())}" target="_blank" rel="noopener">Outlook</a>
+      <span class="add-cal-label">{CAL_ICON}<span class="sc">Add to your calendar</span></span>
+      <span class="add-cal-links">
+        <a href="{html_attr(cal_event.google_url())}" target="_blank" rel="noopener">Google</a>
+        <a href="{cal_event.ICS_PATH}" download>Apple</a>
+        <a href="{html_attr(cal_event.outlook_url())}" target="_blank" rel="noopener">Outlook</a>
+      </span>
     </div>"""
 
 PAGES["program"] = ("Program", TERRACOTTA, f"""
@@ -366,7 +368,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=75">
+  <link rel="stylesheet" href="css/style.css?v=76">
   <script>
     (function () {{
       var saved = null;
