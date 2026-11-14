@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marek & Paulo//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-20271001@hoffmma5.github.io
+DTSTAMP:20261114T120000Z
+DTSTART:20271001T130000Z
+DTEND:20271003T110000Z
+SUMMARY:Marek & Paulo's wedding
+LOCATION:Hotel Rural Quinta do Marco\, Sítio do Marco 632A\, 8800-164 Sant
+ a Catarina da Fonte do Bispo\, Tavira\, Portugal
+DESCRIPTION:Three days in Tavira\, Algarve. Check in from 14:00 on Friday\,
+  check out by 12:00 on Sunday. Program\, stay and travel: https://hoffmma5
+ .github.io/wedding/
+URL:https://hoffmma5.github.io/wedding/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Marek & Paulo's wedding
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR

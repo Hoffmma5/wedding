@@ -24,8 +24,13 @@ VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
 
 import re
 import icons   # tools/icons.py
+import cal_event   # tools/cal_event.py
 
 PAGES = {}
+
+
+def html_attr(url):
+    return url.replace("&", "&amp;")
 
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
@@ -289,11 +294,21 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </ul>
     </details>""")
 
+CAL_ICON = icons.svg('<rect class="f" x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>'
+                     '<path d="m9.2 14.6 2 2 3.8-4"/>')
+ADD_TO_CALENDAR = f"""    <div class="add-cal">
+      {CAL_ICON}<span class="sc">Add to your calendar</span>
+      <a href="{html_attr(cal_event.google_url())}" target="_blank" rel="noopener">Google</a>
+      <a href="{cal_event.ICS_PATH}" download>Apple</a>
+      <a href="{html_attr(cal_event.outlook_url())}" target="_blank" rel="noopener">Outlook</a>
+    </div>"""
+
 PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
       <p class="sc">Three days in Tavira</p>
       <h1 class="script">the Program</h1>
     </header>
+{ADD_TO_CALENDAR}
 
     <article class="day">
       <div class="prose">
@@ -348,7 +363,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=72">
+  <link rel="stylesheet" href="css/style.css?v=73">
   <script>
     (function () {{
       var saved = null;
@@ -485,6 +500,7 @@ def main():
                   lambda m: m[1] + "      " + icons.FILTERS + "\n      <ul>\n" + icons.strip_html() + "\n      </ul>" + m[2],
                   home, count=1)
     open("index.html", "w", encoding="utf-8", newline="").write(home)
+    cal_event.write()
     print("pages written")
 
 

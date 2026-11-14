@@ -1442,3 +1442,22 @@ html.map-full, html.map-full body { overflow: hidden; }
 }
 /* "Faro": the script's tall capital F needs a smaller size to stay on the board */
 .plaque text.small { font-size: 14.5px; }
+
+/* Program: add the weekend to your calendar - a quiet row of three pill links */
+.add-cal { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: -8px 0 clamp(28px, 5vw, 44px); }
+.add-cal .ico { width: 30px; height: 30px; color: var(--ink); }
+.add-cal .sc { margin-right: 4px; }
+.add-cal a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
+  border-radius: 999px;
+  color: var(--ink);
+  font: 500 var(--fs-s) var(--sans);
+  text-decoration: none;
+  transition: background-color .2s, border-color .2s;
+}
+.add-cal a:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); border-color: var(--ink); }
+.add-cal a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
