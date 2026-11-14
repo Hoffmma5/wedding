@@ -3,6 +3,18 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased – tiles and the orange stripe (branch `skill-impeccable`)
+
+### Changed
+- **Icons are little azulejo tiles:** every icon – good to know, the hotel's facilities, the weather numbers and the home page – sits on a small blue tile with a double frame and corner arcs, like the painted "Algarve" tile in the village. Good to know is a two-column list with the tile beside each line.
+- **Home has an orange stripe again,** right under the village: a tile and a label for every page, RSVP included, in the orange of the oranges on the tree. It replaces the short list of essentials.
+- **No sun in the sky:** the weathervane now takes you to the weather; the plane still goes to Travel. Walking in through a door is quicker and less deep.
+- **The footer is just the orange tree,** a small blue line drawing with orange oranges, still leading home.
+- **Pictures alternate sides** on Program, Travel and Weather instead of always sitting on the right.
+- **Stay's photos are plain rows** of six hotel and six room photos – no polaroids, no ring – that you swipe or step through with two arrows; tap one to see it big.
+- **Travel:** "Flights from Nuremberg, Prague or Berlin are good options."
+- **Algarve:** the personal intro is back (the open door, the three-hour dinners, Tavira), just a little shorter, and the west-coast road trip is a plain paragraph again.
+
 ## Unreleased – quieter (branch `skill-impeccable`)
 
 ### Changed

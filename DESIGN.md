@@ -1,9 +1,10 @@
 # Design — Marek & Paulo
 
 Two parts. **Current state** describes the site as it is on the
-`skill-impeccable` branch (14 November 2026, after the first pass towards
-the target: shorter copy, essentials on Home, two typefaces, one ink),
-measured from `css/style.css`, the pages and `tools/make_pages.py`. **Target direction** is where the redesign is
+`skill-impeccable` branch (14 November 2026, after two passes: shorter
+copy, two typefaces, one ink; then azulejo tile icons, the orange page
+stripe on Home, plain photo rows, the orange-tree footer and alternating
+picture sides), measured from `css/style.css`, the pages and `tools/make_pages.py`. **Target direction** is where the redesign is
 heading, and **What's not working yet** lists the gaps between the two.
 When a change contradicts the current state, update this document in the
 same commit; when it moves the site towards the target, tick it off the gap
@@ -26,12 +27,12 @@ Eight pages, in menu and footer order (`WALK` in `tools/make_pages.py`):
 
 | Page | File | Title on the page | Words in `<main>` |
 |---|---|---|---|
-| Home | `index.html` | names + date over the village, then the essentials | 105 |
+| Home | `index.html` | names + date over the village, then the orange page stripe | 65 |
 | Program | `program.html` | *the Program* (friday / the Wedding Day / sunday) | 45 |
-| Stay | `accommodation.html` | *the Hotel* (at the Quinta, the Bedrooms, on the map) | 195 |
-| Travel | `travel.html` | *Travel* (transfer, good to know) | 160 |
+| Stay | `accommodation.html` | *the Hotel* (at the Quinta, the Bedrooms, on the map) | 180 |
+| Travel | `travel.html` | *Travel* (transfer, good to know) | 155 |
 | Weather | `weather.html` | *the Weather* (What to Pack) | 60 |
-| Algarve | `location.html` | *the Algarve* (our favourites + two closed extras) | 175 (dishes closed) |
+| Algarve | `location.html` | *the Algarve* (our favourites, the west coast, dishes closed) | 240 (dishes closed) |
 | Guests | `map.html` | *the guests* — a full-screen map | 25 |
 | RSVP | `rsvp.html` | *RSVP* — "Reply form to follow." | 20 |
 
@@ -49,7 +50,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant Garamond 600, uppercase, wide tracking (the logo caps) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 17 px | Cormorant SC 700, 17 px |
 | Body | Cormorant Garamond 500, 20 px | Cormorant Garamond 500, 20 px, line-height 1.6–1.75 |
-| Below the fold | The essentials: Program, Stay, Travel with one fact each, an RSVP button, a line to Weather · Algarve · Guests | Footer: ‹ previous · small village · next › |
+| Below the fold | The orange stripe: a tile + label per page, RSVP last | Footer: ‹ previous · orange tree · next › |
 
 ## Colour
 
@@ -73,23 +74,32 @@ text uses `--ink` (the ink mixed 20 % towards `--text`). At night the ink
 is mixed 50 % towards white. The mechanism still allows a page its own
 ink; none uses it.
 
+### The orange stripe (Home only)
+
+The one deliberate exception to "one accent": the page stripe under the
+village is the orange of the tree's oranges, deepened to `#c75d22` so its
+cream `#fff8ee` labels (21 px semibold) read at 4 : 1; at night `#6e3418`
+with `#f6e6d2`. The same orange (`#e8822a`, night `#f0a050`) fills the
+oranges in the footer tree. Nothing else outside the pictures is orange.
+
 ### Pigments that stay in the pictures
 
-The painting's house colours (blue, yellow, coral), the roofs' terracotta,
-the sun and the amber window glow appear only inside the painting and its
+The painting's house colours (blue, yellow, coral), the roofs' terracotta
+and the amber window glow appear only inside the painting and its
 hotspots. The travel map keeps its own map inks (terracotta route, map
-blues, Spain's brown) because it is a paper object, like the polaroids.
+blues, Spain's brown) because it is a paper object.
 
 ### Night
 
 A full second palette, not an inversion: deep indigo, the painting swaps to
-its night layer, windows and lamp glow amber (`mix-blend-mode: screen`), the
-sun becomes a moon. Toggle in the nav, saved in `localStorage` (`theme`),
-defaults to the OS setting. Paper objects (travel map, polaroids) stay paper,
-only dimmed.
+its night layer, windows and lamp glow amber (`mix-blend-mode: screen`).
+There is no sun or moon in the sky any more. Toggle in the nav or the
+lamp, saved in `localStorage` (`theme`), defaults to the OS setting. The
+travel map stays paper, only dimmed.
 
 **Count outside the pictures:** paper, text, muted, one accent (plus
-`--surface`, `--line` and the sky band) per theme.
+`--surface`, `--line` and the sky band) per theme, and the Home stripe's
+orange.
 
 ## Typography
 
@@ -130,67 +140,80 @@ a fact (Program: "Welcome party · 01.10.2027").
   the names sit. Hotspots are placed in picture pixels (`--x/--y/--w/--h`).
   Width fills the screen but keeps the doors above the fold; under 860 px the
   street stays 860 px wide and scrolls sideways ("Swipe to see the whole
-  street").
-- **Home below the village**: **the essentials**, 640 px wide on the
-  paper: three hairline rows (Program, Stay, Travel), each the page name in
-  the accent and its one fact in muted, a chevron, 56 px tall; then a dark
-  **RSVP** pill (48 px) and one muted line "Also: Weather · Algarve ·
-  Guests". Then the story section (hidden until `data-storymap` has a link)
-  and a one-line footer.
+  street"). Hotspots: the three doors (Stay, Program, RSVP), the plane
+  (Travel), the weathervane (Weather), the "Algarve" tile (Algarve), the lamp
+  (day/night) and the orange tree (drops oranges). Nothing in the sky.
+- **Home below the village**: the **orange stripe**, full width, 1120 px
+  inner: seven buttons (Program, Stay, Travel, Weather, Algarve, Guests,
+  RSVP), each a 48 px cream tile over a 21 px label; RSVP's tile is glazed
+  solid cream. 4 + 3 under 760 px. Then the story section (hidden until
+  `data-storymap` has a link) and a one-line footer.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding, 20 px side
-  gutter. The page title has 36–56 px of air below it. Text left, watercolour
-  right (`.inv-grid`, `1fr / minmax(200px, 320px)`); sections separated by a
-  hairline and 48–80 px. One column under 760 px; watercolours shrink to
-  150 px accents.
+  gutter. The page title has 36–56 px of air below it. Text and a
+  watercolour side by side (`.inv-grid`, `1fr / minmax(200px, 320px)`);
+  pictures **alternate sides** down a page — `.flip` on `.inv-grid` or
+  `.day` puts the picture left on desktop (Travel's shrimp, Weather's crabs,
+  Program's oysters). Sections are separated by a hairline and 48–80 px. One
+  column under 760 px, text first; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Cormorant 16 px, muted), the village painting small (220–320 px, day/night
-  copies from `tools/village_mini.py`) leading home, "Next ›"; the names/date
-  line in 12 px below.
+  (Cormorant 16 px, muted), the **orange tree** (`ORANGE_TREE` in
+  `tools/make_pages.py`: a 64 px line drawing in the accent, glazed canopy,
+  six orange oranges) leading home, "Next ›"; the names/date line below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
-  10–12 px small tiles, menu links · 999 px pills, chips · 3 px polaroids.
+  10–12 px menu links, stripe buttons · 4 px photos · 2.5 px tiles ·
+  999 px pills, chips.
 - **Shadow**: one soft shadow (`0 1px 2px / 0 8px 24px`, 4–8 % black) on
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
   left-aligned on inner pages, centred on Home.
-- **Breakpoints**: 860 (hero), 820 (nav), 760 (one column), 560 (lists,
-  essentials rows stack name over fact).
+- **Breakpoints**: 860 (hero), 820 (nav), 760 (one column, stripe 4 + 3,
+  photo rows 72 vw), 560 (lists).
 
 ## Imagery
 
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
-  site's identity; also reused small in every footer.
+  site's identity. (`village-mini-*.webp` and `tools/village_mini.py` are no
+  longer used.)
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
   paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
   sun, shell, pearl, long table, hotel landscape, Portugal.
 - **Travel map** (`tools/make_iberia.py`) — a piece torn from an old paper
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
   path to Faro and a pearl on Tavira.
-- **Photos** — only the hotel polaroids on Stay. Dish photos are kept in
-  `assets/dishes/` but not shown.
-- **Icons** (`tools/icons.py`) — one family: 24 × 24, 1.35 line in
-  `currentColor`, 15 % tint inside closed shapes, shown at 30 px. Used on
-  Stay (facilities), Travel (good to know) and Weather; Home no longer has
-  icons.
+- **Photos** — only on Stay: six of the hotel, six of the rooms, in plain
+  rows. The other hotel/room photos stay in `assets/gallery/`; dish photos in
+  `assets/dishes/`. None of them is shown elsewhere.
+- **Icons** (`tools/icons.py`) — one family: **azulejo tiles**. A 40 × 40
+  tile (outer frame with a 7 % glaze, fine inner frame, a quarter-circle in
+  each corner) with a 24 × 24 line glyph in the middle; `tile()` writes the
+  SVG, `.tile` styles it with non-scaling 1.5 / 0.8 px strokes in
+  `currentColor`. Shown at 44–56 px: good to know, facilities, weather
+  numbers, and (cream on orange) the Home stripe. Glyphs: STRIP (program,
+  stay, travel, weather, algarve, guests, rsvp envelope), FACILITIES,
+  WEATHER, TIPS. Footer chevrons and UI controls stay plain lines.
 - **Logo mark** — the orange emblem, recoloured with `--text` via CSS mask.
 
 ## Components
 
-- **Essentials** (Home, `.glance`): hairline rows of page name + one fact +
-  chevron, then the RSVP pill and an "Also:" line.
+- **Page stripe** (Home, `nav.stripe`): orange band, a tile + label button
+  per page, 44 px+ targets, hover darkens the band behind the button.
 - **Facts list** (`dl.facts-list`): small-caps term, value in the ink,
   muted detail.
-- **More** (`details.more`): a closed hairline row for secondary extras
-  (Algarve: "Extra days? Drive the west coast", "Eleven dishes to try").
-  52 px summary in the ink with a drawn chevron that turns on open.
-- **Facilities** (Stay): eight icons with short labels, 4 across, no
-  boxes; details on the hotel's site.
-- **Good to know** (Travel): six icon + one-line tips, key fact in the ink;
-  3 across, a hairline list on phones.
-- **Weather numbers** (`.wx`): an open row between two hairlines — icon,
-  Lora number in the ink, muted caption.
-- **Polaroid carousel** (Stay): polaroids curving like a ring, centre one
-  facing you, full-screen viewer.
+- **More** (`details.more`): a closed hairline row for a long secondary
+  list (Algarve: "Eleven dishes to try"). 52 px summary in the ink with a
+  drawn chevron that turns on open. The west-coast road trip is a plain
+  `p.road-note`.
+- **Facilities** (Stay): eight 56 px tiles with short labels, 4 across;
+  details on the hotel's site.
+- **Good to know** (Travel): six hairline rows, a 52 px tile then one line,
+  key fact in the ink; two columns, one on phones.
+- **Weather numbers** (`.wx`): an open row between two hairlines — tile,
+  number in the ink, muted caption.
+- **Photo row** (Stay, `.carousel` + `js/gallery.js`): same-size 4:3 photos
+  with 4 px corners, starting at the text column and running off the right
+  edge, small italic caption under each; two 44 px arrow buttons under the
+  row on desktop, swipe on phones; a photo opens the full-screen viewer.
 - **Places app** (Algarve): list with category chips + ArcGIS map on the
   *Azulejo Complete* basemap, overview minimap, full-screen mode.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
@@ -209,21 +232,22 @@ a fact (Program: "Welcome party · 01.10.2027").
   spins (press and hold: points to you), the tile lifts, the orange tree drops
   oranges.
 - Ambient: the plane drifts (6 s loop), the vane sways (7 s loop).
-- Page transitions: entering from the village zooms 3.2× into the door and
-  fades to paper; the footer village fades out and Home opens at 2.4× and
-  zooms out.
+- Page transitions: entering from the village zooms 2.2× into the door in
+  0.5 s and fades to paper (the next page loads after 0.48 s); the footer
+  tree shrinks and Home opens at 1.8× and zooms out in 0.8 s.
 - Story section unfolds with scroll.
 - Easter eggs (`js/eggs.js`): disco ball with music and lights, crabs, the
   sardine and a school of sardines, party mode with bunting (`?party`).
-- Small UI: 0.2–0.3 s hovers, menu slide, mini-village lift.
+- Small UI: 0.2–0.3 s hovers, menu slide, stripe tiles and footer tree lift.
 - `prefers-reduced-motion` turns all of it off.
 
 ## Tone of voice
 
 Warm, personal, first person plural, a little playful ("pick a driver and let
 them be the hero"). English. Script titles mostly lowercase. Short: a section
-is its title, a few facts and one or two sentences; anything longer goes
-into a closed `<details>`.
+is its title, a few facts and one or two sentences; a long list goes into a
+closed `<details>`. The exception is the Algarve intro, which stays personal
+(three short paragraphs: the summers, Tavira, the Quinta).
 
 ## Practical notes
 
@@ -288,36 +312,39 @@ Where the current site falls short of the target, roughly by impact.
 *Done* / *Open* notes and struck-through items record the 14 November 2026 pass.
 
 1. **No working RSVP.** The RSVP page is still a placeholder ("Reply form to
-   follow."). *Done:* RSVP is now on Home as a button under the essentials,
-   in the nav and behind the door. *Open:* the form itself, and an RSVP
+   follow."). *Done:* RSVP is on Home as the last button of the orange
+   stripe, in the nav and behind the coral door. *Open:* the form itself, and an RSVP
    prompt at the end of Program, Stay and Travel.
-2. **Essentials partly at a glance.** *Done:* Home lists Program, Stay and
-   Travel with one fact each, then RSVP, right under the village. *Open:* the
-   Wedding Day schedule is still "Details of the day to follow".
+2. **Essentials partly at a glance.** *Done:* every page, RSVP included, is
+   one tap from the orange stripe right under the village. *Open:* no facts
+   on Home beyond date and place, and the Wedding Day schedule is still
+   "Details of the day to follow".
 3. ~~**Five typefaces.**~~ Two families now: Cormorant (Garamond + SC) and
    Beth Ellen.
 4. **Colours.** *Done:* one accent ink on every page; the brick strip, olive
-   logo ink and the unused house tokens are gone. *Open:* night is still a
-   second world (painting layers, glow, moon) rather than the same palette
-   darkened.
+   logo ink and the unused house tokens are gone; the sun and moon are gone
+   from the sky. *Chosen exception:* the orange Home stripe. *Open:* night is
+   still a second world (painting layers, window glow) rather than the same
+   palette darkened.
 5. **Artsy details everywhere instead of one or two.** Interactive
    painting, script titles, a watercolour object per section, a torn paper
-   map, polaroid ring, mini-village footer, easter eggs, party mode,
-   day/night theme — each is charming, together they compete.
-6. **Home on phones.** *Done:* the essentials list means nothing has to be
+   map, easter eggs, party mode, day/night theme — each is charming,
+   together they compete. *Done:* the polaroid ring, the mini-village footer
+   and the sun are gone.
+6. **Home on phones.** *Done:* the orange stripe means nothing has to be
    discovered in the painting, and the "Everything in the village is
    clickable" hint is gone. *Open:* on phones the street is still 860 px wide
    and scrolls sideways.
-7. **Too much motion.** Ambient loops (plane, vane), 3D doors, 3.2× zoom page
-   transitions, lamp flicker and easter eggs. Reduced-motion is respected,
-   but the default is far from "subtle and short".
+7. **Too much motion.** *Done:* the door zoom is 2.2× in 0.5 s (was 3.2×
+   in 0.9 s) and the walk back 0.8 s. *Open:* ambient loops (plane, vane),
+   3D doors, lamp flicker and easter eggs.
 8. **Text-heavy secondary pages.** *Done:* every label above a title and
    the decorative bylines are cut, intros are one or two sentences, and
-   the Algarve's road trip and dishes are closed `<details>`. *Open:* Stay's
-   two carousels and the bedrooms section could still fold away.
+   the dishes are a closed `<details>`; Stay's galleries are plain rows of
+   six. (The Algarve intro is long again on purpose.)
 9. **Tap targets below 44 px.** Desktop nav pills ~39 px tall, the theme
-   button 38 px, footer ‹ › links ~31 px. (The new essentials rows, RSVP
-   pill and More rows are 48–56 px.)
+   button 38 px, footer ‹ › links ~31 px. (Stripe buttons, photo arrows,
+   the footer tree and More rows are 44–64 px.)
 10. **Weight.** The home painting is ~520 KB in two layers plus PNG overlays;
     the ArcGIS SDK + Calcite on Stay and Algarve are heavy (lazy, but still
     loaded just by scrolling past). Fonts are down from five families to two.
