@@ -1498,3 +1498,14 @@ html.map-full, html.map-full body { overflow: hidden; }
   .add-cal-links { width: 100%; }
   .add-cal-links a { flex: 1 1 0; justify-content: center; padding: 0 8px; }
 }
+
+/* Travel: the map sits level with the title and a little smaller, so the
+   first screen is title, facts and map side by side */
+.map-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, 340px); align-items: start; }
+.map-grid .map-art { max-width: 340px; margin-top: 6px; }
+/* text-only sections keep a readable measure */
+.prose.narrow { max-width: 600px; }
+@media (max-width: 760px) {
+  .map-grid { grid-template-columns: 1fr; }
+  .map-grid .map-art { max-width: 330px; margin: 8px auto 0; }
+}

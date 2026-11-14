@@ -35,11 +35,12 @@ def html_attr(url):
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", BLUE, f"""
-    <header class="inv-head">
-      <p class="sc">Let us help you plan your</p>
-      <h1 class="script">Travel</h1>
-    </header>
     <div class="inv-grid map-grid">
+      <div>
+      <header class="inv-head">
+        <p class="sc">Let us help you plan your</p>
+        <h1 class="script">Travel</h1>
+      </header>
       <div class="prose">
         <dl class="facts-list">
           <div><dt class="sc">Dates</dt><dd><strong>1st, 2nd &amp; 3rd of October 2027</strong><span>Friday to Sunday</span></dd></div>
@@ -47,6 +48,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
         <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
+      </div>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -65,18 +67,13 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </div>
 
     <section class="inv-section">
-      <div class="inv-grid flip" style="--side:170px">
-        <div>
-          <header class="inv-head">
-            <p class="sc">From the airport to Tavira&hellip;</p>
-            <h2 class="script">transfer</h2>
-          </header>
-          <div class="prose">
-            <p>Arriving on the 1st or flying home on the 3rd? <strong>We drive you</strong> between Faro and the hotel.</p>
-            <p>On other days, please rent or share a car, or take a taxi.</p>
-          </div>
-        </div>
-        <figure class="art"><img src="assets/art/shrimp.webp" alt="" width="640" height="479" style="--art:170px"></figure>
+      <header class="inv-head">
+        <p class="sc">From the airport to Tavira&hellip;</p>
+        <h2 class="script">transfer</h2>
+      </header>
+      <div class="prose narrow">
+        <p>Arriving on the 1st or flying home on the 3rd? <strong>We drive you</strong> between Faro and the hotel.</p>
+        <p>On other days, please rent or share a car, or take a taxi.</p>
       </div>
     </section>
 
@@ -367,7 +364,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=79">
+  <link rel="stylesheet" href="css/style.css?v=81">
   <script>
     (function () {{
       var saved = null;
