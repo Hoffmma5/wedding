@@ -30,7 +30,6 @@ TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' 
 
 PAGES["travel"] = ("Travel", BLUE, f"""
     <header class="inv-head">
-      <p class="sc">Let us help you plan your</p>
       <h1 class="script">Travel</h1>
     </header>
     <div class="inv-grid map-grid">
@@ -40,8 +39,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
-        <p>If you&rsquo;re traveling from Czech Republic we recommend to fly out from two airports: <strong>Prague</strong> or <strong>Nuremberg</strong>.</p>
-        <p class="ps">P.S. The flights are often cheaper from Germany.</p>
+        <p>From the Czech Republic, fly from <strong>Prague</strong> or <strong>Nuremberg</strong> &ndash; Germany is often cheaper.</p>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -63,12 +61,11 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       <div class="inv-grid">
         <div>
           <header class="inv-head">
-            <p class="sc">From the airport to Tavira&hellip;</p>
             <h2 class="script">transfer</h2>
           </header>
           <div class="prose">
-            <p>If you arrive on the 1st of October, <strong>we will take care of your transfer</strong>. The same applies if you fly back on Sunday, the 3rd &ndash; <strong>we will take you back to the airport</strong>.</p>
-            <p>However, if you arrive earlier or leave later than the mentioned dates, we ask that you plan your transfer. The best option would be renting/sharing a car or taking a taxi.</p>
+            <p>Landing on Friday the 1st or flying home on Sunday the 3rd? <strong>We&rsquo;ll drive you from and back to Faro airport.</strong></p>
+            <p>On other days, please plan your own way &ndash; a shared rental car or a taxi is easiest.</p>
           </div>
         </div>
         <figure class="art"><img src="assets/art/shrimp.webp" alt="" width="640" height="479"></figure>
@@ -77,7 +74,6 @@ PAGES["travel"] = ("Travel", BLUE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">A few little things</p>
         <h2 class="script">good to know</h2>
       </header>
       <ul class="tips">
@@ -90,10 +86,9 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
       <div>
         <header class="inv-head">
           <h1 class="script">the Weather</h1>
-          <p class="sc">A forecast for the festivities</p>
         </header>
         <div class="prose">
-          <p>October in the Algarve usually brings warm, sunny afternoons and cooler evenings. The weather can be a little unpredictable, though, so pack your sunglasses, but bring an umbrella too &ndash; just in case the skies have other plans!</p>
+          <p>October afternoons are usually warm and sunny, the evenings cooler. Pack sunglasses &ndash; and an umbrella, just in case.</p>
         </div>
       </div>
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
@@ -127,11 +122,10 @@ FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for nam
 PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <header class="inv-head">
       <h1 class="script">the Hotel</h1>
-      <p class="sc">Your home for the weekend</p>
     </header>
     <figure class="wide-art"><img src="assets/art/hotel-landscape.webp" alt="Watercolour of the countryside near Tavira, with the sea behind" width="1059" height="437"></figure>
     <div class="prose">
-      <p>Our hotel is <strong>Hotel Quinta do Marco</strong> &ndash; located in the countryside of the village, it offers a heated outdoor pool, gym, a little farm with animals and great views. <strong>We will provide accommodation to everyone for the 2 nights and the main meals during the 3 days.</strong></p>
+      <p>Everyone stays with us at <strong>Hotel Quinta do Marco</strong>, in the hills above Tavira. <strong>Both nights and the main meals of all three days are on us.</strong></p>
       <dl class="times">
         <dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd>
         <dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd>
@@ -152,7 +146,6 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Something for everyone</p>
         <h2 class="script">at the Quinta</h2>
       </header>
       <ul class="facilities">
@@ -164,11 +157,9 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <section class="inv-section">
       <header class="inv-head">
         <h2 class="script">the Bedrooms</h2>
-        <p class="sc">Where will we sleep?</p>
       </header>
       <div class="prose">
-        <p>Everyone stays with us at Hotel Quinta do Marco for both nights. We&rsquo;ll let each of you know personally which room is yours.</p>
-        <p>The rooms are bright and comfortable, and each one has its own balcony or terrace looking out over the hills &ndash; perfect for a slow morning coffee after a long night.</p>
+        <p>We&rsquo;ll tell each of you which room is yours. Every room has a balcony or terrace over the hills.</p>
       </div>
     <div class="carousel" aria-label="Photos of the bedrooms">
       <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"><figcaption>Double room</figcaption></figure>
@@ -184,7 +175,6 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Hotel Rural Quinta do Marco</p>
         <h2 class="script">on the map</h2>
       </header>
       <div class="prose">
@@ -234,7 +224,7 @@ DISHES = [
 
 def dishes_html():
     # Just the name and what it is; the longer notes stay in DISHES for later
-    rows = [f'        <li><b>{name}</b><span>{sub}</span></li>' for slug, name, sub, text in DISHES]
+    rows = [f'          <li><b>{name}</b><span>{sub}</span></li>' for slug, name, sub, text in DISHES]
     return "\n".join(rows)
 
 
@@ -244,13 +234,11 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
-          <p class="sc">The south of Portugal&hellip;</p>
           <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>We come back to the Algarve every summer. Our routines include beach, pool and long dinners with a full house. The house door stays open to let the wind through and we don&rsquo;t leave the table for at least 3 hours.</p>
-          <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace. Think whitewashed houses, terracotta rooftops, cobbled streets, and a river running through the town. Just beyond, you&rsquo;ll find salt flats, endless sandy beaches, and the Atlantic Ocean.</p>
-          <p>The celebration itself is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, about 15 minutes from town. If you come early or stay a little longer, here is the Algarve we love &ndash; from Tavira all the way to the wild west coast.</p>
+          <p>We come back every summer &ndash; for the beach, the pool and dinners that last three hours.</p>
+          <p>The wedding is at <a href="accommodation.html">Hotel Quinta do Marco</a>, in the hills 15 minutes from <strong>Tavira</strong>. If you come early or stay longer, here is the Algarve we love.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -260,7 +248,6 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
     </div>
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Beaches, food &amp; things to do</p>
         <h2 class="script">our favourites</h2>
       </header>
       <div class="places-app">
@@ -280,26 +267,20 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
 
-      <aside class="road-trip">
-        <p class="sc">Got a few extra days?</p>
-        <h3>Drive the west coast</h3>
-        <p>From Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
-      </aside>
-    </section>
-
-    <section class="inv-section">
-      <header class="inv-head">
-        <p class="sc">Eat like a local</p>
-        <h2 class="script">dishes to try</h2>
-      </header>
-      <ul class="dishes">
+      <details class="more">
+        <summary>Extra days? Drive the west coast</summary>
+        <p>From Lagos up to Sines: fishing villages, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
+      </details>
+      <details class="more">
+        <summary>Eleven dishes to try</summary>
+        <ul class="dishes">
 {DISHES_HTML}
-      </ul>
+        </ul>
+      </details>
     </section>""")
 
 PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
-      <p class="sc">Three days in Tavira</p>
       <h1 class="script">the Program</h1>
     </header>
 
@@ -338,7 +319,6 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
 
 PAGES["rsvp"] = ("RSVP", OLIVE, """
     <header class="inv-head">
-      <p class="sc">Let us know if you can join us</p>
       <h1 class="script">RSVP</h1>
     </header>
     <div class="prose">
@@ -355,7 +335,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=55">
   <script>
     (function () {{
       var saved = null;
@@ -451,7 +431,6 @@ def main():
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{BLUE}">
-      <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
       <h1 class="script">the guests</h1>
     </div>
     <div class="guests-intro prose" style="--topic:{BLUE}">
