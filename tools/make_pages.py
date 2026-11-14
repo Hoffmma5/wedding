@@ -138,13 +138,27 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       </dl>
     </div>
 
-    <div class="carousel" aria-label="Photos of Hotel Quinta do Marco">
-      <figure class="slide"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"><figcaption>The quinta from above</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"><figcaption>The salt-water pool</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800" loading="lazy"><figcaption>A double room</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"><figcaption>Every room has a balcony</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"><figcaption>Terrace with a view</figcaption></figure>
-      <figure class="slide"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"><figcaption>The animal farm</figcaption></figure>
+    <div class="gallery">
+      <div class="mosaic" role="group" aria-label="Photos of Hotel Quinta do Marco">
+        <button type="button" class="ph" aria-label="Open photo 1 of 17"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"></button>
+        <button type="button" class="ph" aria-label="Open photo 2 of 17"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph" aria-label="Open photo 3 of 17"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph" aria-label="Open photo 4 of 17"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph" aria-label="Open photo 5 of 17"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 6 of 17"><img src="assets/gallery/hotel/02.webp" alt="The main building and the pool lawn with sun loungers" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 7 of 17"><img src="assets/gallery/hotel/05.webp" alt="Inside the Farroba restaurant, with tables by the windows" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 8 of 17"><img src="assets/gallery/hotel/06.webp" alt="The Quinta do Marco swing overlooking the valley" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 9 of 17"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 10 of 17"><img src="assets/gallery/hotel/08.webp" alt="The children&rsquo;s playground with a slide and swings" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 11 of 17"><img src="assets/gallery/hotel/09.webp" alt="The hotel nestled in the green Algarve hills" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 12 of 17"><img src="assets/gallery/rooms/02.webp" alt="Bright double room with a desk and sunflowers" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 13 of 17"><img src="assets/gallery/rooms/03.webp" alt="Superior room with a wooden screen and two extra beds" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 14 of 17"><img src="assets/gallery/rooms/04.webp" alt="Family room with a double bed, two singles and a sofa" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 15 of 17"><img src="assets/gallery/rooms/06.webp" alt="Bathroom with a walk-in shower" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 16 of 17"><img src="assets/gallery/rooms/07.webp" alt="Bathroom with blue-edged tiles and two basins" width="1200" height="800" loading="lazy"></button>
+        <button type="button" class="ph more" aria-label="Open photo 17 of 17"><img src="assets/gallery/rooms/08.webp" alt="Dark stone bathroom with a vessel basin" width="1200" height="800" loading="lazy"></button>
+      </div>
+      <button type="button" class="gallery-all">See all 17 photos</button>
     </div>
 
     <section class="inv-section">
@@ -333,7 +347,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <script>
     (function () {{
       var saved = null;
@@ -413,8 +427,8 @@ def main():
     for slug, (title, topic, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav(), defs=icons.FILTERS)
         foot = FOOT
-        if 'class="carousel"' in body:
-            foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
+        if 'class="gallery"' in body:
+            foot = foot.replace('</body>', '  <script src="js/gallery.js?v=5"></script>\n</body>')
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
