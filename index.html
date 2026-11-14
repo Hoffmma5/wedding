@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=59">
+  <link rel="stylesheet" href="css/style.css?v=60">
   <script>
     (function () {
       var saved = null;
@@ -24,7 +24,7 @@
           if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
             var h = document.documentElement;
             h.classList.add('returning');
-            setTimeout(function () { h.classList.remove('returning'); }, 1500);   // never stay covered
+            setTimeout(function () { h.classList.remove('returning'); }, 900);   // never stay covered
           }
         }
       } catch (e) {}
@@ -83,17 +83,6 @@
             <span class="tip below">Weather &amp; what to pack</span>
           </a>
 
-          <!-- Plane → travel -->
-          <a class="spot go plane" href="travel.html" style="--x:1400;--y:-214;--w:320;--h:84">
-            <svg viewBox="0 0 320 84" aria-hidden="true">
-              <path class="trail" d="M4 70C70 70 120 30 190 38S250 52 268 44" fill="none" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 9"/>
-              <g class="jet" transform="translate(272 22) rotate(80 20 20) scale(1.65)">
-                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
-              </g>
-            </svg>
-            <span class="tip below">Travel</span>
-          </a>
-
           <!-- Weathervane on the coral chimney → where guests come from -->
           <a class="spot go vane" href="map.html" style="--x:1757;--y:-62;--w:96;--h:130">
             <svg class="vane-base" viewBox="0 0 96 130" aria-hidden="true">
@@ -118,6 +107,15 @@
               <span>Algarve</span>
             </span>
             <span class="tip">The Algarve</span>
+          </a>
+
+          <!-- Azulejo direction sign on the blue house → travel -->
+          <a class="spot go tile-sign" href="travel.html" style="--x:76;--y:302;--w:96;--h:40">
+            <span class="tile-face">
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
+              <span>Faro</span>
+            </span>
+            <span class="tip">Travel</span>
           </a>
 
           <!-- Doors -->
@@ -191,8 +189,8 @@
     <footer class="foot">Marek &amp; Paulo &middot; 1 – 3 October 2027 &middot; Algarve</footer>
   </main>
 
-  <script src="js/site.js?v=12"></script>
+  <script src="js/site.js?v=13"></script>
   <script src="js/eggs.js?v=11"></script>
-  <script src="js/village.js?v=14"></script>
+  <script src="js/village.js?v=15"></script>
 </body>
 </html>

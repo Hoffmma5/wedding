@@ -16,7 +16,7 @@
       requestAnimationFrame(function () {
         html.classList.add('zooming-out');
         html.classList.remove('returning');
-        setTimeout(function () { html.classList.remove('zooming-out'); }, 1300);
+        setTimeout(function () { html.classList.remove('zooming-out'); }, 700);
       });
     });
   }
@@ -39,7 +39,7 @@
     hero.style.setProperty('--oy', (b.top + b.height / 2 - h.top) + 'px');
     spot.classList.add('open');
     document.body.classList.add('entering');
-    setTimeout(function () { location.href = href; }, 850);
+    setTimeout(function () { location.href = href; }, 420);
   }
 
   spots.forEach(function (spot) {

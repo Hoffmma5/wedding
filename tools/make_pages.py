@@ -344,7 +344,7 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=12"></script>
+FOOT = """  <script src="js/site.js?v=13"></script>
   <script src="js/eggs.js?v=11"></script>
 </body>
 </html>

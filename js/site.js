@@ -49,7 +49,7 @@
       e.preventDefault();
       try { sessionStorage.setItem('zoomOut', '1'); } catch (err) {}
       document.body.classList.add('leaving');
-      setTimeout(function () { location.href = back.href; }, 420);
+      setTimeout(function () { location.href = back.href; }, 280);
     });
     window.addEventListener('pageshow', function () { document.body.classList.remove('leaving'); });
   }
