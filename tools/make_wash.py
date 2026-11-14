@@ -4,27 +4,27 @@ under the houses in the village painting.
   out: assets/wash-wide.webp, assets/wash-tall.webp            (day)
        assets/wash-wide-night.webp, assets/wash-tall-night.webp (night)
 
-A pale sand wash in long horizontal strokes, a warmer sienna streak along the
-top like the kerb, a faint violet shadow, edges that fade softly into the
-paper. "wide" is for desktop (6 pages in a row), "tall" for phones (3 x 2).
+Watered-down brick terracotta in long horizontal strokes, a deeper brick
+streak along the top like the kerb, top and bottom fading softly into the
+paper; it runs the full width of the page. "wide" is for desktop (6 pages in a row), "tall" for phones (3 x 2).
 Night versions use the night painting's tint, like the night street.
 
-Dark olive labels sit on it by day (> 7 : 1), cream labels by night.
+Dark brown labels sit on it by day (> 7 : 1), cream labels by night.
 Run from the project root:  python tools/make_wash.py
 """
 import numpy as np
 from PIL import Image
 from scipy import ndimage
 
-SAND = np.array([241, 220, 199])          # the street in the painting
-SIENNA = np.array([214, 166, 128])        # the kerb streak
-SHADOW = np.array([214, 204, 222])        # faint violet shadow
+SAND = np.array([232, 158, 124])          # brick / roof terracotta, watered down
+SIENNA = np.array([196, 104, 70])         # a deeper brick streak
+SHADOW = np.array([222, 170, 160])        # a faint rose shadow
 NIGHT_TINT = np.array([0.24, 0.29, 0.48])
 
 
 def night(rgb):
     lum = rgb @ np.array([.299, .587, .114])
-    return (rgb * .7 + lum[..., None] * .3) * NIGHT_TINT * 1.05   # the night street
+    return (rgb * .7 + lum[..., None] * .3) * NIGHT_TINT * 1.45   # a dusky brick, a little lighter than the night page
 
 
 def noise(rng, h, w, cell, amp):
@@ -42,7 +42,7 @@ def edge(rng, w, amp):
     return e * amp
 
 
-def wash(w, h, seed):
+def wash(w, h, seed, ends=True):
     """Wet-in-wet: the pigment fades and blooms into the paper instead of
     stopping at a hard brush edge."""
     rng = np.random.default_rng(seed)
@@ -52,7 +52,7 @@ def wash(w, h, seed):
     bottom = h - margin + edge(rng, w, margin * .3)
     yy = np.arange(h)[:, None]
     xx = np.arange(w)[None, :]
-    end = min(round(w * .035), 60)                # long, soft tapering ends
+    end = min(round(w * .035), 60) if ends else -200   # edge to edge: no tapering ends
     left = end + edge(rng, h, end * .3)[:, None] + (2 * (yy / h) - 1) ** 2 * end * .8
     right = w - end + edge(rng, h, end * .3)[:, None] - (2 * (yy / h) - 1) ** 2 * end * .8
     inside = np.minimum.reduce([yy - top[None, :], bottom[None, :] - yy, xx - left, right - xx])
@@ -77,8 +77,8 @@ def wash(w, h, seed):
     return np.clip(rgb, 0, 255), alpha
 
 
-for name, (w, h, seed) in {"wide": (1800, 240, 11), "tall": (900, 520, 12)}.items():
-    rgb, a = wash(w, h, seed)
+for name, (w, h, seed) in {"wide": (2400, 240, 11), "tall": (900, 520, 12)}.items():
+    rgb, a = wash(w, h, seed, ends=False)   # the strip runs the full width of the page
     for suffix, col in (("", rgb), ("-night", night(rgb))):
         out = np.dstack([np.clip(col, 0, 255), a * 255]).astype(np.uint8)
         Image.fromarray(out, "RGBA").save(f"assets/wash-{name}{suffix}.webp", quality=86, alpha_quality=90, method=6)
