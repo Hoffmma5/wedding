@@ -105,8 +105,8 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
 - **Home below the village**: a one-line hint, then the six pages on a
-  **terracotta watercolour wash** (`tools/make_wash.py`: a brushed band with
-  ragged edges, pigment pooling at the rims, paper grain; a wide version for
+  **terracotta watercolour wash** (`tools/make_wash.py`: painted wet-in-wet,
+  its edges fade and bloom softly into the paper, paper grain inside; a wide version for
   desktop, a taller one for phones, and night versions in the painting's dusk
   tint). Icon above a plain Inter label in cream (≥ 4.8 : 1), 6 across on
   desktop, 3 × 2 on phones. Icons lift and tilt a little on hover; at night

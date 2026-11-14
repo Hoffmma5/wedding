@@ -607,7 +607,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   margin: 0;
-  padding: 34px clamp(12px, 3vw, 40px) 30px;
+  padding: 50px clamp(40px, 5vw, 72px) 46px;
   list-style: none;
   background: url("../assets/wash-wide.webp") center / 100% 100% no-repeat;
 }
@@ -695,7 +695,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
     transition: opacity .5s;
   }
   .swipe-hint.gone { opacity: 0; }
-  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 6px; padding: 40px 10px 38px; background-image: url("../assets/wash-tall.webp"); }
+  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 6px; padding: 56px 22px 52px; background-image: url("../assets/wash-tall.webp"); }
   :root[data-theme="night"] .strip ul { background-image: url("../assets/wash-tall-night.webp"); }
   .strip a { font-size: var(--fs-m); }
   .story-frame { height: 78svh; }

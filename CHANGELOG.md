@@ -8,7 +8,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ### Changed
 - **Weather numbers** are an open row between two hairlines instead of three boxed cards, with the icons tinted in the page's ink.
 - **On phones the watercolour objects are small accents** (sun, crabs, disco ball, oysters, sardine – 150 px at most) instead of filling a screen each.
-- **The home strip is painted:** the flat orange block is now a terracotta watercolour wash with brushed, ragged edges (its own shape on phones). At night it takes the dusk tint of the night village and the icons are lighter and quieter, so they no longer glare.
+- **The home strip is painted:** the flat orange block is now a terracotta watercolour wash, painted wet-in-wet so its edges fade and bloom softly into the paper (its own shape on phones). At night it takes the dusk tint of the night village and the icons are lighter and quieter, so they no longer glare.
 - **One ink per page, from the village:** titles and accents use only the painting's three pigments – azulejo blue, roof terracotta, sage olive – and every section keeps its page's ink (Program was wine, coral and brown; Stay had a wine section; Travel a brown one; dishes rust).
 - **Footer:** the little drawing is replaced by the village painting itself, small – the same three houses as on the home page, and at night the dark version with the windows lit.
 - **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.

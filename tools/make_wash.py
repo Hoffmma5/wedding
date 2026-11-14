@@ -3,8 +3,8 @@
   out: assets/wash-wide.webp, assets/wash-tall.webp            (day)
        assets/wash-wide-night.webp, assets/wash-tall-night.webp (night)
 
-A brushed band with ragged top and bottom edges, pigment pooling darker at the
-rims, soft blotches and paper grain. "wide" is for desktop (6 pages in a row),
+A band painted wet-in-wet: its edges fade and bloom softly into the paper,
+with soft blotches and paper grain inside. "wide" is for desktop (6 pages in a row),
 "tall" for phones (3 x 2). Night versions use the same tint as the night
 painting (tools/make_layers.py), so the strip sits in the same dusk.
 
@@ -40,30 +40,28 @@ def edge(rng, w, amp):
 
 
 def wash(w, h, seed):
+    """Wet-in-wet: the pigment fades and blooms into the paper instead of
+    stopping at a hard brush edge."""
     rng = np.random.default_rng(seed)
-    margin = min(round(h * .09), 26)
-    top = margin + edge(rng, w, margin * .55)
-    bottom = h - margin + edge(rng, w, margin * .55)
+    margin = min(round(h * .17), 44)              # room for the soft fade
+    feather = margin * .85
+    top = margin + edge(rng, w, margin * .3)
+    bottom = h - margin + edge(rng, w, margin * .3)
     yy = np.arange(h)[:, None]
     xx = np.arange(w)[None, :]
-    # the brush ends: ragged, slightly rounded tips instead of a straight cut
-    end = min(round(w * .014), 14)
-    left = end + edge(rng, h, end * .8)[:, None] + (2 * (yy / h) - 1) ** 2 * end * 1.4
-    right = w - end + edge(rng, h, end * .8)[:, None] - (2 * (yy / h) - 1) ** 2 * end * 1.4
+    end = min(round(w * .035), 60)                # long, soft tapering ends
+    left = end + edge(rng, h, end * .3)[:, None] + (2 * (yy / h) - 1) ** 2 * end * .8
+    right = w - end + edge(rng, h, end * .3)[:, None] - (2 * (yy / h) - 1) ** 2 * end * .8
     inside = np.minimum.reduce([yy - top[None, :], bottom[None, :] - yy, xx - left, right - xx])
-    inside = np.clip(inside, -2, 60)
-    alpha = np.clip(inside / 2.2 + .5, 0, 1)
+    # blooms: the wet edge creeps out unevenly
+    inside = inside + noise(rng, h, w, 60, feather * .4) + noise(rng, h, w, 24, feather * .08)
+    t = np.clip((inside + feather * .55) / (feather * 1.4), 0, 1)
+    alpha = t * t * (3 - 2 * t)                   # smoothstep
 
-    # pigment pools at the drying edge: darker within ~10 px of the rim
-    rim = np.exp(-np.clip(inside, 0, None) / 9.0) * alpha
-    blotch = noise(rng, h, w, 120, .07) + noise(rng, h, w, 34, .035)
-    grain = rng.normal(0, .025, (h, w))
-    grain = ndimage.gaussian_filter(grain, .6)
-    shade = 1 + blotch + grain - .16 * rim                     # < 1 = more pigment
-    rgb = PIGMENT[None, None, :] * np.clip(shade, .8, 1.0)[..., None]
-    # a few lighter, wetter pools in the middle of the band
-    pools = np.clip(noise(rng, h, w, 200, 1.0) - .9, 0, None) * .03
-    rgb = rgb + (255 - rgb) * pools[..., None] * alpha[..., None]
+    blotch = noise(rng, h, w, 120, .06) + noise(rng, h, w, 34, .03)
+    grain = ndimage.gaussian_filter(rng.normal(0, .022, (h, w)), .6)
+    shade = 1 + blotch + grain
+    rgb = PIGMENT[None, None, :] * np.clip(shade, .82, 1.0)[..., None]
     return np.clip(rgb, 0, 255), alpha
 
 
