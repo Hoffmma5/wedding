@@ -205,7 +205,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   overflow-x: clip;
   background: var(--sky);
   container-type: inline-size;
-  transition: background-color var(--fade), transform .9s cubic-bezier(.6, 0, .4, 1);
+  transition: background-color var(--fade), transform .5s cubic-bezier(.5, 0, .3, 1);   /* walking in / out: short */
   transform-origin: var(--ox, 50%) var(--oy, 70%);
   /* picture width: fill the screen width, but keep the doors above the fold */
   --pw: max(860px, min(100cqw, calc((100svh - 8px) * 1926 / 1177)));
@@ -381,16 +381,6 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .sky:is(:hover, :focus-visible, .open) .moon { transform: rotate(-12deg) scale(1.08); }
 .sky:is(:hover, :focus-visible, .open) :is(.sun, .moon) { transform: scale(1.08); }
 
-/* ---------- Plane ---------- */
-
-.plane svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.plane .trail { stroke: var(--muted); opacity: .55; }
-.plane .jet { fill: var(--accent); transition: fill var(--fade); }
-.plane svg { animation: drift 6s ease-in-out infinite; }
-@keyframes drift { 50% { transform: translate(calc(var(--u) * 6), calc(var(--u) * -6)); } }
-.plane:is(:hover, :focus-visible, .open) svg { animation-duration: 1.6s; }
-.plane .tip { left: 88%; }
-
 /* ---------- Weathervane ---------- */
 
 .vane { color: #2c3140; }
@@ -563,7 +553,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 
 /* ---------- Walking in ---------- */
 
-body.entering .hero { transform: scale(3.2); }
+body.entering .hero { transform: scale(2); }
 body.entering .hero-text { opacity: 0; }
 body::after {
   content: "";
@@ -573,20 +563,20 @@ body::after {
   background: var(--bg);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .45s ease .35s;
+  transition: opacity .25s ease .2s;
 }
 body.entering::after { opacity: 1; }
 
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
-body.leaving::after { opacity: 1; transition: opacity .4s ease; }
+body.leaving::after { opacity: 1; transition: opacity .28s ease; }
 body.leaving .street-view .tree-mark { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
-html.returning .hero { transform: scale(2.4); transition: none; }
+html.returning .hero { transform: scale(1.8); transition: none; }
 html.returning .hero-text { opacity: 0; }
 html.returning body::after { opacity: 1; transition: none; }
-html.zooming-out body::after { transition: opacity .55s ease; }
-html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
+html.zooming-out body::after { transition: opacity .3s ease; }
+html.zooming-out .hero-text { transition: opacity .35s ease .3s; }
 
 /* ---------- Details ---------- */
 

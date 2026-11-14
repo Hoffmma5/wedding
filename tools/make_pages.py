@@ -333,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=64">
+  <link rel="stylesheet" href="css/style.css?v=65">
   <script>
     (function () {{
       var saved = null;
@@ -362,7 +362,7 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=12"></script>
+FOOT = """  <script src="js/site.js?v=13"></script>
   <script src="js/eggs.js?v=11"></script>
 </body>
 </html>
