@@ -265,7 +265,6 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
             <button type="button" data-cat="beach" aria-pressed="false">Beaches</button>
             <button type="button" data-cat="food" aria-pressed="false">Eat &amp; drink</button>
             <button type="button" data-cat="sight" aria-pressed="false">Things to do</button>
-            <button type="button" data-cat="kids" aria-pressed="false">With kids</button>
           </div>
           <ul id="places-list" class="places-list" aria-label="Places"></ul>
         </div>
@@ -368,7 +367,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=76">
+  <link rel="stylesheet" href="css/style.css?v=77">
   <script>
     (function () {{
       var saved = null;
@@ -483,7 +482,7 @@ def main():
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=15"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=16"></script>\n</body>')
         if 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot

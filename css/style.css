@@ -1120,7 +1120,6 @@ html, body { overflow-x: clip; }
 .place a { font: 600 13px var(--sans); color: var(--ink); text-decoration: none; }
 .place a:hover { text-decoration: underline; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
-:root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
 @media (max-width: 760px) { .places-map { height: 380px; } }
 /* Stay: what the Quinta has, as a row of line icons */
 .facilities {
@@ -1257,7 +1256,7 @@ html, body { overflow-x: clip; }
 .place:focus-visible { outline: 2px solid var(--topic-c); outline-offset: -2px; box-shadow: none; transform: none; }
 .place[aria-current="true"] { background: color-mix(in srgb, var(--topic-c) 12%, transparent); }
 .place-icon { display: grid; place-items: center; width: 36px; height: 30px; }
-.place-icon img { max-width: 36px; max-height: 28px; width: auto; height: auto; margin: 0; }
+.place-icon img { width: 26px; height: 26px; margin: 0; }
 .place-text { min-width: 0; }
 .place-text b { display: block; font-size: var(--fs-m); font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .place[aria-current="true"] .place-text b { color: var(--ink); }

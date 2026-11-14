@@ -177,7 +177,7 @@
       },
       "properties": {
         "name": "Aquashow Park",
-        "category": "kids",
+        "category": "sight",
         "tip": "A big waterpark in Quarteira with slides for every age. Check the opening dates – waterparks close for the season around autumn."
       }
     },
@@ -192,7 +192,7 @@
       },
       "properties": {
         "name": "Zoomarine",
-        "category": "kids",
+        "category": "sight",
         "tip": "Marine park and waterpark in one, near Guia. Check the opening dates before you go."
       }
     },
@@ -207,7 +207,7 @@
       },
       "properties": {
         "name": "Aqualand Algarve",
-        "category": "kids",
+        "category": "sight",
         "tip": "Waterpark with some seriously big slides, near Alcantarilha. Check the opening dates before you go."
       }
     },
@@ -222,7 +222,7 @@
       },
       "properties": {
         "name": "Slide & Splash",
-        "category": "kids",
+        "category": "sight",
         "tip": "One of the Algarve’s classic waterparks, near Lagoa. Check the opening dates before you go."
       }
     },
