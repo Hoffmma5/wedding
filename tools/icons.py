@@ -109,15 +109,6 @@ TIPS = [
      'Emergency: <b>112</b>, same as at home'),
 ]
 
-# Footer: the orange tree from the village, drawn in the same ink and wash.
-# Its oranges keep their own colour (class "o").
-TREE = (
-    '<path class="f" d="M24 5.5c-5.2 0-9 3.4-9.8 7.6-3.9.8-6.4 4-5.7 7.8.7 3.8 4.4 6.2 8.4 5.6 1.9 2.4 4.8 3.2 7.4 2.3 2.7 1.3 6.3.6 8.4-1.8 3.9-.2 6.6-3.3 6.4-7.1-.2-3.5-2.8-6.1-6-6.6C32.4 8.9 28.7 5.5 24 5.5Z"/>'
-    '<path d="M24 29v13.5M24 35.5l-4.2-3.4M24.2 33.4l3.6-3.6M15 42.5h18"/>'
-    '<circle class="o" cx="17" cy="16.5" r="1.9"/><circle class="o" cx="28.5" cy="12.5" r="1.9"/>'
-    '<circle class="o" cx="33" cy="21" r="1.9"/><circle class="o" cx="21.5" cy="23" r="1.9"/><circle class="o" cx="12.5" cy="22.5" r="1.9"/>'
-)
-
 _FILLED = re.compile(r'<(path|circle|rect|ellipse)\b([^>]*?)\bclass="f( bg)?"([^>]*)/>')
 
 
