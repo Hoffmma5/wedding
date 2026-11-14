@@ -123,7 +123,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, """
             </ul>
           </div>
         </div>
-        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="max-width:260px;margin-left:auto"></figure>
+        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:260px;margin-left:auto"></figure>
       </div>
     </section>""")
 
@@ -317,7 +317,7 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
           <li>Check in at Hotel Quinta do Marco from 14:00</li>
         </ul>
       </div>
-      <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
+      <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="--art:170px">
     </article>
 
     <article class="day full">
@@ -338,7 +338,7 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
           <li>Transfer back to Faro airport</li>
         </ul>
       </div>
-      <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="max-width:200px">
+      <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
     </article>""")
 
 PAGES["rsvp"] = ("RSVP", OLIVE, """
@@ -360,7 +360,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=45">
+  <link rel="stylesheet" href="css/style.css?v=46">
   <script>
     (function () {{
       var saved = null;

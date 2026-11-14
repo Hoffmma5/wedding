@@ -113,8 +113,8 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   they step back (80 % opacity, fainter tint).
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
-  by a hairline and 48–80 px of space. One column under 760 px, art centred
-  above or below the text.
+  by a hairline and 48–80 px of space. One column under 760 px; there the
+  watercolour objects shrink to small accents (150 px at most).
 - **Footer** (every inner page and Guests): one hairline, then a single row:
   "‹ Previous page" (Inter, muted), the **village painting itself, small**, in the middle, leading home
   (`tools/village_mini.py` makes 640 px copies: day, and night with the
@@ -142,7 +142,9 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   muted detail line.
 - **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic
   colour, Inter muted body.
-- **Weather tiles** (`.wx`): icon, big Lora number, muted caption.
+- **Weather numbers** (`.wx`): an open row between two hairlines – tinted
+  line icon, Lora number in the page's ink, muted caption. No cards; on
+  phones three rows with hairlines between.
 - **Polaroid carousel** (Stay): off-white polaroids with a handwritten caption,
   curving away like a ring; the centre one faces you; full-screen viewer.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on

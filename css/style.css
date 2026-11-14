@@ -788,10 +788,11 @@ h2.script { line-height: 1.45; }
 .facts-list dd span { display: block; font-size: var(--fs-m); color: var(--muted); }
 
 /* Weather numbers */
-.wx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 8px 0 8px; }
-.wx div { padding: 18px 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); text-align: center; }
-.wx svg { width: 24px; height: 24px; fill: none; stroke: var(--topic-c); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.wx b { display: block; margin: 4px 0 2px; font-size: var(--fs-xxl); font-weight: 400; }
+/* Weather numbers: an open row on the paper, no cards */
+.wx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 8px 0 8px; padding: 22px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.wx div { text-align: center; }
+.wx svg { width: 28px; height: 28px; fill: color-mix(in srgb, var(--topic-c) 16%, transparent); stroke: var(--topic-c); stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.wx b { display: block; margin: 6px 0 2px; font-size: var(--fs-xxl); font-weight: 400; color: var(--ink); }
 .wx span { font-size: var(--fs-s); color: var(--muted); line-height: 1.4; display: block; }
 
 /* Travel: a piece torn out of an old paper map (tools/make_iberia.py).
@@ -838,18 +839,21 @@ h2.script { line-height: 1.45; }
 .day + .day { margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(32px, 5vw, 48px); border-top: 1px solid var(--line); }
 .day .sc { margin-bottom: 12px; }
 .day.full { grid-template-columns: 1fr; }
-.day-art { max-width: 260px; justify-self: end; }
+.day-art { max-width: var(--art, 260px); justify-self: end; }
+.art img[style*="--art"] { max-width: var(--art); }
 
 @media (max-width: 760px) {
   .inv-grid, .day { grid-template-columns: 1fr; }
-  .inv-grid .art, .day-art { max-width: 220px; justify-self: center; margin: 0 auto; }
+  /* Phones: the watercolour objects are small accents, not a screen each */
+  .inv-grid .art:not(.map-art), .day-art, .art img[style*="--art"] { max-width: min(var(--art, 150px), 150px); justify-self: center; margin: 0 auto; }
   .map-art, .tile-art { margin: 0 auto; }
   .facts-list > div { grid-template-columns: 1fr; }
 }
 /* Phones: weather numbers as three short rows instead of three cramped columns */
 @media (max-width: 560px) {
-  .wx { grid-template-columns: 1fr; gap: 8px; }
-  .wx div { display: grid; grid-template-columns: 24px 5.2em 1fr; align-items: center; gap: 14px; padding: 12px 16px; text-align: left; }
+  .wx { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
+  .wx div { display: grid; grid-template-columns: 28px 5.2em 1fr; align-items: center; gap: 14px; padding: 10px 2px; text-align: left; }
+  .wx div + div { border-top: 1px solid var(--line); }
   .wx b { margin: 0; font-size: var(--fs-xl); }
 }
 .map-head.inv { margin: 0 auto; }
