@@ -49,7 +49,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant SC 700, uppercase, wide tracking (from the logo) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 16 px | Cormorant SC 700, 16 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.7 |
-| Below the hero | *At a glance* list + RSVP button, then the brick strip with six icon links | Footer: ‹ previous · the logo orange · next › |
+| Below the hero | *At a glance* list (when, where), then the brick strip with six icon links | Footer: ‹ previous · the logo orange · next › |
 
 ## Colour
 
@@ -97,7 +97,7 @@ The home page link band is a fixed brick, outside the token system:
 
 A full second palette, not an inversion: deep indigo, the painting swaps to
 its night layer, windows and lamp glow amber (`mix-blend-mode: screen`), the
-plaques, the sign and the ceramic sun dim. Toggle in the nav, saved in `localStorage` (`theme`),
+the painted signs dim. Toggle in the nav, saved in `localStorage` (`theme`),
 defaults to the OS setting. Paper objects (the travel map) stay paper,
 only dimmed.
 
@@ -143,7 +143,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Home below the village**: **at a glance** (`.glance`, 600 px max) — two
   hairline rows, a small-caps label and one plain line each, no links
   (When: 1 – 3 October 2027; Where: Hotel Quinta do Marco, near Tavira; the
-  label goes above the line under 420 px), then the RSVP button. Everything
+  label goes above the line under 420 px). No button — RSVP is in the
+  header. Everything
   else is one tap away on the strip. Then the brick **strip** across the full
   width: six links (Program, Stay, Travel, Weather, Algarve, Guests), icon
   over a Lora label, 6 across, 3 × 2 on phones. Then the story section
@@ -153,8 +154,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   gutter. Text and a watercolour side by side (`.inv-grid`,
   `1fr / minmax(200px, 320px)`); every other row is mirrored (`.flip`: the
   picture on the left) — Travel's shrimp, Weather's crabs, Program's Sunday
-  oysters and the Algarve intro's sardine tile. The transfer shrimp is a
-  170 px accent (`--art`). Sections are separated by a
+  oysters and the Algarve intro's sardine tile. Rows with a small picture
+  set `--side` so the picture column is exactly as wide as the picture and
+  the text (max 600 px) sits right beside it, centred vertically: the
+  transfer shrimp (170 px) and the crabs (260 px). Sections are separated by a
   hairline and 48–80 px. One column under 760 px, picture first in mirrored
   rows; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
@@ -177,12 +180,17 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
-  site's identity. Drawn on top, in the painting's own vocabulary: an
-  azulejo plaque *Algarve* on the yellow house (the Algarve), a white
-  direction sign *← Faro* hanging off the lamp post (Travel), and a glazed
-  ceramic sun with a little face beside the blue house's door (Weather).
-  The sky band holds only the names and the weathervane — no sun, moon or
-  plane. The small copies (`assets/village-mini-*.webp`) are no longer
+  site's identity. Two **painted signs** are drawn on top: the house tile
+  *Algarve* on the yellow house (the Algarve) and a direction sign *← Faro*
+  hanging off the lamp post (Travel). Both are SVG passed through a
+  watercolour filter (`#paint` in `index.html`: soft, wobbly edges and a
+  little grain) — a warm cream wash, a blue border, the name hand-lettered
+  in the script in azulejo blue (`#paint-ink`). Hotspots in the picture:
+  three doors (Stay, Program, RSVP), the Algarve tile, the Faro sign, the
+  weathervane (Weather), the lamp (day / night) and the orange tree (a
+  toy). The sky band holds only the names and the weathervane — no sun,
+  moon or plane. Guests is not in the picture; it is in the strip and the
+  menu. The small copies (`assets/village-mini-*.webp`) are no longer
   used.
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
   paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
@@ -209,10 +217,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 ## Components
 
-- **Button** (`.btn`): the one button — a dark pill (`--text` on `--bg`),
-  44 px tall, Lora 600. Used only for RSVP.
-- **At a glance** (`.glance-list`): small-caps label + one line, hairline
-  rows; links in the text colour with a faint underline.
+- **At a glance** (`.glance-list`): small-caps label + one plain line,
+  hairline rows.
 - **Folded section** (`details.more`): for secondary content. The section's
   label and script title are the `<summary>`; a thin + / – in the ink sits in
   a 44 px circle on the right. Used for *dishes to try*.
@@ -244,8 +250,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
 - Hotspots: doors swing open in 3D, the weathervane spins (press and hold:
-  points to you), the Algarve plaque lifts, the Faro sign tilts on its
-  bracket, the ceramic sun turns a little, the orange tree drops oranges.
+  points to you), the Algarve tile lifts, the Faro sign tilts on its
+  bracket, the orange tree drops oranges.
 - Ambient: the vane sways (7 s loop).
 - Page transitions, short: entering from the village zooms 2× into the door
   in 0.5 s and fades to paper in 0.25 s (the page changes after 0.45 s); leaving
@@ -324,14 +330,13 @@ rather than add.**
 
 Where the current site falls short of the target, roughly by impact:
 
-1. **No working RSVP form.** ~~RSVP hard to find~~ — done: an RSVP button
-   sits under *at a glance* on Home, besides the nav and the coral door (not
-   repeated at the end of pages, by choice). Still open: the RSVP page
+1. **No working RSVP form.** RSVP is the dark pill in the header on every
+   page and the coral door on Home — deliberately nowhere else. Still open: the RSVP page
    itself is a placeholder ("Reply form to follow."); it needs a form and
    somewhere for the answers to go.
 2. ~~**Essentials aren't at a glance.**~~ Done: *at a glance* on Home says
-   when and where, with the RSVP button; schedule, stay and travel are one
-   tap away on the strip.
+   when and where; schedule, stay and travel are one tap away on the strip,
+   RSVP in the header.
 3. **Three typefaces** (Lora, Cormorant SC, Beth Ellen) against a target of
    two — down from five; Inter and Cormorant Garamond are gone. Reaching two
    means either labels in Lora small caps (synthesised, so weaker) or
@@ -345,7 +350,7 @@ Where the current site falls short of the target, roughly by impact:
    map, easter eggs, party mode, day/night theme — each is charming,
    together they compete. Fewer than before: the footer is the logo orange,
    the polaroid rings are a plain photo mosaic, the sky's sun and plane are
-   now objects in the street (a ceramic sun, a Faro sign), and the icons
+   gone (Weather is the weathervane, Travel a painted Faro sign), and the icons
    share the painting's ink-and-wash language instead of adding a second,
    UI-icon style.
 6. **Home is navigation by exploration.** "Everything in the village is
