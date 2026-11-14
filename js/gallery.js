@@ -1,6 +1,6 @@
-/* Photo mosaics (Stay page).
+/* Photo strips (Stay page).
    Markup: <div class="photos" aria-label="…"><figure class="slide"><img …></figure>…</div>
-   CSS lays the photos out as a mosaic (one large, five small); here every
+   CSS lays the photos out as one row of small thumbnails; here every
    photo becomes a button that opens the full-screen viewer, which steps
    through the whole set with arrows, arrow keys or a swipe. */
 (function () {

@@ -158,7 +158,7 @@ PAGES["accommodation"] = ("The hotel", INK, f"""
       <div class="prose">
         <p>We&rsquo;ll tell each of you which room is yours. Every room has a balcony or terrace over the hills.</p>
       </div>
-    <div class="photos flip" aria-label="Photos of the bedrooms">
+    <div class="photos" aria-label="Photos of the bedrooms">
       <figure class="slide"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800"></figure>
       <figure class="slide"><img src="assets/gallery/rooms/02.webp" alt="Bright double room with a desk and sunflowers" width="1200" height="800" loading="lazy"></figure>
       <figure class="slide"><img src="assets/gallery/rooms/03.webp" alt="Superior room with a wooden screen and two extra beds" width="1200" height="800" loading="lazy"></figure>
@@ -328,7 +328,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <script>
     (function () {{
       var saved = null;
