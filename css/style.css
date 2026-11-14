@@ -403,39 +403,33 @@ button { font-family: inherit; }
 .vane:is(:hover, :focus-visible, .open) .vane-arrow { animation: spin 1.4s var(--ease); }
 @keyframes spin { from { --turn: 0deg; } to { --turn: 360deg; } }
 
-/* ---------- House-name tile ---------- */
+/* ---------- Azulejo beside the yellow door (→ the Algarve) ----------
+   The watercolour tile from the Algarve page, turned azulejo blue and set
+   into the whitewash like a house tile: no lettering, no pin. */
 
-.tile-sign { z-index: 5; }
-.tile-face {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(var(--u) * 6);
+.azulejo { z-index: 5; }
+.azulejo img {
+  display: block;
   width: 100%;
   height: 100%;
-  padding: 0 calc(var(--u) * 10);
-  border: calc(var(--u) * 2.5) solid #2f5fb5;
-  border-radius: calc(var(--u) * 4);
-  background: #fdfcf8;
-  /* thin inner line, like a painted azulejo border */
-  box-shadow:
-    inset 0 0 0 calc(var(--u) * 3) #fdfcf8,
-    inset 0 0 0 calc(var(--u) * 4) rgba(47, 95, 181, .45),
-    calc(var(--u) * 1) calc(var(--u) * 2) calc(var(--u) * 4) rgba(60, 50, 40, .2);
-  color: #1f4795;
-  font-size: max(7px, calc(var(--u) * 14));
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  filter: hue-rotate(158deg) saturate(2.6) brightness(1.08) drop-shadow(calc(var(--u) * 1) calc(var(--u) * 1.5) calc(var(--u) * 1.5) rgba(60, 50, 40, .25));
   transition: transform .3s var(--ease), filter var(--fade);
 }
-.tile-face span { margin-right: -.14em; }     /* cancel trailing letter-spacing so the word centres */
-.tile-face svg { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; }
-:root[data-theme="night"] .tile-face { filter: brightness(.72) saturate(.85); }
-.tile-sign:is(:hover, :focus-visible, .open) .tile-face { transform: translateY(calc(var(--u) * -3)); filter: none; }
+:root[data-theme="night"] .azulejo img { filter: hue-rotate(158deg) saturate(1.8) brightness(.62); }
+.azulejo:is(:hover, :focus-visible, .open) img { transform: translateY(calc(var(--u) * -3)); }
+
+/* ---------- Fingerpost on the street lamp (→ travel) ----------
+   A painted board clamped to the post, in the lamp's charcoal and paper,
+   its edges roughened (#post-paint) to sit with the watercolour. */
+
+.fingerpost { z-index: 8; }
+.fingerpost svg { display: block; width: 100%; height: 100%; overflow: visible; transform-origin: 3% 50%; transition: transform .35s var(--ease), filter var(--fade); }
+.fp-arm { fill: none; stroke: #3b3c40; stroke-width: 3.6; stroke-linecap: round; }
+.fp-board { fill: url(#fp-wood); stroke: #5a3318; stroke-width: 1.4; stroke-linejoin: round; }
+.fp-grain { fill: none; stroke: rgba(70, 35, 12, .28); stroke-width: 1; stroke-linecap: round; }
+.fp-text { font: 600 15px var(--serif); letter-spacing: .14em; text-transform: uppercase; fill: #fbf3e4; }
+:root[data-theme="night"] .fingerpost svg { filter: brightness(.55) saturate(.75); }
+.fingerpost:is(:hover, :focus-visible, .open) svg { transform: rotate(-4deg); filter: none; }
 
 
 /* ---------- Doors ---------- */

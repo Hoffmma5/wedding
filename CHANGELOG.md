@@ -13,10 +13,10 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 - **Icons look hand-made:** every icon is a little pen sketch over a watercolour blot – the good-to-know tips, the weather, the hotel's facilities and the glance on Home.
 - **Pictures change sides** from page to page and day to day, instead of always sitting on the right.
 - **Stay:** one row of six polaroids (the Quinta, the pool, the terrace, a room, a balcony, the goats) instead of two turning carousels.
-- **Footer:** just the orange tree from the painting, leading home, instead of the whole village.
+- **Footer:** just the orange from the logo, in colour – orange with green leaves – leading home, instead of the whole village.
 - **Travel:** "Flights from Nuremberg, Prague or Berlin are good options."
 - **The Algarve** keeps its own words, a little shorter; the west-coast road trip is a short note again.
-- **The village:** Travel is a blue-and-white *← Faro* tile on the blue house instead of the plane, and walking through a door is quicker and gentler.
+- **The village:** Travel is a wooden *Faro* fingerpost on the street lamp instead of the plane, the Algarve is a blue azulejo beside the yellow door instead of the lettered sign, and walking through a door is quicker and gentler.
 
 ## 2026-11-14 – one style
 

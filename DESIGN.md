@@ -52,7 +52,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Lora 500, uppercase, wide tracking (from the logo) | Beth Ellen (handwritten script) |
 | Labels | Lora small caps 600, 17 px | Lora small caps 600, 17 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.7 |
-| Below the hero | *The weekend at a glance*: when / where / getting there, the reply button, three quiet links | Footer: ‹ previous · the orange tree · next › |
+| Below the hero | *The weekend at a glance*: when / where / getting there, the reply button, three quiet links | Footer: ‹ previous · the logo's orange · next › |
 
 ## Colour
 
@@ -153,8 +153,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   sun and the Algarve tile left; on Program Friday is right, Sunday left. On
   phones everything stacks text first.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Lora 14 px, muted), the orange tree cut out of the painting (84–110 px
-  tall, day and night, from `tools/tree_mini.py`) leading home, "Next ›"; the
+  (Lora 14 px, muted), the logo's orange emblem in colour (orange body,
+  green leaves, 56–68 px tall, `assets/logo-orange.webp` from
+  `tools/logo_orange.py`) leading home, "Next ›"; the
   names/date
   line in 12 px below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
@@ -169,7 +170,13 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
-  site's identity. Its orange tree, cut out, is the footer's link home.
+  site's identity.
+- **Signs in the street** — no lettered UI tiles on the painting. *The
+  Algarve* is the watercolour azulejo from the Algarve page (`tile.webp`),
+  turned blue with a CSS filter and set into the wall beside the yellow door
+  like a house tile. *Travel* is a wooden fingerpost clamped to the street
+  lamp, "FARO" in cream on the doors' wood brown, its edges roughened by an
+  SVG displacement filter so it reads as painted.
 - **Watercolour objects** (`assets/art/`) — one per section, cut out on the
   paper colour: disco ball, shrimp, oysters, sardine on an azulejo, crabs,
   sun, shell, pearl, long table, hotel landscape, Portugal. (The shrimp is
@@ -224,18 +231,18 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
-- Hotspots: doors swing open in 3D, the two azulejo tiles lift (*Algarve*
-  above the yellow door, *← Faro* on the blue house for Travel; the plane is
-  gone), the weathervane spins (press and hold: points to you), the orange
-  tree drops oranges.
+- Hotspots: doors swing open in 3D; the azulejo beside the yellow door
+  (→ the Algarve) lifts; the wooden *Faro* fingerpost on the lamp (→ Travel)
+  swings a little; the weathervane spins (press and hold: points to you); the
+  orange tree drops oranges.
 - Ambient: the vane sways (7 s loop).
 - Page transitions: entering from the village zooms 1.8× into the door over
-  0.45 s and fades to paper (the next page opens at 420 ms); the footer tree
+  0.45 s and fades to paper (the next page opens at 420 ms); the footer orange
   fades out and Home opens at 1.5× and zooms out (0.7 s in all).
 - Story section unfolds with scroll.
 - Easter eggs (`js/eggs.js`): disco ball with music and lights, crabs, the
   sardine and a school of sardines, party mode with bunting (`?party`).
-- Small UI: 0.2–0.3 s hovers, menu slide, footer tree lift.
+- Small UI: 0.2–0.3 s hovers, menu slide, footer orange lift.
 - `prefers-reduced-motion` turns all of it off.
 
 ## Tone of voice
@@ -318,7 +325,7 @@ Struck-through items were closed by the November 2026 pass on `skill-taste`.
    painting, script titles, a watercolour object per section, a torn paper
    map, easter eggs, party mode, day/night theme — each is charming,
    together they compete. *Lighter now:* the polaroid ring is a still grid,
-   the footer village is just the tree, and the icons share the watercolour
+   the footer village is just the logo's orange, and the icons share the watercolour
    look instead of adding a third style.
 6. **Home on phones.** *Half done:* the glance block means nothing has to
    be discovered in the painting any more, and the "everything is
