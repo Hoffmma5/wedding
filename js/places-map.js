@@ -7,7 +7,7 @@
      tip       – one or two sentences from you
    Add, remove or move points there (e.g. with geojson.io) and the map follows.
 
-   Overview inset: the same azulejo tiles at small scale, showing where the main map is. */
+   Overview inset: the same azulejo tiles at small scale; it follows the main map and frames it. */
 (function () {
   'use strict';
 
@@ -210,9 +210,9 @@
     syncBtn();
     view.ui.add(fsBtn, 'top-left');
 
-    layer.when(function () { return layer.queryExtent(); }).then(function (r) {
-      if (r.extent) view.goTo(r.extent.expand(1.3), { animate: false });
-    });
+    // Start on the stretch of coast we love most: Albufeira to Tavira, with Loulé and the Quinta
+    var HOME = { type: 'extent', xmin: -8.3, ymin: 36.97, xmax: -7.55, ymax: 37.24, spatialReference: { wkid: 4326 } };
+    view.when(function () { return view.goTo(HOME, { animate: false }); });
 
     /* ---------- Azulejo Atlas overview inset ---------- */
     if (WM.ATLAS) {
@@ -243,11 +243,13 @@
         symbol: { type: 'simple-marker', size: 7, color: [196, 84, 60, 1], outline: { color: [255, 255, 255, 1], width: 1.2 } }
       });
       ov.graphics.addMany([frame, pin]);
+      // follow the big map: re-centre on it and keep it framed at a readable scale
       reactiveUtils.watch(function () { return view.stationary && view.extent; }, function (ext) {
         if (!ext) return;
         frame.geometry = ext;
-        // big enough frame → show it; tiny frame → the Tavira dot says it all
-        frame.visible = ext.width > 30000;
+        frame.visible = ext.width > 8000;                     // tiny frame at street level: the dot is enough
+        var scale = Math.min(Math.max(view.scale * 12, 1200000), 18000000);
+        ov.when(function () { ov.goTo({ center: ext.center, scale: scale }, { animate: false }).catch(function () {}); });
       }, { initial: true });
       azulejo.load().catch(function () { inset.remove(); mapEl.parentNode.classList.remove('has-overview'); });
     }

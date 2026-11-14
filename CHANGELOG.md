@@ -3,6 +3,21 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased
+
+### Changed
+- **One icon style across the site:** the home strip, Stay facilities, good to know and weather now share the light style of the weather icons – a thin line with a faint tint, no solid parts, one size.
+- **Good to know** has six tips with the details people asked about: "12:00 there is 11:00 here", "Cards are mostly accepted – bring some euros, just in case", "Calls and data like at home", "From the EU: ID card – from elsewhere: passport", "Driving: max 0.5 ‰ – about 2–3 small beers", "Emergency: 112, same as at home". *Obrigado* and *um imperial* are gone.
+- **Weather numbers** are an open row between two hairlines instead of three boxed cards, with the icons tinted in the page's ink.
+- **On phones the watercolour objects are small accents** (sun, crabs, disco ball, oysters, sardine – 150 px at most) instead of filling a screen each.
+- **The home strip is a plain brick band across the full width of the page** – muted brick with cream labels instead of the bright orange block, and a deep, quiet brick at night so the icons no longer glare.
+- **One ink per page, from the village:** titles and accents use only the painting's three pigments – azulejo blue, roof terracotta, sage olive – and every section keeps its page's ink (Program was wine, coral and brown; Stay had a wine section; Travel a brown one; dishes rust).
+- **Footer:** the little drawing is replaced by the village painting itself, small – the same three houses as on the home page, and at night the dark version with the windows lit.
+- **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.
+
+### Fixed
+- **Our favourites map** starts zoomed in on the coast from Albufeira to Tavira (with Loulé and the Quinta) instead of fitting every place on the list, and the **minimap now follows the big map**: it re-centres on wherever you pan and frames the visible area.
+
 ## 2026-11-13 – simplified
 
 ### Changed

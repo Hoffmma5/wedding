@@ -15,8 +15,9 @@ NAV = [
     ("map", "Guests"),
 ]
 
-# Invitation colours, one per topic
-BLUE, RUST, BROWN, OLIVE, WINE, CORAL = "#1f4fa0", "#b5432a", "#8b5523", "#7b8152", "#7a3b3b", "#d4504c"
+# The village's three pigments: azulejo blue, roof terracotta, sage olive.
+# One ink per page; its sections use the same ink.
+BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b5432a", "#7b8152"
 
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
@@ -24,6 +25,8 @@ VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
 import icons   # tools/icons.py
 
 PAGES = {}
+
+TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", BLUE, f"""
     <header class="inv-head">
@@ -56,7 +59,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       </figure>
     </div>
 
-    <section class="inv-section" style="--topic:{BROWN}">
+    <section class="inv-section">
       <div class="inv-grid">
         <div>
           <header class="inv-head">
@@ -77,19 +80,12 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         <p class="sc">A few little things</p>
         <h2 class="script">good to know</h2>
       </header>
-      <ul class="highlights">
-        <li><b>Set your watch</b>Portugal runs one hour behind Prague &ndash; a free extra hour of sleep on your first morning.</li>
-        <li><b>Bring a few euros</b>Cards work almost everywhere, but a couple of coins come in handy for a coffee and a <em>pastel de nata</em>.</li>
-        <li><b>Stay connected</b>Your phone works just like at home &ndash; no roaming fees in the EU, so send us all the sunset photos.</li>
-        <li><b>Pack your ID</b>From the EU? Your ID card is all you need. Coming from further away &ndash; don&rsquo;t forget your passport.</li>
-        <li><b>Say <em>obrigado</em></b>Most people here speak English, but a smiling <em>obrigado</em> (or <em>obrigada</em>) always wins hearts.</li>
-        <li><b>Order a beer like a local</b>A beer here is <em>um imperial</em> &ndash; just 0.2&nbsp;l, so it&rsquo;s always ice cold. Used to a proper half-litre? Ask for <em>uma caneca</em>.</li>
-        <li><b>If you&rsquo;re driving</b>Unlike Czechia, Portugal allows a little alcohol behind the wheel (0.5&nbsp;&permil;) &ndash; but that&rsquo;s only an <em>imperial</em> or two. Better still: pick a driver and let them be the hero.</li>
-        <li><b>Just in case</b>112 is the emergency number, same as at home. We hope you&rsquo;ll never need it!</li>
+      <ul class="tips">
+{TIPS_HTML}
       </ul>
     </section>""")
 
-PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
+PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
     <div class="inv-grid">
       <div>
         <header class="inv-head">
@@ -103,9 +99,9 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
     </div>
     <div class="wx">
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><b>25&nbsp;&deg;C</b><span>Average daytime high</span></div>
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"/></svg><b>16&nbsp;&deg;C</b><span>Average nighttime low</span></div>
-      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 15a4 4 0 0 1-.6-8A5.5 5.5 0 0 1 17 8a3.5 3.5 0 0 1 .5 7H7Z"/><path d="M9 18l-1 2.5M13 18l-1 2.5M17 18l-1 2.5"/></svg><b>6 days</b><span>With measurable rain per month</span></div>
+      <div>{icons.svg(icons.WEATHER["sun"])}<b>25&nbsp;&deg;C</b><span>Average daytime high</span></div>
+      <div>{icons.svg(icons.WEATHER["moon"])}<b>16&nbsp;&deg;C</b><span>Average nighttime low</span></div>
+      <div>{icons.svg(icons.WEATHER["rain"])}<b>6 days</b><span>With measurable rain per month</span></div>
     </div>
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
@@ -122,7 +118,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", RUST, """
             </ul>
           </div>
         </div>
-        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="max-width:260px;margin-left:auto"></figure>
+        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:260px;margin-left:auto"></figure>
       </div>
     </section>""")
 
@@ -165,7 +161,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
     </section>
 
-    <section class="inv-section" style="--topic:#7a3b3b">
+    <section class="inv-section">
       <header class="inv-head">
         <h2 class="script">the Bedrooms</h2>
         <p class="sc">Where will we sleep?</p>
@@ -291,7 +287,7 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </aside>
     </section>
 
-    <section class="inv-section" style="--topic:{RUST}">
+    <section class="inv-section">
       <header class="inv-head">
         <p class="sc">Eat like a local</p>
         <h2 class="script">dishes to try</h2>
@@ -301,13 +297,13 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
       </ul>
     </section>""")
 
-PAGES["program"] = ("Program", WINE, f"""
+PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
       <p class="sc">Three days in Tavira</p>
       <h1 class="script">the Program</h1>
     </header>
 
-    <article class="day" style="--topic:{CORAL}">
+    <article class="day">
       <div class="prose">
         <h2 class="script">friday</h2>
         <p class="sc">Welcome party &middot; 01.10.2027</p>
@@ -316,10 +312,10 @@ PAGES["program"] = ("Program", WINE, f"""
           <li>Check in at Hotel Quinta do Marco from 14:00</li>
         </ul>
       </div>
-      <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="max-width:170px">
+      <img class="day-art disco" src="assets/art/disco-ball.webp" alt="Disco ball" title="Give it a spin" tabindex="0" role="button" width="337" height="436" style="--art:170px">
     </article>
 
-    <article class="day full" style="--topic:{OLIVE}">
+    <article class="day full">
       <div class="prose">
         <h2 class="script">the Wedding Day</h2>
         <p class="sc">Saturday &middot; 02.10.2027</p>
@@ -328,7 +324,7 @@ PAGES["program"] = ("Program", WINE, f"""
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
 
-    <article class="day" style="--topic:{BROWN}">
+    <article class="day">
       <div class="prose">
         <h2 class="script">sunday</h2>
         <p class="sc">Farewell &middot; 03.10.2027</p>
@@ -337,7 +333,7 @@ PAGES["program"] = ("Program", WINE, f"""
           <li>Transfer back to Faro airport</li>
         </ul>
       </div>
-      <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="max-width:200px">
+      <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
     </article>""")
 
 PAGES["rsvp"] = ("RSVP", OLIVE, """
@@ -359,7 +355,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=41">
+  <link rel="stylesheet" href="css/style.css?v=54">
   <script>
     (function () {{
       var saved = null;
@@ -414,9 +410,11 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The three houses as a small flat drawing (tools/village_mini.py)
-from village_mini import village_svg
-VILLAGE_MINI = village_svg()
+# The village painting, small (tools/village_mini.py): day, and night with the windows lit
+VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
+        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
+        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
+      </span>"""
 
 
 def street(slug):
@@ -444,7 +442,7 @@ def main():
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=14"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=15"></script>\n</body>')
         if 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot

@@ -50,20 +50,17 @@ in the hero objects.
 | `--yellow` | `#f2b705` | the yellow house |
 | `--coral` | `#e8664a` | the coral house |
 
-### Invitation inks (`--topic`)
+### Inks (`--topic`)
 
-Each inner page and section sets `style="--topic:…"`; script titles, `strong`,
-links and accents use it through `--topic-c`. At night `--topic-c` is mixed
-50 % with white. Defined in `tools/make_pages.py`.
+Only the village's own three pigments, one per page; every section on a page
+uses that page's ink (set in `tools/make_pages.py`). Small text uses `--ink`,
+the same ink pulled 20 % towards the text colour.
 
-| Name | Hex | Used for |
+| Name | Hex | Pages |
 |---|---|---|
-| BLUE | `#1f4fa0` | Travel, Algarve, Guests — azulejo blue |
-| RUST | `#b5432a` | Weather, dishes to try |
-| BROWN | `#8b5523` | Transfer, Sunday |
-| OLIVE | `#7b8152` | The Hotel, at the Quinta, the Wedding Day, RSVP |
-| WINE | `#7a3b3b` | The Program, the Bedrooms |
-| CORAL | `#d4504c` | Friday |
+| BLUE | `#1f4fa0` | Travel, Algarve, Guests – azulejo blue |
+| TERRACOTTA | `#b5432a` | Program, Weather – the roofs |
+| OLIVE | `#7b8152` | Stay, RSVP – sage, the logo's family |
 
 ### Night
 
@@ -107,20 +104,19 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   hotspot is placed in picture pixels with `--x/--y/--w/--h`. Width fills the
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
-- **Home below the village**: an **orange strip** (`.strip`, roof-tile
-  `#c4521f`, white text 4.6 : 1) right under the painting with the six pages:
-  a small line icon above a plain Inter label, 6 across on desktop, 3 × 2 on
-  phones. Then a one-line hint that the village is clickable. No RSVP block
-  and no countdown on the home page; RSVP lives in the menu and the coral door.
+- **Home below the village**: a one-line hint, then the six pages on a
+  **plain brick strip across the full width of the page** (`.strip`,
+  `#a84f36`, cream text at 5 : 1; at night a deep, quiet `#55302a`). Icon
+  above a plain Inter label, 6 across on desktop, 3 × 2 on phones. No
+  texture, no border, no shadow.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
-  by a hairline and 48–80 px of space. One column under 760 px, art centred
-  above or below the text.
+  by a hairline and 48–80 px of space. One column under 760 px; there the
+  watercolour objects shrink to small accents (150 px at most).
 - **Footer** (every inner page and Guests): one hairline, then a single row:
-  "‹ Previous page" (Inter, muted), a small **flat colour drawing of the
-  three houses** in the middle that leads home (`tools/village_mini.py`:
-  white walls, coloured corners, barra and cornice, terracotta roofs with
-  scalloped tile ends, chimney caps, the orange tree, lamp and bougainvillea), "Next page ›". Under it the
+  "‹ Previous page" (Inter, muted), the **village painting itself, small**, in the middle, leading home
+  (`tools/village_mini.py` makes 640 px copies: day, and night with the
+  windows lit), "Next page ›". Under it the
   names/date line in 12 px. Order = the menu, from Home round to RSVP and
   back (`WALK` in `tools/make_pages.py`).
 - **Radii**: 16 px (cards, maps, story frame), 14 px (highlights, weather
@@ -133,18 +129,22 @@ sits just under the baseline (`.3em`), clear of the long descenders.
 
 ## Components
 
-- **Icons** (`tools/icons.py`): small two-tone pictograms from the wedding's
-  world – clinking glasses, a little Algarve house, a plane, the sun, a
-  sardine, the globe with a heart; on Stay a pool, a cocktail with an orange
-  slice, a lotus, a slide, a sheep. 24 × 24, stroke 1.6–1.5 in
-  `currentColor`; shapes with `.f` get a soft tint (`--tint`), `.s` are solid.
+- **Icons** (`tools/icons.py`): one family everywhere – home strip, Stay
+  facilities, good to know, weather. Drawn like the weather icons: 24 × 24,
+  a thin 1.35 line in `currentColor`, a faint 15 % tint inside closed shapes
+  (`.f`), no solid parts, shown at 30 px (`.ico`). Pictograms from the
+  wedding's world: glasses, a little house, the plane, the sun, a sardine,
+  the globe; a pool, a cocktail, a sheep; a clock, a euro coin, a passport.
 - **Facilities** (Stay, `ul.facilities`): eight line icons in the section's ink
   with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
-- **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic
-  colour, Inter muted body.
-- **Weather tiles** (`.wx`): icon, big Lora number, muted caption.
+- **Good to know** (Travel, `ul.tips`): six icons, each with one short line,
+  the key fact in the ink ("**1 hour** behind Prague: 12:00 there is 11:00
+  here"). 3 across on desktop; on phones a list, icon left, hairlines between.
+- **Weather numbers** (`.wx`): an open row between two hairlines – tinted
+  line icon, Lora number in the page's ink, muted caption. No cards; on
+  phones three rows with hairlines between.
 - **Polaroid carousel** (Stay): off-white polaroids with a handwritten caption,
   curving away like a ring; the centre one faces you; full-screen viewer.
 - **Places app** (Algarve): side list with category chips + ArcGIS map on
