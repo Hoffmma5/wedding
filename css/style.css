@@ -1532,3 +1532,16 @@ html.map-full, html.map-full body { overflow: hidden; }
   h2.script { font-size: 36px; }
 }
 .inv-head + .day { padding-top: clamp(20px, 4vw, 36px); }   /* padding: a margin would collapse into the header's */
+
+/* Mirrored rows: the picture on the left, so the pages don't all lean the
+   same way. On phones the picture leads the text. */
+.inv-grid.flip { grid-template-columns: minmax(200px, 320px) minmax(0, 1fr); }
+.inv-grid.flip > .art { order: -1; margin-left: 0; margin-right: auto; }
+.day.flip { grid-template-columns: minmax(160px, 260px) minmax(0, 1fr); }
+.day.flip > .day-art { order: -1; justify-self: start; }
+@media (max-width: 760px) {
+  .inv-grid.flip, .day.flip { grid-template-columns: 1fr; }
+  .inv-grid.flip > .art, .day.flip > .day-art { justify-self: center; margin: 0 auto; }
+}
+/* Algarve: with the tile on the left, the sardine stays clear of the title */
+.inv-grid.flip .tile-art .sardine { left: -10%; width: 110%; }
