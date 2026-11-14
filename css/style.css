@@ -668,7 +668,6 @@ html.zooming-out .hero-text { transition: opacity .3s ease .3s; }
 /* No StoryMap link yet: the section stays hidden */
 .story[data-storymap=""] { display: none; }
 
-.foot { padding: 32px 16px 40px; text-align: center; font-size: var(--fs-s); color: var(--muted); border-top: 1px solid var(--line); }
 
 /* ---------- Small screens ---------- */
 
@@ -1333,47 +1332,22 @@ html.map-full, html.map-full body { overflow: hidden; }
 .places-overview .esri-attribution { display: none; }
 
 /* =========================================================
-   Footer on inner pages: previous and next page, and a line drawing
-   of the village that leads home
+   Footer: only the coloured orange from the logo, leading home
    ========================================================= */
 
 .street {
   max-width: 1000px;
-  margin: clamp(16px, 3vw, 40px) auto 0;
-  padding: 0 20px;
-}
-.pager {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
-  padding-top: clamp(24px, 4vw, 36px);
+  margin: clamp(40px, 6vw, 72px) auto 0;
+  padding: clamp(28px, 4vw, 40px) 20px clamp(36px, 5vw, 56px);
   border-top: 1px solid var(--line);
+  text-align: center;
 }
-.pager a { color: var(--muted); text-decoration: none; transition: color .2s; }
-.pager :is(.prev, .next) {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 2px;
-  font: 500 var(--fs-s) var(--serif);
-}
-.pager .next { justify-self: end; }
-.pager .prev { justify-self: start; }
-.pager :is(.prev, .next) svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.pager a:hover { color: var(--text); }
-.pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
-.street-view { display: block; padding: 2px 4px; }
-.mini-orange { display: block; width: auto; height: clamp(56px, 6vw, 68px); transition: transform .35s var(--ease); }
+.street-view { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; border-radius: 50%; }
+.street-view:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.mini-orange { display: block; width: auto; height: 40px; transition: transform .35s var(--ease); }
 :root[data-theme="night"] .mini-orange { filter: brightness(.9); }
-.street-view:hover .mini-orange { transform: translateY(-2px); }
-.street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
-.map-page .street { max-width: none; }
-
-@media (max-width: 560px) {
-  .pager { gap: 8px; }
-  .mini-orange { height: 56px; }
-}
+a.street-view:hover .mini-orange { transform: translateY(-2px); }
+.map-page .street { max-width: none; margin-top: 0; }
 
 /* ---------- Folded sections ----------
    Secondary content (what's at the Quinta, the west coast, dishes to try)

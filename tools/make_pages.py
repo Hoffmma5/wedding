@@ -355,38 +355,14 @@ def nav():
     return "\n".join(f'      <a href="{slug}.html">{label}</a>' for slug, label in NAV)
 
 
-# The walk through the site, in menu order. The footer links every page to
-# the one before and after it, and the village outline leads home.
-WALK = [
-    ("index", "Home"),
-    ("program", "Program"),
-    ("accommodation", "Stay"),
-    ("travel", "Travel"),
-    ("weather", "Weather"),
-    ("location", "Algarve"),
-    ("map", "Guests"),
-    ("rsvp", "RSVP"),
-]
-
-CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
-CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
-
 # The orange emblem from the logo, in colour (tools/logo_orange.py)
 MINI_ORANGE = """<img class="mini-orange" src="assets/logo-orange.webp" alt="" width="166" height="160" loading="lazy">"""
 
 
 def street(slug):
-    i = [w[0] for w in WALK].index(slug)
-    (p_slug, p_name), (n_slug, n_name) = WALK[i - 1], WALK[(i + 1) % len(WALK)]
+    """The footer: only the coloured orange, leading home."""
     return f"""  <footer class="street">
-    <nav class="pager" aria-label="Previous and next page">
-      <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
-      <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
-      {MINI_ORANGE}
-      </a>
-      <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
-    </nav>
-    <p class="foot">Marek &amp; Paulo &middot; 1 &ndash; 3 October 2027 &middot; Algarve</p>
+    <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">{MINI_ORANGE}</a>
   </footer>
 """
 
