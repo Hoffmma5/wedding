@@ -1509,3 +1509,30 @@ html.map-full, html.map-full body { overflow: hidden; }
   .pager { gap: 8px; }
   .mini-village { width: 170px; }
 }
+
+/* =========================================================
+   Touch: every control is at least 44 × 44 px (the visible
+   shape can stay smaller; the hit area grows around it)
+   ========================================================= */
+
+.brand { min-height: 44px; }
+.nav-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; }
+.icon-btn { width: 44px; height: 44px; }
+.pager :is(.prev, .next) { min-height: 44px; padding: 0 4px; }
+.contact a, .wx-link a { display: inline-block; padding: 10px 0; }
+.map-btn { min-height: 44px; }
+.place-chips button, .places-side .place-chips button { min-height: 44px; }
+.c-controls .c-btn { width: 44px; height: 44px; }
+.c-dots button { position: relative; }
+.c-dots button::before { content: ""; position: absolute; inset: -18px -3px; }
+@media (max-width: 820px) {
+  .nav-links a { display: flex; padding: 0 14px; }
+}
+
+/* Phones: script titles one size down, so "the Wedding Day" fits on a
+   line, and a clear gap between a page title and its first section */
+@media (max-width: 560px) {
+  .script { font-size: 44px; }
+  h2.script { font-size: 36px; }
+}
+.inv-head + .day { padding-top: clamp(20px, 4vw, 36px); }   /* padding: a margin would collapse into the header's */
