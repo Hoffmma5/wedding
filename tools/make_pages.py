@@ -333,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=63">
+  <link rel="stylesheet" href="css/style.css?v=64">
   <script>
     (function () {{
       var saved = null;
@@ -374,7 +374,7 @@ def nav():
 
 
 # The walk through the site, in menu order. The footer links every page to
-# the one before and after it, and the village outline leads home.
+# the one before and after it, and the orange tree leads home.
 WALK = [
     ("index", "Home"),
     ("program", "Program"),
@@ -389,11 +389,8 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The village painting, small (tools/village_mini.py): day, and night with the windows lit
-VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
-        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
-        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
-      </span>"""
+# The orange tree from the village, in the icons' ink and wash: it leads home
+TREE_MARK = icons.svg(icons.TREE, cls="ico tree-mark", box=48)
 
 
 def street(slug):
@@ -403,7 +400,7 @@ def street(slug):
     <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
-      {VILLAGE_MINI}
+      {TREE_MARK}
       </a>
       <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>

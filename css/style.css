@@ -580,7 +580,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-view .mini-village { transform: scale(.9); transition: transform .5s var(--ease); }
+body.leaving .street-view .tree-mark { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(2.4); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1500,17 +1500,17 @@ html.map-full, html.map-full body { overflow: hidden; }
 .pager :is(.prev, .next) svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .pager a:hover { color: var(--text); }
 .pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
-.street-view { display: block; padding: 2px 4px; }
-.mini-village { position: relative; display: block; width: clamp(220px, 26vw, 320px); aspect-ratio: 640 / 271; transition: transform .35s var(--ease); }
-.mini-village img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.mini-village .night { opacity: var(--night); transition: opacity var(--fade); }
-.street-view:hover .mini-village { transform: translateY(-2px); }
+.street-view { display: grid; place-items: center; min-width: 64px; min-height: 64px; }
+/* the orange tree: sage leaves, its oranges keep their colour */
+.tree-mark { width: 64px; height: 64px; color: #66713f; transition: transform .3s var(--ease), color var(--fade); }
+.tree-mark .o { fill: #ef9634; stroke: #c96a1c; stroke-width: .6; }
+:root[data-theme="night"] .tree-mark { color: #a7b27c; }
+.street-view:hover .tree-mark { transform: translateY(-2px) rotate(-2deg); }
 .street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
 .map-page .street { max-width: none; }
 
 @media (max-width: 560px) {
   .pager { gap: 8px; }
-  .mini-village { width: 170px; }
 }
 
 /* =========================================================
