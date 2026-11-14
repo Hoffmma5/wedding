@@ -23,15 +23,14 @@
   --ease: cubic-bezier(.3, .75, .2, 1);
   --radius: 16px;
 
-  /* Type: four voices, one job each (see DESIGN.md)
-     serif  = everything you read          sc     = every label
-     script = titles                       sans   = controls and fine print
-     display (logo caps) is only for the brand name and the hero title. */
+  /* Type: three families, one job each (see DESIGN.md)
+     serif  = everything you read, and the controls (--sans points here)
+     sc     = every label, the brand name and the hero title
+     script = titles */
   --serif: "Lora", Georgia, serif;
   --sc: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
   --script: "Beth Ellen", "Brush Script MT", cursive;
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --display: "Cormorant Garamond", Georgia, serif;
+  --sans: var(--serif);     /* controls and fine print: no separate sans */
   /* Size scale, built around 17 px Lora body text */
   --fs-xs: 12px;     /* credits, fine print */
   --fs-s: 14px;      /* controls, tooltips, captions */
@@ -115,8 +114,8 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   align-items: center;
   gap: 10px;
   margin-right: auto;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
+  font-family: var(--sc);
+  font-weight: 700;
   font-size: 17px;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -296,8 +295,8 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 }
 .hero-mark { width: clamp(44px, calc(var(--u) * 84), 92px); }
 .hero-text h1, .hero-text .tagline {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
+  font-family: var(--sc);
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--olive);
   transition: color var(--fade);
@@ -399,7 +398,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .vane-base { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .vane-base path { stroke: currentColor; fill: none; stroke-linecap: round; }
 .vane-base circle { fill: currentColor; }
-.vane-base text { fill: currentColor; font-size: 12px; font-weight: 600; font-family: "Inter", sans-serif; }
+.vane-base text { fill: currentColor; font-size: 12px; font-weight: 600; font-family: var(--sans); }
 .vane-arrow {
   position: absolute;
   left: 0;
@@ -986,7 +985,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: rgba(255, 255, 255, .12);
   color: #fff;
-  font: 500 13px "Inter", sans-serif;
+  font: 500 13px var(--sans);
   cursor: pointer;
 }
 .disco-mute:hover { background: rgba(255, 255, 255, .22); }
@@ -1165,7 +1164,7 @@ html, body { overflow-x: clip; }
 .viewer .v-close { position: fixed; top: 16px; right: 16px; }
 .viewer .v-prev { position: fixed; left: 16px; top: calc(50% - 21px); }
 .viewer .v-next { position: fixed; right: 16px; top: calc(50% - 21px); }
-.viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 500 13px "Inter", sans-serif; color: rgba(255, 255, 255, .75); }
+.viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 500 13px var(--sans); color: rgba(255, 255, 255, .75); }
 
 /* Travel: good to know – one icon and one short line each, no cards */
 .tips {
@@ -1200,7 +1199,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
-  font: 500 14px "Inter", sans-serif;
+  font: 500 14px var(--sans);
   cursor: pointer;
   transition: background-color .2s, color .2s, border-color .2s;
 }
@@ -1219,7 +1218,7 @@ html, body { overflow-x: clip; }
 .places-map.failed { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); }
 .places-map .esri-view-surface--inset-outline:focus::after { outline: 2px solid var(--topic-c) !important; }
 .place-popup p { margin: 0 0 8px; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.5; color: #23314f; }
-.place-popup a { font: 600 13px "Inter", sans-serif; color: #1f4fa0; }
+.place-popup a { font: 600 13px var(--sans); color: #1f4fa0; }
 
 .places-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
 .place {
@@ -1239,7 +1238,7 @@ html, body { overflow-x: clip; }
 .place-cat { display: block; font-family: var(--sc); font-weight: 700; font-size: 13px; letter-spacing: .06em; color: var(--muted); }
 .place b { display: block; font-size: var(--fs-base); font-weight: 600; color: var(--ink); }
 .place p { margin: 2px 0 6px; font-size: var(--fs-s); line-height: 1.5; color: var(--muted); }
-.place a { font: 600 13px "Inter", sans-serif; color: var(--ink); text-decoration: none; }
+.place a { font: 600 13px var(--sans); color: var(--ink); text-decoration: none; }
 .place a:hover { text-decoration: underline; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
@@ -1383,7 +1382,7 @@ html, body { overflow-x: clip; }
 
 /* Esri popup in the site's style */
 .places-map .esri-popup__main-container, .places-map .esri-popup calcite-panel { border-radius: 14px; }
-.place-popup { font-family: "Inter", sans-serif; }
+.place-popup { font-family: var(--sans); }
 .place-popup .pp-cat { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; font-family: var(--sc); font-size: 14px; font-weight: 700; letter-spacing: .06em; color: #6b7180; }
 .place-popup .pp-cat img { width: auto; height: 18px; }
 .place-popup p { margin: 0 0 12px; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.55; color: #23314f; }
@@ -1431,7 +1430,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: #1f4fa0;
   color: #fff;
-  font: 600 14px "Inter", sans-serif;
+  font: 600 14px var(--sans);
   text-decoration: none;
   white-space: nowrap;
   box-shadow: 0 6px 18px rgba(20, 30, 60, .25);
