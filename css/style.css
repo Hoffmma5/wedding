@@ -709,7 +709,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 /* ---------- Inner pages ---------- */
 
 .page { max-width: 720px; margin: 0 auto; padding: 108px 20px 96px; }
-.page ul:not([class]) { padding-left: 1.2em; }   /* plain lists only: grids like .highlights set their own padding */
+.page ul:not([class]) { padding-left: 1.2em; }   /* plain lists only: grids like .tips set their own padding */
 .page li { margin: .3em 0; }
 /* Content still to come: one quiet line, no box */
 .tbc { margin: 0 0 1em; font-style: italic; color: var(--muted); }
@@ -1150,21 +1150,22 @@ html, body { overflow-x: clip; }
 .viewer .v-next { position: fixed; right: 16px; top: calc(50% - 21px); }
 .viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 500 13px "Inter", sans-serif; color: rgba(255, 255, 255, .75); }
 
-/* Stay page: hotel highlights */
-.highlights { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin: 8px 0 1.4em; padding: 0; list-style: none; }
-.highlights li {
-  padding: 16px 18px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  font-family: var(--serif);
-  font-size: var(--fs-m);
-  line-height: 1.5;
-  color: var(--muted);
+/* Travel: good to know – one icon and one short line each, no cards */
+.tips {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 20px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
 }
-.highlights li b { display: block; margin-bottom: 2px; font-size: var(--fs-base); font-weight: 600; color: var(--ink); }
-.good-to-know { font-size: var(--fs-m); }
-.good-to-know li { margin: .35em 0; }
+.tips li { display: grid; justify-items: center; gap: 10px; text-align: center; font-size: var(--fs-m); line-height: 1.45; color: var(--text); }
+.tips b { font-weight: 600; color: var(--ink); }
+.tips i { color: var(--ink); }
+.tips svg { --tint: color-mix(in srgb, var(--topic-c) 16%, transparent); width: 36px; height: 36px; fill: none; stroke: var(--ink); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.tips svg .f { fill: var(--tint); }
+.tips svg .s { fill: var(--ink); stroke: none; }
+@media (max-width: 560px) { .tips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; } }
 
 /* Guests page intro */
 .guests-intro { max-width: 560px; margin: 0 auto 20px; padding: 0 20px; text-align: center; }

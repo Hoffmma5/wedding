@@ -6,6 +6,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 ## Unreleased
 
 ### Changed
+- **Good to know** (Travel) is eight icons with one short line each – "1 hour behind Prague", "No roaming in the EU", "Small beer: *um imperial*", "Emergency: 112" – instead of eight cards with headings and paragraphs.
 - **Weather numbers** are an open row between two hairlines instead of three boxed cards, with the icons tinted in the page's ink.
 - **On phones the watercolour objects are small accents** (sun, crabs, disco ball, oysters, sardine – 150 px at most) instead of filling a screen each.
 - **The home strip is painted:** the flat orange block is now a terracotta watercolour wash, painted wet-in-wet so its edges fade and bloom softly into the paper (its own shape on phones). At night it takes the dusk tint of the night village and the icons are lighter and quieter, so they no longer glare.

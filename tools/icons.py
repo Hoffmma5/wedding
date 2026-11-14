@@ -44,3 +44,35 @@ FACILITIES = [
 def svg(paths, cls=""):
     c = f' class="{cls}"' if cls else ""
     return f'<svg{c} viewBox="0 0 24 24" aria-hidden="true">{paths}</svg>'
+
+
+# Travel: "good to know", one icon and one short line each
+TIPS = [
+    # clock
+    ('<circle class="f" cx="12" cy="12.5" r="8.5"/><path d="M12 7.5v5l3.2 2M9.5 2.5h5"/>',
+     '<b>1 hour</b> behind Prague'),
+    # coins
+    ('<ellipse class="f" cx="9.5" cy="7" rx="5.5" ry="2.3"/><path d="M4 7v3.2c0 1.3 2.5 2.3 5.5 2.3s5.5-1 5.5-2.3V7"/>'
+     '<ellipse class="f" cx="14.5" cy="15" rx="5.5" ry="2.3"/><path d="M9 15v3c0 1.3 2.5 2.3 5.5 2.3s5.5-1 5.5-2.3v-3"/>',
+     'Cards work &ndash; bring <b>a few coins</b>'),
+    # phone with signal
+    ('<rect class="f" x="6.5" y="3" width="9" height="18" rx="2"/><path d="M10 17.8h2M18.2 7.2a5 5 0 0 1 0 6.6M20.6 4.8a8.5 8.5 0 0 1 0 11.4"/>',
+     '<b>No roaming</b> in the EU'),
+    # ID card
+    ('<rect class="f" x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8" cy="11" r="2.2"/><path d="M4.8 16.2c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14 10h4.5M14 13.5h3"/>',
+     'EU <b>ID card</b> is enough'),
+    # speech bubble with a heart
+    ('<path class="f" d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-9l-4.5 3.5v-3.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5Z"/>'
+     '<path class="s" d="M12 14.6s-3.2-1.9-3.2-4a1.6 1.6 0 0 1 3.2-.7 1.6 1.6 0 0 1 3.2.7c0 2.1-3.2 4-3.2 4Z"/>',
+     'Thank you: <i>obrigado</i>'),
+    # a small glass of beer with foam
+    ('<path class="f" d="M7 8.5h9l-1 12.5H8Z"/><path d="M6.5 8.5c-.8-2 .6-3.8 2.6-3.4.6-1.6 3-1.9 4-.5 1.6-.6 3.5.6 3.2 2.3-.1.6-.4 1.1-.8 1.6M16 11h1.6a1.8 1.8 0 0 1 1.8 1.8v2.4a1.8 1.8 0 0 1-1.8 1.8h-2"/>',
+     'Small beer: <i>um imperial</i>'),
+    # car
+    ('<path class="f" d="M3.5 16.5v-4l2.2-4.8a1.6 1.6 0 0 1 1.5-1h9.6a1.6 1.6 0 0 1 1.5 1l2.2 4.8v4Z"/>'
+     '<path d="M3.5 12.5h17M6.5 16.5v2.2M17.5 16.5v2.2"/><circle class="s" cx="7" cy="14.5" r=".9"/><circle class="s" cx="17" cy="14.5" r=".9"/>',
+     'Driving: max <b>0.5&nbsp;&permil;</b>'),
+    # first aid
+    ('<circle class="f" cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/>',
+     'Emergency: <b>112</b>'),
+]

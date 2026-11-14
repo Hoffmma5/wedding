@@ -140,8 +140,9 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   with a short Inter label, 4 across, no boxes; details are on the hotel's site.
 - **Facts list** (`dl.facts-list`): small-caps term, Lora value in topic colour,
   muted detail line.
-- **Highlights** (`ul.highlights`): grid of bordered tiles, Lora title in topic
-  colour, Inter muted body.
+- **Good to know** (Travel, `ul.tips`): eight two-tone icons, each with one
+  short line, the key fact in the ink ("**1 hour** behind Prague"). 4 across,
+  2 on phones, no cards and no headings.
 - **Weather numbers** (`.wx`): an open row between two hairlines – tinted
   line icon, Lora number in the page's ink, muted caption. No cards; on
   phones three rows with hairlines between.

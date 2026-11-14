@@ -26,6 +26,8 @@ import icons   # tools/icons.py
 
 PAGES = {}
 
+TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
+
 PAGES["travel"] = ("Travel", BLUE, f"""
     <header class="inv-head">
       <p class="sc">Let us help you plan your</p>
@@ -78,15 +80,8 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         <p class="sc">A few little things</p>
         <h2 class="script">good to know</h2>
       </header>
-      <ul class="highlights">
-        <li><b>Set your watch</b>Portugal runs one hour behind Prague &ndash; a free extra hour of sleep on your first morning.</li>
-        <li><b>Bring a few euros</b>Cards work almost everywhere, but a couple of coins come in handy for a coffee and a <em>pastel de nata</em>.</li>
-        <li><b>Stay connected</b>Your phone works just like at home &ndash; no roaming fees in the EU, so send us all the sunset photos.</li>
-        <li><b>Pack your ID</b>From the EU? Your ID card is all you need. Coming from further away &ndash; don&rsquo;t forget your passport.</li>
-        <li><b>Say <em>obrigado</em></b>Most people here speak English, but a smiling <em>obrigado</em> (or <em>obrigada</em>) always wins hearts.</li>
-        <li><b>Order a beer like a local</b>A beer here is <em>um imperial</em> &ndash; just 0.2&nbsp;l, so it&rsquo;s always ice cold. Used to a proper half-litre? Ask for <em>uma caneca</em>.</li>
-        <li><b>If you&rsquo;re driving</b>Unlike Czechia, Portugal allows a little alcohol behind the wheel (0.5&nbsp;&permil;) &ndash; but that&rsquo;s only an <em>imperial</em> or two. Better still: pick a driver and let them be the hero.</li>
-        <li><b>Just in case</b>112 is the emergency number, same as at home. We hope you&rsquo;ll never need it!</li>
+      <ul class="tips">
+{TIPS_HTML}
       </ul>
     </section>""")
 
@@ -360,7 +355,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=47">
+  <link rel="stylesheet" href="css/style.css?v=49">
   <script>
     (function () {{
       var saved = null;
