@@ -591,40 +591,40 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 
 /* ---------- Details ---------- */
 
-/* The pages, on a pale wash painted like the street under the houses
-   (tools/make_wash.py). Olive labels and terracotta icons by day; at night
-   the wash takes the night street's tint and the text turns cream. */
+/* The pages, on a plain brick strip across the full width of the page,
+   right under the village. Cream text on brick at 5 : 1; at night a deep,
+   quiet brick so nothing glares. */
 .strip {
   position: relative;
   z-index: 3;
   margin: 0 0 clamp(40px, 6vw, 72px);
-  color: #46261a;
-  background: url("../assets/wash-wide.webp") center / 100% 100% no-repeat;
+  background: #a84f36;
+  color: #fbf3e4;
+  transition: background-color var(--fade), color var(--fade);
 }
+:root[data-theme="night"] .strip { background: #55302a; color: #e6e0d0; }
 .strip ul {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   max-width: 1080px;
   margin: 0 auto;
-  padding: 50px clamp(16px, 3vw, 32px) 46px;
+  padding: 18px clamp(16px, 3vw, 32px);
   list-style: none;
 }
-:root[data-theme="night"] .strip { background-image: url("../assets/wash-wide-night.webp"); }
-:root[data-theme="night"] .strip { color: #e6e0d0; }
 .strip a {
   display: grid;
   justify-items: center;
   gap: 8px;
   padding: 10px 4px;
-  border-radius: 12px;
+  border-radius: 10px;
   font: 500 var(--fs-base) var(--sans);
   letter-spacing: .01em;
   color: inherit;
   text-decoration: none;
+  transition: background-color .2s;
 }
-.strip .ico { color: #7a2e16; transition: transform .35s var(--ease); }
-:root[data-theme="night"] .strip .ico { color: #e3a58a; }
-.strip a:hover .ico { transform: translateY(-3px) rotate(-6deg); }
+.strip .ico { color: inherit; }
+.strip a:hover { background: rgba(0, 0, 0, .08); }
 .strip a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 .hint { position: relative; z-index: 3; margin: 0 auto 10px; padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
 
@@ -683,9 +683,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
     transition: opacity .5s;
   }
   .swipe-hint.gone { opacity: 0; }
-  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 6px; padding: 56px 16px 52px; }
-  .strip { background-image: url("../assets/wash-tall.webp"); }
-  :root[data-theme="night"] .strip { background-image: url("../assets/wash-tall-night.webp"); }
+  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 4px; padding: 12px 8px; }
   .strip a { font-size: var(--fs-m); }
   .story-frame { height: 78svh; }
 }

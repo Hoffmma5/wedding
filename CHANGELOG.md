@@ -11,7 +11,7 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 - **Good to know** (Travel) is eight icons with one short line each – "1 hour behind Prague", "No roaming in the EU", "Small beer: *um imperial*", "Emergency: 112" – instead of eight cards with headings and paragraphs.
 - **Weather numbers** are an open row between two hairlines instead of three boxed cards, with the icons tinted in the page's ink.
 - **On phones the watercolour objects are small accents** (sun, crabs, disco ball, oysters, sardine – 150 px at most) instead of filling a screen each.
-- **The home strip is a brick watercolour wash across the full width of the page:** instead of a flat orange block, the pages sit on watered-down roof terracotta in horizontal strokes that fades softly into the paper at top and bottom. Dark brick icons and brown labels by day; at night a dusky brick with cream labels.
+- **The home strip is a plain brick band across the full width of the page** – muted brick with cream labels instead of the bright orange block, and a deep, quiet brick at night so the icons no longer glare.
 - **One ink per page, from the village:** titles and accents use only the painting's three pigments – azulejo blue, roof terracotta, sage olive – and every section keeps its page's ink (Program was wine, coral and brown; Stay had a wine section; Travel a brown one; dishes rust).
 - **Footer:** the little drawing is replaced by the village painting itself, small – the same three houses as on the home page, and at night the dark version with the windows lit.
 - **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.

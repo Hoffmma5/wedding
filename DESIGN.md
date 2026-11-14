@@ -105,13 +105,10 @@ sits just under the baseline (`.3em`), clear of the long descenders.
   screen but keeps the doors above the fold; under 860 px the street stays
   860 px wide and scrolls sideways ("Swipe to see the whole street").
 - **Home below the village**: a one-line hint, then the six pages on a
-  **brick watercolour wash across the full width of the page**
-  (`tools/make_wash.py`: watered-down roof terracotta in long horizontal
-  strokes, a deeper brick streak, top and bottom fading softly into the
-  paper; a wide version for desktop, a taller one for phones, night versions
-  in a dusky brick). Dark brick icons above brown Inter labels by day; soft
-  terracotta icons and cream labels at night. 6 across on desktop, 3 × 2 on
-  phones. Icons lift and tilt a little on hover.
+  **plain brick strip across the full width of the page** (`.strip`,
+  `#a84f36`, cream text at 5 : 1; at night a deep, quiet `#55302a`). Icon
+  above a plain Inter label, 6 across on desktop, 3 × 2 on phones. No
+  texture, no border, no shadow.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding. Text left,
   watercolour object right (`.inv-grid`, `1fr / 200–320px`); sections separated
   by a hairline and 48–80 px of space. One column under 760 px; there the
