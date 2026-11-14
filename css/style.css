@@ -653,10 +653,6 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 .btn:hover { opacity: .85; }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* End of the key pages: one quiet line and the button */
-.end-rsvp { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; margin: clamp(48px, 7vw, 80px) 0 clamp(24px, 4vw, 40px); text-align: center; color: var(--muted); }
-.end-rsvp p { margin: 0; font-style: italic; }
-
 /* ---------- Our story ---------- */
 
 .story { --p: 0; padding: clamp(24px, 5vw, 56px) 0 clamp(40px, 6vw, 80px); }

@@ -416,22 +416,11 @@ VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
       </span>"""
 
 
-# The key pages end with the RSVP button, so the answer is never far away
-ASK_RSVP = ("program", "accommodation", "travel")
-
-
 def street(slug):
     i = [w[0] for w in WALK].index(slug)
     (p_slug, p_name), (n_slug, n_name) = WALK[i - 1], WALK[(i + 1) % len(WALK)]
-    rsvp = ""
-    if slug in ASK_RSVP:
-        rsvp = """    <div class="end-rsvp">
-      <p>Will you join us?</p>
-      <a class="btn" href="rsvp.html">RSVP</a>
-    </div>
-"""
     return f"""  <footer class="street">
-{rsvp}    <nav class="pager" aria-label="Previous and next page">
+    <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
       {VILLAGE_MINI}
