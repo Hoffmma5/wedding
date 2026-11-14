@@ -337,7 +337,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=58">
+  <link rel="stylesheet" href="css/style.css?v=59">
   <script>
     (function () {{
       var saved = null;
@@ -349,6 +349,7 @@ HEAD = """<!doctype html>
   </script>
 </head>
 <body{body_class}>
+  {ink}
   <header class="nav">
     <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span>Marek &amp; Paulo</a>
     <nav class="nav-links" id="nav-links" aria-label="Pages">
@@ -417,7 +418,7 @@ def street(slug):
 
 def main():
     for slug, (title, body) in PAGES.items():
-        html = HEAD.format(title=title, body_class="", nav=nav())
+        html = HEAD.format(title=title, body_class="", nav=nav(), ink=icons.INK_DEFS)
         foot = FOOT
         if 'class="carousel"' in body:
             foot = foot.replace('</body>', '  <script src="js/gallery.js?v=4"></script>\n</body>')
@@ -430,7 +431,7 @@ def main():
         html += f'  <main class="page inv">{body}\n  </main>\n' + street(slug) + foot
         open(f"{slug}.html", "w", encoding="utf-8").write(html)
 
-    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav())
+    html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav(), ink=icons.INK_DEFS)
     html += f"""  <main>
     <div class="map-head inv">
       <p class="sc">Everyone&rsquo;s coming to the Algarve</p>

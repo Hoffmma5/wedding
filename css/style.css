@@ -853,7 +853,7 @@ h2.script { line-height: 1.45; }
 /* Phones: weather numbers as three short rows instead of three cramped columns */
 @media (max-width: 560px) {
   .wx { grid-template-columns: 1fr; gap: 0; padding: 4px 0; }
-  .wx div { display: grid; grid-template-columns: 28px 5.2em 1fr; align-items: center; gap: 14px; padding: 10px 2px; text-align: left; }
+  .wx div { display: grid; grid-template-columns: 34px 5.2em 1fr; align-items: center; gap: 14px; padding: 10px 2px; text-align: left; }
   .wx div + div { border-top: 1px solid var(--line); }
   .wx b { margin: 0; font-size: var(--fs-xl); }
 }
@@ -1165,7 +1165,7 @@ html, body { overflow-x: clip; }
 .tips .ico { color: var(--ink); }
 @media (max-width: 560px) {
   .tips { grid-template-columns: 1fr; gap: 0; }
-  .tips li { grid-template-columns: 30px 1fr; justify-items: start; align-items: center; gap: 16px; max-width: none; margin: 0; padding: 12px 0; text-align: left; }
+  .tips li { grid-template-columns: 34px 1fr; justify-items: start; align-items: center; gap: 16px; max-width: none; margin: 0; padding: 12px 0; text-align: left; }
   .tips li + li { border-top: 1px solid var(--line); }
 }
 
@@ -1242,8 +1242,14 @@ html, body { overflow-x: clip; }
 
 /* The one icon family (tools/icons.py): a thin line and a faint tint of the
    same colour inside closed shapes, like the weather icons */
-.ico { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
-.ico .f { fill: color-mix(in srgb, currentColor 15%, transparent); }
+/* Ink and wash (tools/icons.py): a pen line in the ink with a hand wobble,
+   over a frayed blot of the accent. Filters: INK_DEFS, once per page. */
+.ico { width: 34px; height: 34px; overflow: visible; flex: none; }
+.ico .wash { fill: color-mix(in srgb, var(--accent) 30%, transparent); filter: url(#ink-wash); transition: fill var(--fade); }
+.ico .line { fill: none; stroke: var(--ink); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; filter: url(#ink-hand); transition: stroke var(--fade); }
+:root[data-theme="night"] .ico .wash { fill: color-mix(in srgb, var(--accent) 26%, transparent); }
+.ink-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.glance-list dt .ico { display: block; margin: 0 auto 8px; width: 38px; height: 38px; }
 @media (max-width: 560px) { .facilities { gap: 20px 8px; } .facilities li { font-size: 13px; } }
 
 /* Azulejo Atlas overview inset in the corner of the favourites map */
