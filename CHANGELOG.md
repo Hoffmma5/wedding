@@ -3,7 +3,7 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
-## Unreleased
+## 2026-11-14 – one style
 
 ### Changed
 - **One icon style across the site:** the home strip, Stay facilities, good to know and weather now share the light style of the weather icons – a thin line with a faint tint, no solid parts, one size.
