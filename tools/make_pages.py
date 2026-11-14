@@ -24,14 +24,6 @@ import icons   # tools/icons.py
 
 PAGES = {}
 
-# The end of every key page (Program, Stay, Travel): one line and the reply
-REPLY_END = """
-
-    <aside class="reply-end">
-      <p>Coming to Tavira?</p>
-      <a class="btn" href="rsvp.html">Reply to the invitation</a>
-    </aside>"""
-
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", f"""
@@ -46,7 +38,7 @@ PAGES["travel"] = ("Travel", f"""
           <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
-        <p>From the Czech Republic, fly from <strong>Prague</strong> or <strong>Nuremberg</strong>; Nuremberg is often cheaper.</p>
+        <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -82,7 +74,7 @@ PAGES["travel"] = ("Travel", f"""
       <ul class="tips">
 {TIPS_HTML}
       </ul>
-    </section>{REPLY_END}""")
+    </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", f"""
     <div class="inv-grid">
@@ -195,7 +187,7 @@ PAGES["accommodation"] = ("The hotel", f"""
         </a>
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
-    </section>{REPLY_END}""")
+    </section>""")
 
 
 # Dishes to try (Algarve page): name and what it is. The photos and their
@@ -242,8 +234,9 @@ PAGES["location"] = ("The Algarve", f"""
           <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>We come back every summer for the beaches and the three-hour dinners. <strong>Tavira</strong> is whitewashed houses, a river and salt flats, 15 minutes below <a href="accommodation.html">the Quinta</a>.</p>
-          <p>Coming early or staying on? Here is the Algarve we love.</p>
+          <p>We come back to the Algarve every summer: beach, pool and long dinners with a full house. The door stays open to let the wind through, and we don&rsquo;t leave the table for at least 3 hours.</p>
+          <p>Our wedding is near <strong>Tavira</strong>, a little town that moves at its own pace: whitewashed houses, terracotta rooftops, cobbled streets and a river running through it. Just beyond are salt flats, long sandy beaches and the Atlantic.</p>
+          <p>The celebration is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, 15 minutes from town. If you come early or stay on, here is the Algarve we love &ndash; from Tavira all the way to the wild west coast.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -273,14 +266,11 @@ PAGES["location"] = ("The Algarve", f"""
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
 
+      <aside class="road-trip prose">
+        <p class="sc">Got a few extra days?</p>
+        <p>Drive the west coast from Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
+      </aside>
     </section>
-
-    <details class="fold">
-      <summary><span class="script">the west coast</span></summary>
-      <div class="prose">
-        <p>A few extra days? Drive from Lagos up to Sines for fishing villages, cliffs and wild beaches: Castelejo, Bordeira, Amado, Odeceixe.</p>
-      </div>
-    </details>
 
     <details class="fold">
       <summary><span class="script">dishes to try</span></summary>
@@ -326,7 +316,7 @@ PAGES["program"] = ("Program", f"""
         </ul>
       </div>
       <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
-    </article>{REPLY_END}""")
+    </article>""")
 
 PAGES["rsvp"] = ("RSVP", """
     <header class="inv-head">
