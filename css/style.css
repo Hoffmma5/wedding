@@ -1466,6 +1466,12 @@ html.map-full, html.map-full body { overflow: hidden; }
 /* Algarve: with the tile on the left, the sardine stays clear of the title */
 .inv-grid.flip .tile-art .sardine { left: -10%; width: 110%; }
 
-/* Travel: the shrimp is a small accent, right-aligned in its column */
-.inv-grid .art img[style*="--art"] { margin-left: auto; }
-.inv-grid.flip .art img[style*="--art"] { margin-left: 0; margin-right: auto; }
+/* Rows with a small picture (Travel's shrimp, Weather's crabs): the picture
+   column is exactly as wide as the picture (--side), the text sits right
+   beside it, both centred vertically */
+.inv-grid[style*="--side"] { grid-template-columns: minmax(0, 1fr) var(--side); align-items: center; }
+.inv-grid.flip[style*="--side"] { grid-template-columns: var(--side) minmax(0, 1fr); }
+.inv-grid[style*="--side"] > div { max-width: 600px; }
+@media (max-width: 760px) {
+  .inv-grid[style*="--side"], .inv-grid.flip[style*="--side"] { grid-template-columns: 1fr; }
+}

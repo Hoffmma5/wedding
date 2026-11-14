@@ -60,7 +60,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </div>
 
     <section class="inv-section">
-      <div class="inv-grid flip">
+      <div class="inv-grid flip" style="--side:170px">
         <div>
           <header class="inv-head">
             <p class="sc">From the airport to Tavira&hellip;</p>
@@ -106,7 +106,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
     <section class="inv-section">
-      <div class="inv-grid flip">
+      <div class="inv-grid flip" style="--side:260px">
         <div>
           <header class="inv-head"><h2 class="script">What to Pack</h2></header>
           <div class="prose">
@@ -347,7 +347,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=69">
+  <link rel="stylesheet" href="css/style.css?v=70">
   <script>
     (function () {{
       var saved = null;
