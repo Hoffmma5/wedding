@@ -1440,3 +1440,5 @@ html.map-full, html.map-full body { overflow: hidden; }
 @media (max-width: 760px) {
   .inv-grid[style*="--side"], .inv-grid.flip[style*="--side"] { grid-template-columns: 1fr; }
 }
+/* "Faro": the script's tall capital F needs a smaller size to stay on the board */
+.plaque text.small { font-size: 14.5px; }
