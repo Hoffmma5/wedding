@@ -3,8 +3,9 @@
 Two parts. **Current state** describes the site as it is on the
 `skill-impeccable` branch (14 November 2026, after two passes: shorter
 copy, two typefaces, one ink; then azulejo tile icons, the orange page
-stripe on Home, plain photo rows, the orange-tree footer and alternating
-picture sides), measured from `css/style.css`, the pages and `tools/make_pages.py`. **Target direction** is where the redesign is
+stripe on Home, photo mosaics, the orange logo in the footer, a Faro
+street sign instead of the plane, and alternating picture sides),
+measured from `css/style.css`, the pages and `tools/make_pages.py`. **Target direction** is where the redesign is
 heading, and **What's not working yet** lists the gaps between the two.
 When a change contradicts the current state, update this document in the
 same commit; when it moves the site towards the target, tick it off the gap
@@ -50,7 +51,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant Garamond 600, uppercase, wide tracking (the logo caps) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 17 px | Cormorant SC 700, 17 px |
 | Body | Cormorant Garamond 500, 20 px | Cormorant Garamond 500, 20 px, line-height 1.6–1.75 |
-| Below the fold | The orange stripe: a tile + label per page, RSVP last | Footer: ‹ previous · orange tree · next › |
+| Below the fold | The orange stripe: a tile + label per page, RSVP last | Footer: ‹ previous · orange logo · next › |
 
 ## Colour
 
@@ -79,8 +80,8 @@ ink; none uses it.
 The one deliberate exception to "one accent": the page stripe under the
 village is the orange of the tree's oranges, deepened to `#b8501b` so its
 cream `#fff8ee` labels read at 4.7 : 1 (AA); at night `#6e3418`
-with `#f6e6d2`. The same orange (`#e8822a`, night `#f0a050`) fills the
-oranges in the footer tree. Nothing else outside the pictures is orange.
+with `#f6e6d2`. The same orange colours the logo's orange in the footer
+(night `#f0a050`). Nothing else outside the pictures is orange.
 
 ### Pigments that stay in the pictures
 
@@ -140,9 +141,10 @@ a fact (Program: "Welcome party · 01.10.2027").
   the names sit. Hotspots are placed in picture pixels (`--x/--y/--w/--h`).
   Width fills the screen but keeps the doors above the fold; under 860 px the
   street stays 860 px wide and scrolls sideways ("Swipe to see the whole
-  street"). Hotspots: the three doors (Stay, Program, RSVP), the plane
-  (Travel), the weathervane (Weather), the "Algarve" tile (Algarve), the lamp
-  (day/night) and the orange tree (drops oranges). Nothing in the sky.
+  street"). Hotspots: the three doors (Stay, Program, RSVP), a **"Faro"
+  street sign** on the lamp pole (Travel), the weathervane (Weather), the
+  "Algarve" tile (Algarve), the lamp (day/night) and the orange tree (drops
+  oranges). Nothing in the sky.
 - **Home below the village**: the **orange stripe**, full width, 1120 px
   inner: seven buttons (Program, Stay, Travel, Weather, Algarve, Guests,
   RSVP), each a 48 px cream tile over a 21 px label; RSVP's tile is glazed
@@ -156,18 +158,18 @@ a fact (Program: "Welcome party · 01.10.2027").
   Program's oysters). Sections are separated by a hairline and 48–80 px. One
   column under 760 px, text first; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Cormorant 16 px, muted), the **orange tree** (`ORANGE_TREE` in
-  `tools/make_pages.py`: a 64 px line drawing in the accent, glazed canopy,
-  six orange oranges) leading home, "Next ›"; the names/date line below.
+  (Cormorant 16 px, muted), the **logo's orange** (`ORANGE_LOGO`: the
+  nav's `.mark` mask at 56 px in the stripe orange) leading home, "Next ›";
+  the names/date line below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
-  10–12 px menu links, stripe buttons · 4 px photos · 2.5 px tiles ·
+  10–12 px menu links, stripe buttons · 4 px photos · 2.5 px tiles and signs ·
   999 px pills, chips.
 - **Shadow**: one soft shadow (`0 1px 2px / 0 8px 24px`, 4–8 % black) on
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
   left-aligned on inner pages, centred on Home.
 - **Breakpoints**: 860 (hero), 820 (nav), 760 (one column, stripe 4 + 3,
-  photo rows 72 vw), 560 (lists).
+  photo mosaic 2 columns at 560), 560 (lists).
 
 ## Imagery
 
@@ -181,8 +183,8 @@ a fact (Program: "Welcome party · 01.10.2027").
 - **Travel map** (`tools/make_iberia.py`) — a piece torn from an old paper
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
   path to Faro and a pearl on Tavira.
-- **Photos** — only on Stay: six of the hotel, six of the rooms, in plain
-  rows. The other hotel/room photos stay in `assets/gallery/`; dish photos in
+- **Photos** — only on Stay: six of the hotel, six of the rooms, as
+  caption-free mosaics. The other hotel/room photos stay in `assets/gallery/`; dish photos in
   `assets/dishes/`. None of them is shown elsewhere.
 - **Icons** (`tools/icons.py`) — one family: **azulejo tiles**. A 40 × 40
   tile (outer frame with a 7 % glaze, fine inner frame, a quarter-circle in
@@ -192,7 +194,8 @@ a fact (Program: "Welcome party · 01.10.2027").
   numbers, and (cream on orange) the Home stripe. Glyphs: STRIP (program,
   stay, travel, weather, algarve, guests, rsvp envelope), FACILITIES,
   WEATHER, TIPS. Footer chevrons and UI controls stay plain lines.
-- **Logo mark** — the orange emblem, recoloured with `--text` via CSS mask.
+- **Logo mark** — the orange emblem via CSS mask: `--text` in the nav and
+  hero, the stripe orange in the footer.
 
 ## Components
 
@@ -210,10 +213,15 @@ a fact (Program: "Welcome party · 01.10.2027").
   key fact in the ink; two columns, one on phones.
 - **Weather numbers** (`.wx`): an open row between two hairlines — tile,
   number in the ink, muted caption.
-- **Photo row** (Stay, `.carousel` + `js/gallery.js`): same-size 4:3 photos
-  with 4 px corners, starting at the text column and running off the right
-  edge, small italic caption under each; two 44 px arrow buttons under the
-  row on desktop, swipe on phones; a photo opens the full-screen viewer.
+- **Photo mosaic** (Stay, `.photos` + `js/gallery.js`): no captions. Three
+  columns: one large photo (2 × 2) and five 4:3 photos beside and under
+  it, 4 px corners, 6–10 px gaps; `.flip` puts the large photo on the right
+  (bedrooms). Phones: two columns, large photo and last photo full width.
+  Hover leans in (scale 1.04); a click or Enter opens the full-screen
+  viewer (arrows, keys, swipe, "3 / 6", no caption).
+- **Street sign** (Home, `.signpost`): an arrow-shaped enamel plate in
+  SVG, cream with the tile's blue rim and fine inner line, a small plane
+  and FARO in tracked capitals, two clamps on the lamp pole; points west.
 - **Places app** (Algarve): list with category chips + ArcGIS map on the
   *Azulejo Complete* basemap, overview minimap, full-screen mode.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
@@ -228,17 +236,18 @@ a fact (Program: "Welcome party · 01.10.2027").
 
 - Day ↔ night: 1.2 s cross-fade of colours and painting layers; windows light
   0.6 s later; the lamp flickers on.
-- Hotspots: doors swing open in 3D, the plane speeds up, the weathervane
-  spins (press and hold: points to you), the tile lifts, the orange tree drops
-  oranges.
-- Ambient: the plane drifts (6 s loop), the vane sways (7 s loop).
+- Hotspots: doors swing open in 3D, the street sign swings on its pole,
+  the weathervane spins (press and hold: points to you), the tile lifts, the
+  orange tree drops oranges.
+- Ambient: the vane sways (7 s loop).
 - Page transitions: entering from the village zooms 2.2× into the door in
   0.5 s and fades to paper (the next page loads after 0.48 s); the footer
-  tree shrinks and Home opens at 1.8× and zooms out in 0.8 s.
+  orange shrinks and Home opens at 1.8× and zooms out in 0.8 s.
 - Story section unfolds with scroll.
 - Easter eggs (`js/eggs.js`): disco ball with music and lights, crabs, the
   sardine and a school of sardines, party mode with bunting (`?party`).
-- Small UI: 0.2–0.3 s hovers, menu slide, stripe tiles and footer tree lift.
+- Small UI: 0.2–0.3 s hovers, menu slide, stripe tiles lift, the footer
+  orange tilts, mosaic photos lean in (0.6 s).
 - `prefers-reduced-motion` turns all of it off.
 
 ## Tone of voice
@@ -329,22 +338,22 @@ Where the current site falls short of the target, roughly by impact.
 5. **Artsy details everywhere instead of one or two.** Interactive
    painting, script titles, a watercolour object per section, a torn paper
    map, easter eggs, party mode, day/night theme — each is charming,
-   together they compete. *Done:* the polaroid ring, the mini-village footer
-   and the sun are gone.
+   together they compete. *Done:* the polaroid ring, the mini-village footer,
+   the sun and the plane are gone.
 6. **Home on phones.** *Done:* the orange stripe means nothing has to be
    discovered in the painting, and the "Everything in the village is
    clickable" hint is gone. *Open:* on phones the street is still 860 px wide
    and scrolls sideways.
 7. **Too much motion.** *Done:* the door zoom is 2.2× in 0.5 s (was 3.2×
-   in 0.9 s) and the walk back 0.8 s. *Open:* ambient loops (plane, vane),
-   3D doors, lamp flicker and easter eggs.
+   in 0.9 s) and the walk back 0.8 s; the plane's loop is gone. *Open:* the
+   vane's sway, 3D doors, lamp flicker and easter eggs.
 8. **Text-heavy secondary pages.** *Done:* every label above a title and
    the decorative bylines are cut, intros are one or two sentences, and
-   the dishes are a closed `<details>`; Stay's galleries are plain rows of
-   six. (The Algarve intro is long again on purpose.)
+   the dishes are a closed `<details>`; Stay's galleries are caption-free
+   mosaics of six. (The Algarve intro is long again on purpose.)
 9. **Tap targets below 44 px.** Desktop nav pills ~39 px tall, the theme
-   button 38 px, footer ‹ › links ~31 px. (Stripe buttons, photo arrows,
-   the footer tree and More rows are 44–64 px.)
+   button 38 px, footer ‹ › links ~31 px. (Stripe buttons, the footer
+   orange and More rows are 44–64 px.)
 10. **Weight.** The home painting is ~520 KB in two layers plus PNG overlays;
     the ArcGIS SDK + Calcite on Stay and Algarve are heavy (lazy, but still
     loaded just by scrolling past). Fonts are down from five families to two.

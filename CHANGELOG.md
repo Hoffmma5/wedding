@@ -3,6 +3,13 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased – the Faro sign (branch `skill-impeccable`)
+
+### Changed
+- **Hotel photos as a mosaic, without captions:** one large photo and five smaller ones around it, the bedrooms mirrored. Tap any photo to see the set full screen.
+- **The footer shows the orange from our logo,** in orange, instead of the tree drawing. It still takes you home.
+- **No plane in the sky:** Travel is now a little enamel street sign on the lamp pole, pointing west to Faro, painted like the "Algarve" house tile.
+
 ## Unreleased – tiles and the orange stripe (branch `skill-impeccable`)
 
 ### Changed
