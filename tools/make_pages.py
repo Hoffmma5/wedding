@@ -39,7 +39,7 @@ PAGES["travel"] = ("Travel", INK, f"""
           <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
-        <p>From the Czech Republic, fly from <strong>Prague</strong> or <strong>Nuremberg</strong> &ndash; Germany is often cheaper.</p>
+        <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -237,8 +237,9 @@ PAGES["location"] = ("The Algarve", INK, f"""
           <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>We come back every summer &ndash; for the beach, the pool and dinners that last three hours.</p>
-          <p>The wedding is at <a href="accommodation.html">Hotel Quinta do Marco</a>, in the hills 15 minutes from <strong>Tavira</strong>. If you come early or stay longer, here is the Algarve we love.</p>
+          <p>We come back to the Algarve every summer: beach, pool and long dinners with a full house. The door stays open to let the wind through, and nobody leaves the table for at least three hours.</p>
+          <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace &ndash; whitewashed houses, terracotta roofs, cobbled streets and a river running through it, with salt flats, sandy beaches and the Atlantic just beyond.</p>
+          <p>The celebration is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, 15 minutes from town. If you come early or stay longer, here is the Algarve we love &ndash; from Tavira to the wild west coast.</p>
         </div>
       </div>
       <figure class="art tile-art">
@@ -267,10 +268,7 @@ PAGES["location"] = ("The Algarve", INK, f"""
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
 
-      <details class="more">
-        <summary>Extra days? Drive the west coast</summary>
-        <p>From Lagos up to Sines: fishing villages, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
-      </details>
+      <p class="road-note"><strong>Got a few extra days?</strong> Drive the west coast from Lagos up to Sines: fishing villages, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
       <details class="more">
         <summary>Eleven dishes to try</summary>
         <ul class="dishes">

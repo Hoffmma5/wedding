@@ -1284,10 +1284,12 @@ html, body { overflow-x: clip; }
 .map-credit { margin: 8px 0 0; font-size: var(--fs-xs); color: var(--muted); }
 @media (max-width: 760px) { .places-overview { width: 84px; height: 106px; border-width: 2px; } }
 
-/* Secondary extras, closed by default: one hairline row each.
-   The road trip and the dishes on the Algarve page. */
+/* Secondary extras, closed by default: one hairline row each
+   (the dishes on the Algarve page). */
 .more { border-bottom: 1px solid var(--line); }
-.places-app + .map-credit + .more, .more:first-child { margin-top: 32px; border-top: 1px solid var(--line); }
+.road-note { max-width: 640px; margin: 32px 0 0; }
+.road-note strong { font-weight: 600; color: var(--ink); }
+.road-note + .more, .more:first-child { margin-top: 32px; border-top: 1px solid var(--line); }
 .more summary {
   display: flex;
   align-items: center;
