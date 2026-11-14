@@ -551,7 +551,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .4s ease; }
-body.leaving .street-view .tree-mark { transform: scale(.9); transition: transform .3s var(--ease); }
+body.leaving .street-view .foot-mark { transform: scale(.9); transition: transform .3s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(1.8); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1444,27 +1444,19 @@ html.map-full, html.map-full body { overflow: hidden; }
 .pager a:hover { color: var(--text); }
 .pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
 .street-view { display: grid; place-items: center; min-width: 64px; min-height: 64px; padding: 4px; border-radius: 12px; }
-/* The orange tree: a line drawing in the ink, oranges in orange */
-.tree-mark {
-  display: block;
-  width: 64px;
-  height: 72px;
-  color: var(--accent);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform .35s var(--ease);
+/* The orange from the logo (the same mask as the nav mark), in the orange
+   of the Home stripe */
+.foot-mark {
+  width: 56px;
+  background: #b8501b;
+  transition: transform .35s var(--ease), background-color var(--fade);
 }
-.tree-mark .canopy { fill: color-mix(in srgb, currentColor 7%, transparent); }
-.tree-mark .fruit circle { fill: #e8822a; stroke: none; }
-:root[data-theme="night"] .tree-mark .fruit circle { fill: #f0a050; }
-.street-view:hover .tree-mark { transform: translateY(-2px) rotate(-2deg); }
+:root[data-theme="night"] .foot-mark { background: #f0a050; }
+.street-view:hover .foot-mark { transform: translateY(-2px) rotate(-4deg); }
 .street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
 .map-page .street { max-width: none; }
 
 @media (max-width: 560px) {
   .pager { gap: 8px; }
-  .tree-mark { width: 56px; height: 63px; }
+  .foot-mark { width: 48px; }
 }

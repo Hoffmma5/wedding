@@ -328,7 +328,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=65">
+  <link rel="stylesheet" href="css/style.css?v=66">
   <script>
     (function () {{
       var saved = null;
@@ -368,7 +368,7 @@ def nav():
 
 
 # The walk through the site, in menu order. The footer links every page to
-# the one before and after it, and the orange tree leads home.
+# the one before and after it, and the orange from the logo leads home.
 WALK = [
     ("index", "Home"),
     ("program", "Program"),
@@ -383,14 +383,8 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The orange tree from the village, as a small line drawing in the ink:
-# a canopy with a faint glaze, the trunk, a strip of ground, and the
-# oranges as the only touch of orange. Leads home.
-ORANGE_TREE = """<svg class="tree-mark" viewBox="0 0 64 72" aria-hidden="true">
-        <path class="canopy" d="M32 6c7 0 12.2 4 13.6 9.6C50.8 16.8 54 21 54 26.4 54 32.8 49 38 42.6 38H21.4C15 38 10 32.8 10 26.4c0-5.4 3.2-9.6 8.4-10.8C19.8 10 25 6 32 6Z"/>
-        <path d="M32 38v24M32 49l-6.5-6.5M32 45.5l5.5-5.5M17 62.5h30"/>
-        <g class="fruit"><circle cx="22" cy="24" r="3.3"/><circle cx="31" cy="15.5" r="3.3"/><circle cx="41.5" cy="21" r="3.3"/><circle cx="27" cy="31" r="3.3"/><circle cx="45" cy="30.5" r="3.3"/><circle cx="36" cy="28" r="3.3"/></g>
-      </svg>"""
+# The orange from the logo, in orange. Leads home.
+ORANGE_LOGO = """<span class="mark foot-mark" aria-hidden="true"></span>"""
 
 
 def street(slug):
@@ -400,7 +394,7 @@ def street(slug):
     <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
-      {ORANGE_TREE}
+      {ORANGE_LOGO}
       </a>
       <a class="next" href="{n_slug}.html">{n_name}{CHEVRON_R}</a>
     </nav>
