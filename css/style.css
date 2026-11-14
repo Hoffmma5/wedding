@@ -12,10 +12,12 @@
   --text: #171a21;
   --muted: #6b7180;
   --line: rgba(23, 26, 33, .09);
-  --accent: #2f5fb5;        /* blue house */
-  --olive: #4b4b31;         /* logo ink */
-  --yellow: #f2b705;
-  --coral: #e8664a;
+  /* The one accent ink, from the roofs: script titles, the logo mark,
+     strong words, links, focus. --ink is it pulled 20 % towards the text
+     for small text (5.3 : 1 alone, more mixed). Pigments from the painting
+     stay in the painting. */
+  --accent: #b5432a;
+  --ink: color-mix(in srgb, var(--accent) 80%, var(--text));
   --shadow: 0 1px 2px rgba(16, 20, 36, .04), 0 8px 24px rgba(16, 20, 36, .08);
   --night: 0;
 
@@ -44,12 +46,11 @@
 :root[data-theme="night"] {
   --bg: #0f1426;
   --sky: rgb(60, 73, 120);  /* = night(paper), see tools/make_layers.py */
-  --olive: #ece4c6;
   --surface: #182038;
   --text: #eef0f7;
   --muted: #9aa2bd;
   --line: rgba(238, 240, 247, .1);
-  --accent: #8fb0ff;
+  --accent: #daa194;        /* the same ink, half way to white */
   --shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 8px 24px rgba(0, 0, 0, .3);
   --night: 1;
   color-scheme: dark;
@@ -82,7 +83,7 @@ button { font-family: inherit; }
   font-size: var(--fs-label);
   letter-spacing: .08em;
   line-height: 1.3;
-  color: var(--olive);
+  color: var(--muted);
   transition: color var(--fade);
 }
 
@@ -116,7 +117,7 @@ button { font-family: inherit; }
   font-size: 17px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--text);
   text-decoration: none;
   transition: color var(--fade);
 }
@@ -126,7 +127,7 @@ button { font-family: inherit; }
 .mark {
   display: inline-block;
   aspect-ratio: 166 / 160;
-  background: var(--olive);
+  background: var(--accent);
   -webkit-mask: url("../assets/logo-mark.png") center / contain no-repeat;
   mask: url("../assets/logo-mark.png") center / contain no-repeat;
   transition: background-color var(--fade);
@@ -295,7 +296,7 @@ button { font-family: inherit; }
   font-family: var(--serif);
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--text);
   transition: color var(--fade);
 }
 .hero-text h1 {
@@ -743,21 +744,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 /* =========================================================
    Invitation styling for inner pages (from the Tavira invitation)
    Beth Ellen = handwritten titles, Lora = everything else
-   (labels in its small caps). Each topic sets --topic (its invitation colour).
+   (labels in its small caps). One ink for the whole site: --accent.
    ========================================================= */
-
-/* --topic-c: the ink itself (script titles, art, accents).
-   --ink: the same ink pulled 20 % towards the text colour, for small text
-   and links, so every ink passes 4.5 : 1 on the paper (olive and coral
-   alone are only ~3.9 : 1). */
-[style*="--topic"] {
-  --topic-c: var(--topic);
-  --ink: color-mix(in srgb, var(--topic-c) 80%, var(--text));
-}
-:root[data-theme="night"] [style*="--topic"] {
-  --topic-c: color-mix(in srgb, var(--topic) 50%, #fff);
-  --ink: color-mix(in srgb, var(--topic-c) 80%, var(--text));
-}
 
 .inv { max-width: 1000px; }
 .script {
@@ -767,7 +755,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   font-size: clamp(48px, 7vw, 76px);
   line-height: 1.35;
   letter-spacing: 0;
-  color: var(--topic-c, var(--olive));
+  color: var(--accent);
   transition: color var(--fade);
 }
 h2.script { font-size: clamp(40px, 5.5vw, 58px); }
@@ -825,13 +813,13 @@ h2.script { line-height: 1.45; }
 :root[data-theme="night"] .map-art { filter: brightness(.9) drop-shadow(0 14px 30px rgba(0, 0, 0, .5)); }
 .map-labels { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .map-labels .route { fill: none; stroke: #b5432a; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 12; opacity: .8; }
-.map-labels .plane { fill: #1f4fa0; }
+.map-labels .plane { fill: #b5432a; }
 .map-labels .country { font-family: var(--serif); font-variant-caps: small-caps; font-weight: 700; font-size: 30px; letter-spacing: .32em; fill: #12386e; opacity: .72; text-anchor: middle; }
 .map-labels .country.es { fill: #8a6a3e; opacity: .8; }
 .map-labels .sea { font-family: var(--serif); font-style: italic; font-size: 24px; letter-spacing: .12em; fill: #4f7686; text-anchor: middle; }
 .map-labels .town { fill: #23314f; stroke: #fdfaf2; stroke-width: 2; }
 .map-labels .town-name { font-family: var(--serif); font-variant-caps: small-caps; font-weight: 700; font-size: 24px; letter-spacing: .06em; fill: #23314f; text-anchor: end; }
-.map-labels .tavira { font-family: var(--script); font-size: 46px; fill: #1f4fa0; }
+.map-labels .tavira { font-family: var(--script); font-size: 46px; fill: #b5432a; }
 
 /* Location: the cover's sardine on its azulejo tile */
 .tile-art { position: relative; max-width: 320px; margin-left: auto; }
@@ -929,7 +917,7 @@ html, body { overflow-x: clip; }
 
 /* Disco lights */
 .disco { cursor: pointer; transform-origin: 50% 0; }
-.disco:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 6px; border-radius: 50%; }
+.disco:focus-visible { outline: 2px dashed var(--accent); outline-offset: 6px; border-radius: 50%; }
 .disco:hover { animation: swing 1.6s ease-in-out infinite; }
 .disco.spinning { animation: swing .5s ease-in-out infinite; }
 @keyframes swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
@@ -992,7 +980,7 @@ html, body { overflow-x: clip; }
 
 /* Crabs walk away sideways (crab gait) and come back the same way */
 .crabs { cursor: pointer; }
-.crabs:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 6px; }
+.crabs:focus-visible { outline: 2px dashed var(--accent); outline-offset: 6px; }
 .crabs.scuttling { animation: crab-walk 7s both, crab-gait .32s ease-in-out infinite; }
 @keyframes crab-walk {
   0%   { translate: 0 0; animation-timing-function: cubic-bezier(.5, 0, .9, .6); }
@@ -1004,7 +992,7 @@ html, body { overflow-x: clip; }
 
 /* Location: the sardine swims off and comes back */
 .tile-art .sardine { cursor: pointer; }
-.tile-art .sardine:focus-visible { outline: 2px dashed var(--topic-c); outline-offset: 4px; }
+.tile-art .sardine:focus-visible { outline: 2px dashed var(--accent); outline-offset: 4px; }
 .tile-art .sardine.swimming { animation: fish-away 5s both, fish-wiggle .45s ease-in-out infinite; }
 @keyframes fish-away {
   0%    { translate: 0 0; animation-timing-function: cubic-bezier(.5, 0, .9, .5); }
@@ -1062,7 +1050,7 @@ html, body { overflow-x: clip; }
   outline: none;
 }
 .c-track::-webkit-scrollbar { display: none; }
-.c-track:focus-visible { outline: 2px solid var(--topic-c, var(--accent)); outline-offset: -6px; border-radius: 16px; }
+.c-track:focus-visible { outline: 2px solid var(--accent); outline-offset: -6px; border-radius: 16px; }
 .slide {
   position: relative;
   flex: 0 0 var(--slide-w);
@@ -1141,7 +1129,7 @@ html, body { overflow-x: clip; }
   cursor: pointer;
   transition: width .3s var(--ease), background-color .3s;
 }
-.c-dots button[aria-current="true"] { width: 22px; background: var(--topic-c, var(--accent)); }
+.c-dots button[aria-current="true"] { width: 22px; background: var(--accent); }
 
 
 
@@ -1203,10 +1191,10 @@ html, body { overflow-x: clip; }
   cursor: pointer;
   transition: background-color .2s, color .2s, border-color .2s;
 }
-.place-chips button:hover { border-color: var(--topic-c); }
+.place-chips button:hover { border-color: var(--accent); }
 .place-chips button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 :root[data-theme="night"] .place-chips button[aria-pressed="true"] { color: var(--bg); }
-.place-chips button:focus-visible { outline: 2px solid var(--topic-c); outline-offset: 2px; }
+.place-chips button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .places-map {
   height: 460px;
@@ -1216,9 +1204,9 @@ html, body { overflow-x: clip; }
   background: var(--line);
 }
 .places-map.failed { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); }
-.places-map .esri-view-surface--inset-outline:focus::after { outline: 2px solid var(--topic-c) !important; }
+.places-map .esri-view-surface--inset-outline:focus::after { outline: 2px solid var(--accent) !important; }
 .place-popup p { margin: 0 0 8px; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.5; color: #23314f; }
-.place-popup a { font: 600 13px var(--serif); color: #1f4fa0; }
+.place-popup a { font: 600 13px var(--serif); color: #b5432a; }
 
 .places-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
 .place {
@@ -1240,7 +1228,7 @@ html, body { overflow-x: clip; }
 .place p { margin: 2px 0 6px; font-size: var(--fs-s); line-height: 1.5; color: var(--muted); }
 .place a { font: 600 13px var(--serif); color: var(--ink); text-decoration: none; }
 .place a:hover { text-decoration: underline; }
-.place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
+.place-venue { border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
 @media (max-width: 760px) { .places-map { height: 380px; } }
 /* Stay: what the Quinta has, as a row of line icons */
@@ -1336,8 +1324,8 @@ html, body { overflow-x: clip; }
   transition: background-color .15s;
 }
 .place:hover { transform: none; box-shadow: none; background: var(--line); }
-.place:focus-visible { outline: 2px solid var(--topic-c); outline-offset: -2px; box-shadow: none; transform: none; }
-.place[aria-current="true"] { background: color-mix(in srgb, var(--topic-c) 12%, transparent); }
+.place:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; box-shadow: none; transform: none; }
+.place[aria-current="true"] { background: color-mix(in srgb, var(--accent) 12%, transparent); }
 .place-icon { display: grid; place-items: center; width: 36px; height: 30px; }
 .place-icon img { max-width: 36px; max-height: 28px; width: auto; height: auto; margin: 0; }
 .place-text { min-width: 0; }
@@ -1358,7 +1346,7 @@ html, body { overflow-x: clip; }
   display: inline-block;
   padding: 7px 14px;
   border-radius: 999px;
-  background: #1f4fa0;
+  background: #b5432a;
   color: #fff !important;
   font-size: 13px;
   font-weight: 600;
@@ -1396,7 +1384,7 @@ html, body { overflow-x: clip; }
   gap: 8px;
   padding: 10px 18px;
   border-radius: 999px;
-  background: #1f4fa0;
+  background: #b5432a;
   color: #fff;
   font: 600 14px var(--serif);
   text-decoration: none;
@@ -1494,7 +1482,7 @@ html.map-full, html.map-full body { overflow: hidden; }
   cursor: pointer;
 }
 .fold > summary::-webkit-details-marker { display: none; }
-.fold > summary .script { font-size: clamp(34px, 4.5vw, 46px); line-height: 1.3; color: var(--topic-c, var(--text)); }
+.fold > summary .script { font-size: clamp(34px, 4.5vw, 46px); line-height: 1.3; color: var(--accent); }
 .fold > summary::after {
   content: "+";
   flex: none;
