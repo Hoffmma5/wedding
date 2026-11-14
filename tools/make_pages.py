@@ -86,7 +86,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
-    <div class="inv-grid">
+    <div class="inv-grid flip">
       <div>
         <header class="inv-head">
           <h1 class="script">the Weather</h1>
@@ -106,7 +106,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
     <section class="inv-section">
-      <div class="inv-grid flip" style="--side:260px">
+      <div class="inv-grid" style="--side:260px">
         <div>
           <header class="inv-head"><h2 class="script">What to Pack</h2></header>
           <div class="prose">

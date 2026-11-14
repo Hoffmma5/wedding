@@ -153,8 +153,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding, 20 px side
   gutter. Text and a watercolour side by side (`.inv-grid`,
   `1fr / minmax(200px, 320px)`); every other row is mirrored (`.flip`: the
-  picture on the left) — Travel's shrimp, Weather's crabs, Program's Sunday
-  oysters and the Algarve intro's sardine tile. Rows with a small picture
+  picture on the left) — Travel's shrimp, Weather's sun (the crabs below
+  it sit on the right), Program's Sunday oysters and the Algarve intro's
+  sardine tile. Rows with a small picture
   set `--side` so the picture column is exactly as wide as the picture and
   the text (max 600 px) sits right beside it, centred vertically: the
   transfer shrimp (170 px) and the crabs (260 px). Sections are separated by a
