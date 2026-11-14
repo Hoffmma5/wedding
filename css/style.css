@@ -860,12 +860,21 @@ h2.script { line-height: 1.45; }
 .day .sc { margin-bottom: 12px; }
 .day.full { grid-template-columns: 1fr; }
 .day-art { max-width: var(--art, 260px); justify-self: end; }
+/* Pictures alternate sides down a page: .flip puts the picture on the left
+   (desktop only; on phones the text always comes first) */
+@media (min-width: 761px) {
+  .inv-grid.flip { grid-template-columns: minmax(200px, 320px) minmax(0, 1fr); }
+  .day.flip { grid-template-columns: minmax(160px, 260px) minmax(0, 1fr); }
+  .inv-grid.flip > .art, .day.flip > .day-art { order: -1; justify-self: start; }
+  .inv-grid.flip > .art img { margin-right: auto; }
+}
 .art img[style*="--art"] { max-width: var(--art); }
 
 @media (max-width: 760px) {
   .inv-grid, .day { grid-template-columns: 1fr; }
   /* Phones: the watercolour objects are small accents, not a screen each */
   .inv-grid .art:not(.map-art), .day-art, .art img[style*="--art"] { max-width: min(var(--art, 150px), 150px); justify-self: center; margin: 0 auto; }
+  .inv-grid .art img[style*="--art"] { margin: 0 auto; }
   .map-art, .tile-art { margin: 0 auto; }
   .facts-list > div { grid-template-columns: 1fr; }
 }

@@ -58,7 +58,7 @@ PAGES["travel"] = ("Travel", INK, f"""
     </div>
 
     <section class="inv-section">
-      <div class="inv-grid">
+      <div class="inv-grid flip">
         <div>
           <header class="inv-head">
             <h2 class="script">transfer</h2>
@@ -101,7 +101,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", INK, f"""
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
     <section class="inv-section">
-      <div class="inv-grid">
+      <div class="inv-grid flip">
         <div>
           <header class="inv-head"><h2 class="script">What to Pack</h2></header>
           <div class="prose">
@@ -113,7 +113,7 @@ PAGES["weather"] = ("Weather &amp; what to pack", INK, f"""
             </ul>
           </div>
         </div>
-        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:260px;margin-left:auto"></figure>
+        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:260px"></figure>
       </div>
     </section>""")
 
@@ -303,7 +303,7 @@ PAGES["program"] = ("Program", INK, f"""
       <img src="assets/art/long-table.webp" alt="Watercolour of guests at a long dinner table" width="1061" height="194" style="width:100%;height:auto">
     </article>
 
-    <article class="day">
+    <article class="day flip">
       <div class="prose">
         <h2 class="script">sunday</h2>
         <p class="sc">Farewell &middot; 03.10.2027</p>
@@ -333,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=59">
+  <link rel="stylesheet" href="css/style.css?v=60">
   <script>
     (function () {{
       var saved = null;
