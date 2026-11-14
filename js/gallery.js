@@ -1,14 +1,14 @@
-/* Polaroid carousels (Stay page).
+/* Photo rows (Stay page).
    Markup: <div class="carousel" aria-label="…"><figure class="slide"><img …><figcaption>…</figcaption></figure>…</div>
-   - a row of polaroids: the centre one faces you, the others curve away like a ring
-   - swipe / scroll-snap on touch, arrows + dots + keyboard on desktop
-   - click a side photo to bring it to the middle, click the middle one to open it full screen */
+   - a plain row of photos that starts at the text column and runs off the
+     right edge of the screen; swipe / scroll-snap on touch
+   - two arrow buttons under the row on desktop, arrow keys when focused
+   - click a photo to open it full screen */
 (function () {
   'use strict';
 
   var ICON_PREV = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
   var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
-  var TILTS = [-2.2, 1.6, -1.1, 2.4, -1.8, 1.1, -2.6, 1.9, -1.3, 2.1];   // hand-placed polaroid tilt
 
   Array.prototype.forEach.call(document.querySelectorAll('.carousel'), function (root) {
     var slides = Array.prototype.slice.call(root.querySelectorAll('.slide'));
@@ -17,30 +17,16 @@
     var track = document.createElement('div');
     track.className = 'c-track';
     track.tabIndex = 0;
-    track.setAttribute('aria-roledescription', 'carousel');
-    track.setAttribute('aria-label', root.getAttribute('aria-label') || 'Photos');
-    slides.forEach(function (s, i) {
-      s.setAttribute('aria-roledescription', 'slide');
-      s.setAttribute('aria-label', (i + 1) + ' of ' + slides.length);
-      track.appendChild(s);
-    });
+    track.setAttribute('role', 'group');
+    track.setAttribute('aria-label', (root.getAttribute('aria-label') || 'Photos') + ', ' + slides.length + ' photos');
+    slides.forEach(function (s) { track.appendChild(s); });
     root.appendChild(track);
 
-    var prev = button('c-prev', 'Previous photo', ICON_PREV);
-    var next = button('c-next', 'Next photo', ICON_NEXT);
-    var dots = document.createElement('div');
-    dots.className = 'c-dots';
-    slides.forEach(function (s, i) {
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.setAttribute('aria-label', 'Show photo ' + (i + 1));
-      d.addEventListener('click', function () { go(i); });
-      dots.appendChild(d);
-    });
+    var prev = button('c-prev', 'Previous photos', ICON_PREV);
+    var next = button('c-next', 'Next photos', ICON_NEXT);
     var controls = document.createElement('div');
     controls.className = 'c-controls';
     controls.appendChild(prev);
-    controls.appendChild(dots);
     controls.appendChild(next);
     root.appendChild(controls);
 
@@ -53,58 +39,31 @@
       return b;
     }
 
-    var current = 0;
-    function stepWidth() { return slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth; }
-
-    // Place every polaroid on the "ring" according to its distance from the centre
-    function layout() {
-      var step = Math.max(1, stepWidth());
-      var pos = track.scrollLeft / step;
-      slides.forEach(function (s, i) {
-        var d = i - pos;                          // 0 = centre, ±1 = neighbours…
-        var a = Math.min(Math.abs(d), 3);
-        var tilt = TILTS[i % TILTS.length] * Math.min(1, a + .35);
-        s.style.transform =
-          'perspective(1400px) translateZ(' + (-a * 170) + 'px) rotateY(' + (Math.max(-3, Math.min(3, d)) * 26) + 'deg) rotate(' + tilt + 'deg)';
-        s.style.opacity = String(Math.max(0, 1 - a * .28));
-        s.style.zIndex = String(10 - Math.round(a * 3));
-        s.classList.toggle('is-current', Math.abs(d) < .5);
-      });
-    }
+    function page() { return Math.max(200, track.clientWidth * .8); }
     function render() {
-      Array.prototype.forEach.call(dots.children, function (d, i) { d.setAttribute('aria-current', i === current ? 'true' : 'false'); });
-      prev.disabled = current === 0;
-      next.disabled = current === slides.length - 1;
+      var max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+      controls.hidden = max <= 0;
     }
-    function go(i) {
-      current = Math.max(0, Math.min(slides.length - 1, i));
-      render();
-      track.scrollTo({ left: current * stepWidth(), behavior: 'smooth' });
-    }
-    var settle = null;
-    track.addEventListener('scroll', function () {
-      layout();
-      clearTimeout(settle);
-      settle = setTimeout(function () {         // follow manual swipes once they come to rest
-        current = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / Math.max(1, stepWidth()))));
-        render();
-      }, 90);
-    }, { passive: true });
-    prev.addEventListener('click', function () { go(current - 1); });
-    next.addEventListener('click', function () { go(current + 1); });
+    prev.addEventListener('click', function () { track.scrollBy({ left: -page(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: page(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', render, { passive: true });
     track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev.click(); }
     });
-    window.addEventListener('resize', function () { track.scrollLeft = current * stepWidth(); layout(); });
+    window.addEventListener('resize', render);
 
     slides.forEach(function (s, i) {
-      s.addEventListener('click', function () {
-        if (i === current) openViewer(slides, i);
-        else go(i);
+      s.tabIndex = 0;
+      s.setAttribute('role', 'button');
+      s.setAttribute('aria-label', 'Open photo: ' + (s.querySelector('figcaption') || {}).textContent);
+      s.addEventListener('click', function () { openViewer(slides, i); });
+      s.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openViewer(slides, i); }
       });
     });
-    layout();
     render();
   });
 
