@@ -368,20 +368,30 @@ button { font-family: inherit; }
 .vane:is(:hover, :focus-visible, .open) .vane-arrow { animation: spin 1.4s var(--ease); }
 @keyframes spin { from { --turn: 0deg; } to { --turn: 360deg; } }
 
-/* ---------- Azulejo beside the yellow door (→ the Algarve) ----------
-   The watercolour tile from the Algarve page, turned azulejo blue and set
-   into the whitewash like a house tile: no lettering, no pin. */
+/* ---------- The bougainvillea (→ the Algarve) ----------
+   No sign: the painted flowers themselves. On hover a few petals let go and
+   drift down the wall, like the oranges from the tree. */
 
-.azulejo { z-index: 5; }
-.azulejo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  filter: hue-rotate(158deg) saturate(2.6) brightness(1.08) drop-shadow(calc(var(--u) * 1) calc(var(--u) * 1.5) calc(var(--u) * 1.5) rgba(60, 50, 40, .25));
-  transition: transform .3s var(--ease), filter var(--fade);
+.flowers { z-index: 5; border-radius: 45%; }
+.petal {
+  position: absolute;
+  left: var(--px);
+  top: var(--py);
+  width: calc(var(--u) * 11);
+  height: calc(var(--u) * 8);
+  border-radius: 60% 40% 60% 40%;
+  background: radial-gradient(circle at 35% 35%, #ff7fb6, #e0367f 70%);
+  opacity: 0;
+  pointer-events: none;
 }
-:root[data-theme="night"] .azulejo img { filter: hue-rotate(158deg) saturate(1.8) brightness(.62); }
-.azulejo:is(:hover, :focus-visible, .open) img { transform: translateY(calc(var(--u) * -3)); }
+.flowers:is(:hover, :focus-visible, .open) .petal { animation: petal-fall 1.6s ease-in var(--d) both; }
+@keyframes petal-fall {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  12%  { opacity: .95; }
+  60%  { transform: translate(calc(var(--u) * -14), calc(var(--u) * 120)) rotate(calc(var(--r) * .6)); }
+  100% { opacity: 0; transform: translate(calc(var(--u) * 6), calc(var(--u) * 210)) rotate(var(--r)); }
+}
+:root[data-theme="night"] .petal { filter: brightness(.6); }
 
 /* ---------- Fingerpost on the street lamp (→ travel) ----------
    A painted board clamped to the post, in the lamp's charcoal and paper,
