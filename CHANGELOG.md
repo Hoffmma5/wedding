@@ -16,6 +16,9 @@ Newest first. Dates are when the change was made; "Unreleased" is not pushed to 
 - **Footer:** the little drawing is replaced by the village painting itself, small – the same three houses as on the home page, and at night the dark version with the windows lit.
 - **Home:** "Everything in the village is clickable…" now sits between the village and the orange strip.
 
+### Fixed
+- **Our favourites map** starts zoomed in on the coast from Albufeira to Tavira (with Loulé and the Quinta) instead of fitting every place on the list, and the **minimap now follows the big map**: it re-centres on wherever you pan and frames the visible area.
+
 ## 2026-11-13 – simplified
 
 ### Changed

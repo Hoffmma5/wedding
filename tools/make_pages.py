@@ -442,7 +442,7 @@ def main():
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
-            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=14"></script>\n</body>')
+            foot = foot.replace('</body>', '  <script src="js/places-map.js?v=15"></script>\n</body>')
         if 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/venue-map.js?v=3"></script>\n</body>')
         html += f'  <main class="page inv" style="--topic:{topic}">{body}\n  </main>\n' + street(slug) + foot
