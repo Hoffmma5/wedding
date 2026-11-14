@@ -63,7 +63,7 @@
   });
 
   /* ---------- Weathervane: press and hold → it points to where you are ----------
-     A normal click still opens the guest map. Holding asks (once) for the
+     A normal click still opens the weather page. Holding asks (once) for the
      visitor's location, turns the arrow from Tavira towards them and tells
      them how far away Tavira is. Nothing is stored or sent anywhere. */
 

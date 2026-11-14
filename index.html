@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=70">
+  <link rel="stylesheet" href="css/style.css?v=71">
   <script>
     (function () {
       var saved = null;
@@ -66,6 +66,23 @@
       <div class="hero-scroll">
         <!-- Positions use the picture's pixels (1926 × 817). Negative --y is the sky above it. -->
         <div class="picture">
+          <!-- Watercolour for the painted signs: soft, wobbly edges, a little grain -->
+          <svg class="paint-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+            <linearGradient id="tile-wash" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#fbf7ec"/><stop offset="1" stop-color="#ece3cc"/></linearGradient>
+            <filter id="paint" x="-8%" y="-15%" width="116%" height="130%">
+              <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="7" result="warp"/>
+              <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="wobbly"/>
+              <feGaussianBlur in="wobbly" stdDeviation=".45" result="soft"/>
+              <feTurbulence type="fractalNoise" baseFrequency=".6" numOctaves="2" seed="3" result="grain"/>
+              <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.22 1.06" result="grainA"/>
+              <feComposite in="soft" in2="grainA" operator="in"/>
+            </filter>
+            <filter id="paint-ink" x="-5%" y="-20%" width="110%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="1" seed="2" result="warp"/>
+              <feDisplacementMap in="SourceGraphic" in2="warp" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="w"/>
+              <feGaussianBlur in="w" stdDeviation=".3"/>
+            </filter>
+          </defs></svg>
           <img class="layer day"   src="assets/village-day.webp"   alt="Three whitewashed Portuguese houses with blue, yellow and coral trim, an orange tree and bougainvillea" width="1926" height="817">
           <img class="layer night" src="assets/village-night.webp" alt="" aria-hidden="true" width="1926" height="817">
           <img class="layer lit"   src="assets/lights-windows.png?v=2" alt="" aria-hidden="true" width="1926" height="817">
@@ -75,8 +92,8 @@
           <div class="glow" style="--x:1241;--y:391;--w:84;--h:106" aria-hidden="true"></div>
           <div class="glow" style="--x:1716;--y:398;--w:78;--h:106" aria-hidden="true"></div>
 
-          <!-- Weathervane on the coral chimney → where guests come from -->
-          <a class="spot go vane" href="map.html" style="--x:1757;--y:-62;--w:96;--h:130">
+          <!-- Weathervane on the coral chimney → weather -->
+          <a class="spot go vane" href="weather.html" style="--x:1757;--y:-62;--w:96;--h:130">
             <svg class="vane-base" viewBox="0 0 96 130" aria-hidden="true">
               <path d="M48 130V14" stroke-width="2.4"/>
               <circle cx="48" cy="11" r="3.4" stroke="none"/>
@@ -89,27 +106,21 @@
             <span class="vane-arrow" aria-hidden="true">
               <svg viewBox="0 0 96 20"><path d="M10 10h70" stroke-width="2.4"/><path d="M92 10l-14-7v14z" stroke="none"/><path d="M6 3l10 7-10 7M14 3l10 7-10 7" stroke-width="1.6" fill="none"/></svg>
             </span>
-            <span class="tip">Where our guests come from</span>
-          </a>
-
-          <!-- House-name tile → location -->
-          <a class="spot go tile-sign" href="location.html" style="--x:987;--y:296;--w:124;--h:46">
-            <span class="tile-face">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c-3.9 0-7 3-7 6.8 0 5 7 12.2 7 12.2s7-7.2 7-12.2c0-3.8-3.1-6.8-7-6.8Zm0 9.3a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/></svg>
-              <span>Algarve</span>
-            </span>
-            <span class="tip">The Algarve</span>
-          </a>
-
-          <!-- Ceramic sun on the blue house, beside its door → weather -->
-          <a class="spot go wall-sun" href="weather.html" style="--x:333;--y:418;--w:68;--h:68">
-            <svg viewBox="0 0 100 100" aria-hidden="true">
-              <path class="rays" d="M50.0 3.0 L56.4 17.6 L68.0 6.6 L68.3 22.6 L83.2 16.8 L77.4 31.7 L93.4 32.0 L82.4 43.6 L97.0 50.0 L82.4 56.4 L93.4 68.0 L77.4 68.3 L83.2 83.2 L68.3 77.4 L68.0 93.4 L56.4 82.4 L50.0 97.0 L43.6 82.4 L32.0 93.4 L31.7 77.4 L16.8 83.2 L22.6 68.3 L6.6 68.0 L17.6 56.4 L3.0 50.0 L17.6 43.6 L6.6 32.0 L22.6 31.7 L16.8 16.8 L31.7 22.6 L32.0 6.6 L43.6 17.6Z"/>
-              <circle class="face" cx="50" cy="50" r="27"/>
-              <circle class="rim" cx="50" cy="50" r="22"/>
-              <path class="feat" d="M40 45.5q3-3 6 0M54 45.5q3-3 6 0M41 56q9 7 18 0"/>
-            </svg>
             <span class="tip">Weather &amp; what to pack</span>
+          </a>
+
+          <!-- Painted azulejo house tile → location -->
+          <a class="spot go tile-sign" href="location.html" style="--x:987;--y:296;--w:124;--h:46">
+            <svg class="plaque" viewBox="0 0 124 46" aria-hidden="true">
+              <g filter="url(#paint)">
+                <rect class="tile" x="2" y="2" width="120" height="42" rx="3"/>
+                <rect class="frame" x="5.5" y="5.5" width="113" height="35" rx="2"/>
+                <rect class="hair" x="9" y="9" width="106" height="28" rx="1"/>
+                <path class="corner" d="M9 13.5 13.5 9M110.5 9 115 13.5M9 32.5 13.5 37M110.5 37 115 32.5"/>
+              </g>
+              <text x="62" y="30" text-anchor="middle" filter="url(#paint-ink)">Algarve</text>
+            </svg>
+            <span class="tip">The Algarve</span>
           </a>
 
           <!-- Doors -->
@@ -139,13 +150,15 @@
             <span class="tip lamp-tip"></span>
           </button>
 
-          <!-- Direction sign on the lamp post → travel -->
+          <!-- Painted direction sign on the lamp post → travel -->
           <a class="spot go signpost" href="travel.html" style="--x:1250;--y:548;--w:152;--h:40">
-            <svg viewBox="0 0 152 40" aria-hidden="true">
-              <path class="bracket" d="M136 9h16M136 31h16"/>
-              <path class="board" d="M17 2.5h119v35H17L2.5 20Z"/>
-              <path class="inner" d="M19 6h113v28H19L7.5 20Z"/>
-              <text x="72" y="25.5" text-anchor="middle">Faro</text>
+            <svg class="plaque" viewBox="0 0 152 40" aria-hidden="true">
+              <g filter="url(#paint)">
+                <path class="bracket" d="M134 9h17M134 31h17"/>
+                <path class="tile" d="M17 2.5h119v35H17L2.5 20Z"/>
+                <path class="frame" d="M18.5 6h114v28h-114L7 20Z"/>
+              </g>
+              <text x="74" y="27" text-anchor="middle" filter="url(#paint-ink)">Faro</text>
             </svg>
             <span class="tip">Travel</span>
           </a>
@@ -192,6 +205,6 @@
 
   <script src="js/site.js?v=13"></script>
   <script src="js/eggs.js?v=11"></script>
-  <script src="js/village.js?v=15"></script>
+  <script src="js/village.js?v=16"></script>
 </body>
 </html>
