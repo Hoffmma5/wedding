@@ -40,7 +40,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <div><dt class="sc">Wedding venue</dt><dd><strong>{VENUE}</dd></div>
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
-        <p>From Czechia, fly from <strong>Prague</strong> or <strong>Nuremberg</strong> &ndash; Nuremberg is often cheaper.</p>
+        <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -246,8 +246,9 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
           <h1 class="script">the Algarve</h1>
         </header>
         <div class="prose">
-          <p>We come back every summer, for the beach and dinners that last three hours.</p>
-          <p>If you come early or stay longer, here is the Algarve we love &ndash; from <strong>Tavira</strong>, 15 minutes from <a href="accommodation.html">the Quinta</a>, to the wild west coast.</p>
+          <p>We come back to the Algarve every summer: beach, pool and long dinners with a full house. The door stays open to let the wind through, and nobody leaves the table for at least three hours.</p>
+          <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace &ndash; whitewashed houses, terracotta roofs, cobbled streets and a river running through. Just beyond: salt flats, endless sandy beaches and the Atlantic.</p>
+          <p>The celebration is up in the hills at <a href="accommodation.html">Hotel Quinta do Marco</a>, 15 minutes from town. If you come early or stay longer, here is the Algarve we love.</p>
         </div>
       </div>
       <figure class="art tile-art">
