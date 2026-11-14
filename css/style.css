@@ -344,41 +344,6 @@ button { font-family: inherit; }
 .spot, .door { display: block; z-index: 6; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; text-decoration: none; }
 .spot:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 10px; }
 
-/* ---------- Sky: sun / moon ---------- */
-
-.sky { border-radius: 50%; }
-.sky .sun, .sky .moon {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  transition: opacity var(--fade), transform .8s var(--ease);
-}
-.sky .sun {
-  background: radial-gradient(circle at 40% 38%, #ffe7a3, #f9c74f 55%, #f4a83a);
-  box-shadow: 0 0 0 calc(var(--u) * 14) rgba(249, 199, 79, .14), 0 0 calc(var(--u) * 60) rgba(249, 180, 60, .35);
-  opacity: calc(1 - var(--night));
-}
-.sky .moon {
-  inset: 6%;
-  background: linear-gradient(200deg, #fffaf0, #efe5c6);
-  -webkit-mask: radial-gradient(circle at 74% 28%, transparent 47%, #000 48.5%);
-  mask: radial-gradient(circle at 74% 28%, transparent 47%, #000 48.5%);
-  transform: rotate(-12deg);
-  opacity: var(--night);
-}
-.sky::before {                     /* soft moonlight halo (not masked) */
-  content: "";
-  position: absolute;
-  inset: -70%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 244, 214, .22), rgba(255, 244, 214, .06) 55%, transparent);
-  opacity: var(--night);
-  transition: opacity var(--fade);
-  pointer-events: none;
-}
-.sky:is(:hover, :focus-visible, .open) .moon { transform: rotate(-12deg) scale(1.08); }
-.sky:is(:hover, :focus-visible, .open) :is(.sun, .moon) { transform: scale(1.08); }
-
 /* ---------- Weathervane ---------- */
 
 .vane { color: #2c3140; }
