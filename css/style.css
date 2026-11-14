@@ -993,19 +993,38 @@ html, body { overflow-x: clip; }
 .vane-arrow.pointing { animation: none; transition: --turn 2.4s cubic-bezier(.2, .7, .2, 1); }
 
 /* =========================================================
-   Photos (Stay page): six plain pictures; a tap opens the whole photo
+   Photos (Stay page): the hotel from above, large; five more in a strip
    ========================================================= */
-.photos {
+.photos { margin: clamp(32px, 5vw, 56px) 0 0; }
+.photos img { display: block; width: 100%; height: auto; object-fit: cover; transition: transform .35s var(--ease); }
+.photo-lead, .photo-strip li { overflow: hidden; border-radius: 4px; }
+.photo-lead img { aspect-ratio: 16 / 9; }
+.photo-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 2vw, 20px);
-  margin: clamp(32px, 5vw, 56px) 0 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(8px, 1.2vw, 12px);
+  margin: clamp(8px, 1.2vw, 12px) 0 0;
   padding: 0;
   list-style: none;
 }
-.photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; transition: transform .35s var(--ease); }
-.photos li { overflow: hidden; border-radius: 4px; }
+.photo-strip img { aspect-ratio: 1; }
 .photo-open:hover img { transform: scale(1.03); }
+@media (max-width: 560px) {
+  .photo-lead img { aspect-ratio: 4 / 3; }
+  /* the strip scrolls sideways under the lead, a thumb and a bit visible */
+  .photo-strip {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 38%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-right: -20px;
+    padding-right: 20px;
+  }
+  .photo-strip::-webkit-scrollbar { display: none; }
+  .photo-strip li { scroll-snap-align: start; }
+}
 .photo-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .photo-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
@@ -1050,9 +1069,6 @@ html, body { overflow-x: clip; }
   .v-next { right: calc(50% - 60px); }
 }
 :root[data-theme="night"] .photos img { filter: brightness(.9); }
-@media (max-width: 560px) {
-  .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-}
 
 /* Travel: good to know – one icon and one short line each, no cards */
 .tips {

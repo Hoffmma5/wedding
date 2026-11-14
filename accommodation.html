@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=59">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <script>
     (function () {
       var saved = null;
@@ -53,14 +53,16 @@
       </dl>
     </div>
 
-    <ul class="photos" aria-label="Photos of Hotel Quinta do Marco">
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: The quinta from above, with the hills and orchards around it"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800" loading="lazy"></button></li>
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: The salt-water pool at golden hour"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"></button></li>
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: A shaded terrace with a hanging chair and views over the hills"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"></button></li>
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: Double room with a terracotta-red bedspread and a view to the hills"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800" loading="lazy"></button></li>
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: Balcony with two chairs looking out over the hills"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"></button></li>
-      <li><button class="photo-open" type="button" aria-label="Show the whole photo: Three goats looking over the farm fence"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"></button></li>
-    </ul>
+    <div class="photos" role="group" aria-label="Photos of Hotel Quinta do Marco">
+      <div class="photo-lead"><button class="photo-open" type="button" aria-label="Show the whole photo: The quinta from above, with the hills and orchards around it"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800"></button></div>
+      <ul class="photo-strip">
+        <li><button class="photo-open" type="button" aria-label="Show the whole photo: The salt-water pool at golden hour"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"></button></li>
+        <li><button class="photo-open" type="button" aria-label="Show the whole photo: A shaded terrace with a hanging chair and views over the hills"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"></button></li>
+        <li><button class="photo-open" type="button" aria-label="Show the whole photo: Double room with a terracotta-red bedspread and a view to the hills"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800" loading="lazy"></button></li>
+        <li><button class="photo-open" type="button" aria-label="Show the whole photo: Balcony with two chairs looking out over the hills"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"></button></li>
+        <li><button class="photo-open" type="button" aria-label="Show the whole photo: Three goats looking over the farm fence"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"></button></li>
+      </ul>
+    </div>
 
     <section class="inv-section">
       <header class="inv-head">

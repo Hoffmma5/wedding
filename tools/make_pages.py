@@ -113,7 +113,8 @@ PAGES["weather"] = ("Weather &amp; what to pack", f"""
       </div>
     </section>""")
 
-# Stay: six plain photos; a tap opens the whole photo (js/photos.js)
+# Stay: the hotel from above, large, then five more in a strip; a tap opens
+# the whole photo (js/photos.js)
 GALLERY = [
     ("hotel/01", "The quinta from above, with the hills and orchards around it"),
     ("hotel/03", "The salt-water pool at golden hour"),
@@ -122,11 +123,18 @@ GALLERY = [
     ("rooms/05", "Balcony with two chairs looking out over the hills"),
     ("hotel/07", "Three goats looking over the farm fence"),
 ]
-PHOTOS_HTML = '    <ul class="photos" aria-label="Photos of Hotel Quinta do Marco">\n' + "\n".join(
-    f'      <li><button class="photo-open" type="button" aria-label="Show the whole photo: {alt}">'
-    f'<img src="assets/gallery/{src}.webp" alt="{alt}" width="1200" height="800" loading="lazy"></button>'
-    '</li>'
-    for src, alt in GALLERY) + "\n    </ul>"
+def _photo(src, alt, lazy=True):
+    loading = ' loading="lazy"' if lazy else ''
+    return (f'<button class="photo-open" type="button" aria-label="Show the whole photo: {alt}">'
+            f'<img src="assets/gallery/{src}.webp" alt="{alt}" width="1200" height="800"{loading}></button>')
+
+
+PHOTOS_HTML = (
+    '    <div class="photos" role="group" aria-label="Photos of Hotel Quinta do Marco">\n'
+    f'      <div class="photo-lead">{_photo(*GALLERY[0], lazy=False)}</div>\n'
+    '      <ul class="photo-strip">\n'
+    + "\n".join(f'        <li>{_photo(src, alt)}</li>' for src, alt in GALLERY[1:])
+    + '\n      </ul>\n    </div>')
 
 FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
 
@@ -325,7 +333,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=59">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <script>
     (function () {{
       var saved = null;
