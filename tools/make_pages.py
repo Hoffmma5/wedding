@@ -113,21 +113,20 @@ PAGES["weather"] = ("Weather &amp; what to pack", f"""
       </div>
     </section>""")
 
-# Stay: six polaroids, each with a small icon in its bottom strip instead of
-# a caption; a tap opens the whole photo (js/photos.js)
+# Stay: six plain photos; a tap opens the whole photo (js/photos.js)
 GALLERY = [
-    ("hotel/01", "The quinta from above, with the hills and orchards around it", icons.GLANCE["where"]),
-    ("hotel/03", "The salt-water pool at golden hour", icons.FACILITIES[0][1]),
-    ("hotel/04", "A shaded terrace with a hanging chair and views over the hills", icons.PHOTOS["terrace"]),
-    ("rooms/01", "Double room with a terracotta-red bedspread and a view to the hills", icons.PHOTOS["room"]),
-    ("rooms/05", "Balcony with two chairs looking out over the hills", icons.PHOTOS["balcony"]),
-    ("hotel/07", "Three goats looking over the farm fence", icons.FACILITIES[6][1]),
+    ("hotel/01", "The quinta from above, with the hills and orchards around it"),
+    ("hotel/03", "The salt-water pool at golden hour"),
+    ("hotel/04", "A shaded terrace with a hanging chair and views over the hills"),
+    ("rooms/01", "Double room with a terracotta-red bedspread and a view to the hills"),
+    ("rooms/05", "Balcony with two chairs looking out over the hills"),
+    ("hotel/07", "Three goats looking over the farm fence"),
 ]
-POLAROIDS_HTML = '    <ul class="polaroids" aria-label="Photos of Hotel Quinta do Marco">\n' + "\n".join(
-    f'      <li><figure class="polaroid"><button class="photo-open" type="button" aria-label="Show the whole photo: {alt}">'
+PHOTOS_HTML = '    <ul class="photos" aria-label="Photos of Hotel Quinta do Marco">\n' + "\n".join(
+    f'      <li><button class="photo-open" type="button" aria-label="Show the whole photo: {alt}">'
     f'<img src="assets/gallery/{src}.webp" alt="{alt}" width="1200" height="800" loading="lazy"></button>'
-    f'{icons.svg(ico)}</figure></li>'
-    for src, alt, ico in GALLERY) + "\n    </ul>"
+    '</li>'
+    for src, alt in GALLERY) + "\n    </ul>"
 
 FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
 
@@ -145,7 +144,7 @@ PAGES["accommodation"] = ("The hotel", f"""
       </dl>
     </div>
 
-{POLAROIDS_HTML}
+{PHOTOS_HTML}
 
     <details class="fold">
       <summary><span class="script">at the Quinta</span></summary>
@@ -380,8 +379,8 @@ def main():
     for slug, (title, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav(), ink=icons.INK_DEFS)
         foot = FOOT
-        if 'class="polaroids"' in body:
-            foot = foot.replace('</body>', '  <script src="js/photos.js?v=1"></script>\n</body>')
+        if 'class="photos"' in body:
+            foot = foot.replace('</body>', '  <script src="js/photos.js?v=2"></script>\n</body>')
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:

@@ -1,5 +1,5 @@
-/* Stay page: tap a polaroid to see the whole photo.
-   Markup: <ul class="polaroids"><li><figure class="polaroid"><button class="photo-open"><img …></button>…</figure></li>…</ul>
+/* Stay page: tap a photo to see the whole of it.
+   Markup: <ul class="photos"><li><button class="photo-open"><img …></button></li>…</ul>
    One <dialog> for the page: the photo as large as the screen allows, previous / next,
    arrow keys, swipe, Esc or a tap outside the photo to close. */
 (function () {
