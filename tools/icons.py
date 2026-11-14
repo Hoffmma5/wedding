@@ -59,6 +59,16 @@ FACILITIES = [
                          '<path d="M2.5 20c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/>'),
 ]
 
+# Stay: the bottom strip of each polaroid, instead of a caption
+PHOTOS = {
+    # a hanging egg chair on its rope
+    "terrace": '<path d="M12 2.5v4.5"/><path d="M7 13.2C7 9.6 9.2 7 12 7s5 2.6 5 6.2v1.6c0 2.6-2.2 4.4-5 4.4s-5-1.8-5-4.4Z"/><path d="M8.2 14.6c2.4.9 5.2.9 7.6 0M12 19.2v2.3M9.5 21.5h5"/>',
+    # a double bed, side on
+    "room": '<path d="M3 19.5V7.5M21 19.5V13M3 16.5h18M3 13h18"/><path d="M5 13v-1.6A1.4 1.4 0 0 1 6.4 10h3.2A1.4 1.4 0 0 1 11 11.4V13"/>',
+    # a balcony rail with the sun over it
+    "balcony": '<circle cx="16.5" cy="6.5" r="2.4"/><path d="M3 12.5h18M3 20.5h18M5 12.5v8M9 12.5v8M13 12.5v8M17 12.5v8M21 12.5v8"/>',
+}
+
 WEATHER = {
     # sun: a ring and short, uneven rays
     "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/>',

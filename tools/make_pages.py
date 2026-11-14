@@ -113,6 +113,22 @@ PAGES["weather"] = ("Weather &amp; what to pack", f"""
       </div>
     </section>""")
 
+# Stay: six polaroids, each with a small icon in its bottom strip instead of
+# a caption; a tap opens the whole photo (js/photos.js)
+GALLERY = [
+    ("hotel/01", "The quinta from above, with the hills and orchards around it", icons.GLANCE["where"]),
+    ("hotel/03", "The salt-water pool at golden hour", icons.FACILITIES[0][1]),
+    ("hotel/04", "A shaded terrace with a hanging chair and views over the hills", icons.PHOTOS["terrace"]),
+    ("rooms/01", "Double room with a terracotta-red bedspread and a view to the hills", icons.PHOTOS["room"]),
+    ("rooms/05", "Balcony with two chairs looking out over the hills", icons.PHOTOS["balcony"]),
+    ("hotel/07", "Three goats looking over the farm fence", icons.FACILITIES[6][1]),
+]
+POLAROIDS_HTML = '    <ul class="polaroids" aria-label="Photos of Hotel Quinta do Marco">\n' + "\n".join(
+    f'      <li><figure class="polaroid"><button class="photo-open" type="button" aria-label="Show the whole photo: {alt}">'
+    f'<img src="assets/gallery/{src}.webp" alt="{alt}" width="1200" height="800" loading="lazy"></button>'
+    f'{icons.svg(ico)}</figure></li>'
+    for src, alt, ico in GALLERY) + "\n    </ul>"
+
 FACILITIES_HTML = "\n".join(f'        <li>{icons.svg(paths)}{name}</li>' for name, paths in icons.FACILITIES)
 
 PAGES["accommodation"] = ("The hotel", f"""
@@ -129,14 +145,7 @@ PAGES["accommodation"] = ("The hotel", f"""
       </dl>
     </div>
 
-    <ul class="polaroids" aria-label="Photos of Hotel Quinta do Marco">
-      <li><figure class="polaroid"><img src="assets/gallery/hotel/01.webp" alt="The quinta from above, with the hills and orchards around it" width="1200" height="800" loading="lazy"><figcaption>the Quinta</figcaption></figure></li>
-      <li><figure class="polaroid"><img src="assets/gallery/hotel/03.webp" alt="The salt-water pool at golden hour" width="1200" height="800" loading="lazy"><figcaption>the pool</figcaption></figure></li>
-      <li><figure class="polaroid"><img src="assets/gallery/hotel/04.webp" alt="A shaded terrace with a hanging chair and views over the hills" width="1200" height="800" loading="lazy"><figcaption>the terrace</figcaption></figure></li>
-      <li><figure class="polaroid"><img src="assets/gallery/rooms/01.webp" alt="Double room with a terracotta-red bedspread and a view to the hills" width="1200" height="800" loading="lazy"><figcaption>a double room</figcaption></figure></li>
-      <li><figure class="polaroid"><img src="assets/gallery/rooms/05.webp" alt="Balcony with two chairs looking out over the hills" width="1200" height="800" loading="lazy"><figcaption>every room has a balcony</figcaption></figure></li>
-      <li><figure class="polaroid"><img src="assets/gallery/hotel/07.webp" alt="Three goats looking over the farm fence" width="1200" height="800" loading="lazy"><figcaption>the neighbours</figcaption></figure></li>
-    </ul>
+{POLAROIDS_HTML}
 
     <details class="fold">
       <summary><span class="script">at the Quinta</span></summary>
@@ -371,6 +380,8 @@ def main():
     for slug, (title, body) in PAGES.items():
         html = HEAD.format(title=title, body_class="", nav=nav(), ink=icons.INK_DEFS)
         foot = FOOT
+        if 'class="polaroids"' in body:
+            foot = foot.replace('</body>', '  <script src="js/photos.js?v=1"></script>\n</body>')
         if 'id="places-map"' in body or 'id="venue-map"' in body:
             foot = foot.replace('</body>', '  <script src="js/arcgis-common.js?v=3"></script>\n</body>')
         if 'id="places-map"' in body:
