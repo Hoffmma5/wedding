@@ -22,6 +22,28 @@
   });
   syncTheme();
 
+  // Language buttons: EN / CZ / DE. Only English exists so far; the choice is
+  // remembered (localStorage 'lang', <html data-lang>) for when it does.
+  var SOON = {
+    cs: 'Česká verze se připravuje – zatím jen v angličtině.',
+    de: 'Die deutsche Version folgt bald – bis dahin auf Englisch.'
+  };
+  var langButtons = Array.prototype.slice.call(document.querySelectorAll('.lang button'));
+  function setLang(lang, announce) {
+    root.dataset.lang = lang;
+    langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    if (announce && SOON[lang] && window.toast) window.toast(SOON[lang], 4000);
+  }
+  var savedLang = 'en';
+  try { savedLang = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  setLang(savedLang, false);
+  langButtons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+      setLang(b.dataset.lang, true);
+    });
+  });
+
   // Mark the current page in the menu
   var here = location.pathname.split('/').pop() || 'index.html';
   Array.prototype.forEach.call(links.querySelectorAll('a'), function (a) {
