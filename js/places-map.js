@@ -6,9 +6,6 @@
      category  – "beach", "food", "sight" (things to do, with kids too) or "venue"
      area      – the town or stretch of coast, shown under the name
      tip       – one or two sentences from you
-     photo     – optional: a picture for the popup, e.g. "assets/places/barril.webp"
-                 (landscape, about 800 x 450; keep it under ~120 KB)
-     credit    – optional: who took the photo / its licence, shown small under it
    Add, remove or move points there (e.g. with geojson.io) and the map follows.
 
    Overview inset: the same azulejo tiles at small scale; it follows the main map and frames it. */
@@ -57,8 +54,11 @@
     return km < 1 ? '' : (km < 10 ? Math.round(km) : Math.round(km / 5) * 5) + '&nbsp;km from the Quinta';
   }
 
-  function directions(p) {
-    return 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lon;
+  // The place itself on Google Maps (reviews, photos, opening hours), found by
+  // its name and area, so guests can decide whether to go
+  function onGoogle(p) {
+    return 'https://www.google.com/maps/search/?api=1&query=' +
+      encodeURIComponent(p.name + (p.area ? ', ' + p.area : '') + ', Portugal');
   }
 
   // Compact side list: icon + name + category. The details live in the map popup.
@@ -75,7 +75,7 @@
         li.innerHTML =
           '<span class="place-icon"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '"></span>' +
           '<span class="place-text"><b>' + escapeHtml(p.name) + '</b><span class="place-cat">' + c.label + '</span></span>' +
-          '<span class="place-tip">' + (p.area ? escapeHtml(p.area) + '. ' : '') + escapeHtml(p.tip) + ' <a href="' + directions(p) + '" target="_blank" rel="noopener">Directions&nbsp;&nearr;</a></span>';
+          '<span class="place-tip">' + (p.area ? escapeHtml(p.area) + '. ' : '') + escapeHtml(p.tip) + ' <a href="' + onGoogle(p) + '" target="_blank" rel="noopener">See it on Google Maps&nbsp;&nearr;</a></span>';
         li.tabIndex = 0;
         li.setAttribute('role', 'button');
         function pick(e) {
@@ -161,12 +161,10 @@
           var dist = a.category === 'venue' ? '' : fromQuinta(g.longitude, g.latitude);
           var where = [a.area ? escapeHtml(a.area) : '', dist].filter(Boolean).join(' &middot; ');
           div.innerHTML =
-            (a.photo ? '<figure class="pp-photo"><img src="' + escapeHtml(a.photo) + '" alt="' + escapeHtml(a.name) + '" loading="lazy">' +
-              (a.credit ? '<figcaption>' + escapeHtml(a.credit) + '</figcaption>' : '') + '</figure>' : '') +
             '<span class="pp-cat"><img src="' + c.icon + '" alt="" width="' + c.w + '" height="' + c.h + '">' + c.label + '</span>' +
             (where ? '<span class="pp-where">' + where + '</span>' : '') +
             '<p>' + escapeHtml(a.tip || '') + '</p>' +
-            '<a class="pp-go" href="' + directions({ lat: g.latitude, lon: g.longitude }) + '" target="_blank" rel="noopener">Directions &nearr;</a>';
+            '<a class="pp-go" href="' + onGoogle(a) + '" target="_blank" rel="noopener">See it on Google Maps &nearr;</a>';
           return div;
         }
       }

@@ -246,11 +246,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   on the *Azulejo Complete* basemap, overview minimap, full-screen mode.
   Markers, list and popups share one set of simple round icons in the page
   blue (`assets/map/*.svg`): a parasol, fork and knife, a star, and a filled
-  disc with a heart for the wedding venue. The popup: an optional photo
-  (16 : 9, `photo` and `credit` in `places.geojson`; only the venue has one
-  so far), the category, the area and the straight-line distance from the
-  Quinta ("Santa Luzia, Tavira · 10 km from the Quinta"), the tip, and
-  Directions.
+  disc with a heart for the wedding venue. The popup, no photos: the
+  category, the area and the straight-line distance from the Quinta
+  ("Santa Luzia, Tavira · 10 km from the Quinta"), the tip, and "See it on
+  Google Maps", which opens the place itself on Google Maps (found by name
+  and area) so guests can read reviews and decide.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
 - **Venue map** (Stay): ArcGIS map of the Quinta.
 - **Dishes to try**: two-column list, name in the ink, muted italic line;
