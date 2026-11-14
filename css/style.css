@@ -23,21 +23,18 @@
   --ease: cubic-bezier(.3, .75, .2, 1);
   --radius: 16px;
 
-  /* Type: four voices, one job each (see DESIGN.md)
-     serif  = everything you read          sc     = every label
-     script = titles                       sans   = controls and fine print
-     display (logo caps) is only for the brand name and the hero title. */
+  /* Type: two families (see DESIGN.md)
+     serif  = everything but titles: reading, labels (as small caps),
+              controls, the brand name and the hero title
+     script = titles, the one handwritten detail */
   --serif: "Lora", Georgia, serif;
-  --sc: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
   --script: "Beth Ellen", "Brush Script MT", cursive;
-  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --display: "Cormorant Garamond", Georgia, serif;
   /* Size scale, built around 17 px Lora body text */
   --fs-xs: 12px;     /* credits, fine print */
   --fs-s: 14px;      /* controls, tooltips, captions */
   --fs-m: 15px;      /* secondary reading text: card bodies, details */
   --fs-base: 17px;   /* reading text */
-  --fs-label: 16px;  /* Cormorant SC labels (small x-height, so a step up) */
+  --fs-label: 17px;  /* small-caps labels: Lora small caps are synthesised, so a step up */
   --fs-l: 20px;      /* lead values */
   --fs-xl: 24px;     /* small headings inside a section */
   --fs-xxl: 28px;    /* figures */
@@ -73,16 +70,15 @@ body {
 a { color: inherit; }
 img { max-width: 100%; }
 
-/* Controls and fine print stay in the sans */
-button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v-count, .places-map, .venue-map, .place-popup {
-  font-family: var(--sans);
-}
+/* Controls inherit the serif too */
+button { font-family: inherit; }
 
-/* Labels: true small caps, never tracked-out uppercase */
+/* Labels: Lora in small caps, capitals full height (synthesised: Lora has no smcp glyphs) */
 .eyebrow, .sc {
   margin: 0;
-  font-family: var(--sc);
-  font-weight: 700;
+  font-family: var(--serif);
+  font-variant-caps: small-caps;
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: .08em;
   line-height: 1.3;
@@ -115,8 +111,8 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   align-items: center;
   gap: 10px;
   margin-right: auto;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-weight: 500;
   font-size: 17px;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -296,8 +292,8 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 }
 .hero-mark { width: clamp(44px, calc(var(--u) * 84), 92px); }
 .hero-text h1, .hero-text .tagline {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-weight: 500;
   text-transform: uppercase;
   color: var(--olive);
   transition: color var(--fade);
@@ -317,7 +313,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   letter-spacing: .24em;
   line-height: 1.2;
 }
-.hero-text .eyebrow { margin-top: calc(8px + var(--u) * 6); font-size: clamp(14px, calc(var(--u) * 17), 18px); }
+.hero-text .eyebrow { margin-top: calc(8px + var(--u) * 6); font-size: clamp(13px, calc(var(--u) * 17), 18px); letter-spacing: .05em; }
 
 /* ---------- Tooltips ---------- */
 
@@ -399,7 +395,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 .vane-base { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .vane-base path { stroke: currentColor; fill: none; stroke-linecap: round; }
 .vane-base circle { fill: currentColor; }
-.vane-base text { fill: currentColor; font-size: 12px; font-weight: 600; font-family: "Inter", sans-serif; }
+.vane-base text { fill: currentColor; font-size: 12px; font-weight: 600; font-family: var(--serif); }
 .vane-arrow {
   position: absolute;
   left: 0;
@@ -647,7 +643,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   border-radius: 999px;
   background: var(--text);
   color: var(--bg);
-  font: 500 var(--fs-base) var(--sans);
+  font: 500 var(--fs-base) var(--serif);
   text-decoration: none;
   transition: opacity .2s, transform .15s;
 }
@@ -746,8 +742,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 
 /* =========================================================
    Invitation styling for inner pages (from the Tavira invitation)
-   Beth Ellen = handwritten titles, Cormorant SC = small caps,
-   Lora = text. Each topic sets --topic (its invitation colour).
+   Beth Ellen = handwritten titles, Lora = everything else
+   (labels in its small caps). Each topic sets --topic (its invitation colour).
    ========================================================= */
 
 /* --topic-c: the ink itself (script titles, art, accents).
@@ -830,11 +826,11 @@ h2.script { line-height: 1.45; }
 .map-labels { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .map-labels .route { fill: none; stroke: #b5432a; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 12; opacity: .8; }
 .map-labels .plane { fill: #1f4fa0; }
-.map-labels .country { font-family: var(--sc); font-weight: 700; font-size: 30px; letter-spacing: .32em; fill: #12386e; opacity: .72; text-anchor: middle; }
+.map-labels .country { font-family: var(--serif); font-variant-caps: small-caps; font-weight: 700; font-size: 30px; letter-spacing: .32em; fill: #12386e; opacity: .72; text-anchor: middle; }
 .map-labels .country.es { fill: #8a6a3e; opacity: .8; }
 .map-labels .sea { font-family: var(--serif); font-style: italic; font-size: 24px; letter-spacing: .12em; fill: #4f7686; text-anchor: middle; }
 .map-labels .town { fill: #23314f; stroke: #fdfaf2; stroke-width: 2; }
-.map-labels .town-name { font-family: var(--sc); font-weight: 700; font-size: 24px; letter-spacing: .06em; fill: #23314f; text-anchor: end; }
+.map-labels .town-name { font-family: var(--serif); font-variant-caps: small-caps; font-weight: 700; font-size: 24px; letter-spacing: .06em; fill: #23314f; text-anchor: end; }
 .map-labels .tavira { font-family: var(--script); font-size: 46px; fill: #1f4fa0; }
 
 /* Location: the cover's sardine on its azulejo tile */
@@ -989,7 +985,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: rgba(255, 255, 255, .12);
   color: #fff;
-  font: 500 13px "Inter", sans-serif;
+  font: 500 13px var(--serif);
   cursor: pointer;
 }
 .disco-mute:hover { background: rgba(255, 255, 255, .22); }
@@ -1168,7 +1164,7 @@ html, body { overflow-x: clip; }
 .viewer .v-close { position: fixed; top: 16px; right: 16px; }
 .viewer .v-prev { position: fixed; left: 16px; top: calc(50% - 21px); }
 .viewer .v-next { position: fixed; right: 16px; top: calc(50% - 21px); }
-.viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 500 13px "Inter", sans-serif; color: rgba(255, 255, 255, .75); }
+.viewer .v-count { position: fixed; top: 26px; left: 50%; transform: translateX(-50%); font: 500 13px var(--serif); color: rgba(255, 255, 255, .75); }
 
 /* Travel: good to know – one icon and one short line each, no cards */
 .tips {
@@ -1203,7 +1199,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
-  font: 500 14px "Inter", sans-serif;
+  font: 500 14px var(--serif);
   cursor: pointer;
   transition: background-color .2s, color .2s, border-color .2s;
 }
@@ -1222,7 +1218,7 @@ html, body { overflow-x: clip; }
 .places-map.failed { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); }
 .places-map .esri-view-surface--inset-outline:focus::after { outline: 2px solid var(--topic-c) !important; }
 .place-popup p { margin: 0 0 8px; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.5; color: #23314f; }
-.place-popup a { font: 600 13px "Inter", sans-serif; color: #1f4fa0; }
+.place-popup a { font: 600 13px var(--serif); color: #1f4fa0; }
 
 .places-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
 .place {
@@ -1239,10 +1235,10 @@ html, body { overflow-x: clip; }
 }
 .place:hover, .place:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow); outline: none; }
 .place img { justify-self: center; margin-top: 4px; width: auto; max-width: 44px; height: auto; max-height: 34px; }
-.place-cat { display: block; font-family: var(--sc); font-weight: 700; font-size: 13px; letter-spacing: .06em; color: var(--muted); }
+.place-cat { display: block; font-family: var(--serif); font-variant-caps: small-caps; font-weight: 700; font-size: 13px; letter-spacing: .06em; color: var(--muted); }
 .place b { display: block; font-size: var(--fs-base); font-weight: 600; color: var(--ink); }
 .place p { margin: 2px 0 6px; font-size: var(--fs-s); line-height: 1.5; color: var(--muted); }
-.place a { font: 600 13px "Inter", sans-serif; color: var(--ink); text-decoration: none; }
+.place a { font: 600 13px var(--serif); color: var(--ink); text-decoration: none; }
 .place a:hover { text-decoration: underline; }
 .place-venue { border-color: color-mix(in srgb, var(--olive) 40%, transparent); }
 :root[data-theme="night"] .place-venue img { filter: invert(1) brightness(1.6); }
@@ -1256,7 +1252,7 @@ html, body { overflow-x: clip; }
   padding: 0;
   list-style: none;
 }
-.facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 500 var(--fs-s) var(--sans); color: var(--muted); }
+.facilities li { display: grid; justify-items: center; gap: 8px; text-align: center; font: 500 var(--fs-s) var(--serif); color: var(--muted); }
 .facilities .ico { color: var(--ink); }
 
 /* The one icon family (tools/icons.py): a thin line and a faint tint of the
@@ -1354,8 +1350,8 @@ html, body { overflow-x: clip; }
 
 /* Esri popup in the site's style */
 .places-map .esri-popup__main-container, .places-map .esri-popup calcite-panel { border-radius: 14px; }
-.place-popup { font-family: "Inter", sans-serif; }
-.place-popup .pp-cat { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; font-family: var(--sc); font-size: 14px; font-weight: 700; letter-spacing: .06em; color: #6b7180; }
+.place-popup { font-family: var(--serif); }
+.place-popup .pp-cat { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 6px; font-family: var(--serif); font-variant-caps: small-caps; font-size: 14px; font-weight: 700; letter-spacing: .06em; color: #6b7180; }
 .place-popup .pp-cat img { width: auto; height: 18px; }
 .place-popup p { margin: 0 0 12px; font-family: "Lora", Georgia, serif; font-size: 15px; line-height: 1.55; color: #23314f; }
 .place-popup .pp-go {
@@ -1402,7 +1398,7 @@ html, body { overflow-x: clip; }
   border-radius: 999px;
   background: #1f4fa0;
   color: #fff;
-  font: 600 14px "Inter", sans-serif;
+  font: 600 14px var(--serif);
   text-decoration: none;
   white-space: nowrap;
   box-shadow: 0 6px 18px rgba(20, 30, 60, .25);
@@ -1462,7 +1458,7 @@ html.map-full, html.map-full body { overflow: hidden; }
   align-items: center;
   gap: 4px;
   padding: 6px 2px;
-  font: 500 var(--fs-s) var(--sans);
+  font: 500 var(--fs-s) var(--serif);
 }
 .pager .next { justify-self: end; }
 .pager .prev { justify-self: start; }
