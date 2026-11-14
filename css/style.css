@@ -572,13 +572,13 @@ html.zooming-out .hero-text { transition: opacity .4s ease .3s; }
 
 /* The pages on an orange stripe right under the village, full width: one
    azulejo tile and a label per page, RSVP last with the tile glazed in
-   cream. The orange is the oranges on the tree, deepened until cream
-   labels read at 4 : 1 (they are 21 px semibold). */
+   cream. The orange is the oranges on the tree, deepened until the cream
+   labels pass AA at 4.7 : 1. */
 .stripe {
   position: relative;
   z-index: 3;
   margin: 0 0 clamp(48px, 7vw, 88px);
-  background: #c75d22;
+  background: #b8501b;
   color: #fff8ee;
   transition: background-color var(--fade), color var(--fade);
 }
@@ -610,8 +610,8 @@ html.zooming-out .hero-text { transition: opacity .4s ease .3s; }
 .stripe a:hover .tile { transform: translateY(-2px); }
 .stripe a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 .stripe .rsvp .tile .t-o { fill: currentColor; }
-.stripe .rsvp .tile .t-i, .stripe .rsvp .tile .t-c, .stripe .rsvp .tile .g { stroke: #c75d22; }
-.stripe .rsvp .tile .f { fill: color-mix(in srgb, #c75d22 22%, transparent); }
+.stripe .rsvp .tile .t-i, .stripe .rsvp .tile .t-c, .stripe .rsvp .tile .g { stroke: #b8501b; }
+.stripe .rsvp .tile .f { fill: color-mix(in srgb, #b8501b 22%, transparent); }
 :root[data-theme="night"] .stripe .rsvp .tile :is(.t-i, .t-c, .g) { stroke: #6e3418; }
 @media (max-width: 760px) {
   .stripe ul { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 4px; padding: 12px 8px; }

@@ -77,8 +77,8 @@ ink; none uses it.
 ### The orange stripe (Home only)
 
 The one deliberate exception to "one accent": the page stripe under the
-village is the orange of the tree's oranges, deepened to `#c75d22` so its
-cream `#fff8ee` labels (21 px semibold) read at 4 : 1; at night `#6e3418`
+village is the orange of the tree's oranges, deepened to `#b8501b` so its
+cream `#fff8ee` labels read at 4.7 : 1 (AA); at night `#6e3418`
 with `#f6e6d2`. The same orange (`#e8822a`, night `#f0a050`) fills the
 oranges in the footer tree. Nothing else outside the pictures is orange.
 
