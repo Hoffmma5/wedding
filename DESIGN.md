@@ -133,8 +133,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Nav**: fixed, 60 px; transparent over the home hero, frosted
   (`blur(12px)`, 82 % `--bg`, hairline) once scrolled and always on inner
   pages. Brand left; pill links (Lora 14 px, 44 px tall); RSVP a dark pill;
-  a 44 px day/night button. Below 820 px a hamburger opens a card menu with
-  16 px links, 44 px tall.
+  the language buttons **EN · CZ · DE**; a 44 px day/night button. Below
+  960 px a hamburger opens a card menu with 16 px links, 44 px tall, and
+  the language buttons in a row at the bottom.
 - **Home hero**: the painting is 1926 × 817 px plus a 360 px sky band where
   the names sit. Hotspots are placed in picture pixels (`--x/--y/--w/--h`).
   Width fills the screen but keeps the doors above the fold; under 860 px the
@@ -172,7 +173,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
   left-aligned on inner pages, centred on Home.
-- **Breakpoints**: 860 (hero), 820 (nav), 760 (one column), 560 (lists,
+- **Breakpoints**: 960 (nav), 860 (hero), 760 (one column), 560 (lists,
   smaller script titles), 420 (at a glance stacks).
 - **Touch**: every control is at least 44 × 44 px. Inline links inside
   running text are exempt.
@@ -245,6 +246,22 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Placeholder** (`p.tbc`): one muted italic line ("Details of the day to
   follow.", "Reply form to follow.").
 - **Toast**: Lora italic at the bottom of the screen.
+- **Add to calendar** (Program, `.add-cal`): under the title, an ink-and-wash
+  calendar icon, the small-caps label "Add to your calendar" and three pill
+  links in the page ink, 44 px tall: Google (Google Calendar, filled in),
+  Apple (downloads `assets/marek-paulo-wedding.ics`, which also suits
+  Outlook desktop and most phones) and Outlook (Outlook.com). The event runs
+  from check-in Fri 1 Oct 2027 14:00 to check-out Sun 3 Oct 12:00 (Portugal
+  time) at the Quinta, with a reminder a week before.
+- **Language buttons** (`.lang`): EN, CZ, DE as small muted text, the
+  chosen one underlined. Only English exists: the choice is remembered
+  (`localStorage` `lang`, `<html data-lang>`) and CZ / DE show a toast in
+  their language saying the version is on its way.
+- **Link preview**: every page carries Open Graph / Twitter card tags — the
+  page title, "We're getting married in Tavira, Algarve, on 1–3 October
+  2027 – and we'd love you to be there.", and `assets/og-image.jpg`
+  (1200 × 630: logo orange, names, date and place over the village). The
+  URLs point at the live site, `https://hoffmma5.github.io/wedding/`.
 
 ## Motion
 
@@ -273,8 +290,16 @@ sometimes run into the title ("Let us help you plan your" → *Travel*).
 ## Practical notes
 
 - Inner pages: edit `tools/make_pages.py` and re-run, don't edit the HTML.
-- CSS is one file, `css/style.css` (~1540 lines), cache-busted with `?v=`
-  (now `v=59`; bump it in `index.html` and `make_pages.py` together).
+- CSS is one file, `css/style.css` (~1600 lines), cache-busted with `?v=`
+  (now `v=74`; bump it in `index.html` and `make_pages.py` together).
+- Link preview picture: edit `tools/og-card.html`, then
+  `python tools/make_og.py` (headless Chrome or Edge). Check the cards
+  locally at `/tools/share-preview.html` on the local server; check the
+  real thing after publishing with a link-preview checker or by sending
+  the link to yourself (apps cache previews, so test a fresh link such as
+  `…/wedding/?v=2`).
+- Calendar: the event details live in `tools/cal_event.py`; `make_pages.py`
+  writes the `.ics` and the links. `.gitattributes` keeps the `.ics` CRLF.
 - Painting coordinates are in picture pixels (1926 × 817); see the top of
   `style.css`.
 - Maps: ArcGIS Maps SDK 5.2 + Calcite, loaded as ES modules via
