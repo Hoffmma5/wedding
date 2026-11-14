@@ -146,13 +146,15 @@ PAGES["accommodation"] = ("The hotel", f"""
 
 {PHOTOS_HTML}
 
-    <details class="fold">
-      <summary><span class="script">at the Quinta</span></summary>
+    <section class="inv-section">
+      <header class="inv-head">
+        <h2 class="script">at the Quinta</h2>
+      </header>
       <ul class="facilities">
 {FACILITIES_HTML}
       </ul>
       <p class="contact"><a href="https://www.hotelquintadomarco.com/en/" target="_blank" rel="noopener">More about the hotel on its website &nearr;</a></p>
-    </details>
+    </section>
 
     <section class="inv-section">
       <header class="inv-head">
