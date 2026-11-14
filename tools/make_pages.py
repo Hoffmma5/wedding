@@ -355,7 +355,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=55">
   <script>
     (function () {{
       var saved = null;
@@ -417,11 +417,22 @@ VILLAGE_MINI = """<span class="mini-village" aria-hidden="true">
       </span>"""
 
 
+# The key pages end with the RSVP button, so the answer is never far away
+ASK_RSVP = ("program", "accommodation", "travel")
+
+
 def street(slug):
     i = [w[0] for w in WALK].index(slug)
     (p_slug, p_name), (n_slug, n_name) = WALK[i - 1], WALK[(i + 1) % len(WALK)]
+    rsvp = ""
+    if slug in ASK_RSVP:
+        rsvp = """    <div class="end-rsvp">
+      <p>Will you join us?</p>
+      <a class="btn" href="rsvp.html">RSVP</a>
+    </div>
+"""
     return f"""  <footer class="street">
-    <nav class="pager" aria-label="Previous and next page">
+{rsvp}    <nav class="pager" aria-label="Previous and next page">
       <a class="prev" href="{p_slug}.html">{CHEVRON_L}{p_name}</a>
       <a class="street-view" href="index.html" title="Back to the village" aria-label="Back to the village">
       {VILLAGE_MINI}
