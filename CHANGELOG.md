@@ -3,6 +3,17 @@
 All notable changes to the Marek & Paulo wedding website.
 Newest first. Dates are when the change was made; "Unreleased" is not pushed to GitHub Pages yet.
 
+## Unreleased – save the date, previews, languages (branch `skill-impeccable`)
+
+### Added
+- **Save the date:** add the weekend to your calendar – "Google Calendar" or "Apple / Outlook" (a calendar file) – on the home page, the Program and the RSVP page.
+- **A proper preview when the link is shared:** the village painting with our names and the date, plus a title and a short description; the little orange is now the browser-tab icon.
+- **Language buttons EN · CS · DE** in the menu. Only English exists so far; Czech and German say, in Czech and German, that their version is coming.
+
+### Changed
+- **Hotel photos are a compact strip** of six small photos (3 × 2 on phones) instead of the big mosaic; tap one to see them all big.
+- **The "Algarve" tile and the "Faro" sign look painted,** like the rest of the village – brushed edges, blue pigment, a soft shadow – and the location pin on the tile is gone. At night they take on the night colours.
+
 ## Unreleased – the Faro sign (branch `skill-impeccable`)
 
 ### Changed

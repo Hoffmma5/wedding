@@ -3,8 +3,9 @@
 Two parts. **Current state** describes the site as it is on the
 `skill-impeccable` branch (14 November 2026, after two passes: shorter
 copy, two typefaces, one ink; then azulejo tile icons, the orange page
-stripe on Home, photo mosaics, the orange logo in the footer, a Faro
-street sign instead of the plane, and alternating picture sides),
+stripe on Home, compact photo strips, the orange logo in the footer,
+painted Faro and Algarve signs, save the date, link previews, language
+buttons and alternating picture sides),
 measured from `css/style.css`, the pages and `tools/make_pages.py`. **Target direction** is where the redesign is
 heading, and **What's not working yet** lists the gaps between the two.
 When a change contradicts the current state, update this document in the
@@ -134,9 +135,11 @@ a fact (Program: "Welcome party · 01.10.2027").
 
 - **Nav**: fixed, 60 px; transparent over the home hero, frosted
   (`blur(12px)`, 82 % `--bg`, hairline) once scrolled and always on inner
-  pages. Brand left; pill links (Cormorant 600, 17 px, `6px 12px`); RSVP a dark pill;
-  a 38 px day/night button. Below 820 px a hamburger opens a card menu with
-  16 px links and 12 px padding.
+  pages. Brand left (never wraps); pill links (Cormorant 600, 17 px,
+  `6px 12px`); RSVP a dark pill; after a hairline the **language buttons**
+  EN · CS · DE (40 px, the current one underlined); a 38 px day/night
+  button. Below 980 px a hamburger opens a card menu with 19 px links and
+  the language buttons as a row of 44 px buttons at the bottom.
 - **Home hero**: the painting is 1926 × 817 px plus a 360 px sky band where
   the names sit. Hotspots are placed in picture pixels (`--x/--y/--w/--h`).
   Width fills the screen but keeps the doors above the fold; under 860 px the
@@ -148,8 +151,9 @@ a fact (Program: "Welcome party · 01.10.2027").
 - **Home below the village**: the **orange stripe**, full width, 1120 px
   inner: seven buttons (Program, Stay, Travel, Weather, Algarve, Guests,
   RSVP), each a 48 px cream tile over a 21 px label; RSVP's tile is glazed
-  solid cream. 4 + 3 under 760 px. Then the story section (hidden until
-  `data-storymap` has a link) and a one-line footer.
+  solid cream. 4 + 3 under 760 px. Then **save the date** (centred), the
+  story section (hidden until `data-storymap` has a link) and a one-line
+  footer.
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding, 20 px side
   gutter. The page title has 36–56 px of air below it. Text and a
   watercolour side by side (`.inv-grid`, `1fr / minmax(200px, 320px)`);
@@ -168,8 +172,8 @@ a fact (Program: "Welcome party · 01.10.2027").
   hover and floating UI.
 - **Spacing**: fluid `clamp()` throughout, no fixed spacing scale. Content is
   left-aligned on inner pages, centred on Home.
-- **Breakpoints**: 860 (hero), 820 (nav), 760 (one column, stripe 4 + 3,
-  photo mosaic 2 columns at 560), 560 (lists).
+- **Breakpoints**: 980 (nav), 860 (hero), 760 (one column, stripe 4 + 3),
+  560 (lists, photo strip 3 × 2).
 
 ## Imagery
 
@@ -184,7 +188,7 @@ a fact (Program: "Welcome party · 01.10.2027").
   map, tilted 1.2°, watercolour Portugal, pencilled Spain, a dotted flight
   path to Faro and a pearl on Tavira.
 - **Photos** — only on Stay: six of the hotel, six of the rooms, as
-  caption-free mosaics. The other hotel/room photos stay in `assets/gallery/`; dish photos in
+  compact caption-free strips. The other hotel/room photos stay in `assets/gallery/`; dish photos in
   `assets/dishes/`. None of them is shown elsewhere.
 - **Icons** (`tools/icons.py`) — one family: **azulejo tiles**. A 40 × 40
   tile (outer frame with a 7 % glaze, fine inner frame, a quarter-circle in
@@ -195,7 +199,18 @@ a fact (Program: "Welcome party · 01.10.2027").
   stay, travel, weather, algarve, guests, rsvp envelope), FACILITIES,
   WEATHER, TIPS. Footer chevrons and UI controls stay plain lines.
 - **Logo mark** — the orange emblem via CSS mask: `--text` in the nav and
-  hero, the stripe orange in the footer.
+  hero, the stripe orange in the footer; `logo-mark.png` is also the favicon.
+- **Painted signs** — the "Algarve" house tile and the "Faro" street sign are
+  SVG painted to match the watercolour: shared filters in the picture
+  (`#wc-paper` brushes the plate's edge, `#wc-pigment` mottles the blue rim
+  and inner line, `#wc-wash` is the soft shadow), the houses' trim blue
+  `#2a72e6`, solid lettering with a brushed edge, no icons. At night they
+  are repainted in the night layer's colours (plate `#6b7299`, trim
+  `#1d3478`), not dimmed.
+- **Share card** (`assets/og-image.jpg`, 1200 × 630) — the logo, the names in
+  the logo caps, the date and the village painting on paper. Source:
+  `tools/og-card.html`, rendered by `tools/make_og.py` (headless Chrome,
+  site served on :5001).
 
 ## Components
 
@@ -213,15 +228,22 @@ a fact (Program: "Welcome party · 01.10.2027").
   key fact in the ink; two columns, one on phones.
 - **Weather numbers** (`.wx`): an open row between two hairlines — tile,
   number in the ink, muted caption.
-- **Photo mosaic** (Stay, `.photos` + `js/gallery.js`): no captions. Three
-  columns: one large photo (2 × 2) and five 4:3 photos beside and under
-  it, 4 px corners, 6–10 px gaps; `.flip` puts the large photo on the right
-  (bedrooms). Phones: two columns, large photo and last photo full width.
-  Hover leans in (scale 1.04); a click or Enter opens the full-screen
-  viewer (arrows, keys, swipe, "3 / 6", no caption).
-- **Street sign** (Home, `.signpost`): an arrow-shaped enamel plate in
-  SVG, cream with the tile's blue rim and fine inner line, a small plane
-  and FARO in tracked capitals, two clamps on the lamp pole; points west.
+- **Photo strip** (Stay, `.photos` + `js/gallery.js`): no captions. One row
+  of six 4:3 thumbnails across the text column (~115 px tall), 8 px gaps,
+  4 px corners; 3 × 2 on phones. Hover leans in (scale 1.06); a click or
+  Enter opens the full-screen viewer (arrows, keys, swipe, "3 / 6").
+- **Street sign** (Home, `.signpost`): a painted arrow-shaped plate on the
+  lamp pole, a small plane and FARO, two clamps; points west. Swings on
+  hover.
+- **Save the date** (`.save-date`, `SAVE_DATE` in `tools/make_pages.py`): a
+  calendar tile, "Save the date · 1 – 3 October 2027", and two outline
+  pills: **Google Calendar** (a prefilled event link) and **Apple /
+  Outlook** (downloads `assets/marek-paulo-wedding.ics`, an all-day event
+  1–3 Oct 2027 at the Quinta). On Home under the stripe, on Program under
+  the title, on RSVP after the text.
+- **Language buttons** (`.lang`, in the nav): EN · CS · DE. Only English
+  exists; CS and DE show a toast in their own language that the version is
+  coming, and English stays selected.
 - **Places app** (Algarve): list with category chips + ArcGIS map on the
   *Azulejo Complete* basemap, overview minimap, full-screen mode.
 - **Guests map**: an embedded map (`iframe`, lazy) filling the screen.
@@ -265,6 +287,10 @@ closed `<details>`. The exception is the Algarve intro, which stays personal
   (bump it in `index.html` and `HEAD` in `tools/make_pages.py` together).
 - Painting coordinates are in picture pixels (1926 × 817); see the top of
   `style.css`.
+- The public address `SITE` (`https://hoffmma5.github.io/wedding/`, assumed
+  from the GitHub Pages repo) is used by the link previews and the calendar
+  event: `tools/make_pages.py`, the meta tags in `index.html`, the Google
+  Calendar link and the `.ics`. Change all four if the address differs.
 - Maps: ArcGIS Maps SDK 5.2 + Calcite, loaded as ES modules via
   `js/arcgis-boot.js`, only on Stay and Algarve, started when the map
   scrolls into view. Guests embeds a separate map site in an `iframe`.
@@ -357,6 +383,8 @@ Where the current site falls short of the target, roughly by impact.
 10. **Weight.** The home painting is ~520 KB in two layers plus PNG overlays;
     the ArcGIS SDK + Calcite on Stay and Algarve are heavy (lazy, but still
     loaded just by scrolling past). Fonts are down from five families to two.
+13. **Translations.** The EN · CS · DE buttons are in place, but there is no
+    Czech or German text yet and nothing switches.
 11. **Naming and casing are inconsistent.** The nav says *Stay*, the page
     says *the Hotel*; titles mix "the guests", "Travel", "What to Pack".
     (Small-caps lines no longer split sentences across the title.)
