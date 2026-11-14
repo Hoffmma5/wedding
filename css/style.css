@@ -591,41 +591,54 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 
 /* ---------- Details ---------- */
 
-/* The pages, on an orange strip right under the village: it closes the
-   picture off and is the plain way into the site. Roof-tile orange that
-   keeps white text at 4.6 : 1. */
+/* The pages, on a terracotta watercolour wash right under the village
+   (tools/make_wash.py): ragged painted edges, pigment pooling at the rims,
+   cream text at 4.8 : 1 or more. At night the wash takes the painting's
+   dusk tint and the icons step back. */
 .strip {
-  --strip: #c4521f;
   position: relative;
   z-index: 3;
-  background: var(--strip);
-  color: #fff;
+  max-width: 1180px;
+  margin: 0 auto clamp(40px, 6vw, 72px);
+  padding: 0 clamp(0px, 2vw, 24px);
+  color: #fbf3e4;
 }
 .strip ul {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 14px clamp(8px, 3vw, 32px);
+  margin: 0;
+  padding: 34px clamp(12px, 3vw, 40px) 30px;
   list-style: none;
+  background: url("../assets/wash-wide.webp") center / 100% 100% no-repeat;
 }
+:root[data-theme="night"] .strip ul { background-image: url("../assets/wash-wide-night.webp"); }
+:root[data-theme="night"] .strip { color: #e9e2d2; }
 .strip a {
   display: grid;
   justify-items: center;
   gap: 8px;
-  padding: 14px 6px 12px;
-  border-radius: 10px;
+  padding: 10px 4px;
+  border-radius: 12px;
   font: 500 var(--fs-base) var(--sans);
   letter-spacing: .01em;
   color: inherit;
   text-decoration: none;
-  transition: background-color .2s;
 }
-.strip svg { --tint: rgba(255, 255, 255, .3); width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.strip a:hover { background: rgba(0, 0, 0, .1); }
-.strip a:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
-.hint { position: relative; z-index: 3; margin: 0 auto 16px; padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
-.strip { margin-bottom: clamp(40px, 6vw, 72px); }
+.strip svg {
+  --tint: rgba(251, 243, 228, .22);
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .35s var(--ease);
+}
+:root[data-theme="night"] .strip svg { --tint: rgba(233, 226, 210, .12); opacity: .8; }
+.strip a:hover svg { transform: translateY(-3px) rotate(-6deg); }
+.strip a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+.hint { position: relative; z-index: 3; margin: 0 auto 10px; padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
 
 /* ---------- Our story ---------- */
 
@@ -682,8 +695,9 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
     transition: opacity .5s;
   }
   .swipe-hint.gone { opacity: 0; }
-  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px; }
-  .strip a { padding: 12px 4px; font-size: var(--fs-m); }
+  .strip ul { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 6px; padding: 40px 10px 38px; background-image: url("../assets/wash-tall.webp"); }
+  :root[data-theme="night"] .strip ul { background-image: url("../assets/wash-tall-night.webp"); }
+  .strip a { font-size: var(--fs-m); }
   .story-frame { height: 78svh; }
 }
 
