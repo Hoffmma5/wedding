@@ -591,17 +591,16 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
 
 /* ---------- Details ---------- */
 
-/* The pages, on a terracotta watercolour wash right under the village
-   (tools/make_wash.py): ragged painted edges, pigment pooling at the rims,
-   cream text at 4.8 : 1 or more. At night the wash takes the painting's
-   dusk tint and the icons step back. */
+/* The pages, on a pale wash painted like the street under the houses
+   (tools/make_wash.py). Olive labels and terracotta icons by day; at night
+   the wash takes the night street's tint and the text turns cream. */
 .strip {
   position: relative;
   z-index: 3;
   max-width: 1180px;
   margin: 0 auto clamp(40px, 6vw, 72px);
   padding: 0 clamp(0px, 2vw, 24px);
-  color: #fbf3e4;
+  color: #4b4b31;
 }
 .strip ul {
   display: grid;
@@ -612,7 +611,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   background: url("../assets/wash-wide.webp") center / 100% 100% no-repeat;
 }
 :root[data-theme="night"] .strip ul { background-image: url("../assets/wash-wide-night.webp"); }
-:root[data-theme="night"] .strip { color: #e9e2d2; }
+:root[data-theme="night"] .strip { color: #e6e0d0; }
 .strip a {
   display: grid;
   justify-items: center;
@@ -625,7 +624,8 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   text-decoration: none;
 }
 .strip svg {
-  --tint: rgba(251, 243, 228, .22);
+  --tint: rgba(181, 67, 42, .16);
+  color: #b5432a;
   width: 32px;
   height: 32px;
   fill: none;
@@ -635,7 +635,7 @@ html.zooming-out .hero-text { transition: opacity .6s ease .55s; }
   stroke-linejoin: round;
   transition: transform .35s var(--ease);
 }
-:root[data-theme="night"] .strip svg { --tint: rgba(233, 226, 210, .12); opacity: .8; }
+:root[data-theme="night"] .strip svg { --tint: rgba(232, 160, 132, .14); color: #e3a58a; opacity: .85; }
 .strip a:hover svg { transform: translateY(-3px) rotate(-6deg); }
 .strip a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 .hint { position: relative; z-index: 3; margin: 0 auto 10px; padding: 0 16px; text-align: center; font-size: var(--fs-s); color: var(--muted); }
