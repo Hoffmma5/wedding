@@ -26,6 +26,14 @@ import icons   # tools/icons.py
 
 PAGES = {}
 
+# The end of every key page (Program, Stay, Travel): one line and the reply
+REPLY_END = """
+
+    <aside class="reply-end">
+      <p>Coming to Tavira?</p>
+      <a class="btn" href="rsvp.html">Reply to the invitation</a>
+    </aside>"""
+
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", BLUE, f"""
@@ -83,7 +91,7 @@ PAGES["travel"] = ("Travel", BLUE, f"""
       <ul class="tips">
 {TIPS_HTML}
       </ul>
-    </section>""")
+    </section>{REPLY_END}""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
     <div class="inv-grid">
@@ -201,7 +209,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
         </a>
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
-    </section>""")
+    </section>{REPLY_END}""")
 
 
 # Dishes to try (Algarve page): name and what it is. The photos and their
@@ -334,7 +342,7 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
         </ul>
       </div>
       <img class="day-art" src="assets/art/oysters.webp" alt="" width="520" height="522" style="--art:200px">
-    </article>""")
+    </article>{REPLY_END}""")
 
 PAGES["rsvp"] = ("RSVP", OLIVE, """
     <header class="inv-head">
@@ -355,7 +363,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+Garamond:wght@500;600&family=Cormorant+SC:wght@700&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=54">
+  <link rel="stylesheet" href="css/style.css?v=55">
   <script>
     (function () {{
       var saved = null;
