@@ -9,7 +9,7 @@ or edit the generated .html files by hand (then stop using this script).
 NAV = [
     ("index", "Home"),
     ("program", "Program"),
-    ("accommodation", "Stay"),
+    ("accommodation", "Accommodation"),
     ("travel", "Travel"),
     ("weather", "Weather"),
     ("location", "Algarve"),
@@ -375,7 +375,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=106">
+  <link rel="stylesheet" href="css/style.css?v=107">
   <script>
     (function () {{
       var saved = null;
