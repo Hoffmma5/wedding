@@ -1726,3 +1726,26 @@ h2.script + .sc { margin-top: .75em; }
 }
 .strip-nav a:hover { background: rgba(255, 255, 255, .2); border-color: #fff; transform: translateY(-2px); }
 @media (max-width: 860px) { .strip-nav ul { gap: 8px; } }
+
+/* =========================================================
+   Phones: text centred. Facts, lists and day notes sit in the middle;
+   bulleted lists lose their bullets so the centred lines read cleanly.
+   ========================================================= */
+@media (max-width: 760px) {
+  .prose, .inv-grid > div, .day .prose, .day.full .prose { text-align: center; }
+  .prose ul, .page .prose ul:not([class]) { padding-left: 0; list-style: none; }
+  .facts-list > div { justify-items: center; text-align: center; }
+  .facts-list dd span { display: block; }
+  .inv-section > .prose > .facts-list { margin-inline: auto; }
+  /* Weather: title, then the sun, then the text */
+  .weather-intro > div { display: contents; }
+  .weather-intro .inv-head { order: 1; }
+  .weather-intro .art { order: 2; justify-self: center; margin: 0 auto; }
+  .weather-intro .prose { order: 3; }
+}
+@media (max-width: 760px) { .inv-grid.flip.weather-intro { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .inv-grid.flip.weather-intro .inv-head { order: 1; }
+  .inv-grid.flip.weather-intro > .art { order: 2; }
+  .inv-grid.flip.weather-intro .prose { order: 3; }
+}
