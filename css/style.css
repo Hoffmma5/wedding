@@ -1783,3 +1783,25 @@ h2.script + .sc { margin-top: .75em; }
   15% { opacity: 1; }
   100% { opacity: 0; transform: translate(var(--drift), calc(var(--u) * -110)) rotate(10deg); }
 }
+
+/* The guitar stands on the pavement and casts a shadow: a soft one on the
+   wall behind (light from the upper left) and a darker contact shadow where
+   it touches the ground */
+.fado-guitar img { filter: drop-shadow(calc(var(--u) * 7) calc(var(--u) * 3) calc(var(--u) * 4) rgba(80, 55, 25, .32)); }
+.fado-guitar::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: -12%;
+  bottom: -2.5%;
+  height: 7%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(70, 45, 20, .45), rgba(70, 45, 20, .15) 60%, transparent);
+  pointer-events: none;
+}
+:root[data-theme="night"] .fado-guitar img { filter: brightness(.72) saturate(.85) drop-shadow(calc(var(--u) * 6) calc(var(--u) * 3) calc(var(--u) * 4) rgba(0, 0, 0, .35)); }
+.fado-guitar img { filter: drop-shadow(calc(var(--u) * 9) calc(var(--u) * 4) calc(var(--u) * 5) rgba(80, 55, 25, .42)); }
+.fado-guitar::after { left: 4%; right: -22%; bottom: -3.5%; height: 9%; background: radial-gradient(closest-side, rgba(70, 45, 20, .55), rgba(70, 45, 20, .2) 60%, transparent); }
+.fado-guitar img { filter: drop-shadow(calc(var(--u) * 10) calc(var(--u) * 5) calc(var(--u) * 4) rgba(80, 55, 25, .5)); }
+.fado-guitar::after { left: 25%; right: -55%; bottom: -4%; height: 10%; background: radial-gradient(closest-side, rgba(70, 45, 20, .5), rgba(70, 45, 20, .18) 65%, transparent); }
