@@ -786,9 +786,10 @@ h2.script { line-height: 1.45; }
 .wide-art { margin: 8px 0 28px; }
 .wide-art img { display: block; width: 100%; height: auto; }
 
-.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: var(--fs-m); }
-.times { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0 0 1.2em; }
-.times dt { padding-top: 3px; }
+.contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; font-size: var(--fs-m); }
+/* Stay: check in and check out side by side on one line, centred */
+.times { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 40px; margin: 0 0 1.6em; }
+.times > div { display: flex; align-items: baseline; gap: 12px; }
 .times dd { margin: 0; }
 
 .map-frame { aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
@@ -820,7 +821,7 @@ h2.script { line-height: 1.45; }
 .day-art { height: auto; width: 100%; }
 
 /* Link to live weather on yr.no */
-.wx-link { margin: 4px 0 0; text-align: right; font-size: var(--fs-s); }
+.wx-link { margin: 4px 0 0; text-align: center; font-size: var(--fs-s); }
 .wx-link a { color: var(--ink); text-underline-offset: 3px; }
 
 
@@ -1539,3 +1540,30 @@ html.map-full, html.map-full body { overflow: hidden; }
    of the invitation: Travel's shrimp next to "transfer" */
 .inv-head.with-doodle { display: flex; align-items: flex-end; gap: clamp(12px, 3vw, 28px); }
 .inv-head.with-doodle .doodle { width: clamp(96px, 14vw, 150px); height: auto; margin-bottom: .2em; transform: rotate(-6deg); }
+
+/* =========================================================
+   Centred design: page and section titles sit in the middle; a title that
+   shares a row with a picture keeps to its column. Text that stands alone
+   under a centred title is centred too (.prose.center, 600 px).
+   ========================================================= */
+.inv-head { text-align: center; }
+.inv-grid .inv-head, .day .prose { text-align: left; }
+.day.full .prose { text-align: center; }
+.add-cal { justify-content: center; }
+.prose.center { max-width: 600px; margin-inline: auto; text-align: center; }
+.facilities { margin-inline: auto; max-width: 760px; }
+/* folded sections: the title in the middle, the + / – on the right */
+.more > summary { position: relative; justify-content: center; padding: 0 52px; }
+.more > summary::after { position: absolute; right: 0; top: 50%; translate: 0 -50%; }
+/* a small watercolour on its own line above a centred title */
+.vignette { display: block; width: clamp(100px, 13vw, 140px); height: auto; margin: 0 auto 4px; transform: rotate(-6deg); }
+/* the Algarve: title on top, then the tile beside the text */
+.algarve-intro { align-items: center; }
+/* rows with a small picture sit as a centred group, not spread to the edges */
+.inv-grid[style*="--side"] { max-width: 760px; margin-inline: auto; }
+.inv-grid[style*="--side"] + .wx { margin-top: clamp(24px, 4vw, 40px); }
+/* blocks under a centred title: centred as a block */
+.inv-section > .prose > .facts-list { max-width: 620px; margin-inline: auto; }
+.road-trip { margin-inline: auto; text-align: center; }
+.gallery-all { margin: 8px auto 0; }
+.algarve-intro { margin-top: 8px; }

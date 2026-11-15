@@ -35,12 +35,11 @@ def html_attr(url):
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", BLUE, f"""
+    <header class="inv-head">
+      <p class="sc">Let us help you plan your</p>
+      <h1 class="script">Travel</h1>
+    </header>
     <div class="inv-grid map-grid">
-      <div>
-      <header class="inv-head">
-        <p class="sc">Let us help you plan your</p>
-        <h1 class="script">Travel</h1>
-      </header>
       <div class="prose">
         <dl class="facts-list">
           <div><dt class="sc">Dates</dt><dd><strong>1st, 2nd &amp; 3rd of October 2027</strong><span>Friday to Sunday</span></dd></div>
@@ -48,7 +47,6 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <div><dt class="sc">Closest airport</dt><dd><strong>FAO &ndash; Faro</strong><span>30 min by car</span></dd></div>
         </dl>
         <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
-      </div>
       </div>
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
@@ -67,14 +65,12 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </div>
 
     <section class="inv-section">
-      <header class="inv-head with-doodle">
-        <div>
-          <p class="sc">From the airport to Tavira&hellip;</p>
-          <h2 class="script">transfer</h2>
-        </div>
-        <img class="doodle" src="assets/art/shrimp.webp" alt="" width="640" height="479">
+      <img class="vignette" src="assets/art/shrimp.webp" alt="" width="640" height="479">
+      <header class="inv-head">
+        <p class="sc">From the airport to Tavira&hellip;</p>
+        <h2 class="script">transfer</h2>
       </header>
-      <div class="prose narrow">
+      <div class="prose center">
         <p>Arriving on the 1st or flying home on the 3rd? <strong>We drive you</strong> between Faro and the hotel.</p>
         <p>On other days, please rent or share a car, or take a taxi.</p>
       </div>
@@ -91,15 +87,13 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
-    <div class="inv-grid flip">
-      <div>
-        <header class="inv-head">
-          <h1 class="script">the Weather</h1>
-          <p class="sc">A forecast for the festivities</p>
-        </header>
-        <div class="prose">
-          <p>Warm, sunny afternoons and cooler evenings. Pack sunglasses &ndash; and an umbrella, just in case.</p>
-        </div>
+    <header class="inv-head">
+      <h1 class="script">the Weather</h1>
+      <p class="sc">A forecast for the festivities</p>
+    </header>
+    <div class="inv-grid flip" style="--side:200px">
+      <div class="prose">
+        <p>Warm, sunny afternoons and cooler evenings. Pack sunglasses &ndash; and an umbrella, just in case.</p>
       </div>
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
     </div>
@@ -111,19 +105,17 @@ PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
     <p class="wx-link"><a href="https://www.yr.no/en/forecast/daily-table/2-2262744/Portugal/Faro/Tavira" target="_blank" rel="noopener">Current weather in Tavira on yr.no &nearr;</a></p>
 
     <section class="inv-section">
-      <div class="inv-grid" style="--side:260px">
-        <div>
-          <header class="inv-head"><h2 class="script">What to Pack</h2></header>
-          <div class="prose">
-            <ul>
-              <li>Wedding clothes</li>
-              <li>Swimwear &amp; flip-flops</li>
-              <li>A jacket for the evening</li>
-              <li>1 umbrella</li>
-            </ul>
-          </div>
+      <header class="inv-head"><h2 class="script">What to Pack</h2></header>
+      <div class="inv-grid" style="--side:240px">
+        <div class="prose">
+          <ul>
+            <li>Wedding clothes</li>
+            <li>Swimwear &amp; flip-flops</li>
+            <li>A jacket for the evening</li>
+            <li>1 umbrella</li>
+          </ul>
         </div>
-        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:260px"></figure>
+        <figure class="art"><img class="crabs" src="assets/art/crabs.webp" alt="Two crabs" tabindex="0" role="button" width="560" height="585" style="--art:240px"></figure>
       </div>
     </section>""")
 
@@ -135,13 +127,13 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
       <p class="sc">Your home for the weekend</p>
     </header>
     <figure class="wide-art"><img src="assets/art/hotel-landscape.webp" alt="Watercolour of the countryside near Tavira, with the sea behind" width="1059" height="437"></figure>
-    <div class="prose">
+    <div class="prose center">
       <p>We all stay at <strong>Hotel Quinta do Marco</strong>, in the hills above Tavira. <strong>Your room for both nights and the main meals are on us</strong> &ndash; we&rsquo;ll tell each of you which room is yours.</p>
-      <dl class="times">
-        <dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd>
-        <dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd>
-      </dl>
     </div>
+    <dl class="times">
+      <div><dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd></div>
+      <div><dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd></div>
+    </dl>
 
     <div class="gallery">
       <div class="mosaic" role="group" aria-label="Photos of Hotel Quinta do Marco">
@@ -236,12 +228,12 @@ def dishes_html():
 DISHES_HTML = dishes_html()
 
 PAGES["location"] = ("The Algarve", BLUE, f"""
-    <div class="inv-grid flip">
+    <header class="inv-head">
+      <p class="sc">The south of Portugal&hellip;</p>
+      <h1 class="script">the Algarve</h1>
+    </header>
+    <div class="inv-grid flip algarve-intro">
       <div>
-        <header class="inv-head">
-          <p class="sc">The south of Portugal&hellip;</p>
-          <h1 class="script">the Algarve</h1>
-        </header>
         <div class="prose">
           <p>We come back to the Algarve every summer: beach, pool and long dinners with a full house. The door stays open to let the wind through, and nobody leaves the table for at least three hours.</p>
           <p>Our wedding is near <strong>Tavira</strong>, a little town where life moves at its own pace &ndash; whitewashed houses, terracotta roofs, cobbled streets and a river running through. Just beyond: salt flats, endless sandy beaches and the Atlantic.</p>
@@ -258,6 +250,9 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
         <p class="sc">Beaches, food &amp; things to do</p>
         <h2 class="script">our favourites</h2>
       </header>
+      <div class="prose center">
+        <p>The Algarve is full of wonderful corners, with crystal-clear blue water and amazing restaurants. Some recommendations are old family traditions we return to almost every summer, some we have collected ourselves &ndash; now we&rsquo;ve put them all together to share them with you.</p>
+      </div>
       <div class="places-app">
         <div class="places-side">
           <div class="place-chips" role="group" aria-label="Show on the map">
@@ -349,7 +344,7 @@ PAGES["rsvp"] = ("RSVP", OLIVE, """
       <p class="sc">Let us know if you can join us</p>
       <h1 class="script">RSVP</h1>
     </header>
-    <div class="prose">
+    <div class="prose center">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
       <p class="tbc">Reply form to follow.</p>
     </div>""")
@@ -368,7 +363,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=85">
+  <link rel="stylesheet" href="css/style.css?v=87">
   <script>
     (function () {{
       var saved = null;
