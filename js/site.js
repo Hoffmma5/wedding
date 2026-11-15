@@ -22,11 +22,12 @@
   });
   syncTheme();
 
-  // Language buttons: EN / CZ / DE. Only English exists so far; the choice is
+  // Language buttons: EN / CZ / DE / PT. Only English exists so far; the choice is
   // remembered (localStorage 'lang', <html data-lang>) for when it does.
   var SOON = {
     cs: 'Česká verze se připravuje – zatím jen v angličtině.',
-    de: 'Die deutsche Version folgt bald – bis dahin auf Englisch.'
+    de: 'Die deutsche Version folgt bald – bis dahin auf Englisch.',
+    pt: 'A versão portuguesa está a caminho – por agora, só em inglês.'
   };
   var langButtons = Array.prototype.slice.call(document.querySelectorAll('.lang button'));
   function setLang(lang, announce) {

@@ -368,7 +368,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=84">
+  <link rel="stylesheet" href="css/style.css?v=85">
   <script>
     (function () {{
       var saved = null;
@@ -390,6 +390,7 @@ HEAD = """<!doctype html>
         <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
         <button type="button" data-lang="cs" lang="cs" aria-label="Čeština" aria-pressed="false">CZ</button>
         <button type="button" data-lang="de" lang="de" aria-label="Deutsch" aria-pressed="false">DE</button>
+        <button type="button" data-lang="pt" lang="pt" aria-label="Português" aria-pressed="false">PT</button>
       </div>
     </nav>
     <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to night">
@@ -402,7 +403,7 @@ HEAD = """<!doctype html>
   </header>
 """
 
-FOOT = """  <script src="js/site.js?v=14"></script>
+FOOT = """  <script src="js/site.js?v=15"></script>
   <script src="js/eggs.js?v=11"></script>
 </body>
 </html>
@@ -439,7 +440,7 @@ def nav():
 
 
 # The walk through the site, in menu order. The footer links every page to
-# the one before and after it, and the logo orange leads home.
+# the one before and after it, and a tiny village leads home.
 WALK = [
     ("index", "Home"),
     ("program", "Program"),
@@ -454,8 +455,11 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The orange from the logo leads home
-HOME_MARK = '<span class="mark foot-mark" aria-hidden="true"></span>'
+# The village from the home page, tiny (day, and night with the windows lit), leads home
+HOME_MARK = """<span class="mini-village" aria-hidden="true">
+        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
+        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
+      </span>"""
 
 
 def street(slug):

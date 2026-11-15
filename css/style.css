@@ -532,7 +532,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .28s ease; }
-body.leaving .street-view .foot-mark { transform: scale(.9); transition: transform .5s var(--ease); }
+body.leaving .street-view .mini-village { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(1.8); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1408,9 +1408,11 @@ html.map-full, html.map-full body { overflow: hidden; }
 .pager a:hover { color: var(--text); }
 .pager a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
 .street-view { display: grid; place-items: center; min-width: 48px; min-height: 48px; }
-/* the logo orange, in the logo ink */
-.foot-mark { width: 40px; transition: transform .3s var(--ease), background-color var(--fade); }
-.street-view:hover .foot-mark { transform: translateY(-2px) rotate(-4deg); }
+/* the village from the home page, tiny: day, or night with the windows lit */
+.mini-village { position: relative; display: block; width: 112px; aspect-ratio: 640 / 271; transition: transform .3s var(--ease); }
+.mini-village img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mini-village .night { opacity: var(--night); transition: opacity var(--fade); }
+.street-view:hover .mini-village { transform: translateY(-2px); }
 .street .foot { margin: 0; padding: 14px 0 32px; border-top: 0; font-size: var(--fs-xs); }
 .map-page .street { max-width: none; }
 

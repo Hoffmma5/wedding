@@ -2,13 +2,11 @@
 
   python tools/make_favicon.py
 
-The orange from the logo, as big as the icon allows, on a transparent
-background:
-  favicon.svg           modern browsers: the olive orange, and in dark mode
-                        (dark tabs) the same orange in cream, so it never
-                        disappears
-  favicon.ico           16 / 32 / 48 px, older browsers (olive)
-  assets/icon-192.png   Android home screen (olive, transparent)
+The orange from the logo in terracotta (#B66238, the title colour), as big
+as the icon allows, on a transparent background:
+  favicon.svg           modern browsers; a lighter terracotta on dark tabs
+  favicon.ico           16 / 32 / 48 px, older browsers
+  assets/icon-192.png   Android home screen (transparent)
   apple-touch-icon.png  iPhone home screen - iOS needs a solid square, so
                         the orange sits large on the paper colour
 """
@@ -17,12 +15,15 @@ import io
 
 from PIL import Image
 
-OLIVE = (75, 75, 49)
-CREAM = "#ece4c6"            # the logo ink at night (--olive in night mode)
+INK = (182, 98, 56)          # #B66238
+DARK_TAB = "#e09a76"         # the same terracotta, lighter, for dark browser tabs
 PAPER = (252, 250, 250)
 
 mark = Image.open("assets/logo-mark.png").convert("RGBA")
 mark = mark.crop(mark.getbbox())                   # no empty margin: as big as possible
+tinted = Image.new("RGBA", mark.size, INK + (255,))
+tinted.putalpha(mark.split()[3])
+mark = tinted                                      # the logo shape, in terracotta
 
 
 def icon(size, margin=0.02, background=None):
@@ -48,7 +49,7 @@ data = base64.b64encode(buf.getvalue()).decode()
 w, h = 128, round(128 * mark.height / mark.width)
 pad = (w - h) / 2
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 {-pad:g} {w} {w}">
-<style>rect{{fill:#4b4b31}}@media (prefers-color-scheme:dark){{rect{{fill:{CREAM}}}}}</style>
+<style>rect{{fill:#b66238}}@media (prefers-color-scheme:dark){{rect{{fill:{DARK_TAB}}}}}</style>
 <mask id="m" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="{w}" height="{h}"><image width="{w}" height="{h}" href="data:image/png;base64,{data}"/></mask>
 <rect width="{w}" height="{h}" mask="url(#m)"/>
 </svg>
