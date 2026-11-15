@@ -249,12 +249,12 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   a transparent background (`favicon.svg`, a lighter terracotta on dark
   tabs; `favicon.ico`; `assets/icon-192.png`); the iPhone icon has it on a
   square of paper. Made by `tools/make_favicon.py`.
-- **The fado guitar** — a Portuguese guitar leaning on the wall right of
-  the yellow house's door (`.fado-guitar`, `js/radio.js`): round honey-wood
-  body, dark neck, brass fan head with twelve tuning screws, painted in SVG
-  through `#paint` / `#paint-soft`. A click plays `assets/audio/fado.mp3`
-  ("A Casa da Mariquinhas"), loaded only then, fading in and looping; a
-  second click stops it. While it plays it sways a little and notes drift up.
+- **The fado guitar** — a watercolour Portuguese guitar
+  (`assets/art/fado-guitar.webp`, cut out of its paper) set down right of the
+  yellow house's door, about half the door's height (`.fado-guitar`,
+  `js/radio.js`). A click plays `assets/audio/fado.mp3` ("A Casa da
+  Mariquinhas"), loaded only then, fading in and looping; a second click
+  stops it. While it plays it sways a little and notes drift up.
 - **Special stars** — at night four stars glow softly (`.memory-star`);
   hover, focus or a tap shows a loved one who is no longer with us —
   Marek's family on the left (Pavel Hoffmann, Marek's father; Jindřiška
