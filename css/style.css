@@ -1805,3 +1805,8 @@ h2.script + .sc { margin-top: .75em; }
 .fado-guitar::after { left: 4%; right: -22%; bottom: -3.5%; height: 9%; background: radial-gradient(closest-side, rgba(70, 45, 20, .55), rgba(70, 45, 20, .2) 60%, transparent); }
 .fado-guitar img { filter: drop-shadow(calc(var(--u) * 10) calc(var(--u) * 5) calc(var(--u) * 4) rgba(80, 55, 25, .5)); }
 .fado-guitar::after { left: 25%; right: -55%; bottom: -4%; height: 10%; background: radial-gradient(closest-side, rgba(70, 45, 20, .5), rgba(70, 45, 20, .18) 65%, transparent); }
+/* The painting's sun comes from the right (see the flower pot and the tree):
+   the guitar's shadow falls to its left, on the wall and on the ground */
+.fado-guitar img { filter: drop-shadow(calc(var(--u) * -10) calc(var(--u) * 5) calc(var(--u) * 4) rgba(80, 55, 25, .5)); }
+.fado-guitar::after { left: -55%; right: 25%; }
+:root[data-theme="night"] .fado-guitar img { filter: brightness(.72) saturate(.85) drop-shadow(calc(var(--u) * -6) calc(var(--u) * 3) calc(var(--u) * 4) rgba(0, 0, 0, .35)); }
