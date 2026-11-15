@@ -35,11 +35,12 @@ def html_attr(url):
 TIPS_HTML = "\n".join(f'        <li>{icons.svg(paths)}<span>{text}</span></li>' for paths, text in icons.TIPS)
 
 PAGES["travel"] = ("Travel", BLUE, f"""
-    <header class="inv-head">
-      <p class="sc">Let us help you plan your</p>
-      <h1 class="script">Travel</h1>
-    </header>
     <div class="inv-grid map-grid">
+      <div>
+      <header class="inv-head">
+        <h1 class="script">Travel</h1>
+        <p class="sc">Let us help you plan your trip</p>
+      </header>
       <div class="prose">
         <dl class="facts-list">
           <div><dt class="sc">Dates</dt><dd><strong>1st, 2nd &amp; 3rd of October 2027</strong><span>Friday to Sunday</span></dd></div>
@@ -48,6 +49,8 @@ PAGES["travel"] = ("Travel", BLUE, f"""
         </dl>
         <p>Flights from <strong>Nuremberg</strong>, <strong>Prague</strong> or <strong>Berlin</strong> are good options.</p>
       </div>
+      </div>
+      <div class="map-slot">
       <figure class="art map-art">
         <img src="assets/art/iberia-map.webp" alt="Map of Portugal and western Spain: Tavira is on the Algarve coast, just east of Faro airport" width="723" height="922">
         <svg class="map-labels" viewBox="0 0 723 922" aria-hidden="true">
@@ -62,13 +65,14 @@ PAGES["travel"] = ("Travel", BLUE, f"""
           <text class="tavira" x="300" y="868">Tavira</text>
         </svg>
       </figure>
+      </div>
     </div>
 
     <section class="inv-section">
       <img class="vignette" src="assets/art/shrimp.webp" alt="" width="640" height="479">
       <header class="inv-head">
-        <p class="sc">From the airport to Tavira&hellip;</p>
         <h2 class="script">transfer</h2>
+        <p class="sc">From the airport to Tavira&hellip;</p>
       </header>
       <div class="prose center">
         <p>Arriving on the 1st or flying home on the 3rd? <strong>We drive you</strong> between Faro and the hotel.</p>
@@ -78,8 +82,8 @@ PAGES["travel"] = ("Travel", BLUE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">A few little things</p>
         <h2 class="script">good to know</h2>
+        <p class="sc">A few little things</p>
       </header>
       <ul class="tips">
 {TIPS_HTML}
@@ -87,13 +91,15 @@ PAGES["travel"] = ("Travel", BLUE, f"""
     </section>""")
 
 PAGES["weather"] = ("Weather &amp; what to pack", TERRACOTTA, f"""
-    <header class="inv-head">
-      <h1 class="script">the Weather</h1>
-      <p class="sc">A forecast for the festivities</p>
-    </header>
-    <div class="inv-grid flip" style="--side:200px">
-      <div class="prose">
-        <p>Warm, sunny afternoons and cooler evenings. Pack sunglasses &ndash; and an umbrella, just in case.</p>
+    <div class="inv-grid flip weather-intro">
+      <div>
+        <header class="inv-head">
+          <h1 class="script">the Weather</h1>
+          <p class="sc">A forecast for the festivities</p>
+        </header>
+        <div class="prose">
+          <p>Warm, sunny afternoons and cooler evenings. Pack sunglasses &ndash; and an umbrella, just in case.</p>
+        </div>
       </div>
       <figure class="art"><img src="assets/art/sun.webp" alt="" width="520" height="520"></figure>
     </div>
@@ -130,6 +136,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <div class="prose center">
       <p>We all stay at <strong>Hotel Quinta do Marco</strong>, in the hills above Tavira. <strong>Your room for both nights and the main meals are on us</strong> &ndash; we&rsquo;ll tell each of you which room is yours.</p>
     </div>
+    <p class="sc stay-name">Hotel Quinta do Marco</p>
     <dl class="times">
       <div><dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd></div>
       <div><dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd></div>
@@ -160,8 +167,8 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Something for everyone</p>
         <h2 class="script">at the Quinta</h2>
+        <p class="sc">Something for everyone</p>
       </header>
       <ul class="facilities">
 {FACILITIES_HTML}
@@ -171,8 +178,8 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
 
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Hotel Rural Quinta do Marco</p>
         <h2 class="script">on the map</h2>
+        <p class="sc">Hotel Rural Quinta do Marco</p>
       </header>
       <div class="prose">
         <dl class="facts-list">
@@ -229,8 +236,8 @@ DISHES_HTML = dishes_html()
 
 PAGES["location"] = ("The Algarve", BLUE, f"""
     <header class="inv-head">
-      <p class="sc">The south of Portugal&hellip;</p>
       <h1 class="script">the Algarve</h1>
+      <p class="sc">The south of Portugal&hellip;</p>
     </header>
     <div class="inv-grid flip algarve-intro">
       <div>
@@ -247,8 +254,8 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
     </div>
     <section class="inv-section">
       <header class="inv-head">
-        <p class="sc">Beaches, food &amp; things to do</p>
         <h2 class="script">our favourites</h2>
+        <p class="sc">Beaches, food &amp; things to do</p>
       </header>
       <div class="prose center">
         <p>The Algarve is full of wonderful corners, with crystal-clear blue water and amazing restaurants. Some recommendations are old family traditions we return to almost every summer, some we have collected ourselves &ndash; now we&rsquo;ve put them all together to share them with you.</p>
@@ -279,8 +286,8 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
     <details class="inv-section more">
       <summary>
         <span class="inv-head">
-          <span class="sc">Eat like a local</span>
           <h2 class="script">dishes to try</h2>
+          <span class="sc">Eat like a local</span>
         </span>
       </summary>
       <ul class="dishes">
@@ -301,8 +308,8 @@ ADD_TO_CALENDAR = f"""    <div class="add-cal">
 
 PAGES["program"] = ("Program", TERRACOTTA, f"""
     <header class="inv-head">
-      <p class="sc">Three days in Tavira</p>
       <h1 class="script">the Program</h1>
+      <p class="sc">Three days in Tavira</p>
     </header>
 {ADD_TO_CALENDAR}
 
@@ -341,8 +348,8 @@ PAGES["program"] = ("Program", TERRACOTTA, f"""
 
 PAGES["rsvp"] = ("RSVP", OLIVE, """
     <header class="inv-head">
-      <p class="sc">Let us know if you can join us</p>
       <h1 class="script">RSVP</h1>
+      <p class="sc">Let us know if you can join us</p>
     </header>
     <div class="prose center">
       <p>We&rsquo;d love to celebrate with you in Tavira on <strong>1st, 2nd &amp; 3rd of October 2027</strong>.</p>
@@ -363,7 +370,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=88">
+  <link rel="stylesheet" href="css/style.css?v=90">
   <script>
     (function () {{
       var saved = null;
@@ -491,8 +498,8 @@ def main():
     html = HEAD.format(title="Guest map", body_class=' class="map-page"', nav=nav(), defs=icons.FILTERS, share=share("Guest map", "map"))
     html += f"""  <main>
     <div class="map-head inv" style="--topic:{BLUE}">
-      <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
       <h1 class="script">the guests</h1>
+      <p class="sc">Everyone&rsquo;s coming to the Algarve</p>
     </div>
     <div class="guests-intro prose" style="--topic:{BLUE}">
       <p>Where you&rsquo;re all coming from. Thank you for making the trip.</p>

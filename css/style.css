@@ -1549,8 +1549,7 @@ html.map-full, html.map-full body { overflow: hidden; }
    under a centred title is centred too (.prose.center, 600 px).
    ========================================================= */
 .inv-head { text-align: center; }
-.inv-grid .inv-head, .day .prose { text-align: left; }
-.day.full .prose { text-align: center; }
+.day .prose { text-align: left; }
 .add-cal { justify-content: center; }
 .prose.center { max-width: 600px; margin-inline: auto; text-align: center; }
 .facilities { margin-inline: auto; max-width: 760px; }
@@ -1590,3 +1589,32 @@ html.map-full, html.map-full body { overflow: hidden; }
 /* home: with no story section yet, the strip runs straight into the footer */
 .strip:has(+ .story[data-storymap=""]) { margin-bottom: 0; }
 .strip:has(+ .story[data-storymap=""]) ~ .foot { padding-top: 0; }
+
+/* Program: the calendar label on top, the three buttons centred under it */
+.add-cal { flex-direction: column; gap: 12px; }
+/* Stay: the hotel's name in small caps above check in / check out */
+.stay-name { margin: 0 0 10px; text-align: center; }
+
+/* Intros with the title in the text column (Travel, Weather): the title is
+   centred within that column, the picture sits beside the whole column */
+.inv-grid > div > .inv-head { text-align: center; }
+
+/* Travel: the torn map is exactly as tall as the title + facts beside it */
+.map-grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); align-items: stretch; }
+.map-slot { position: relative; min-height: 320px; }
+.map-slot .map-art { position: absolute; top: 0; bottom: 0; right: 0; width: auto; max-width: none; margin: 0; aspect-ratio: 723 / 922; }
+.map-slot .map-art img { width: 100%; height: 100%; }
+
+/* Weather: the sun on the left, as tall as the title and text beside it */
+.weather-intro { grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); align-items: center; }
+.weather-intro .prose { max-width: 600px; margin-inline: auto; }
+.weather-intro + .wx { margin-top: clamp(24px, 4vw, 40px); }
+
+@media (max-width: 760px) {
+  .map-grid { grid-template-columns: 1fr; }
+  .map-slot { min-height: 0; }
+  .map-slot .map-art { position: static; max-width: 330px; margin: 8px auto 0; aspect-ratio: auto; }
+  .map-slot .map-art img { height: auto; }
+  .weather-intro { grid-template-columns: 1fr; }
+  .weather-intro .art { max-width: 170px; margin: 0 auto; }
+}
