@@ -7,6 +7,7 @@ or edit the generated .html files by hand (then stop using this script).
 """
 
 NAV = [
+    ("index", "Home"),
     ("program", "Program"),
     ("accommodation", "Stay"),
     ("travel", "Travel"),
@@ -374,7 +375,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=101">
+  <link rel="stylesheet" href="css/style.css?v=103">
   <script>
     (function () {{
       var saved = null;
@@ -517,7 +518,8 @@ def main():
              '      ' + icons.FILTERS + '\n'
              '      <h2 class="sc strip-title" id="glance-title">The weekend at a glance</h2>\n'
              '      <ul class="strip-glance">\n' + icons.glance_html() + '\n      </ul>\n'
-             '      <nav class="strip-nav" aria-label="Pages">\n'
+             '      <nav class="strip-nav" aria-labelledby="pages-title">\n'
+             '        <h2 class="sc strip-title strip-nav-title" id="pages-title">Find your way around</h2>\n'
              '        <ul>\n' + icons.strip_html() + '\n        </ul>\n'
              '      </nav>\n'
              '    </section>')

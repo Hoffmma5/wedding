@@ -1707,3 +1707,22 @@ h2.script + .sc { margin-top: .75em; }
 /* The village's labels sit above everything else in the hero (the names,
    the logo, other hotspots) while they are showing */
 .picture :is(.spot, .door, .lamp, .memory-star, .tree):is(:hover, :focus-visible, .open) { z-index: 30; }
+
+/* Nav: RSVP in the terracotta (a warm peach at night) */
+.nav-links .nav-cta, .nav-links .nav-cta:hover, .nav-links .nav-cta[aria-current="page"] { color: #fff; background: var(--title); }
+.nav-links .nav-cta[aria-current="page"] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--title); }
+:root[data-theme="night"] .nav-links .nav-cta, :root[data-theme="night"] .nav-links .nav-cta:hover { color: #1d1f2e; }
+
+/* Home strip: the glance is information (plain text); the pages are buttons -
+   outlined tiles with a soft fill that lifts on hover, under their own title */
+.strip-nav-title { margin-bottom: clamp(16px, 2.4vw, 22px); }
+.strip-nav ul { gap: 12px; max-width: 980px; }
+.strip-nav a {
+  padding: 16px 6px 14px;
+  border: 1px solid rgba(255, 255, 255, .55);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .08);
+  transition: background-color .2s, border-color .2s, transform .2s var(--ease);
+}
+.strip-nav a:hover { background: rgba(255, 255, 255, .2); border-color: #fff; transform: translateY(-2px); }
+@media (max-width: 860px) { .strip-nav ul { gap: 8px; } }
