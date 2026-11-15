@@ -1,11 +1,11 @@
-/* The radio in the coral house's window: plays fado.
+/* The Portuguese guitar by the yellow house's door: plays fado.
    assets/audio/fado.mp3 ("A Casa da Mariquinhas"), loaded only when the
-   radio is first switched on. Click to play, click again to pause; it fades
+   guitar is first played. Click to play, click again to pause; it fades
    in and out and loops. */
 (function () {
   'use strict';
 
-  var radio = document.querySelector('.radio');
+  var radio = document.querySelector('.fado-guitar');
   if (!radio) return;
   var tip = radio.querySelector('.tip');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
