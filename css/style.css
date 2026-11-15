@@ -1703,3 +1703,7 @@ h2.script + .sc { margin-top: .75em; }
 .inv-grid.flip.weather-intro { grid-template-columns: minmax(160px, 256px) minmax(0, 1fr); }   /* 20 % smaller than the 320 px it was */
 .wx { border-bottom: 0; }
 @media (max-width: 760px) { .weather-intro .art { max-width: 136px; } }
+
+/* The village's labels sit above everything else in the hero (the names,
+   the logo, other hotspots) while they are showing */
+.picture :is(.spot, .door, .lamp, .memory-star, .tree):is(:hover, :focus-visible, .open) { z-index: 30; }
