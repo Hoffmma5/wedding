@@ -137,7 +137,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 
 - **Nav**: fixed, 60 px; transparent over the home hero, frosted
   (`blur(12px)`, 82 % `--bg`, hairline) once scrolled and always on inner
-  pages. Brand left; pill links (Lora 14 px, 44 px tall); RSVP a dark pill;
+  pages. Brand left; pill links starting with Home (Lora 14 px, 44 px tall);
+  RSVP a terracotta pill (`--title`, dark text at night);
   the language buttons **EN · CZ · DE · PT**; a 44 px day/night button. Below
   960 px a hamburger opens a card menu with 16 px links, 44 px tall, and
   the language buttons in a row at the bottom.
@@ -152,8 +153,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   width, taller: *The weekend at a glance* in small caps, three columns —
   When (1 – 3 October 2027), Where (Tavira, Faro, Portugal), Getting there
   (Fly to Faro), each with an ink-and-wash icon (calendar, pin, suitcase) —
-  then a hairline and the six page links (Program, Stay, Travel, Weather,
-  Algarve, Guests), icon over a Lora label, 6 across, 3 × 2 on phones.
+  then a short separator and *Find your way around* with the six page
+  links (Program, Stay, Travel, Weather, Algarve, Guests) as buttons:
+  outlined tiles with a soft fill that lift on hover, icon over a Lora
+  label, 6 across, 3 × 2 on phones. The glance above them stays plain
+  text, so information and navigation look different.
   `tools/make_pages.py` writes the whole strip between `<!-- strip -->`
   markers. Then the story section (hidden until `data-storymap` has a link)
   and a one-line footer. The hero has the names and tagline only — no date
@@ -165,6 +169,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   script's long descenders (1 em under an h1, .75 em under an h2).
 - **Footers**: terracotta `#B66238`, full width, white text; on Home the
   strip runs straight into it.
+- **Village labels**: a hotspot that is showing its label rises above
+  everything else in the hero (`z-index: 30`), the names and logo included.
+- **Phones**: text is centred — paragraphs, facts lists, Program's days and
+  plain lists (without bullets). Weather stacks title, sun, text.
 - **Centred design**: page and section titles sit in the middle; a title
   that shares a row with a picture keeps to its column (Program's Friday
   and Sunday). Text that stands alone under a centred title is centred too
