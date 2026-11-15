@@ -64,7 +64,7 @@ The site speaks in two voices that share one paper colour.
 | `--muted` | `#6b7180` | `#9aa2bd` | Secondary text (4.7 : 1 on `--bg` by day) |
 | `--line` | `rgba(23,26,33,.09)` | `rgba(238,240,247,.1)` | Hairlines, hover fills |
 | `--olive` | `#4b4b31` | `#ece4c6` | Logo ink: brand name in the nav, small caps |
-| `--title` | `#b66238` | `#eab08f` | The hero names, tagline and orange; the strip; the favicon |
+| `--title` | `#b66238` | `#b66238` | The hero names, tagline and orange; the strip; the favicon |
 
 ### The three houses
 
@@ -90,9 +90,10 @@ mixed 50 % towards white.
 
 ### The strip
 
-The home page strip is terracotta `#B66238` (the title colour) with white
-text (4.4 : 1, just under AA for small text); at night a deep `#5e3324`
-with cream `#f1e7d6`.
+The home page strip and every footer are terracotta `#B66238` (the title
+colour), the same day and night, with white text (4.4 : 1, just under AA
+for small text). The hero names, the favicon and the Program / Weather
+page ink use the same `#B66238`.
 
 ### Night
 
@@ -156,6 +157,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   line.
 - **Doors**: the blue house leads to Program, the yellow house to
   Accommodation, the coral house to RSVP.
+- **Title order**: the script title first, its small-caps subheading
+  always below it (never above).
+- **Footers**: terracotta `#B66238`, full width, white text; on Home the
+  strip runs straight into it.
 - **Centred design**: page and section titles sit in the middle; a title
   that shares a row with a picture keeps to its column (Program's Friday
   and Sunday). Text that stands alone under a centred title is centred too
@@ -167,8 +172,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Weather's sun, Program's Sunday oysters and the Algarve's sardine tile.
   Rows with a small picture set `--side` (the column is exactly as wide as
   the picture) and sit as a centred group, 760 px max: the sun (200 px)
-  and the crabs (240 px). Travel: title on top, then the facts beside the
-  torn map (340 px); the shrimp is a small tilted vignette above the
+  and the crabs (240 px). Travel and Weather: the title is centred within the text column and the
+  picture sits beside the whole column — Travel's torn map is exactly as tall
+  as title + facts, Weather's sun (180–280 px) is on the left; the shrimp is a small tilted vignette above the
   centred *transfer* section. Sections are separated by a hairline and
   48–80 px. One column under 760 px, always text first and the picture
   after it; watercolours shrink to 150 px accents.
