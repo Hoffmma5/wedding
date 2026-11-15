@@ -1696,3 +1696,10 @@ html.map-full, html.map-full body { overflow: hidden; }
 .script + .sc { margin-top: .55em; }
 h1.script + .sc { margin-top: 1em; }
 h2.script + .sc { margin-top: .75em; }
+
+/* Stay: the hotel's name as large as the check-in line beneath it */
+.stay-name { font-size: 26px; letter-spacing: .06em; margin-bottom: 6px; }
+/* Weather: a smaller sun (20 % less), and no line under the numbers */
+.inv-grid.flip.weather-intro { grid-template-columns: minmax(160px, 256px) minmax(0, 1fr); }   /* 20 % smaller than the 320 px it was */
+.wx { border-bottom: 0; }
+@media (max-width: 760px) { .weather-intro .art { max-width: 136px; } }

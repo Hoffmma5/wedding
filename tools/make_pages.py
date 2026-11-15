@@ -136,7 +136,7 @@ PAGES["accommodation"] = ("The hotel", OLIVE, f"""
     <div class="prose center">
       <p>We all stay at <strong>Hotel Quinta do Marco</strong>, in the hills above Tavira. <strong>Your room for both nights and the main meals are on us</strong> &ndash; we&rsquo;ll tell each of you which room is yours.</p>
     </div>
-    <p class="sc stay-name">Hotel Quinta do Marco</p>
+    <p class="sc stay-name">Hotel Rural Quinta do Marco</p>
     <dl class="times">
       <div><dt class="sc">Check in</dt><dd>Friday, 01.10.2027, 14:00</dd></div>
       <div><dt class="sc">Check out</dt><dd>Sunday, 03.10.2027, 12:00</dd></div>
@@ -275,12 +275,16 @@ PAGES["location"] = ("The Algarve", BLUE, f"""
         </div>
       </div>
       <p class="map-credit">Basemap: <em>Azulejo Complete</em> by Marek Hoffmann &middot; &copy; OpenStreetMap contributors, Natural Earth</p>
+    </section>
 
-      <aside class="road-trip">
-        <p class="sc">Got a few extra days?</p>
-        <h3>Drive the west coast</h3>
+    <section class="inv-section">
+      <header class="inv-head">
+        <h2 class="script">Costa Vicentina</h2>
+        <p class="sc">Got a few extra days? Drive down the coast</p>
+      </header>
+      <div class="prose center">
         <p>From Lagos up to Sines: fishing villages, fresh fish, big cliffs and wild, windy beaches. Our favourites are Castelejo, Bordeira, Amado and Odeceixe.</p>
-      </aside>
+      </div>
     </section>
 
     <details class="inv-section more">
@@ -370,7 +374,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=98">
+  <link rel="stylesheet" href="css/style.css?v=100">
   <script>
     (function () {{
       var saved = null;
