@@ -368,7 +368,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=83">
+  <link rel="stylesheet" href="css/style.css?v=84">
   <script>
     (function () {{
       var saved = null;
@@ -504,11 +504,18 @@ def main():
   </main>
 """ + street("map") + FOOT
     open("map.html", "w", encoding="utf-8").write(html)
-    # Home is hand-written; only its strip of page icons comes from icons.py
+    # Home is hand-written; only its strip (at a glance + page icons) comes from icons.py
     home = open("index.html", encoding="utf-8").read()
-    home = re.sub(r'(<nav class="strip" aria-label="Pages">\n)[\s\S]*?(\n    </nav>)',
-                  lambda m: m[1] + "      " + icons.FILTERS + "\n      <ul>\n" + icons.strip_html() + "\n      </ul>" + m[2],
-                  home, count=1)
+    strip = ('    <section class="strip" aria-labelledby="glance-title">\n'
+             '      ' + icons.FILTERS + '\n'
+             '      <h2 class="sc strip-title" id="glance-title">The weekend at a glance</h2>\n'
+             '      <ul class="strip-glance">\n' + icons.glance_html() + '\n      </ul>\n'
+             '      <nav class="strip-nav" aria-label="Pages">\n'
+             '        <ul>\n' + icons.strip_html() + '\n        </ul>\n'
+             '      </nav>\n'
+             '    </section>')
+    home = re.sub(r'<!-- strip -->[\s\S]*?<!-- /strip -->',
+                  lambda m: '<!-- strip -->\n' + strip + '\n    <!-- /strip -->', home, count=1)
     open("index.html", "w", encoding="utf-8", newline="").write(home)
     cal_event.write()
     print("pages written")

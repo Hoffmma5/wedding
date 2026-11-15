@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=83">
+  <link rel="stylesheet" href="css/style.css?v=84">
   <script>
     (function () {
       var saved = null;
@@ -145,15 +145,15 @@
           </a>
 
           <!-- Doors -->
-          <a class="door go" href="accommodation.html" style="--x:199;--y:385;--w:120;--h:277">
-            <span class="interior" aria-hidden="true"></span>
-            <span class="leaf" aria-hidden="true"></span>
-            <span class="tip">Accommodation</span>
-          </a>
-          <a class="door go" href="program.html" style="--x:998;--y:382;--w:102;--h:276">
+          <a class="door go" href="program.html" style="--x:199;--y:385;--w:120;--h:277">
             <span class="interior" aria-hidden="true"></span>
             <span class="leaf" aria-hidden="true"></span>
             <span class="tip">Program</span>
+          </a>
+          <a class="door go" href="accommodation.html" style="--x:998;--y:382;--w:102;--h:276">
+            <span class="interior" aria-hidden="true"></span>
+            <span class="leaf" aria-hidden="true"></span>
+            <span class="tip">Accommodation</span>
           </a>
           <a class="door go" href="rsvp.html" style="--x:1527;--y:386;--w:96;--h:267">
             <span class="interior" aria-hidden="true"></span>
@@ -191,26 +191,31 @@
       <p class="swipe-hint" aria-hidden="true">Swipe to see the whole street</p>
     </section>
 
-    <!-- ======= The essentials, one glance under the village ======= -->
-    <section class="glance" aria-label="The weekend at a glance">
-      <ul class="glance-list">
-        <li><span class="sc">When</span><span>1 &ndash; 3 October 2027</span></li>
-        <li><span class="sc">Where</span><span>Hotel Quinta do Marco, near Tavira</span></li>
-      </ul>
-    </section>
+    <!-- ======= Under the village: an invitation to play ======= -->
+    <p class="hint">Our village is interactive &ndash; open the doors, switch on the lamp, shake the orange tree&hellip; play around.</p>
 
-    <!-- ======= The pages, on a brick strip ======= -->
-    <nav class="strip" aria-label="Pages">
+    <!-- ======= The weekend at a glance + the pages, on the terracotta strip (written by tools/make_pages.py) ======= -->
+    <!-- strip -->
+    <section class="strip" aria-labelledby="glance-title">
       <svg class="ico-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><filter id="ink" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".12" numOctaves="1" seed="4"/><feDisplacementMap in="SourceGraphic" scale=".55" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="wash" x="-25%" y="-25%" width="150%" height="150%"><feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="3.4" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation=".3" result="b"/><feMorphology in="b" operator="erode" radius=".8" result="inner"/><feComposite in="b" in2="inner" operator="out" result="rim"/><feMerge><feMergeNode in="b"/><feMergeNode in="rim"/></feMerge></filter></defs></svg>
-      <ul>
+      <h2 class="sc strip-title" id="glance-title">The weekend at a glance</h2>
+      <ul class="strip-glance">
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><rect  x="3.5" y="5" width="17" height="15.5" rx="2"/></g><g class="line"><rect class="f" x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><path d="m9.2 14.6 2 2 3.8-4"/></g></svg><span class="sc">When</span><b>1 &ndash; 3 October 2027</b></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><path  d="M12 21.2s-6.6-6.3-6.6-11.2a6.6 6.6 0 0 1 13.2 0c0 4.9-6.6 11.2-6.6 11.2Z"/></g><g class="line"><path class="f" d="M12 21.2s-6.6-6.3-6.6-11.2a6.6 6.6 0 0 1 13.2 0c0 4.9-6.6 11.2-6.6 11.2Z"/><circle cx="12" cy="10" r="2.4"/></g></svg><span class="sc">Where</span><b>Tavira, Faro, Portugal</b></li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><rect  x="3.5" y="8" width="17" height="12" rx="2.2"/></g><g class="line"><rect class="f" x="3.5" y="8" width="17" height="12" rx="2.2"/><path d="M9 8V5.8c0-.7.5-1.3 1.3-1.3h3.4c.8 0 1.3.6 1.3 1.3V8M7.5 8v12M16.5 8v12M16.5 11.5l2.4 2.6"/><rect x="17.6" y="13.6" width="2.6" height="3.4" rx=".6" transform="rotate(-20 18.9 15.3)"/></g></svg><span class="sc">Getting there</span><b>Fly to Faro</b></li>
+      </ul>
+      <nav class="strip-nav" aria-label="Pages">
+        <ul>
         <li><a href="program.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><path  d="M5 3.5h5l-.7 5.4a1.8 1.8 0 0 1-3.6 0Z"/><path  d="M14 3.5h5l-.7 5.4a1.8 1.8 0 0 1-3.6 0Z"/></g><g class="line"><path class="f" d="M5 3.5h5l-.7 5.4a1.8 1.8 0 0 1-3.6 0Z"/><path d="M7.5 10.6V19M5.4 19h4.2"/><path class="f" d="M14 3.5h5l-.7 5.4a1.8 1.8 0 0 1-3.6 0Z"/><path d="M16.5 10.6V19M14.4 19h4.2M12 1.5v1.5"/></g></svg><span>Program</span></a></li>
         <li><a href="accommodation.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><path  d="M3.5 11 12 7.5l8.5 3.5v9.5h-17Z"/></g><g class="line"><path class="f" d="M3.5 11 12 7.5l8.5 3.5v9.5h-17Z"/><path d="M16 9.6V5.8h2.4v4.8M8 20.5V16h3v4.5M14 14h3v2.5h-3Z"/></g></svg><span>Stay</span></a></li>
         <li><a href="travel.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><rect  x="3.5" y="8" width="17" height="12" rx="2.2"/></g><g class="line"><rect class="f" x="3.5" y="8" width="17" height="12" rx="2.2"/><path d="M9 8V5.8c0-.7.5-1.3 1.3-1.3h3.4c.8 0 1.3.6 1.3 1.3V8M7.5 8v12M16.5 8v12M16.5 11.5l2.4 2.6"/><rect x="17.6" y="13.6" width="2.6" height="3.4" rx=".6" transform="rotate(-20 18.9 15.3)"/></g></svg><span>Travel</span></a></li>
         <li><a href="weather.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><circle  cx="12" cy="12" r="4"/></g><g class="line"><circle class="f" cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg><span>Weather</span></a></li>
         <li><a href="location.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><path  d="M2.5 12c3.2-4 9.5-5 14-1.6l3.8-2.9v9l-3.8-2.9c-4.5 3.4-10.8 2.4-14-1.6Z"/></g><g class="line"><path class="f" d="M2.5 12c3.2-4 9.5-5 14-1.6l3.8-2.9v9l-3.8-2.9c-4.5 3.4-10.8 2.4-14-1.6Z"/><circle cx="6.4" cy="11.3" r=".7"/><path d="M9 9.8c.8 1.4.8 3 0 4.4"/></g></svg><span>Algarve</span></a></li>
         <li><a href="map.html"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><g class="wash" transform="translate(1.8 1.5)"><circle  cx="12" cy="12" r="8.5"/></g><g class="line"><circle class="f" cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5Z"/></g></svg><span>Guests</span></a></li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </section>
+    <!-- /strip -->
 
     <!-- ======= Our story — paste the ArcGIS StoryMap link into data-storymap ======= -->
     <section class="story" id="our-story" data-storymap="">

@@ -121,6 +121,23 @@ def svg(paths, cls="ico", box=24):
             f'<g class="line">{paths}</g></svg>')
 
 
+# Home strip, top: the weekend at a glance (icon, small-caps label, value)
+CALENDAR = ('<rect class="f" x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/>'
+            '<path d="m9.2 14.6 2 2 3.8-4"/>')
+GLANCE = [
+    (CALENDAR, "When", "1 &ndash; 3 October 2027"),
+    ('<path class="f" d="M12 21.2s-6.6-6.3-6.6-11.2a6.6 6.6 0 0 1 13.2 0c0 4.9-6.6 11.2-6.6 11.2Z"/><circle cx="12" cy="10" r="2.4"/>',
+     "Where", "Tavira, Faro, Portugal"),
+    (STRIP["travel"], "Getting there", "Fly to Faro"),
+]
+
+
+def glance_html():
+    rows = [f'          <li>{svg(paths)}<span class="sc">{label}</span><b>{value}</b></li>'
+            for paths, label, value in GLANCE]
+    return "\n".join(rows)
+
+
 def strip_html():
     rows = [f'        <li><a href="{slug}.html">{svg(STRIP[slug])}<span>{label}</span></a></li>'
             for slug, label in STRIP_LABELS]
