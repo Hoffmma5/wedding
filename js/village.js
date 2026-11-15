@@ -142,7 +142,7 @@
   var lampTip = lamp.querySelector('.tip');
   function syncLamp() {
     var night = root.dataset.theme === 'night';
-    lampTip.textContent = night ? 'Turn the day on' : 'Turn the night on';
+    lampTip.textContent = night ? 'Bring back the Sun' : 'Turn the night on';
     lamp.setAttribute('aria-label', night ? 'Turn off the street lamp (day mode)' : 'Light the street lamp (night mode)');
     lamp.setAttribute('aria-pressed', String(night));
   }
@@ -151,6 +151,23 @@
   });
   new MutationObserver(syncLamp).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   syncLamp();
+
+  /* ---------- Night: four special stars, our loved ones ----------
+     Hover or focus shows the name; a tap toggles it on touch screens. */
+
+  var memories = Array.prototype.slice.call(document.querySelectorAll('.memory-star'));
+  memories.forEach(function (star) {
+    star.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = !star.classList.contains('open');
+      memories.forEach(function (m) { m.classList.remove('open'); m.setAttribute('aria-expanded', 'false'); });
+      star.classList.toggle('open', open);
+      star.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', function () {
+    memories.forEach(function (m) { m.classList.remove('open'); m.setAttribute('aria-expanded', 'false'); });
+  });
 
   /* ---------- Orange tree ---------- */
 

@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=90">
+  <link rel="stylesheet" href="css/style.css?v=91">
   <script>
     (function () {
       var saved = null;
@@ -81,6 +81,7 @@
         <span class="mark hero-mark" aria-hidden="true"></span>
         <h1>Marek <span class="amp">&amp;</span> Paulo</h1>
         <p class="tagline">To this and every summer</p>
+        <p class="night-note">Our sky has some special stars</p>
       </div>
 
       <div class="hero-scroll">
@@ -185,6 +186,25 @@
             <span class="tip">Travel</span>
           </a>
 
+          <!-- Night: four special stars for our loved ones who are no longer with us.
+               Marek's family on the left, Paulo's on the right. -->
+          <button class="memory-star" type="button" aria-expanded="false" style="--x:168;--y:-232;--w:44;--h:44">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3Q22.6 17.4 37 20Q22.6 22.6 20 37Q17.4 22.6 3 20Q17.4 17.4 20 3Z"/></svg>
+            <span class="tip memory below"><b>Pavel Hoffmann</b><span>Marek&rsquo;s father</span></span>
+          </button>
+          <button class="memory-star" type="button" aria-expanded="false" style="--x:408;--y:-150;--w:44;--h:44">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3Q22.6 17.4 37 20Q22.6 22.6 20 37Q17.4 22.6 3 20Q17.4 17.4 20 3Z"/></svg>
+            <span class="tip memory "><b>Jind&#345;i&scaron;ka Kolovratn&iacute;kov&aacute;</b><span>Marek&rsquo;s maternal grandma</span></span>
+          </button>
+          <button class="memory-star" type="button" aria-expanded="false" style="--x:1428;--y:-240;--w:44;--h:44">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3Q22.6 17.4 37 20Q22.6 22.6 20 37Q17.4 22.6 3 20Q17.4 17.4 20 3Z"/></svg>
+            <span class="tip memory below"><b>Mariana Sousa</b><span>Paulo&rsquo;s maternal grandma</span></span>
+          </button>
+          <button class="memory-star" type="button" aria-expanded="false" style="--x:1608;--y:-172;--w:44;--h:44">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3Q22.6 17.4 37 20Q22.6 22.6 20 37Q17.4 22.6 3 20Q17.4 17.4 20 3Z"/></svg>
+            <span class="tip memory "><b>Manuel Palma</b><span>Paulo&rsquo;s paternal grandpa</span></span>
+          </button>
+
           <!-- Orange tree: just for fun -->
           <button class="tree" type="button" aria-label="Shake the orange tree" style="--x:482;--y:282;--w:276;--h:220"></button>
         </div>
@@ -232,6 +252,6 @@
 
   <script src="js/site.js?v=15"></script>
   <script src="js/eggs.js?v=11"></script>
-  <script src="js/village.js?v=17"></script>
+  <script src="js/village.js?v=18"></script>
 </body>
 </html>
