@@ -17,7 +17,7 @@ NAV = [
 
 # The village's three pigments: azulejo blue, roof terracotta, sage olive.
 # One ink per page; its sections use the same ink.
-BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b5432a", "#7b8152"
+BLUE, TERRACOTTA, OLIVE = "#1f4fa0", "#b66238", "#7b8152"
 
 VENUE = """Hotel Rural Quinta do Marco</strong><span>Sítio do Marco, 632A<br>
           Santa Catarina da Fonte do Bispo 8800-164<br>Tavira &ndash; Algarve, Portugal</span>"""
@@ -363,7 +363,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=87">
+  <link rel="stylesheet" href="css/style.css?v=88">
   <script>
     (function () {{
       var saved = null;

@@ -142,7 +142,7 @@
   var lampTip = lamp.querySelector('.tip');
   function syncLamp() {
     var night = root.dataset.theme === 'night';
-    lampTip.textContent = night ? 'Turn off the lamp' : 'Light the lamp';
+    lampTip.textContent = night ? 'Turn the day on' : 'Turn the night on';
     lamp.setAttribute('aria-label', night ? 'Turn off the street lamp (day mode)' : 'Light the street lamp (night mode)');
     lamp.setAttribute('aria-pressed', String(night));
   }
