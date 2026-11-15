@@ -178,7 +178,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   the picture) and sit as a centred group, 760 px max: the sun (200 px)
   and the crabs (240 px). Travel and Weather: the title is centred within the text column and the
   picture sits beside the whole column — Travel's torn map is exactly as tall
-  as title + facts, Weather's sun (180–280 px) is on the left; the shrimp is a small tilted vignette above the
+  as title + facts, Weather's sun (160–256 px) is on the left, with no line under the weather numbers; the shrimp is a small tilted vignette above the
   centred *transfer* section. Sections are separated by a hairline and
   48–80 px. One column under 760 px, always text first and the picture
   after it; watercolours shrink to 150 px accents.
@@ -202,8 +202,9 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **The village** — one large watercolour (`village-day.webp` 340 KB,
   `village-night.webp` 180 KB, plus lit-window and lamp PNG layers). The
   site's identity. Two **painted signs** are drawn on top: the house tile
-  *Algarve* on the yellow house (the Algarve) and a direction sign *← Faro*
-  hanging off the lamp post (Travel). Both are SVG passed through a
+  *Algarve* on the yellow house (the Algarve) and a direction sign *← Airport*
+  hanging high on the lamp post, in front of the yellow house's right window
+  (Travel). Both are SVG passed through a
   watercolour filter (`#paint` in `index.html`: soft, wobbly edges and a
   little grain) — a warm cream wash, a blue border, the name hand-lettered
   in the script in azulejo blue (`#paint-ink`). Hotspots in the picture:
@@ -247,7 +248,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Sousa, Paulo's maternal grandma; Manuel Palma, Paulo's paternal grandpa).
   Under the names, at night only: "Our sky has some special stars". Hidden
   and not focusable by day.
-- **Night sky** — 34 small cream stars (soft dots and a few four-point
+- **Night sky** — 34 small cream stars, reaching down to just above the roofs (soft dots and a few four-point
   sparkles, slightly wobbled like the painting) fade into the sky band at
   night, clear of the names and the weathervane.
 
