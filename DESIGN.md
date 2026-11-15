@@ -49,7 +49,7 @@ The site speaks in two voices that share one paper colour.
 | Display type | Cormorant SC 700, uppercase, wide tracking (from the logo) | Beth Ellen (handwritten script) |
 | Labels | Cormorant SC 700, 16 px | Cormorant SC 700, 16 px |
 | Body | Lora 400, 17 px | Lora 400, 17 px, line-height 1.7 |
-| Below the hero | *At a glance* list (when, where), then the brick strip with six icon links | Footer: ‹ previous · the logo orange · next › |
+| Below the hero | One italic line inviting people to play, then the terracotta strip: *the weekend at a glance* and the six page links | Footer: ‹ previous · a tiny village · next › |
 
 ## Colour
 
@@ -63,7 +63,8 @@ The site speaks in two voices that share one paper colour.
 | `--text` | `#171a21` | `#eef0f7` | Body text; also the RSVP pill |
 | `--muted` | `#6b7180` | `#9aa2bd` | Secondary text (4.7 : 1 on `--bg` by day) |
 | `--line` | `rgba(23,26,33,.09)` | `rgba(238,240,247,.1)` | Hairlines, hover fills |
-| `--olive` | `#4b4b31` | `#ece4c6` | Logo ink: brand name, hero title, small caps |
+| `--olive` | `#4b4b31` | `#ece4c6` | Logo ink: brand name in the nav, small caps |
+| `--title` | `#b66238` | `#eab08f` | The hero names, tagline and orange; the strip; the favicon |
 
 ### The three houses
 
@@ -89,9 +90,9 @@ mixed 50 % towards white.
 
 ### The strip
 
-The home page link band is a fixed brick, outside the token system:
-`#a84f36` with cream `#fbf3e4` text (5 : 1); at night `#55302a` /
-`#e6e0d0`.
+The home page strip is terracotta `#B66238` (the title colour) with white
+text (4.4 : 1, just under AA for small text); at night a deep `#5e3324`
+with cream `#f1e7d6`.
 
 ### Night
 
@@ -133,7 +134,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Nav**: fixed, 60 px; transparent over the home hero, frosted
   (`blur(12px)`, 82 % `--bg`, hairline) once scrolled and always on inner
   pages. Brand left; pill links (Lora 14 px, 44 px tall); RSVP a dark pill;
-  the language buttons **EN · CZ · DE**; a 44 px day/night button. Below
+  the language buttons **EN · CZ · DE · PT**; a 44 px day/night button. Below
   960 px a hamburger opens a card menu with 16 px links, 44 px tall, and
   the language buttons in a row at the bottom.
 - **Home hero**: the painting is 1926 × 817 px plus a 360 px sky band where
@@ -141,33 +142,39 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Width fills the screen but keeps the doors above the fold; under 860 px the
   street stays 860 px wide and scrolls sideways ("Swipe to see the whole
   street").
-- **Home below the village**: **at a glance** (`.glance`, 600 px max) — two
-  hairline rows, a small-caps label and one plain line each, no links
-  (When: 1 – 3 October 2027; Where: Hotel Quinta do Marco, near Tavira; the
-  label goes above the line under 420 px). No button — RSVP is in the
-  header. Everything
-  else is one tap away on the strip. Then the brick **strip** across the full
-  width: six links (Program, Stay, Travel, Weather, Algarve, Guests), icon
-  over a Lora label, 6 across, 3 × 2 on phones. Then the story section
-  (hidden until `data-storymap` has a link) and a one-line footer. The
-  "everything in the village is clickable" hint is gone.
+- **Home below the village**: one muted italic line in the white, "Our
+  village is interactive – open the doors, switch on the lamp, shake the
+  orange tree… play around." Then the terracotta **strip** across the full
+  width, taller: *The weekend at a glance* in small caps, three columns —
+  When (1 – 3 October 2027), Where (Tavira, Faro, Portugal), Getting there
+  (Fly to Faro), each with an ink-and-wash icon (calendar, pin, suitcase) —
+  then a hairline and the six page links (Program, Stay, Travel, Weather,
+  Algarve, Guests), icon over a Lora label, 6 across, 3 × 2 on phones.
+  `tools/make_pages.py` writes the whole strip between `<!-- strip -->`
+  markers. Then the story section (hidden until `data-storymap` has a link)
+  and a one-line footer. The hero has the names and tagline only — no date
+  line.
+- **Doors**: the blue house leads to Program, the yellow house to
+  Accommodation, the coral house to RSVP.
+- **Centred design**: page and section titles sit in the middle; a title
+  that shares a row with a picture keeps to its column (Program's Friday
+  and Sunday). Text that stands alone under a centred title is centred too
+  (`.prose.center`, 600 px).
 - **Inner pages**: `.page.inv`, 1000 px max, 108 px top padding, 20 px side
-  gutter. Text and a watercolour side by side (`.inv-grid`,
-  `1fr / minmax(200px, 320px)`); every other row is mirrored (`.flip`: the
-  picture on the left) — Weather's sun (the crabs below it sit on the
-  right), Program's Sunday oysters and the Algarve intro's sardine tile.
-  Rows with a small picture set `--side` so the picture column is exactly
-  as wide as the picture and the text (max 600 px) sits right beside it,
-  centred vertically: the crabs (260 px). On Travel the title sits in the
-  left column, so the torn map (340 px) starts level with it; *transfer*
-  has the shrimp as a small doodle beside its title (`.inv-head.with-doodle`,
-  96–150 px, tilted −6°) and its text in a 600 px measure (`.prose.narrow`). Sections are separated by a
-  hairline and 48–80 px. One column under 760 px, always text first and the
-  picture after it (also in mirrored rows); watercolours shrink to 150 px
-  accents.
+  gutter. The page title is centred on top; under it, text and a
+  watercolour side by side (`.inv-grid`, `1fr / minmax(200px, 320px)`).
+  Every other row is mirrored (`.flip`: the picture on the left) —
+  Weather's sun, Program's Sunday oysters and the Algarve's sardine tile.
+  Rows with a small picture set `--side` (the column is exactly as wide as
+  the picture) and sit as a centred group, 760 px max: the sun (200 px)
+  and the crabs (240 px). Travel: title on top, then the facts beside the
+  torn map (340 px); the shrimp is a small tilted vignette above the
+  centred *transfer* section. Sections are separated by a hairline and
+  48–80 px. One column under 760 px, always text first and the picture
+  after it; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Lora 14 px, muted, 44 px tall), the orange emblem from the logo
-  (40 px, `.mark` in the logo ink, tilts on hover) leading home, "Next ›"; the
+  (Lora 14 px, muted, 44 px tall), the village from the home page, tiny
+  (112 px, day or night with the windows lit) leading home, "Next ›"; the
   names/date line in 12 px below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
   10–12 px small tiles, menu links · 999 px pills, chips · 14 px photo mosaic
@@ -218,10 +225,15 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   (strip); pool, cocktail, plate, lotus, weights, slide, sheep, sea view
   (facilities); sun, moon, rain (weather); alarm clock, card and coin, phone,
   passport, old car, ringing handset (good to know).
-- **Logo mark** — the orange emblem, recoloured with `--olive` via CSS mask.
-  Also the **favicon**: the olive orange on a cream disc (`favicon.ico`,
-  `assets/icon-192.png`, and `apple-touch-icon.png` on a full square of
-  paper), made by `tools/make_favicon.py`.
+- **Logo mark** — the orange emblem, recoloured via CSS mask: `--olive` in
+  the nav, `--title` (terracotta) over the village.
+- **Favicon** — the logo orange in `#B66238`, as big as the icon allows, on
+  a transparent background (`favicon.svg`, a lighter terracotta on dark
+  tabs; `favicon.ico`; `assets/icon-192.png`); the iPhone icon has it on a
+  square of paper. Made by `tools/make_favicon.py`.
+- **Night sky** — 34 small cream stars (soft dots and a few four-point
+  sparkles, slightly wobbled like the painting) fade into the sky band at
+  night, clear of the names and the weathervane.
 
 ## Components
 
@@ -268,10 +280,10 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   Outlook desktop and most phones) and Outlook (Outlook.com). The event runs
   from check-in Fri 1 Oct 2027 14:00 to check-out Sun 3 Oct 12:00 (Portugal
   time) at the Quinta, with a reminder a week before.
-- **Language buttons** (`.lang`): EN, CZ, DE as small muted text, the
+- **Language buttons** (`.lang`): EN, CZ, DE, PT as small muted text, the
   chosen one underlined. Only English exists: the choice is remembered
-  (`localStorage` `lang`, `<html data-lang>`) and CZ / DE show a toast in
-  their language saying the version is on its way.
+  (`localStorage` `lang`, `<html data-lang>`) and CZ / DE / PT show a toast
+  in their language saying the version is on its way.
 - **Link preview**: every page carries Open Graph / Twitter card tags — the
   page title, "We're getting married in Tavira, Algarve, on 1–3 October
   2027 – and we'd love you to be there.", and `assets/og-image.jpg`
