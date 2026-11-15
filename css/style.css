@@ -1754,32 +1754,18 @@ h2.script + .sc { margin-top: .75em; }
 .brand { white-space: nowrap; }
 
 /* =========================================================
-   The Portuguese guitar (js/radio.js), leaning on the wall right of the
-   yellow house's door as if someone had just gone inside: honey-coloured
-   round body, dark neck, the brass fan head with its twelve tuning screws.
-   Painted in SVG through #paint-soft. Click to play fado; while it plays it
-   sways a little and notes drift up.
+   The Portuguese guitar (js/radio.js): a watercolour painting
+   (assets/art/fado-guitar.webp, cut out of its paper), set down right of
+   the yellow house's door as if someone had just gone inside. Click to play
+   fado; while it plays it sways a little and notes drift up.
    ========================================================= */
 .fado-guitar { z-index: 7; padding: 0; border: 0; background: none; }
-.fado-guitar svg { display: block; width: 100%; height: 100%; overflow: visible; transform: rotate(7deg); transform-origin: 50% 98%; transition: transform .3s var(--ease), filter var(--fade); }
-.fado-guitar .shade { fill: rgba(70, 50, 30, .22); filter: blur(3px); }
-.fado-guitar .head-line { stroke: rgba(110, 80, 30, .45); stroke-width: 1.2; fill: none; }
-.fado-guitar .pegs circle { fill: #f3e4b0; stroke: #8a6a2a; stroke-width: 1; }
-.fado-guitar .frets { stroke: #d8c08a; stroke-width: 1; opacity: .7; }
-.fado-guitar .edge { fill: none; stroke: #6d3510; stroke-width: 3; opacity: .45; }
-.fado-guitar .wash { fill: #fbd99c; opacity: .4; }
-.fado-guitar .wash.dark { fill: #7a3f18; opacity: .22; }
-.fado-guitar .hole { fill: #3a2414; }
-.fado-guitar .rosette { fill: none; stroke: #f1dcae; stroke-width: 2.4; opacity: .9; }
-.fado-guitar .rosette.thin { stroke-width: 1; stroke: #6d3c1a; opacity: .6; }
-.fado-guitar .bridge { stroke: #3a2414; stroke-width: 4; stroke-linecap: round; }
-.fado-guitar .button { fill: #3a2414; }
-.fado-guitar .strings path { stroke: #fbf2dc; stroke-width: .6; opacity: .85; }
-:root[data-theme="night"] .fado-guitar svg { filter: brightness(.72) saturate(.85); }
-:root[data-theme="night"] .fado-guitar.playing svg { filter: brightness(.92) drop-shadow(0 0 calc(var(--u) * 10) rgba(255, 200, 110, .5)); }
-.fado-guitar:is(:hover, :focus-visible) svg { transform: rotate(4deg); }
-.fado-guitar.playing svg { animation: guitar-sway 1.66s ease-in-out infinite; }
-@keyframes guitar-sway { 0%, 100% { transform: rotate(7deg); } 50% { transform: rotate(4.5deg); } }
+.fado-guitar img { display: block; width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 100%; filter: drop-shadow(calc(var(--u) * 2) calc(var(--u) * 3) calc(var(--u) * 3) rgba(70, 45, 20, .3)); transition: transform .3s var(--ease), filter var(--fade); }
+:root[data-theme="night"] .fado-guitar img { filter: brightness(.72) saturate(.85); }
+:root[data-theme="night"] .fado-guitar.playing img { filter: brightness(.92) drop-shadow(0 0 calc(var(--u) * 10) rgba(255, 200, 110, .5)); }
+.fado-guitar:is(:hover, :focus-visible) img { transform: rotate(-3deg); }
+.fado-guitar.playing img { animation: guitar-sway 1.66s ease-in-out infinite; }
+@keyframes guitar-sway { 50% { transform: rotate(-2.5deg); } }
 .fado-guitar:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
 .fado-guitar:is(:hover, :focus-visible) .tip, .fado-guitar.playing:hover .tip { opacity: 1; transform: translate(-50%, 0); }
 .radio-note {

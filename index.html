@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/village-day.webp">
-  <link rel="stylesheet" href="css/style.css?v=112">
+  <link rel="stylesheet" href="css/style.css?v=113">
   <script>
     (function () {
       var saved = null;
@@ -192,44 +192,9 @@
             <span class="tip">Travel</span>
           </a>
 
-          <!-- A Portuguese guitar leaning on the wall right of the yellow house's door: plays fado (js/radio.js) -->
-          <button class="spot fado-guitar" type="button" aria-pressed="false" aria-label="Portuguese guitar: play fado" style="--x:1110;--y:412;--w:76;--h:252">
-            <svg viewBox="0 0 120 400" aria-hidden="true">
-              <defs>
-                <radialGradient id="gt-wood" cx=".42" cy=".38" r=".7">
-                  <stop offset="0" stop-color="#f3bd6a"/><stop offset=".55" stop-color="#d48a3a"/><stop offset="1" stop-color="#9a5221"/>
-                </radialGradient>
-                <linearGradient id="gt-neck" x1="0" x2="1"><stop offset="0" stop-color="#4b2a17"/><stop offset=".5" stop-color="#6e4126"/><stop offset="1" stop-color="#4b2a17"/></linearGradient>
-                <radialGradient id="gt-brass" cx=".5" cy=".7" r=".8"><stop offset="0" stop-color="#ead18c"/><stop offset="1" stop-color="#b48a3c"/></radialGradient>
-              </defs>
-              <ellipse class="shade" cx="64" cy="392" rx="44" ry="6"/>
-              <g filter="url(#paint-soft)">
-                <!-- the fan head with its brass tuning screws -->
-                <path class="head" d="M60 46 L24 30 Q30 4 60 2 Q90 4 96 30 Z" fill="url(#gt-brass)"/>
-                <path class="head-line" d="M60 46 L32 22M60 46 L46 8M60 46 L74 8M60 46 L88 22"/>
-                <g class="pegs"><circle cx="34.0" cy="29.0" r="2.6"/><circle cx="37.3" cy="24.4" r="2.6"/><circle cx="41.5" cy="20.4" r="2.6"/><circle cx="46.3" cy="17.3" r="2.6"/><circle cx="51.5" cy="15.2" r="2.6"/><circle cx="57.1" cy="14.1" r="2.6"/><circle cx="62.9" cy="14.1" r="2.6"/><circle cx="68.5" cy="15.2" r="2.6"/><circle cx="73.7" cy="17.3" r="2.6"/><circle cx="78.5" cy="20.4" r="2.6"/><circle cx="82.7" cy="24.4" r="2.6"/><circle cx="86.0" cy="29.0" r="2.6"/></g>
-                <!-- neck -->
-                <path class="neck" d="M53 44 L67 44 L69 250 L51 250 Z" fill="url(#gt-neck)"/>
-                <path class="frets" d="M52 76h16M52 106h16M52 133h16M52 157h16M51 178h18M51 197h18M51 214h18M51 229h18"/>
-              </g>
-              <!-- the round body, painted: a wash, a darker pooled edge, a highlight -->
-              <g filter="url(#paint)">
-                <path class="body" d="M60 238 C97 238 116 268 116 308 C116 354 93 386 60 386 C27 386 4 354 4 308 C4 268 23 238 60 238 Z" fill="url(#gt-wood)"/>
-                <path class="edge" d="M60 242 C94 242 112 270 112 308 C112 351 90 382 60 382 C30 382 8 351 8 308 C8 270 26 242 60 242 Z"/>
-                <ellipse class="wash" cx="42" cy="296" rx="22" ry="26"/>
-                <ellipse class="wash dark" cx="80" cy="344" rx="26" ry="26"/>
-              </g>
-              <g filter="url(#paint-soft)">
-                <!-- sound hole and its rosette -->
-                <circle class="hole" cx="60" cy="286" r="14"/>
-                <circle class="rosette" cx="60" cy="286" r="18.5"/>
-                <circle class="rosette thin" cx="60" cy="286" r="22"/>
-                <!-- bridge and the strap button -->
-                <path class="bridge" d="M45 340h30"/>
-                <circle class="button" cx="60" cy="382" r="2.6"/>
-              </g>
-              <g class="strings"><path d="M55.5 40 L51.5 340"/><path d="M57.3 40 L54.9 340"/><path d="M59.1 40 L58.3 340"/><path d="M60.9 40 L61.7 340"/><path d="M62.7 40 L65.1 340"/><path d="M64.5 40 L68.5 340"/></g>
-            </svg>
+          <!-- A watercolour Portuguese guitar, set down right of the yellow house's door: plays fado (js/radio.js) -->
+          <button class="spot fado-guitar" type="button" aria-pressed="false" aria-label="Portuguese guitar: play fado" style="--x:1110;--y:500;--w:70;--h:160">
+            <img src="assets/art/fado-guitar.webp" alt="" width="227" height="520">
             <span class="tip">Play some fado</span>
           </button>
 
