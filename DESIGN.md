@@ -64,7 +64,7 @@ The site speaks in two voices that share one paper colour.
 | `--muted` | `#6b7180` | `#9aa2bd` | Secondary text (4.7 : 1 on `--bg` by day) |
 | `--line` | `rgba(23,26,33,.09)` | `rgba(238,240,247,.1)` | Hairlines, hover fills |
 | `--olive` | `#4b4b31` | `#ece4c6` | Logo ink: brand name in the nav, small caps |
-| `--title` | `#b66238` | `#b66238` | The hero names, tagline and orange; the strip; the favicon |
+| `--title` | `#b66238` | `#f0b48c` | The hero names, tagline and orange; the strip; the favicon |
 
 ### The three houses
 
@@ -91,9 +91,12 @@ mixed 50 % towards white.
 ### The strip
 
 The home page strip and every footer are terracotta `#B66238` (the title
-colour), the same day and night, with white text (4.4 : 1, just under AA
-for small text). The hero names, the favicon and the Program / Weather
-page ink use the same `#B66238`.
+colour) by day, with white text (4.4 : 1, just under AA for small text).
+The hero names, the favicon and the Program / Weather page ink use the
+same `#B66238`. At night the terracotta changes the way it would after
+sunset: the names turn a warm peach `#F0B48C` (4.9 : 1 on the sky), the
+strip and footers a dusk terracotta `#7D4128` with cream `#F7EBDC` text,
+and the favicon a lighter terracotta on dark tabs.
 
 ### Night
 
@@ -158,7 +161,8 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
 - **Doors**: the blue house leads to Program, the yellow house to
   Accommodation, the coral house to RSVP.
 - **Title order**: the script title first, its small-caps subheading
-  always below it (never above).
+  always below it (never above), in the title's colour, with room for the
+  script's long descenders (1 em under an h1, .75 em under an h2).
 - **Footers**: terracotta `#B66238`, full width, white text; on Home the
   strip runs straight into it.
 - **Centred design**: page and section titles sit in the middle; a title
@@ -179,8 +183,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   48–80 px. One column under 760 px, always text first and the picture
   after it; watercolours shrink to 150 px accents.
 - **Footer** (inner pages and Guests): a hairline, then one row: "‹ Previous"
-  (Lora 14 px, muted, 44 px tall), the village from the home page, tiny
-  (112 px, day or night with the windows lit) leading home, "Next ›"; the
+  (Lora 14 px, 44 px tall), the logo orange in white (40 px) leading home, "Next ›"; the
   names/date line in 12 px below.
 - **Radii**: 16 px cards, maps, menu · 14 px highlights, list items ·
   10–12 px small tiles, menu links · 999 px pills, chips · 14 px photo mosaic
@@ -237,6 +240,13 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   a transparent background (`favicon.svg`, a lighter terracotta on dark
   tabs; `favicon.ico`; `assets/icon-192.png`); the iPhone icon has it on a
   square of paper. Made by `tools/make_favicon.py`.
+- **Special stars** — at night four stars glow softly (`.memory-star`);
+  hover, focus or a tap shows a loved one who is no longer with us —
+  Marek's family on the left (Pavel Hoffmann, Marek's father; Jindřiška
+  Kolovratníková, Marek's maternal grandma), Paulo's on the right (Mariana
+  Sousa, Paulo's maternal grandma; Manuel Palma, Paulo's paternal grandpa).
+  Under the names, at night only: "Our sky has some special stars". Hidden
+  and not focusable by day.
 - **Night sky** — 34 small cream stars (soft dots and a few four-point
   sparkles, slightly wobbled like the painting) fade into the sky band at
   night, clear of the names and the weathervane.
