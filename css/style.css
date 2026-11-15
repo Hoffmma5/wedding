@@ -321,7 +321,7 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
 }
 
 /* Night sky: small soft stars over the sky band, fading in with the night */
-.stars { position: absolute; left: 0; top: 0; z-index: 3; width: 100%; height: calc(360 / 1177 * 100%); overflow: visible; pointer-events: none; opacity: var(--night); transition: opacity var(--fade); }
+.stars { position: absolute; left: 0; top: 0; z-index: 3; width: 100%; height: calc(440 / 1177 * 100%); overflow: visible; pointer-events: none; opacity: var(--night); transition: opacity var(--fade); }
 :root[data-theme="night"] .stars { transition-delay: .4s; }
 .stars circle, .stars .sparkle { fill: #fff3d6; }
 .stars circle { opacity: .75; }
