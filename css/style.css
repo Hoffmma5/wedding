@@ -293,12 +293,15 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   text-align: center;
   pointer-events: none;
 }
-.hero-mark { width: clamp(44px, calc(var(--u) * 84), 92px); }
+.hero-mark { width: clamp(44px, calc(var(--u) * 84), 92px); background: var(--title); }
+/* the names, the tagline and the orange above them: terracotta from the roofs */
+:root { --title: #b66238; }
+:root[data-theme="night"] { --title: #eab08f; }
 .hero-text h1, .hero-text .tagline {
   font-family: var(--sc);
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--olive);
+  color: var(--title);
   transition: color var(--fade);
 }
 .hero-text h1 {
@@ -316,7 +319,13 @@ button, .nav, .tip, .swipe-hint, .map-credit, .dish-credit, .map-btn, .viewer .v
   letter-spacing: .24em;
   line-height: 1.2;
 }
-.hero-text .eyebrow { margin-top: calc(8px + var(--u) * 6); font-size: clamp(14px, calc(var(--u) * 17), 18px); }
+
+/* Night sky: small soft stars over the sky band, fading in with the night */
+.stars { position: absolute; left: 0; top: 0; z-index: 3; width: 100%; height: calc(360 / 1177 * 100%); overflow: visible; pointer-events: none; opacity: var(--night); transition: opacity var(--fade); }
+:root[data-theme="night"] .stars { transition-delay: .4s; }
+.stars circle, .stars .sparkle { fill: #fff3d6; }
+.stars circle { opacity: .75; }
+.stars .sparkle { opacity: .95; }
 
 /* ---------- Tooltips ---------- */
 
