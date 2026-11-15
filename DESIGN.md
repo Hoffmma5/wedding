@@ -249,11 +249,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   a transparent background (`favicon.svg`, a lighter terracotta on dark
   tabs; `favicon.ico`; `assets/icon-192.png`); the iPhone icon has it on a
   square of paper. Made by `tools/make_favicon.py`.
-- **The radio** — a painted 1950s tabletop radio in the yellow house's left
-  window (`.radio`, `js/radio.js`). A click plays an original slow fado in
-  A minor, synthesised live (Karplus-Strong plucked strings: a Portuguese
-  guitar with a tremolo over a classical guitar) — no audio files; a second
-  click stops it. While playing, the dial glows and notes drift up.
+- **The radio** — a watercolour boombox (`assets/art/radio.webp`, cut out of
+  its paper) in the coral house's window (`.radio`, `js/radio.js`). A click
+  plays `assets/audio/fado.mp3` ("A Casa da Mariquinhas"), loaded only then,
+  fading in and looping; a second click stops it. While it plays, the radio
+  sways a little and notes drift up.
 - **Special stars** — at night four stars glow softly (`.memory-star`);
   hover, focus or a tap shows a loved one who is no longer with us —
   Marek's family on the left (Pavel Hoffmann, Marek's father; Jindřiška
