@@ -140,7 +140,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   pages. Brand left; pill links starting with Home (Lora 14 px, 44 px tall);
   RSVP a terracotta pill (`--title`, dark text at night);
   the language buttons **EN · CZ · DE · PT**; a 44 px day/night button. Below
-  960 px a hamburger opens a card menu with 16 px links, 44 px tall, and
+  1080 px a hamburger opens a card menu with 16 px links, 44 px tall, and
   the language buttons in a row at the bottom.
 - **Home hero**: the painting is 1926 × 817 px plus a 360 px sky band where
   the names sit. Hotspots are placed in picture pixels (`--x/--y/--w/--h`).
@@ -249,6 +249,11 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   a transparent background (`favicon.svg`, a lighter terracotta on dark
   tabs; `favicon.ico`; `assets/icon-192.png`); the iPhone icon has it on a
   square of paper. Made by `tools/make_favicon.py`.
+- **The radio** — a painted 1950s tabletop radio in the yellow house's left
+  window (`.radio`, `js/radio.js`). A click plays an original slow fado in
+  A minor, synthesised live (Karplus-Strong plucked strings: a Portuguese
+  guitar with a tremolo over a classical guitar) — no audio files; a second
+  click stops it. While playing, the dial glows and notes drift up.
 - **Special stars** — at night four stars glow softly (`.memory-star`);
   hover, focus or a tap shows a loved one who is no longer with us —
   Marek's family on the left (Pavel Hoffmann, Marek's father; Jindřiška
