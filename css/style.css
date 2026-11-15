@@ -532,7 +532,7 @@ body.entering::after { opacity: 1; }
 /* Walking back from a page's footer: the street steps back and the page
    fades to paper... */
 body.leaving::after { opacity: 1; transition: opacity .28s ease; }
-body.leaving .street-view .mini-village { transform: scale(.9); transition: transform .5s var(--ease); }
+body.leaving .street-view .foot-mark { transform: scale(.9); transition: transform .5s var(--ease); }
 /* ...and the village opens close up on the street, then zooms out */
 html.returning .hero { transform: scale(1.8); transition: none; }
 html.returning .hero-text { opacity: 0; }
@@ -1674,3 +1674,25 @@ html.map-full, html.map-full body { overflow: hidden; }
 .tip.memory b { font: 600 14px var(--serif); }
 .tip.memory span { font: italic 13px var(--serif); color: var(--muted); }
 .memory-star:is(:hover, :focus-visible, .open) .tip { opacity: 1; transform: translate(var(--tx, -50%), 0); }
+
+/* Subheadings take the colour of the title above them */
+.script + .sc, .more > summary .script + .sc { color: var(--topic-c, var(--olive)); }
+/* Stay: the hotel's name in the page's green, a size up */
+.stay-name { color: var(--topic-c); font-size: var(--fs-l); }
+/* Footer: the logo orange in white */
+.foot-mark { width: 40px; background: #fff; transition: transform .3s var(--ease); }
+.street-view:hover .foot-mark { transform: translateY(-2px) rotate(-4deg); }
+
+/* =========================================================
+   Night: the terracotta, as it looks after sunset
+   - the names over the village: a warm peach, like lamplight (4.9 : 1 on the sky)
+   - the strip and footers: a dusk terracotta with cream text
+   ========================================================= */
+:root[data-theme="night"] { --title: #f0b48c; }
+:root[data-theme="night"] :is(.strip, .street, .foot) { background: #7d4128; color: #f7ebdc; }
+:root[data-theme="night"] .street .pager a { color: rgba(247, 235, 220, .85); }
+:root[data-theme="night"] .foot-mark { background: #f7ebdc; }
+/* the script's long descenders (g, y, f) need room above the subheading */
+.script + .sc { margin-top: .55em; }
+h1.script + .sc { margin-top: 1em; }
+h2.script + .sc { margin-top: .75em; }

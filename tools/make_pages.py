@@ -370,7 +370,7 @@ HEAD = """<!doctype html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=91">
+  <link rel="stylesheet" href="css/style.css?v=95">
   <script>
     (function () {{
       var saved = null;
@@ -442,7 +442,7 @@ def nav():
 
 
 # The walk through the site, in menu order. The footer links every page to
-# the one before and after it, and a tiny village leads home.
+# the one before and after it, and the logo orange leads home.
 WALK = [
     ("index", "Home"),
     ("program", "Program"),
@@ -457,11 +457,8 @@ WALK = [
 CHEVRON_L = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>'
 CHEVRON_R = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>'
 
-# The village from the home page, tiny (day, and night with the windows lit), leads home
-HOME_MARK = """<span class="mini-village" aria-hidden="true">
-        <img class="day" src="assets/village-mini-day.webp" alt="" width="640" height="271" loading="lazy">
-        <img class="night" src="assets/village-mini-night.webp" alt="" width="640" height="271" loading="lazy">
-      </span>"""
+# The orange from the logo, in white on the terracotta footer, leads home
+HOME_MARK = '<span class="mark foot-mark" aria-hidden="true"></span>'
 
 
 def street(slug):

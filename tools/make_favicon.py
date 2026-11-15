@@ -16,7 +16,7 @@ import io
 from PIL import Image
 
 INK = (182, 98, 56)          # #B66238
-DARK_TAB = "#b66238"         # the same terracotta on dark tabs too
+DARK_TAB = "#e09a76"         # a lighter terracotta for dark browser tabs
 PAPER = (252, 250, 250)
 
 mark = Image.open("assets/logo-mark.png").convert("RGBA")

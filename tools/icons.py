@@ -106,7 +106,7 @@ TIPS = [
     # an old telephone handset
     ('<path class="f" d="M8.4 3.5 6 4.2C4.4 4.7 3.6 6.4 4.1 8a17 17 0 0 0 11.9 11.9c1.6.5 3.3-.3 3.8-1.9l.7-2.4-4.4-2.2-1.9 1.9a11 11 0 0 1-5.6-5.6l1.9-1.9Z"/>'
      '<path d="M14.5 3.8a6 6 0 0 1 5.7 5.7M14.2 6.7a3 3 0 0 1 3.1 3.1"/>',
-     'Emergency: <b>112</b>, same as at home'),
+     'Emergency number: <b>112</b>'),
 ]
 
 _FILLED = re.compile(r'<(path|circle|rect|ellipse)\b([^>]*?)\bclass="f( bg)?"([^>]*)/>')
