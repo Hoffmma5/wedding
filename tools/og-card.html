@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- The save-the-date link preview (1200 x 630) shown on WhatsApp, Messenger,
+     email… Rendered to assets/og-save-the-date.jpg by tools/make_og.py; edit
+     here and re-run. A new file name per design, so chat apps that cache
+     previews pick up the change. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@500;700&display=block" rel="stylesheet">
+  <style>
+    html, body { margin: 0; }
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #fcfafa;
+      color: #4b4b31;
+      font-family: "Cormorant SC", Georgia, serif;
+      text-align: center;
+      position: relative;
+    }
+    .mark {
+      display: block;
+      width: 44px;
+      aspect-ratio: 166 / 160;
+      margin: 26px auto 0;
+      background: #b66238;
+      -webkit-mask: url("../assets/logo-mark.png") center / contain no-repeat;
+      mask: url("../assets/logo-mark.png") center / contain no-repeat;
+    }
+    .std { margin: 2px 0 0; font: 400 56px/1.25 "Beth Ellen", cursive; color: #b66238; }
+    h1 { margin: 8px 0 0; padding-left: .14em; font-size: 46px; font-weight: 700; letter-spacing: .14em; line-height: 1; text-transform: uppercase; color: #b66238; }
+    h1 .amp { font-weight: 500; letter-spacing: 0; padding: 0 .18em; }
+    p.when { margin: 12px 0 0; font-size: 25px; font-weight: 700; letter-spacing: .08em; }
+    img { position: absolute; left: 50%; bottom: 0; width: 960px; transform: translateX(-50%); }
+  </style>
+</head>
+<body>
+  <span class="mark"></span>
+  <p class="std">Save the date</p>
+  <h1>Marek <span class="amp">&amp;</span> Paulo</h1>
+  <p class="when">1 – 3 October 2027 · Tavira, Algarve</p>
+  <img src="../assets/village-day.webp" alt="">
+</body>
+</html>

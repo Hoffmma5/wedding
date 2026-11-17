@@ -13,7 +13,7 @@
   <meta property="og:title" content="Save the date &middot; Marek &amp; Paulo &middot; 1&ndash;3 October 2027">
   <meta property="og:description" content="We&rsquo;re getting married in Tavira, Algarve, on 1&ndash;3 October 2027. Invitation to follow.">
   <meta property="og:url" content="https://marekandpaulo.com/">
-  <meta property="og:image" content="https://marekandpaulo.com/assets/og-image.jpg">
+  <meta property="og:image" content="https://marekandpaulo.com/assets/og-save-the-date.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Marek &amp; Paulo, 1 &ndash; 3 October 2027, over a watercolour of three whitewashed Algarve houses">
@@ -60,12 +60,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: clamp(36px, 8vh, 88px) 16px clamp(20px, 4vh, 40px);
+      padding: clamp(24px, 6vh, 64px) 16px clamp(16px, 3vh, 32px);
     }
 
     .mark {
       display: block;
-      width: clamp(46px, 7vw, 64px);
+      width: clamp(38px, 6vh, 54px);
       aspect-ratio: 166 / 160;
       background: var(--title);
       -webkit-mask: url("assets/logo-mark.png") center / contain no-repeat;
@@ -73,42 +73,43 @@
     }
 
     .std {
-      margin: clamp(10px, 2vh, 18px) 0 0;
-      font: 400 clamp(40px, 9vw, 72px)/1.25 var(--script);
+      margin: clamp(6px, 1.4vh, 14px) 0 0;
+      font: 400 clamp(34px, min(8vw, 8vh), 58px)/1.25 var(--script);
       color: var(--title);
     }
 
     h1 {
-      margin: clamp(14px, 2.4vh, 22px) 0 0;
+      margin: clamp(10px, 2vh, 18px) 0 0;
       padding-left: .14em;           /* balances the trailing letter-spacing */
-      font: 700 clamp(30px, 6.4vw, 56px)/1.05 var(--sc);
+      font: 700 clamp(26px, min(5.6vw, 5.6vh), 42px)/1.05 var(--sc);
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--olive);
+      color: var(--title);
     }
-    h1 .amp { letter-spacing: 0; padding: 0 .18em; }
+    h1 .amp { font-weight: 500; letter-spacing: 0; padding: 0 .18em; }
 
     .when {
-      margin: clamp(14px, 2.4vh, 22px) 0 0;
-      font: 700 clamp(21px, 3.6vw, 28px)/1.3 var(--sc);
+      margin: clamp(10px, 2vh, 18px) 0 0;
+      font: 700 clamp(19px, min(3.4vw, 3.2vh), 24px)/1.3 var(--sc);
       letter-spacing: .06em;
       color: var(--olive);
     }
     .where {
       margin: 2px 0 0;
-      font: 700 clamp(17px, 2.6vw, 20px)/1.4 var(--sc);
+      font: 700 clamp(15px, min(2.4vw, 2.4vh), 18px)/1.4 var(--sc);
       letter-spacing: .06em;
       color: var(--muted);
     }
 
     .note {
-      margin: clamp(18px, 3vh, 28px) 0 0;
+      margin: clamp(12px, 2.4vh, 22px) 0 0;
+      font-size: 16px;
       font-style: italic;
       color: var(--muted);
     }
 
     .cal {
-      margin-top: clamp(18px, 3vh, 26px);
+      margin-top: clamp(12px, 2.4vh, 22px);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -121,8 +122,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      min-height: 44px;
-      padding: 0 18px;
+      min-height: 40px;
+      padding: 0 16px;
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--text);
@@ -135,7 +136,7 @@
 
     .village {
       flex: 0 0 auto;
-      width: min(100%, 1100px);
+      width: min(100%, 1100px, calc(36vh * 1926 / 817 + 32px));
       margin: 0 auto;
       padding: 0 16px;
     }
