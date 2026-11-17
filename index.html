@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Save the date · Marek &amp; Paulo · 1–3 October 2027</title>
+  <meta name="description" content="Marek and Paulo are getting married in Tavira, Algarve, Portugal, 1–3 October 2027. Invitation to follow.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fcfafa">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marek &amp; Paulo">
+  <meta property="og:title" content="Save the date &middot; Marek &amp; Paulo &middot; 1&ndash;3 October 2027">
+  <meta property="og:description" content="We&rsquo;re getting married in Tavira, Algarve, on 1&ndash;3 October 2027. Invitation to follow.">
+  <meta property="og:url" content="https://marekandpaulo.com/">
+  <meta property="og:image" content="https://marekandpaulo.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Marek &amp; Paulo, 1 &ndash; 3 October 2027, over a watercolour of three whitewashed Algarve houses">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&family=Inter:wght@500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/village-day.webp">
+
+  <style>
+    :root {
+      --bg: #fcfafa;
+      --text: #171a21;
+      --muted: #5f6573;
+      --olive: #4b4b31;
+      --title: #b66238;
+      --line: rgba(23, 26, 33, .14);
+      --script: "Beth Ellen", cursive;
+      --sc: "Cormorant SC", Georgia, serif;
+      --serif: "Lora", Georgia, serif;
+      --sans: "Inter", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font: 17px/1.6 var(--serif);
+      text-align: center;
+    }
+
+    .card {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(36px, 8vh, 88px) 16px clamp(20px, 4vh, 40px);
+    }
+
+    .mark {
+      display: block;
+      width: clamp(46px, 7vw, 64px);
+      aspect-ratio: 166 / 160;
+      background: var(--title);
+      -webkit-mask: url("assets/logo-mark.png") center / contain no-repeat;
+      mask: url("assets/logo-mark.png") center / contain no-repeat;
+    }
+
+    .std {
+      margin: clamp(10px, 2vh, 18px) 0 0;
+      font: 400 clamp(40px, 9vw, 72px)/1.25 var(--script);
+      color: var(--title);
+    }
+
+    h1 {
+      margin: clamp(14px, 2.4vh, 22px) 0 0;
+      padding-left: .14em;           /* balances the trailing letter-spacing */
+      font: 700 clamp(30px, 6.4vw, 56px)/1.05 var(--sc);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--olive);
+    }
+    h1 .amp { letter-spacing: 0; padding: 0 .18em; }
+
+    .when {
+      margin: clamp(14px, 2.4vh, 22px) 0 0;
+      font: 700 clamp(21px, 3.6vw, 28px)/1.3 var(--sc);
+      letter-spacing: .06em;
+      color: var(--olive);
+    }
+    .where {
+      margin: 2px 0 0;
+      font: 700 clamp(17px, 2.6vw, 20px)/1.4 var(--sc);
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
+
+    .note {
+      margin: clamp(18px, 3vh, 28px) 0 0;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .cal {
+      margin-top: clamp(18px, 3vh, 26px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font: 500 15px/1 var(--sans);
+    }
+    .cal span { width: 100%; color: var(--muted); font-size: 14px; margin-bottom: 2px; }
+    .cal a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      transition: background-color .2s, border-color .2s;
+    }
+    .cal a:hover { background: rgba(182, 98, 56, .08); border-color: rgba(182, 98, 56, .45); }
+    .cal a:focus-visible { outline: 2px solid #2f5fb5; outline-offset: 3px; }
+    .cal svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+    .village {
+      flex: 0 0 auto;
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .village img { display: block; width: 100%; height: auto; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card > * { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; }
+      .card > :nth-child(2) { animation-delay: .08s; }
+      .card > :nth-child(3) { animation-delay: .16s; }
+      .card > :nth-child(4) { animation-delay: .24s; }
+      .card > :nth-child(5) { animation-delay: .3s; }
+      .card > :nth-child(6) { animation-delay: .36s; }
+      .card > :nth-child(7) { animation-delay: .42s; }
+      @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <span class="mark" aria-hidden="true"></span>
+    <p class="std">Save the date</p>
+    <h1>Marek <span class="amp">&amp;</span> Paulo</h1>
+    <p class="when">1 – 3 October 2027</p>
+    <p class="where">Tavira · Algarve · Portugal</p>
+    <p class="note">Invitation to follow.</p>
+    <div class="cal">
+      <span>Add it to your calendar</span>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Marek%20%26%20Paulo%27s%20wedding&amp;dates=20271001T130000Z%2F20271003T110000Z&amp;location=Tavira%2C%20Algarve%2C%20Portugal&amp;details=Save%20the%20date%20%E2%80%93%20invitation%20to%20follow.%20https%3A%2F%2Fmarekandpaulo.com%2F" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Google
+      </a>
+      <a href="assets/save-the-date.ics" download="marek-paulo-wedding.ics">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Apple / Outlook
+      </a>
+    </div>
+  </main>
+
+  <div class="village">
+    <img src="assets/village-day.webp" alt="A watercolour of three whitewashed Portuguese houses with blue, yellow and coral trim, an orange tree and bougainvillea" width="1926" height="817">
+  </div>
+</body>
+</html>

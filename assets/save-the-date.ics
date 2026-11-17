@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marek & Paulo//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-20271001@hoffmma5.github.io
+DTSTAMP:20261117T120000Z
+DTSTART:20271001T130000Z
+DTEND:20271003T110000Z
+SUMMARY:Marek & Paulo's wedding
+LOCATION:Tavira\, Algarve\, Portugal
+DESCRIPTION:Save the date – invitation to follow. https://marekandpaulo.co
+ m/
+URL:https://marekandpaulo.com/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Marek & Paulo's wedding
+TRIGGER:-P7D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
