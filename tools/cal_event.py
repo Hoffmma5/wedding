@@ -7,7 +7,7 @@ so check-in 14:00 is 13:00Z and check-out 12:00 is 11:00Z.
 """
 from urllib.parse import quote, urlencode
 
-SITE = "https://hoffmma5.github.io/wedding/"
+SITE = "https://marekandpaulo.com/"
 ICS_PATH = "assets/marek-paulo-wedding.ics"
 
 TITLE = "Marek & Paulo's wedding"

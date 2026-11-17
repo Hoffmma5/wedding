@@ -319,7 +319,7 @@ Title case is mixed: mostly lowercase ("the Program", "good to know",
   page title, "We're getting married in Tavira, Algarve, on 1–3 October
   2027 – and we'd love you to be there.", and `assets/og-image.jpg`
   (1200 × 630: logo orange, names, date and place over the village). The
-  URLs point at the live site, `https://hoffmma5.github.io/wedding/`.
+  URLs point at the live site, `https://marekandpaulo.com/`.
 
 ## Motion
 

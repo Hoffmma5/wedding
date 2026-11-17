@@ -421,7 +421,7 @@ FOOT = """  <script src="js/site.js?v=15"></script>
 # Link preview: what WhatsApp, Messenger, email… show when a page is shared.
 # The picture is assets/og-image.jpg (tools/make_og.py); the URLs must be the
 # live site's, so previews only work once it is published.
-SITE = "https://hoffmma5.github.io/wedding/"
+SITE = "https://marekandpaulo.com/"
 SHARE_DESC = "We&rsquo;re getting married in Tavira, Algarve, on 1&ndash;3 October 2027 &ndash; and we&rsquo;d love you to be there."
 
 

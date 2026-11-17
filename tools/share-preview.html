@@ -87,8 +87,8 @@
           function og(p) { var m = doc.querySelector('meta[property="' + p + '"], meta[name="' + p + '"]'); return m ? m.getAttribute('content') : ''; }
           var title = txt(og('og:title')), desc = txt(og('og:description')), url = og('og:url'), image = og('og:image');
           var host = url ? new URL(url).host : '';
-          // The live URL does not exist until the site is published: show the local copy of the picture
-          var local = image ? '../' + image.replace(/^https?:\/\/[^/]+\/[^/]+\//, '') : '';
+          // Show the local copy of the picture (the live address only works once published)
+          var local = image ? '../' + image.replace(/^https?:\/\/[^/]+\//, '') : '';
           document.querySelectorAll('img').forEach(function (i) { i.src = local; });
           document.querySelectorAll('.t').forEach(function (e) { e.textContent = title; });
           document.querySelectorAll('.d').forEach(function (e) { e.textContent = desc; });
