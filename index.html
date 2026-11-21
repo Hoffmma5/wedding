@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marek &amp; Paulo</title>
+<meta name="description" content="Marek &amp; Paulo — wedding incoming.">
+<meta name="theme-color" content="#fcfafa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1426" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Cormorant+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fcfafa;
+    --title: #b66238;
+    --fish-back: #1f4fa0;
+    --fish-belly: #dfe6f1;
+    --fish-eye: #171a21;
+    --bubble: rgba(31,79,160,.35);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1426;
+      --title: #f0b48c;
+      --fish-back: #8fb0ff;
+      --fish-belly: #d3dbee;
+      --fish-eye: #0f1426;
+      --bubble: rgba(143,176,255,.4);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg);
+    display: grid; place-items: center; text-align: center;
+    padding: 24px 16px;
+  }
+  main { display: flex; flex-direction: column; align-items: center; }
+  h1 {
+    margin: 0; color: var(--title);
+    font: 700 clamp(15px, 2.6vw, 19px)/1 "Cormorant SC", Georgia, serif;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  h1 .amp { letter-spacing: 0; }
+  p {
+    margin: 18px 0 clamp(28px, 6vh, 48px); color: var(--title);
+    font: 400 clamp(44px, 10vw, 72px)/1.2 "Beth Ellen", cursive;
+  }
+
+  /* a school of sardines swims round: it speeds up, spreads out, closes up again */
+  .school { position: relative; width: 160px; height: 160px; }
+  .school .o {
+    position: absolute; inset: 0;
+    animation: orbit 2.8s cubic-bezier(.42,.22,.58,.78) infinite;
+    animation-delay: calc((5 - var(--i)) * -.2s);
+  }
+  .school .o svg {
+    position: absolute; left: 50%; top: 6px; overflow: visible;
+    width: var(--w); height: calc(var(--w) * .38); margin-left: calc(var(--w) / -2);
+    opacity: var(--a); color: var(--fish-back);
+    transform-origin: 72% 50%;
+    animation: wiggle .38s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * -.07s);
+  }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+  @keyframes wiggle { from { transform: rotate(-8deg); } to { transform: rotate(6deg); } }
+  .bubble {
+    position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; border-radius: 50%;
+    border: 1px solid var(--bubble); opacity: 0;
+    animation: rise 2.8s ease-out infinite; animation-delay: var(--d);
+  }
+  @keyframes rise {
+    0% { opacity: 0; transform: translate(var(--x), 8px) scale(.6); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translate(calc(var(--x) * 1.6), -26px) scale(1.1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .school .o { animation-duration: 9s; animation-timing-function: linear; }
+    .school .o svg, .bubble { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="sardine" viewBox="-21 -8 42 16">
+    <path d="M-13.5 0 L-20.5 -5.6 Q-17.6 0 -20.5 5.6 Z" fill="currentColor"/>
+    <path d="M-14 0 C-8 -5.2 5 -6.1 12.6 -1.7 Q14.8 0 12.6 1.7 C5 5.7 -8 4.7 -14 0Z" fill="var(--fish-belly)"/>
+    <path d="M-14 0 C-8 -5.2 5 -6.1 12.6 -1.7 Q13.6 -.7 12.2 -.3 C4 -1.7 -7 -1.4 -14 0Z" fill="currentColor"/>
+    <path d="M8 -3.4 Q6.3 0 8 3.1" fill="none" stroke="currentColor" stroke-width=".55" opacity=".55"/>
+    <path d="M-10 1.7 Q0 3.6 10.5 1.5" fill="none" stroke="#fff" stroke-width=".6" opacity=".55"/>
+    <circle cx="3" cy="-1.3" r=".75" fill="currentColor"/>
+    <circle cx="-1.2" cy="-1.1" r=".7" fill="currentColor"/>
+    <circle cx="-5.2" cy="-.9" r=".62" fill="currentColor"/>
+    <circle cx="10" cy="-.7" r="1.05" fill="var(--fish-eye)"/>
+    <circle cx="10.3" cy="-1" r=".32" fill="#fff"/>
+  </symbol>
+</svg>
+
+<main>
+  <h1>Marek <span class="amp">&amp;</span> Paulo</h1>
+  <p>wedding incoming</p>
+  <div class="school" aria-hidden="true">
+    <div class="o" style="--i:4;--w:28px;--a:.68"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
+    <div class="o" style="--i:3;--w:31px;--a:.76"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
+    <div class="o" style="--i:2;--w:34px;--a:.84"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
+    <div class="o" style="--i:1;--w:37px;--a:.92"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
+    <div class="o" style="--i:0;--w:40px;--a:1"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
+    <i class="bubble" style="--x:-6px;--d:0s"></i>
+    <i class="bubble" style="--x:5px;--d:-1.1s"></i>
+    <i class="bubble" style="--x:-1px;--d:-2s"></i>
+  </div>
+</main>
+
+</body>
+</html>
