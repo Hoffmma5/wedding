@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marek &amp; Paulo</title>
 <meta name="description" content="Marek &amp; Paulo — wedding incoming.">
-<meta name="theme-color" content="#fcfafa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1426" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fcfafa">
+<meta name="color-scheme" content="only light">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -17,21 +17,8 @@
   :root {
     --bg: #fcfafa;
     --title: #b66238;
-    --fish-back: #1f4fa0;
-    --fish-belly: #dfe6f1;
-    --fish-eye: #171a21;
-    --bubble: rgba(31,79,160,.35);
-    color-scheme: light dark;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f1426;
-      --title: #f0b48c;
-      --fish-back: #8fb0ff;
-      --fish-belly: #d3dbee;
-      --fish-eye: #0f1426;
-      --bubble: rgba(143,176,255,.4);
-    }
+    --cobalt: #1f4fa0;
+    --glaze: #fbf9f3;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
@@ -52,70 +39,114 @@
     font: 400 clamp(44px, 10vw, 72px)/1.2 "Beth Ellen", cursive;
   }
 
-  /* a school of sardines swims round: it speeds up, spreads out, closes up again */
-  .school { position: relative; width: 160px; height: 160px; }
-  .school .o {
-    position: absolute; inset: 0;
-    animation: orbit 2.8s cubic-bezier(.42,.22,.58,.78) infinite;
-    animation-delay: calc((5 - var(--i)) * -.2s);
+  /* a tile is painted stroke by stroke, turns a quarter, dries off, and is painted again */
+  .tile-wrap { position: relative; display: grid; place-items: center; }
+  .tile-wrap::after {   /* soft shadow that does not turn with the tile */
+    content: ""; position: absolute; left: 12%; right: 12%; bottom: -10px; height: 12px;
+    border-radius: 50%; background: radial-gradient(closest-side, rgba(23,26,33,.14), transparent);
   }
-  .school .o svg {
-    position: absolute; left: 50%; top: 6px; overflow: visible;
-    width: var(--w); height: calc(var(--w) * .38); margin-left: calc(var(--w) / -2);
-    opacity: var(--a); color: var(--fish-back);
-    transform-origin: 72% 50%;
-    animation: wiggle .38s ease-in-out infinite alternate;
-    animation-delay: calc(var(--i) * -.07s);
-  }
-  @keyframes orbit { to { transform: rotate(360deg); } }
-  @keyframes wiggle { from { transform: rotate(-8deg); } to { transform: rotate(6deg); } }
-  .bubble {
-    position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; border-radius: 50%;
-    border: 1px solid var(--bubble); opacity: 0;
-    animation: rise 2.8s ease-out infinite; animation-delay: var(--d);
-  }
-  @keyframes rise {
-    0% { opacity: 0; transform: translate(var(--x), 8px) scale(.6); }
-    20% { opacity: 1; }
-    100% { opacity: 0; transform: translate(calc(var(--x) * 1.6), -26px) scale(1.1); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .school .o { animation-duration: 9s; animation-timing-function: linear; }
-    .school .o svg, .bubble { animation: none; }
-  }
+  .tile { display: block; overflow: visible; }
+  .tile .ink { fill: none; stroke: var(--cobalt); stroke-linecap: round; stroke-linejoin: round;
+               stroke-dasharray: 1 1.02; stroke-dashoffset: 1; }
+  .tile .wash { fill: var(--cobalt); opacity: 0; }
+  .tile .dot  { fill: var(--cobalt); transform-box: fill-box; transform-origin: center; transform: scale(0); }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="sardine" viewBox="-21 -8 42 16">
-    <path d="M-13.5 0 L-20.5 -5.6 Q-17.6 0 -20.5 5.6 Z" fill="currentColor"/>
-    <path d="M-14 0 C-8 -5.2 5 -6.1 12.6 -1.7 Q14.8 0 12.6 1.7 C5 5.7 -8 4.7 -14 0Z" fill="var(--fish-belly)"/>
-    <path d="M-14 0 C-8 -5.2 5 -6.1 12.6 -1.7 Q13.6 -.7 12.2 -.3 C4 -1.7 -7 -1.4 -14 0Z" fill="currentColor"/>
-    <path d="M8 -3.4 Q6.3 0 8 3.1" fill="none" stroke="currentColor" stroke-width=".55" opacity=".55"/>
-    <path d="M-10 1.7 Q0 3.6 10.5 1.5" fill="none" stroke="#fff" stroke-width=".6" opacity=".55"/>
-    <circle cx="3" cy="-1.3" r=".75" fill="currentColor"/>
-    <circle cx="-1.2" cy="-1.1" r=".7" fill="currentColor"/>
-    <circle cx="-5.2" cy="-.9" r=".62" fill="currentColor"/>
-    <circle cx="10" cy="-.7" r="1.05" fill="var(--fish-eye)"/>
-    <circle cx="10.3" cy="-1" r=".32" fill="#fff"/>
-  </symbol>
-</svg>
-
 <main>
   <h1>Marek <span class="amp">&amp;</span> Paulo</h1>
   <p>wedding incoming</p>
-  <div class="school" aria-hidden="true">
-    <div class="o" style="--i:4;--w:28px;--a:.68"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
-    <div class="o" style="--i:3;--w:31px;--a:.76"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
-    <div class="o" style="--i:2;--w:34px;--a:.84"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
-    <div class="o" style="--i:1;--w:37px;--a:.92"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
-    <div class="o" style="--i:0;--w:40px;--a:1"><svg viewBox="-21 -8 42 16"><use href="#sardine"/></svg></div>
-    <i class="bubble" style="--x:-6px;--d:0s"></i>
-    <i class="bubble" style="--x:5px;--d:-1.1s"></i>
-    <i class="bubble" style="--x:-1px;--d:-2s"></i>
-  </div>
+  <div class="tile-wrap" aria-hidden="true"></div>
 </main>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="brush" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/>
+    <feDisplacementMap in="SourceGraphic" scale="1.3"/>
+  </filter>
+</svg>
+
+<script>
+(() => {
+  const SIZE = 120, T = 5600;
+  const R = a => `transform="rotate(${a} 50 50)"`;
+  const quarters = [0, 90, 180, 270];
+  const petal = 'M50 43.5 C42.5 36 42.5 24 50 13.5 C57.5 24 57.5 36 50 43.5Z';
+  const leaf  = 'M54.6 45.4 C57 39 61.5 36.5 68.5 31.5 C63.5 38.5 61 43 54.6 45.4Z';
+  const arcO  = 'M0 25 A25 25 0 0 0 25 0';
+  const arcI  = 'M0 13.5 A13.5 13.5 0 0 0 13.5 0';
+  const disk  = 'M0 0 L0 13.5 A13.5 13.5 0 0 0 13.5 0Z';
+
+  let s = `<svg class="tile" width="${SIZE}" height="${SIZE}" viewBox="0 0 100 100">
+    <defs><clipPath id="clip"><rect x="1" y="1" width="98" height="98" rx="3.5"/></clipPath>
+      <linearGradient id="sheen" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".75"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+    <rect x="1" y="1" width="98" height="98" rx="3.5" fill="var(--glaze)" stroke="rgba(23,26,33,.12)" stroke-width=".8"/>
+    <g class="paint" filter="url(#brush)" clip-path="url(#clip)">`;
+  quarters.forEach(a => s += `<path class="wash w-petal" d="${petal}" ${R(a)}/>`);
+  quarters.forEach(a => s += `<path class="wash w-leaf" d="${leaf}" ${R(a)}/>`);
+  quarters.forEach(a => s += `<path class="wash w-disk" d="${disk}" ${R(a)}/>`);
+  s += `<circle class="ink" pathLength="1" cx="50" cy="50" r="5.5" stroke-width="2.2" data-o="0"/>`;
+  quarters.forEach((a, j) => s += `<path class="ink" pathLength="1" d="${petal}" ${R(a)} stroke-width="2.3" data-o="${1 + j}"/>`);
+  quarters.forEach((a, j) => s += `<path class="ink" pathLength="1" d="${leaf}" ${R(a)} stroke-width="1.8" data-o="${5 + j}"/>`);
+  quarters.forEach((a, j) => s += `<path class="ink" pathLength="1" d="${arcO}" ${R(a)} stroke-width="2.4" data-o="${9 + j}"/>`);
+  quarters.forEach((a, j) => s += `<path class="ink" pathLength="1" d="${arcI}" ${R(a)} stroke-width="1.8" data-o="${13 + j}"/>`);
+  quarters.forEach((a, j) => s += `<g ${R(a)}><circle class="dot" cx="50" cy="6.5" r="2.6" data-o="${17 + j}"/></g>`);
+  s += `<circle class="dot" cx="50" cy="50" r="2" data-o="21"/>`;
+  s += `</g><rect class="sheen" x="-40" y="0" width="40" height="100" fill="url(#sheen)" clip-path="url(#clip)" opacity="0"/></svg>`;
+
+  const wrap = document.querySelector('.tile-wrap');
+  wrap.innerHTML = s;
+  const svg = wrap.firstElementChild, anims = [];
+  const opt = { duration: T, iterations: Infinity };
+  const ease = 'cubic-bezier(.55,0,.25,1)';
+  // when each stroke starts and how long the brush takes, as fractions of the loop
+  const when = o =>
+    o === 0 ? [.02, .06] :
+    o <= 4  ? [.07 + (o - 1) * .055, .075] :
+    o <= 8  ? [.30 + (o - 5) * .04, .05] :
+    o <= 12 ? [.47 + (o - 9) * .035, .05] :
+    o <= 16 ? [.60 + (o - 13) * .025, .04] :
+              [.70 + (o - 17) * .018, .03];
+
+  svg.querySelectorAll('.ink').forEach(el => {
+    const [a, l] = when(+el.dataset.o);
+    anims.push(el.animate([
+      { offset: 0, strokeDashoffset: 1 }, { offset: a, strokeDashoffset: 1, easing: ease },
+      { offset: a + l, strokeDashoffset: 0 }, { offset: 1, strokeDashoffset: 0 }], opt));
+  });
+  svg.querySelectorAll('.dot').forEach(el => {
+    const [a, l] = when(+el.dataset.o);
+    anims.push(el.animate([
+      { offset: 0, transform: 'scale(0)' }, { offset: a, transform: 'scale(0)', easing: 'cubic-bezier(.3,1.6,.5,1)' },
+      { offset: a + l * 2, transform: 'scale(1)' }, { offset: 1, transform: 'scale(1)' }], opt));
+  });
+  const wash = (sel, a, b, to) => svg.querySelectorAll(sel).forEach(el => anims.push(el.animate([
+    { offset: 0, opacity: 0 }, { offset: a, opacity: 0 }, { offset: b, opacity: to }, { offset: 1, opacity: to }], opt)));
+  wash('.w-petal', .30, .46, .2);
+  wash('.w-leaf', .50, .62, .16);
+  wash('.w-disk', .66, .76, .92);
+  anims.push(svg.querySelector('.paint').animate([
+    { offset: 0, opacity: 1 }, { offset: .85, opacity: 1, easing: 'ease-in' },
+    { offset: .94, opacity: 0 }, { offset: 1, opacity: 0 }], opt));
+  anims.push(svg.querySelector('.sheen').animate([
+    { offset: 0, opacity: 0, transform: 'translateX(0)' },
+    { offset: .74, opacity: 0, transform: 'translateX(0)', easing: 'ease-in-out' },
+    { offset: .76, opacity: 1 },
+    { offset: .86, opacity: 0, transform: 'translateX(140px)' },
+    { offset: 1, opacity: 0, transform: 'translateX(140px)' }], opt));
+  // a square looks the same after a quarter turn, so the loop has no seam
+  anims.push(svg.animate([
+    { offset: 0, transform: 'rotate(0deg)' }, { offset: .84, transform: 'rotate(0deg)', easing: 'cubic-bezier(.65,0,.35,1)' },
+    { offset: .96, transform: 'rotate(90deg)' }, { offset: 1, transform: 'rotate(90deg)' }], opt));
+
+  // reduced motion: show the finished tile and keep it still
+  const calm = matchMedia('(prefers-reduced-motion: reduce)');
+  const apply = () => anims.forEach(a => { if (calm.matches) { a.currentTime = T * .8; a.pause(); } else a.play(); });
+  calm.addEventListener('change', apply);
+  apply();
+})();
+</script>
 </body>
 </html>
